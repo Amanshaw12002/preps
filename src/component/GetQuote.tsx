@@ -118,7 +118,7 @@ export default function GetQuoteForm() {
           <div className="md:col-span-2 text-center mt-6">
             <button
               type="submit"
-              className="bg-rose-600 hover:bg-rose-700 cursor-pointer text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-300 text-base sm:text-lg"
+              className="bg-white border-2 hover:text-white hover:bg-stone-800 cursor-pointer text-stone-800 font-mon py-3 px-8 rounded-lg shadow-md transition duration-300 text-base sm:text-lg"
             >
               Submit Form
             </button>

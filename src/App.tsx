@@ -12,7 +12,7 @@ import FbmService from './page/ServicesForFbm';
 function App() {
  return (
   <>
-  <main className=' relative w-screen '>
+  <main className='  '>
        <Navbar/>
         <Routes>
 

@@ -25,16 +25,16 @@ export default function Contact() {
      <p className="text-gray-700">Ask any questions related to our platform and services.
       </p><p className="text-gray-700">Fill the below form to get answers to the your queries.  </p>
      </div>
-    <section className="flex justify-center h-[160vh] md:h-[140vh] items-center  px-2 bg-white">
-      <div className="grid sm:grid-cols-2 gap-2 h-10/12  sm:w-full  bg-gradient-to-br from-white to-gray-400 rounded-2xl shadow-lg p-4 md:p-8">
+    <section className="flex-center px-2 bg-white mt-12">
+      <div className="grid sm:grid-cols-2 gap-2 max-w-7xl  bg-gradient-to-br from-white to-gray-400 rounded-2xl shadow-lg p-4 md:p-8">
         {/* Heading */}
         <div>
 
         <h2 className="text-3xl font-mon text-black ">
-          Still in doubt,worry not  
+          <span className="text-rose-700 ">Get in touch</span> with
         </h2>
         <h2 className="text-3xl font-mon text-black mb-2">
-          <span className="text-rose-700 underline ">get in touch</span> with our free demo session
+           our free demo session
         </h2>
         <p className="text-gray-600  mb-6">
           Have a question?  

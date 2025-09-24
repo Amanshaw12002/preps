@@ -1,81 +1,73 @@
 import { Link } from "react-router-dom";
 import main from "../asset/main.png";
-import { Package, Truck, Menu, X } from "lucide-react";
+import { Package, Truck, Menu, X, MoveRight } from "lucide-react";
 import { useGlobalContext } from "@/GlobalContext";
 import { useState } from "react";
 
 export default function Navbar() {
-  const [open,setOpen] = useState(false);
-  const {demoRef} = useGlobalContext();
-    const handleClickDemo = () => {
- demoRef.current?.scrollIntoView({ behavior: "smooth" });
-}
+  const [open, setOpen] = useState(false);
+  const { demoRef } = useGlobalContext();
 
+  const handleClickDemo = () => {
+    demoRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <nav className="fixed top-0 bg-white w-screen z-50 transition-all duration-500 shadow h-16">
-      <div className="flex-between h-full w-11/12 mx-auto">
+    <nav className="bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500">
+      <div className="max-w-7xl mx-auto px-8 h-full flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={main} alt="img" className="h-10 w-10 object-cover" />
-          <h2 className="font-mon text-2xl text-red-900">BBP</h2>
+        <div className="flex items-center ">
+          <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
+          <h2 className="font-open-sans font-semibold hidden sm:block sm:text-xl  text-red-900">
+            <span className="text-2xl ">B</span>lackBoxPreps
+          </h2>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex font-inter text-sm text-gray-800 gap-8">
-          <li className="hover:text-blue-700 cursor-pointer">
+        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-4 lg:gap-6 items-center">
+          <li className="hover:text-blue-700 transition">
             <Link to="/">Home</Link>
           </li>
 
           <li className="group relative">
             <span className="cursor-pointer inline-block">Services</span>
-
             <ul
-              className={
-                "absolute top-5 left-0 w-48 h-fit flex-col items-start bg-white border border-gray-300 text-gray-800 p-2 rounded-md shadow-lg " +
-                "opacity-0 translate-y-2 pointer-events-none scale-95 " +
-                "group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto hover:cursor-pointer group-hover:scale-100 " +
-                "transition-all duration-200 ease-out origin-top"
-              }
+              className="absolute top-5 left-0 w-48 flex-col bg-white border border-gray-300 rounded-md shadow-lg p-2 opacity-0 scale-95 pointer-events-none
+                group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top"
             >
-              <li className="px-2 py-2 hover:text-black hover:bg-gray-800/20 mb-2 rounded transition-colors flex items-center gap-2">
+              <li className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 transition">
                 <Package size={16} />
                 <Link to="/service/fba">FBA & WFS</Link>
               </li>
-              <li className="px-2 py-2  hover:bg-gray-700/20  hover:text-black rounded transition-colors flex items-center gap-2">
+              <li className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 transition">
                 <Truck size={16} />
                 <Link to="/service/fbm">FBM & Wholesale</Link>
               </li>
             </ul>
           </li>
 
-          <li className="cursor-pointer hover:text-blue-700">
+          <li className="hover:text-blue-700 transition">
             <Link to="/Pricing">Pricing</Link>
           </li>
-          <li className="cursor-pointer hover:text-blue-700">
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li className="cursor-pointer hover:text-blue-700">
+          <li className="hover:text-blue-700 transition">
             <Link to="/aboutUs">About Us</Link>
+          </li>
+          <li className=" border-2 hover:bg-gray-100 hover:scale-95 rounded-lg p-2 transition">
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
 
-        {/* Desktop Button */}
-        <button 
-          onClick={handleClickDemo}
-          className="hidden md:inline-block text-sm text-red-900 font-mon hover:scale-95 duration-300 transition border-2 px-3 py-1 rounded-xl border-red-900"
-          
-        >
-          Book a demo
-        </button>
-
         {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-red-900"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          
+          <button
+            className="text-red-900 focus:outline-none"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -87,19 +79,19 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="flex flex-col">
-              <span className="mb-2 font-semibold">Services</span>
+            <li className="flex flex-col gap-1">
+              <span className="font-semibold">Services</span>
               <Link
                 to="/service/fba"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 px-2 py-1 hover:bg-red-800 hover:text-white rounded"
+                className="flex items-center gap-2 px-2 py-1 rounded hover:bg-red-800 hover:text-white transition"
               >
                 <Package size={16} /> FBA & WFS
               </Link>
               <Link
                 to="/service/fbm"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 px-2 py-1 hover:bg-red-800 hover:text-white rounded"
+                className="flex items-center gap-2 px-2 py-1 rounded hover:bg-red-800 hover:text-white transition"
               >
                 <Truck size={16} /> FBM & Wholesale
               </Link>
@@ -117,15 +109,6 @@ export default function Navbar() {
             <li>
               <Link to="/aboutUs" onClick={() => setOpen(false)}>
                 About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/auth"
-                onClick={() => setOpen(false)}
-                className="text-sm text-red-900 font-mon border-2 px-3 py-1 rounded-xl border-red-900"
-              >
-                Book a demo
               </Link>
             </li>
           </ul>
