@@ -1,10 +1,9 @@
-import  { createContext, useContext, useRef,type ReactNode } from 'react';
+import  { createContext, useContext,type ReactNode } from 'react';
 
 
 
 
 type GlobalContextType = {
-     demoRef: React.RefObject<HTMLElement | null>; 
     };
 
 
@@ -13,10 +12,9 @@ const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const demoRef = useRef<HTMLElement>(null);
 
   return (
-    <GlobalContext.Provider value={{demoRef}}> 
+    <GlobalContext.Provider value={{}}> 
       {children}
     </GlobalContext.Provider>
   );

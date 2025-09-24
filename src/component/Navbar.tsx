@@ -1,16 +1,11 @@
 import { Link } from "react-router-dom";
 import main from "../asset/main.png";
-import { Package, Truck, Menu, X, MoveRight } from "lucide-react";
-import { useGlobalContext } from "@/GlobalContext";
+import { Package, Truck, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { demoRef } = useGlobalContext();
 
-  const handleClickDemo = () => {
-    demoRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <nav className="bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500">

@@ -1,4 +1,3 @@
-import { useGlobalContext } from "@/GlobalContext";
 import { useState } from "react";
 
 interface FormData {
@@ -8,7 +7,6 @@ interface FormData {
 }
 
 export default function ContactForm() {
-  const {demoRef} = useGlobalContext();
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -20,7 +18,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section ref={demoRef} className="flex-center pt-18 px-4 bg-white">
+    <section  className="flex-center pt-18 px-4 bg-white">
       <div className="grid sm:grid-cols-2 max-w-7xl mx-auto gap-2     bg-gradient-to-br from-white to-gray-400 rounded-2xl shadow-lg p-8">
         {/* Heading */}
         <div>
