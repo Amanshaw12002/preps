@@ -13,8 +13,8 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
-          <h2 className="font-open-sans font-semibold hidden sm:block sm:text-xl  text-red-900">
-            <span className="text-2xl ">B</span>lackBoxPreps
+          <h2 className="font-open-sans font-semibold hidden sm:block sm:text-2xl  text-red-900">
+            <span className="text-3xl ">B</span>lackBoxPreps
           </h2>
         </div>
 

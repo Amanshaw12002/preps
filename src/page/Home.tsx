@@ -62,9 +62,9 @@ export default function Home() {
 
 
     <section className="flex-center relative mt-12  overflow-hidden">
-      <div className='max-w-7xl mx-auto  lg:flex lg:max-h-screen p-4'>
+      <div className='max-w-7xl mx-auto  lg:flex md:mt-12 lg:max-h-screen p-4'>
 
-                    <div className="  lg:ml-8 mx-auto  lg:max-w-xl max-w-2xl pt-8 shrink-0  text-black ">
+                    <div className="  lg:ml-8 mx-auto  lg:max-w-xl max-w-2xl pt-12 shrink-0  text-black ">
                                 
 
                           <h2 className=" text-7xl font-semibold   font-open-sans text-shadow-2xs  "> Store,  </h2>
