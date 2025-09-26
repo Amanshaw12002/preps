@@ -1,9 +1,10 @@
 
-import { CheckCircle, MoveRight ,Truck, Locate, Settings,House,Warehouse} from 'lucide-react';
+import { Truck,  Settings,House,Warehouse, PackageCheck, PackageSearch} from 'lucide-react';
 import inventory from "../asset/inventory.png"
+import workflow from "../asset/workflow.png"
 import d from "../asset/d.png"
 import dashboard from "../asset/dashboard.png"
-
+import { Link } from 'react-router-dom';
 import GetQuoteForm from '@/component/GetQuote';
 import { useState } from 'react';
 import CustomCalendar from '@/component/Meeting';
@@ -61,36 +62,28 @@ export default function Home() {
     
 
 
-    <section className="flex-center relative mt-12  overflow-hidden">
-      <div className='max-w-7xl mx-auto  lg:flex md:mt-12 lg:max-h-screen p-4'>
+    <section className="flex-center relative mt-12  overflow-hidden ">
+      <div className='max-w-7xl mx-auto  lg:flex md:mt-6 lg:max-h-screen  '>
 
-                    <div className="  lg:ml-8 mx-auto  lg:max-w-xl max-w-2xl pt-12 shrink-0  text-black ">
+                    <div className="  lg:pl-8 mx-auto  lg:max-w-xl max-w-2xl pt-12   shrink-0  text-black ">
                                 
+                         <div className="flex lg:flex-col ">
 
                           <h2 className=" text-7xl font-semibold   font-open-sans text-shadow-2xs  "> Store,  </h2>
-                          <h2 className=" text-7xl font-semibold   font-open-sans text-shadow-2xs  "><span className="text-red-900">Pack &</span> Ship.  </h2>
+                          <h2 className=" text-7xl font-semibold   font-open-sans text-shadow-2xs   "><span className="text-red-900">Pack &</span> Ship.  </h2>
+                         </div>
                         
-                        <h2 className=" text-lg font-open-sans  text-gray-800    mt-2 ">Get Amazon-Ready  Fulfillment Services.
+                          <h2 className=' text-2xl font-open-sans font-medium  text-gray-800  mt-2  '>-You sell, we handle the rest.</h2>
+                        <h2 className=" text-lg font-open-sans      mt-4  ">Get Amazon-Ready  Fulfillment Services
+                          <p className='font-open-sans text-sm font-normal inline text-gray-800 '>--we provide safe storage to professional packing  and fast shipping.With our fast reliable  FBA service,your  products  are always  ready to reach  customers  quickly and  securely.</p>
                           </h2>
-                          <h2 className=' text-lg font-open-sans  text-gray-800    '>You sell, we handle the rest.</h2>
-                          <button className="group  text-xl mt-6  font-mon overflow-hidden cursor-pointer
-                          px-4 py-1.5 flex items-center justify-between  hover:scale-105 transition duration-300 bg-gradient-to-br from-red-700 to-stone-800 shadow-md hover:shadow-black rounded-2xl text-white ">
-                            <span className="group-hover:translate-x-4 transition duration-1000">Get Started</span>
-                            <MoveRight className="group-hover:translate-x-10 duration-1000 transition ml-2 w-5 h-5"/>
-                            </button>
-                            <div className="flex-between w-fit">
-
-                             <CheckCircle className="w-5 h-5 " />
-                            <p className="p-2 text-xs font-sans">200+ users have started using our services</p>
-
+                         
                     </div>
-
-                    </div>
-                    <div className='lg:max-w-none  lg:flex-none flex max-w-2xl mt-4  lg:mt-12 lg:ml-8'>
                       
+                    <div className='lg:max-w-none  lg:flex-none flex max-w-2xl mt-4  lg:mt-12 lg:ml-0 sm:rounded-xl lg:bg-gradient-to-br from-black via-red-700 via-35%   to-red-500 shadow-xl  lg:shadow-red-700'>
                     <div className='max-w-3xl flex-none sm:max-w-5xl lg:max-w-none'>
-                      <div className='   border-gray-400  p-1 sm:p-4 border rounded-sm sm:rounded-xl bg-gray-200 border-b-0 '>
-                      <img src={dashboard} alt="" className=" rounded-xs    sm:rounded-xl border-gray-400 border border-b-0     "/>
+                      <div className='   border-gray-400   p-1 sm:p-4 border rounded-sm sm:rounded-xl  border-b-0 bg-gray-200 lg:bg-transparent'>
+                      <img src={dashboard} alt="" className=" rounded-xs  w-[54rem]  sm:rounded-xl border-gray-400  border border-b-0     "/>
                         </div>  
                         </div>  
                     </div>
@@ -103,16 +96,27 @@ export default function Home() {
 
 
 
+<section>
 
+              <div className='max-w-7xl mx-auto flex-between flex-col lg:flex-row md:mt-12 px-12 lg:max-h-screen '>
+                       <div className="flex flex-col    lg:p-6">
+                        <h2 className='text-4xl font-open-sans font-medium  text-slate-900'>Our -eFullfillment Service Workflow</h2>
+                        <p className='font-open-sans mt-4 text-stone-800'>--At our prep center, we follow a <span className='font-semibold text-stone-900'> streamlined and reliable workflow designed to save you time, reduce costs, and ensure compliance with marketplace standards like Amazon FBA.</span>  Every step is <span>optimized for accuracy, efficiency, and speed,</span> so your products move smoothly from arrival to shipment. </p>
+                       </div>
+                       <img src={workflow} className="object-cover  max-w-96  rounded-2xl border-red-700  "/>
+                       </div>
+              
+</section>
+                
+            <section className="flex-center   ">
+              
+<div className='   max-w-7xl   rounded-xl   bg-white  overflow-hidden  sm:p-0'>
 
-            
-            <section className=" relative  bg-gray-100 flex-center p-8 ">
-              <div className='   max-w-7xl   rounded-xl   bg-white  overflow-hidden py-4 sm:p-0'>
-
-              <div className="flex-between flex-col sm:flex-row  text-slate-800  ">
+              <div className="flex items-center flex-col sm:flex-row p-12   text-slate-800  ">
+                       <img src={d} className="object-cover max-w-96  border-gray-200   "/>
                              <div className=" mx-2  font-mon ml-8  ">
-                              <h2 className="text-4xl  font-normal ">Be <span className='text-red-700'>always updated</span> with our dashboard overview.</h2>
-                              <h2 className=" font-light text-lg pt-1 "> Check anytime,anywhere within your range and  comfort.</h2>
+                              <h2 className="text-4xl font-open-sans   ">Be <span className='text-red-700'>always updated</span> with our dashboard overview.</h2>
+                              <h2 className=" font-normal text-lg pt-1 "> Check anytime,anywhere within your range and  comfort.</h2>
                               <div className='mt-6 text-gray-600 font-normal'>
                                 <h2>--No setup fees</h2>
                                 <h2>--No minimum  order Requirements</h2>
@@ -121,10 +125,8 @@ export default function Home() {
                               </div>
 
 
-                       <img src={d} className="object-cover max-w-1/2 sm:rounded-r-3xl rounded-xl   sm:border-l-4 border-gray-200   "/>
-
-              </div>
                    </div>    
+              </div>
                        
             </section>
          
@@ -134,14 +136,14 @@ export default function Home() {
   {/* Top fading gradient for effect */}
   <div className="absolute bottom-0 hidden  sm:block h-12 w-full bg-gradient-to-t from-white via-white to-transparent z-20"></div>
 
-  <div className="max-w-7xl  flex bg-white flex-col items-center pt-12">
+  <div className="max-w-7xl  flex bg-white flex-col items-center justify-center pt-12  ">
     {/* Tabs / Items */}
-    <div className='flex flex-col items-center  '>
+    <div className='flex flex-col items-center justify-center   text-black'>
       
-    <h2 className='text-xl md:text-5xl font-sans   '>We fullfill all your <span className='text-red-700'>requirements for</span> </h2>
-    <h2 className=' text-xl md:text-5xl font-sans mb-2'> managing your prep center.</h2>
+    <h2 className='text-xl md:text-5xl font-open-sans font-medium     '>We fullfill all your <span className='inline-block'>requirements for</span> </h2>
+    <h2 className=' text-xl md:text-5xl font-open-sans font-medium mb-2'> managing your prep center.</h2>
     </div>
-    <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4 w-full sm:mt-8   border sm:border-2 border-gray-400 rounded-xl  sm:w-10/12 overflow-x-auto lg:mx-12 py-4   px-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 w-full sm:mt-8      sm:w-10/12 overflow-x-auto lg:mx-12 py-4   px-4">
       {Items.map(({ index, label, icon: Icon }) => {
         const active = index === itemSelected;
         return (
@@ -149,7 +151,7 @@ export default function Home() {
             key={index}
             onClick={() => setItemSelected(index)}
             className={`
-              flex items-center gap-2 px-4 py-2 min-w-24 rounded-xl border sm:border-2 
+              flex items-center gap-2 px-4 pr-4 py-2 max-w-fit rounded-xl border sm:border-2 
               ${active ? "bg-white border-red-700 scale-95 text-black shadow-none" : "bg-white border-gray-300 shadow-xl hover:shadow-none  hover:scale-95"}
               cursor-pointer transition-transform duration-300 flex-shrink-0
             `}
@@ -160,7 +162,7 @@ export default function Home() {
                 ${active ? "bg-red-700 text-white" : "bg-gray-200 text-gray-800"}
               `}
             />
-            <span className="whitespace-nowrap font-medium">{label}</span>
+            <span className="whitespace-nowrap font-medium text-xl">{label}</span>
           </div>
         );
       })}
@@ -180,58 +182,65 @@ export default function Home() {
   </div>
 </section>
 
+<section className=''>
+  <div className='max-w-7xl h-42 mx-auto flex-between bg-gradient-to-b from-red-900 via-red-700 px-12 lg:px-32   '> 
+    <h2 className='text-white font-inter  lg:text-5xl sm:text-4xl text-2xl '>Get Started for free </h2>
+              <Link to="/contact" className=" border-2 border-amber-700   text-white  text-2xl shadow-lg shadow-black rounded-lg p-2 transition">
+            Contact Us
+          </Link>
 
+  </div>
+</section>
 
 
 
 
        <section className=" flex-center    ">
-  <div className="bg-white max-w-7xl  flex flex-col h-full  z-10 my-4 mx-8">
-    <h2 className="text-4xl font-mont font-semibold my-2 ml-4">
+  <div className="bg-white max-w-7xl  flex-center flex-col h-full  z-10 my-12 mx-8">
+    <h2 className="text-4xl font-mont font-medium my-2 ">
 <span className="text-red-700">Optimized Process</span> for Prep & FBA
     </h2>
-    <p className="text-gray-700 mb-4 ml-4">
+    <p className="text-gray-700 mb-8 ml-4">
       We've got you covered with all your tensions and frustrations that you can work with ease.
     </p>
     
-    <div className="flex flex-col lg:flex-row   gap-4  w-full">
+    <div className="flex flex-col lg:flex-row   gap-4  bg-gradient-to-b from-red-950 to-red-700 p-2 rounded-xl w-full">
       {/* Card 1 */}
-      <div className="p-6 w-full md:w-1/2 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-gray-200  rounded-xl cursor-pointer shadow-sm  hover:bg-black/20 group hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3">
-          <Truck className="w-10 h-10 bg-red-800 text-white p-2 rounded-md" />
-          <h3 className="text-lg font-semibold text-black">
-            Streamlined Operations
+          <PackageSearch className="w-10 h-10 shrink-0 bg-red-800  text-white p-2 rounded-md" />
+          <h3 className="text-lg font-semibold text-black group-hover:text-white">
+              Standardized Receiving & Inspection
           </h3>
         </div>
-        <p className="text-gray-600 text-md">
-          We simplify shipment handling by cutting unnecessary steps and automating tasks. This reduces delays, lowers costs, and ensures packages move quickly without errors.
-        </p>
+        <p className="text-gray-900 text-md group-hover:text-white">
+Check and sort all incoming inventory against purchase orders.
+Inspect for damage, expiration dates, and compliance with Amazon’s prep requirements before processing.        </p>
       </div>
 
       {/* Card 2 */}
-      <div className="p-6 w-full md:w-1/2 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-gray-200 rounded-xl cursor-pointer shadow-sm  hover:bg-black/20 group   hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3">
-          <Locate className="w-10 h-10 bg-red-800 text-white p-2 rounded-md" />
-          <h3 className="text-lg font-semibold text-black">
-            Real-Time Tracking
-          </h3>
+          <PackageCheck className="w-10 h-10 shrink-0 bg-red-800 text-white p-2 rounded-md" />
+          <h3 className="text-lg font-semibold text-black group-hover:text-white">
+Efficient Prep & Packaging          </h3>
         </div>
-        <p className="text-gray-600 text-md">
-          Monitor every shipment from warehouse to delivery with live updates. Our system keeps you and your customers informed at every stage with full transparency.
-        </p>
+        <p className="text-gray-900 text-md group-hover:text-white">
+Use automation-friendly stations with labeled zones for polybagging, bubble wrapping, labeling, and bundling.
+Apply Amazon-compliant barcodes (FNSKU) systematically to avoid delays or rejections at FBA.        </p>
       </div>
 
       {/* Card 3 */}
-      <div className="p-6 w-full md:w-1/2 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-gray-200 rounded-xl cursor-pointer shadow-sm  hover:bg-black/20 group hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3">
-          <Settings className="w-10 h-10 bg-red-800 text-white p-2 rounded-md" />
-          <h3 className="text-lg font-semibold text-black">
-            Hassle-Free Management
+          <Truck className="w-10 h-10 shrink-0 bg-red-800 text-white p-2 rounded-md" />
+          <h3 className="text-lg font-semibold text-black group-hover:text-white">
+            Shipment Planning & Tracking
           </h3>
         </div>
-        <p className="text-gray-600 text-md">
-          Control shipments with a smart dashboard that manages orders, returns, and costs. Gain insights and keep logistics smooth—all in one place.
-        </p>
+        <p className="text-gray-900 text-md group-hover:text-white">
+Consolidate shipments to reduce costs while following Amazon’s warehouse distribution requirements.
+Leverage software (Seller Central, 3rd-party tools, or WMS) to optimize carton contents, generate shipping plans, and maintain real-time tracking.        </p>
       </div>
     </div>
   </div>

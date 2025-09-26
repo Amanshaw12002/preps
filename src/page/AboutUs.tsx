@@ -7,8 +7,8 @@ export default function AboutUs() {
       <div className="max-w-5xl mx-auto text-center mb-12">
         <h1 className="text-6xl font-mon text-gray-900"> About Us</h1>
         <p className="mt-4 text-gray-600 font-open-sans max-w-3xl mx-auto">
-          At <span className="font-mon text-rose-600">BlackBoxPreps</span>, 
-          we help Amazon sellers grow by simplifying FBA & FBM prep services. 
+          At <span className="font-mon  text-red-800">BlackBoxPreps</span>, 
+          we help Amazon sellers grow by <span className="font-semibold"> simplifying  FBA & FBM prep services.</span> 
           From packaging and labeling to storage and fulfillment, 
           we ensure your products reach customers with speed and reliability.
         </p>
@@ -18,7 +18,7 @@ export default function AboutUs() {
       <div className="grid md:grid-cols-2 text-sm md:text-md   ">
 
       <div className=" mx-auto bg-white rounded-2xl shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-sans text-gray-800 mb-4">Our Story</h2>
+        <h2 className="text-2xl font-sans text-gray-800 mb-4">-Our Story</h2>
         <p className="text-gray-700 font-open-sans leading-relaxed">
           We started with a simple goal: to make Amazon fulfillment easier for sellers. 
           Many businesses struggle with packaging compliance, warehouse management, and 
@@ -29,7 +29,7 @@ export default function AboutUs() {
 
       {/* Why Choose Us */}
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-sans text-gray-800 mb-4">Why Choose Us?</h2>
+        <h2 className="text-2xl font-sans text-gray-800 mb-4">-Why Choose Us?</h2>
         <ul className="list-disc list-inside font-open-sans text-gray-700 space-y-3">
           <li> Amazon-compliant packaging & labeling</li>
           <li> Transparent & competitive pricing</li>
@@ -42,7 +42,7 @@ export default function AboutUs() {
   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Mission */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <Target className="h-12 w-12 text-red-600  mb-4" />
+            <Target className="h-12 w-12 border-2 rounded-sm p-1 text-red-600  mb-4" />
             <h3 className="text-xl font-sans border-l-2 pl-2 text-gray-800 mb-2">Our Mission</h3>
             <p className="text-gray-600 font-open-sans">
               To deliver exceptional logistics services that help our clients
@@ -52,7 +52,7 @@ export default function AboutUs() {
 
           {/* Experience */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <Briefcase className="h-12 w-12 text-black  mb-4" />
+            <Briefcase className="h-12 w-12 border-2 rounded-sm p-1 text-black  mb-4" />
             <h3 className="text-xl font-sans border-l-2 pl-2 text-gray-800  mb-2">Our Experience</h3>
             <p className="text-gray-600 font-open-sans">
               With years of experience in FBA, FBM, and wholesale services, we
@@ -62,7 +62,7 @@ export default function AboutUs() {
 
           {/* Team */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <Users className="h-12 w-12 text-purple-600  mb-4" />
+            <Users className="h-12 w-12 border-2 rounded-sm p-1 text-purple-600  mb-4" />
             <h3 className="text-xl font-sans text-gray-800 border-l-2 pl-2 mb-2">Our Team</h3>
             <p className="text-gray-600 font-open-sans">
               A passionate and skilled team committed to guiding clients through
@@ -72,7 +72,7 @@ export default function AboutUs() {
 
           {/* Vision */}
           <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <Globe className="h-12 w-12 text-gray-600  mb-4" />
+            <Globe className="h-12 w-12 border-2 text-gray-600 rounded-sm p-1 mb-4" />
             <h3 className="text-xl font-sans text-gray-800 border-l-2 pl-2 mb-2">Our Vision</h3>
             <p className="text-gray-600 font-open-sans">
               To be a global leader in logistics solutions, setting new

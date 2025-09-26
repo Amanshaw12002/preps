@@ -13,8 +13,8 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
-          <h2 className="font-open-sans font-semibold hidden sm:block sm:text-2xl  text-red-900">
-            <span className="text-3xl ">B</span>lackBoxPreps
+          <h2 className=" font-mon  hidden sm:block sm:text-2xl  text-red-900">
+            BlackBoxPreps
           </h2>
         </div>
 
@@ -27,16 +27,20 @@ export default function Navbar() {
           <li className="group relative">
             <span className="cursor-pointer inline-block">Services</span>
             <ul
-              className="absolute top-5 left-0 w-48 flex-col bg-white border border-gray-300 rounded-md shadow-lg p-2 opacity-0 scale-95 pointer-events-none
-                group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top"
+              className="absolute top-5 left-0 w-48 flex-col bg-white border border-gray-300 rounded-md shadow-lg p-2 opacity-0 scale-90 pointer-events-none
+                group-hover:opacity-100  group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-500 origin-top"
             >
-              <li className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 transition">
+              <li className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 cursor-pointer transition ">
+                <Link to="/service/fba" className="flex-between gap-2">
                 <Package size={16} />
-                <Link to="/service/fba">FBA & WFS</Link>
+                <span>FBA & WFS</span>
+                </Link>
               </li>
               <li className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 transition">
+                <Link to="/service/fbm" className="flex-between gap-2">
                 <Truck size={16} />
-                <Link to="/service/fbm">FBM & Wholesale</Link>
+                <span>FBM & Wholesale</span>
+                </Link>
               </li>
             </ul>
           </li>

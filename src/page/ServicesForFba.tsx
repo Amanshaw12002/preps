@@ -15,9 +15,9 @@ export default function FbaService() {
           <h1 className="text-4xl font-mon text-gray-900">
             Fulfilled by Amazon (FBA) Services
           </h1>
-          <p className="mt-4 text-gray-600 font-open-sans max-w-3xl mx-auto">
-            With our professional FBA prep services, your products are inspected,
-            labeled, packed, and shipped directly to Amazon fulfillment centers —
+          <p className="mt-4 text-gray-700 font-open-sans max-w-3xl mx-auto">
+            With our professional FBA prep services, your <span className="font-semibold text-gray-800"> products are inspected,
+            labeled, packed, and shipped directly to Amazon fulfillment centers </span>—
             making them 100% ready to reach millions of Prime customers worldwide.
           </p>
         </div>
@@ -67,29 +67,35 @@ export default function FbaService() {
         {/* Why Choose Us */}
         <div className="max-w-5xl mx-auto mt-16 grid md:grid-cols-3 gap-8 text-center">
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <ShieldCheck className="w-10 h-10  p-1 text-blue-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Amazon Compliance</h3>
-            <p className="mt-2 text-gray-600">
+                        <div className="flex items-center justify-center gap-2 mb-4 ">
+            <ShieldCheck className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white " />
+            <h3 className="text-2xl font-normal text-gray-800">Amazon Compliance</h3>
+          </div>
+            <p className="mt-2 font-mon text-gray-800">
               Our prep services strictly follow Amazon’s packaging & labeling
               requirements so your products never face rejection.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <TrendingUp className="w-10 h-10 text-green-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Scalability</h3>
-            <p className="mt-2 text-gray-600">
+                        <div className="flex items-center justify-center gap-2 mb-4 ">
+            <TrendingUp className="w-10 h-10 bg-red-800 rounded-lg p-2 text-white " />
+            <h3 className="text-2xl font-normal text-gray-800">Scalability</h3>
+          </div>
+            <p className="mt-2 font-mon text-gray-800">
               Whether you’re a new seller or a high-volume brand, our services
               scale to meet your business needs.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <Clock className="w-10 h-10 text-orange-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Fast & Reliable</h3>
-            <p className="mt-2 text-gray-600">
+                        <div className="flex items-center justify-center gap-2 mb-4 ">
+            <Clock className="w-10 h-10 bg-red-800 rounded-lg p-2 text-white " />
+            <h3 className="text-2xl font-normal text-gray-800">Fast & Reliable</h3>
+          </div>
+            <p className="mt-2 font-mon text-gray-800">
               With quick turnaround and reliable logistics, your products get to
               Amazon warehouses faster, ready to sell.
             </p>
-          </div>
+</div>
         </div>
       </section>
 

@@ -68,25 +68,31 @@ export default function FbmService() {
         {/* Why Choose Us */}
         <div className="max-w-5xl mx-auto mt-16 grid md:grid-cols-3 gap-8 text-center">
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <Package className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Flexibility</h3>
-            <p className="mt-2 text-gray-600">
+            <div className="flex items-center justify-center gap-2 mb-4 ">
+            <Package className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white " />
+            <h3 className="text-2xl font-normal text-gray-800">Flexibility</h3>
+            </div>
+            <p className="mt-2 text-gray-800 font-mon">
               Handle fulfillment on your terms—choose your carriers, packaging, and
               schedules while we provide the infrastructure.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <DollarSign className="w-10 h-10 text-green-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Cost-Effective</h3>
-            <p className="mt-2 text-gray-600">
+            <div className="flex items-center justify-center gap-2 mb-4 ">
+            <DollarSign className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white " />
+            <h3 className="text-2xl font-normal text-gray-800">Cost-Effective</h3>
+              </div>
+            <p className="mt-2 text-gray-800 font-mon">
               Pay only for the services you use. Our tailored solutions keep your
               fulfillment affordable and scalable.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-md">
-            <Truck className="w-10 h-10 text-orange-600 mx-auto mb-3" />
-            <h3 className="text-xl font-semibold text-gray-800">Reliable</h3>
-            <p className="mt-2 text-gray-600">
+            <div className="flex items-center justify-center gap-2  mb-4">
+            <Truck className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white" />
+            <h3 className="text-2xl font-normal text-gray-800">Reliable</h3>
+          </div>
+            <p className="mt-2 text-gray-800 font-mon">
               With fast processing and strong logistics partners, we ensure your
               customers receive orders on time, every time.
             </p>

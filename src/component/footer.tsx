@@ -11,18 +11,18 @@ export default function Footer() {
         <footer 
     
     className="flex flex-col items-center justify-center   max-w-screen  
-      text-black      py-10 px-6 bg-gray-100 ">
+      text-black      py-10 px-6  ">
           <div className="flex-between mb-4  ">
             <img src={main} alt="img" className="h-10 w-10 object-cover  "/>
               <h2 className="font-mon text-4xl font-semibold  text-red-900">BlackBoxPreps</h2>
           </div>
       
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3  p-2 gap-8">
+      <div className="max-w-5xl bg-black/20 rounded-2xl mx-auto grid grid-cols-1 md:grid-cols-3  p-2 gap-8">
         
         {/* Logo / About */}
 
         {/* Links */}
-        <div className="flex flex-col w-52 items-center bg-white rounded-sm p-4 border border-gray-400">
+        <div className="flex flex-col w-52 items-center bg-white rounded-lg p-4 ">
           <h2 className="text-lg font-light  mb-3">Company</h2>
           <ul className="space-y-2 text-sm font-light">
             <li><a href="#" className="hover:text-blue-400">Home</a></li>
@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         {/* Services */}
-        <div className=" flex flex-col items-center border border-gray-400 font-light rounded-sm p-2 bg-white">
+        <div className=" flex flex-col items-center border border-gray-400 font-light rounded-lg p-2 bg-white">
           <h2 className="text-lg  mb-3">Services</h2>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-blue-400">Pricing</a></li>
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         {/* Social */}
-        <div className=" flex flex-col items-center border border-gray-400 rounded-sm bg-white p-2">
+        <div className=" flex flex-col items-center border border-gray-400 rounded-lg bg-white p-2">
           <h2 className="text-xl font-inter  mb-3">Follow Us</h2>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-blue-400 "><FaFacebookSquare className="h-8 w-8"/></a>
