@@ -1,7 +1,7 @@
 
 import { Truck,  Settings,House,Warehouse, PackageCheck, PackageSearch, Activity, LayoutDashboard, BarChart3} from 'lucide-react';
 import inventory from "../asset/inventory.png"
-import workflow from "../asset/workflow.png"
+
 import dash from "../asset/dash.jpg"
 import dashboard from "../asset/dashboard.png"
 import { Link } from 'react-router-dom';
