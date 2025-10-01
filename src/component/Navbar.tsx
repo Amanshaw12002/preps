@@ -36,9 +36,9 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-4 lg:gap-6 items-center">
-          <li className=" transition duration-300">
-            <Link to="/" className="hover:text-red-700  ">Home</Link>
+        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-3 items-center">
+          <li className=" transition duration-300 ">
+            <Link to="/" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700   ">Home</Link>
           </li>
 
           <li className="group relative">
@@ -62,11 +62,11 @@ export default function Navbar() {
             </ul>
           </li>
 
-          <li className="cursor-none transition">
-            <Link to="/Pricing" className="hover:text-red-700 ">Pricing</Link>
+          <li className=" transition">
+            <Link to="/Pricing" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700 ">Pricing</Link>
           </li>
           <li className="  transition">
-            <Link to="/aboutUs" className="hover:text-red-700 ">About Us</Link>
+            <Link to="/aboutUs" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700">About Us</Link>
           </li>
           <li>
             <Link to="/contact"  className="    border-2 border-black rounded-xl  hover:scale-95 bg-gradient-to-r from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">Contact Us</Link>
