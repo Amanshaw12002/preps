@@ -12,10 +12,10 @@ export default function FbmService() {
       <section className="bg-gray-50 py-16 mt-16 px-6">
         {/* Heading */}
         <div className="max-w-5xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-mon text-gray-900">
+          <h1 className="text-3xl font-mon text-gray-900">
              Fulfilled by Merchant (FBM) Services
           </h1>
-          <p className="mt-4 text-gray-600 font-open-sans max-w-3xl mx-auto">
+          <p className="mt-4 text-gray-600 font-open-sans text-sm max-w-3xl mx-auto">
             FBM lets you handle fulfillment on your terms—keeping full control over
             storage, packaging, and shipping. We simplify the process with 
             streamlined logistics and support, so you can focus on growing your
@@ -67,32 +67,26 @@ export default function FbmService() {
         </div>
         {/* Why Choose Us */}
         <div className="max-w-5xl mx-auto mt-16 grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="flex items-center justify-center gap-2 mb-4 ">
-            <Package className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white " />
-            <h3 className="text-2xl font-normal text-gray-800">Flexibility</h3>
-            </div>
-            <p className="mt-2 text-gray-800 font-mon">
+          <div className="bg-white p-6 flex flex-col items-start rounded-xl border-2 border-black   shadow-md">
+            <Package className="w-10 h-10  text-white bg-black p-2 rounded-xl" />
+            <h3 className="text-xl font-medium  text-gray-800 mt-2">Flexibility</h3>
+            <p className="mt-2 text-gray-800 text-start  text-sm font-open-sans">
               Handle fulfillment on your terms—choose your carriers, packaging, and
               schedules while we provide the infrastructure.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="flex items-center justify-center gap-2 mb-4 ">
-            <DollarSign className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white " />
-            <h3 className="text-2xl font-normal text-gray-800">Cost-Effective</h3>
-              </div>
-            <p className="mt-2 text-gray-800 font-mon">
+          <div className="bg-white p-6 flex flex-col items-start rounded-xl border-2 border-black   shadow-md">
+            <DollarSign className="w-10 h-10  text-white bg-black p-2 rounded-xl " />
+            <h3 className="text-xl font-medium mt-2 text-gray-800">Cost-Effective</h3>
+            <p className="mt-2 text-gray-800 text-start  text-sm font-open-sans">
               Pay only for the services you use. Our tailored solutions keep your
               fulfillment affordable and scalable.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="flex items-center justify-center gap-2  mb-4">
-            <Truck className="w-10 h-10  bg-red-800 rounded-lg p-2 text-white" />
-            <h3 className="text-2xl font-normal text-gray-800">Reliable</h3>
-          </div>
-            <p className="mt-2 text-gray-800 font-mon">
+          <div className="bg-white p-6 flex flex-col items-start rounded-xl border-2 border-black   shadow-md">
+            <Truck className="w-10 h-10  text-white bg-black rounded-xl p-2" />
+            <h3 className="text-xl font-medium mt-2  text-gray-800">Reliable</h3>
+            <p className="mt-2 text-gray-800 text-start  text-sm font-open-sans">
               With fast processing and strong logistics partners, we ensure your
               customers receive orders on time, every time.
             </p>

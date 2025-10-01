@@ -3,6 +3,7 @@ import { useState } from "react";
 interface FormData {
   name: string;
   email: string;
+  date: string;
   message: string;
 }
 
@@ -10,6 +11,7 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
+    date: "",
     message: "",
   });
 
@@ -18,66 +20,116 @@ export default function ContactForm() {
   };
 
   return (
-    <section  className="flex-center pt-18 px-4 bg-white">
-      <div className="grid sm:grid-cols-2 max-w-7xl mx-auto gap-2     bg-gradient-to-br from-white to-gray-400 rounded-2xl shadow-lg p-8">
-        {/* Heading */}
-        <div>
-
-        <h2 className="text-3xl font-mon text-black ">
-          Still in doubt,worry not  
-        </h2>
-        <h2 className="text-3xl font-mon text-black mb-2">
-          <span className="text-rose-700 underline ">get in touch</span> with our free demo session
-        </h2>
-        <p className="text-gray-600  mb-6">
-          Have a question?  
-          Fill out the form  and we will get back to you as soon as possible.
-        </p>
-        <p className="text-gray-600 mb-6">
-          Or just manually  reach out to us through <span className="text-red-700 underline font-inter">blackboxpreps@gmail.com</span>
-        </p>
+    <section className="flex-center py-20 px-6 bg-gray-200">
+      <div className="grid sm:grid-cols-2 max-w-6xl mx-auto gap-12 bg-white  rounded-2xl shadow-lg p-10">
         
+        {/* Left Content */}
+        <div className="flex flex-col ">
+          
+          <h2 className="text-4xl font-sans font-medium text-black mb-4 leading-snug">
+            <span className="">Get in touch</span> 
+          </h2>
+          <p className="text-gray-600 text-md mb-4">
+            Have a question? Fill out the form and we will get back to you as
+            soon as possible.
+          </p>
+          <p className="text-gray-600 text-md">
+            Or just manually reach out to us through{" "}
+            <span className="text-red-800  font-inter">
+              blackboxpreps@gmail.com
+            </span>.
+          </p>
         </div>
 
-        {/* Form */}
-        <form onSubmit={sendEmail} className="flex flex-col bg-white shadow-black shadow-2xl rounded-2xl p-6 gap-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="border text-sm font-light  text-black rounded-lg p-3  focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="border text-sm  font-light border-black text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <input
-            type="date"
-            placeholder=""
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="border font-light text-sm border-black text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <textarea
-            placeholder="Your Message"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="border text-sm border-black text-gray-800 rounded-lg p-3 h-32 resize-none focus:ring-1 focus:outline-none  focus:ring-black"
-            required
-          />
-          <p className="text-xs">By continuing you are agreeing to our terms and conditions.</p>
+        {/* Right Form */}
+        <form
+          onSubmit={sendEmail}
+          className="flex flex-col bg-white border-2  border-gray-400 shadow-lg rounded-2xl p-6 gap-6"
+        >
+          {/* Name */}
+          <div className="relative">
+            <input
+              type="text"
+              id="name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" " // keep empty space for floating effect
+              required
+            />
+            <label
+              htmlFor="name"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Full Name
+            </label>
+          </div>
+
+          {/* Email */}
+          <div className="relative">
+            <input
+              type="email"
+              id="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="email"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Email Address
+            </label>
+          </div>
+
+          {/* Date */}
+          <div className="relative">
+            <input
+              type="date"
+              id="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="date"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Preferred Date
+            </label>
+          </div>
+
+          {/* Message */}
+          <div className="relative">
+            <textarea
+              id="message"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="peer border w-full text-sm text-gray-800 rounded-lg p-3 h-32 resize-none focus:ring-1 focus:outline-none focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="message"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Your Message
+            </label>
+          </div>
+
+          <p className="text-xs text-gray-500">
+            By continuing you are agreeing to our terms and conditions.
+          </p>
+
           <button
             type="submit"
-            className="bg-white font-mon hover:scale-95 transitionn duration-300 border-2 hover:border-black/10 border-black text-black py-3 px-6 rounded-lg cursor-pointer hover:bg-black/10 hover:text-gray-700 transition-all shadow-md"
+            className="bg-black self-end text-white font-mon hover:scale-95 transition duration-300 py-3 px-6 rounded-lg cursor-pointer hover:bg-gray-800 shadow-md"
           >
-            Book the demo now
+            Send Message
           </button>
         </form>
       </div>

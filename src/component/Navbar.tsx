@@ -1,27 +1,44 @@
 import { Link } from "react-router-dom";
 import main from "../asset/main.png";
 import { Package, Truck, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // scrolling down
+        setShow(false);
+      } else {
+        // scrolling up
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <nav className="bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500">
+    <nav className={`bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500 ${show ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="max-w-7xl mx-auto px-8 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
-          <h2 className=" font-mon  hidden sm:block sm:text-2xl  text-red-900">
+          <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700   hidden sm:block sm:text-2xl  text-transparent bg-clip-text ">
             BlackBoxPreps
           </h2>
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-4 lg:gap-6 items-center">
-          <li className="hover:text-blue-700 transition">
-            <Link to="/">Home</Link>
+          <li className=" transition duration-300">
+            <Link to="/" className="hover:text-red-700  ">Home</Link>
           </li>
 
           <li className="group relative">
@@ -45,14 +62,14 @@ export default function Navbar() {
             </ul>
           </li>
 
-          <li className="hover:text-blue-700 transition">
-            <Link to="/Pricing">Pricing</Link>
+          <li className="cursor-none transition">
+            <Link to="/Pricing" className="hover:text-red-700 ">Pricing</Link>
           </li>
-          <li className="hover:text-blue-700 transition">
-            <Link to="/aboutUs">About Us</Link>
+          <li className="  transition">
+            <Link to="/aboutUs" className="hover:text-red-700 ">About Us</Link>
           </li>
-          <li className=" border-2 hover:bg-gray-100 hover:scale-95 rounded-lg p-2 transition">
-            <Link to="/contact">Contact Us</Link>
+          <li>
+            <Link to="/contact"  className="    border-2 border-black rounded-xl  hover:scale-95 bg-gradient-to-r from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">Contact Us</Link>
           </li>
         </ul>
 

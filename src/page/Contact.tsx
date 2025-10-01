@@ -4,16 +4,17 @@ import { useState } from "react";
 interface FormData {
   name: string;
   email: string;
+  date: string;
   message: string;
 }
 
 export default function Contact() {
   const [form, setForm] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
-
+     name: "",
+     email: "",
+     date: "",
+     message: "",
+   });
   const sendEmail = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
@@ -21,73 +22,116 @@ export default function Contact() {
 
   return (
     <>
-     <div className="md:w-screen w-11/12 mx-4 h-24 flex flex-col mt-42  items-center justify-center md:mt-28"><h2 className="text-5xl mb-4 font-light ">Contact our team</h2>
-     <p className="text-gray-700">Ask any questions related to our platform and services.
-      </p><p className="text-gray-700">Fill the below form to get answers to the your queries.  </p>
-     </div>
-    <section className="flex-center px-2 bg-white mt-12">
-      <div className="grid sm:grid-cols-2 gap-2 max-w-7xl  bg-gradient-to-br from-white to-gray-400 rounded-2xl shadow-lg p-4 md:p-8">
+    <section className="flex-center px-2 bg-gray-200  ">
+      <div className="grid sm:grid-cols-2  max-w-4xl  bg-white rounded-2xl shadow-lg mt-20 mb-10 p-4 md:p-8">
         {/* Heading */}
-        <div>
 
-        <h2 className="text-3xl font-mon text-black ">
-          <span className="text-rose-700 ">Get in touch</span> with
-        </h2>
-        <h2 className="text-3xl font-mon text-black mb-2">
-           our free demo session
-        </h2>
-        <p className="text-gray-600  mb-6">
+        <div className=" ">
+             <h2 className="text-5xl mb-4 font-inter font-normal   ">Contact Us</h2>
+
+        <p className="text-gray-600 text-sm  mb-6">
           Have a question?  
           Fill out the form  and we will get back to you as soon as possible.
         </p>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 text-sm mb-6">
           Or just manually  reach out to us through <span className="text-red-700 underline font-inter">blackboxpreps@gmail.com</span>
         </p>
         
         </div>
 
-        {/* Form */}
-        <form onSubmit={sendEmail} className="flex flex-col bg-white shadow-black shadow-2xl rounded-2xl p-4 md:p-6 gap-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="border text-sm font-light  text-black rounded-lg p-3  focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="border text-sm  font-light border-black text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <input
-            type="date"
-            placeholder=""
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="border font-light text-sm border-black text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
-            required
-          />
-          <textarea
-            placeholder="Your Message"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="border text-sm border-black text-gray-800 rounded-lg p-3 h-32 resize-none focus:ring-1 focus:outline-none  focus:ring-black"
-            required
-          />
-          <p className="text-xs">By continuing you are agreeing to our terms and conditions.</p>
+
+           <form
+          onSubmit={sendEmail}
+          className="flex flex-col bg-white border-2  border-gray-400 shadow-lg rounded-2xl p-6 gap-6"
+        >
+          {/* Name */}
+          <div className="relative">
+            <input
+              type="text"
+              id="name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" " // keep empty space for floating effect
+              required
+            />
+            <label
+              htmlFor="name"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Full Name
+            </label>
+          </div>
+
+          {/* Email */}
+          <div className="relative">
+            <input
+              type="email"
+              id="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="email"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Email Address
+            </label>
+          </div>
+
+          {/* Date */}
+          <div className="relative">
+            <input
+              type="date"
+              id="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              className="peer border w-full text-sm font-light text-black rounded-lg p-3 focus:outline-none focus:ring-1 focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="date"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Preferred Date
+            </label>
+          </div>
+
+          {/* Message */}
+          <div className="relative">
+            <textarea
+              id="message"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="peer border w-full text-sm text-gray-800 rounded-lg p-3 h-32 resize-none focus:ring-1 focus:outline-none focus:ring-black"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="message"
+              className="absolute left-3 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-black bg-white px-1"
+            >
+              Your Message
+            </label>
+          </div>
+
+          <p className="text-xs text-gray-500">
+            By continuing you are agreeing to our terms and conditions.
+          </p>
+
           <button
             type="submit"
-            className="bg-white font-mon hover:scale-95 transitionn duration-300 border-2 hover:border-black/10 border-black text-black py-3 px-6 rounded-lg cursor-pointer hover:bg-black/10 hover:text-gray-700 transition-all shadow-md"
+            className="hover:bg-gradient-to-r self-end bg-black from-black to-red-500 text-white w-fit font-mon hover:scale-95 transition duration-300 py-3 px-6 rounded-lg cursor-pointer  shadow-md"
           >
-            Book the demo now
+            Send Message
           </button>
         </form>
-      </div>
+            </div>
+      
     </section>
     </>
   );
