@@ -132,8 +132,8 @@ export default function Home() {
     {/* Tabs / Items */}
     <div className='flex flex-col items-center justify-center   text-gray-900'>
       
-    <h2 className='text-xl md:text-4xl font-inter font-medium    '>We provide all your <span className='inline-block text-red-700'>requirements for</span> </h2>
-    <h2 className=' text-xl md:text-4xl font-inter font-medium '> managing your prep center.</h2>
+    <h2 className='text-xl md:text-4xl font-sans font-medium    '>We provide all your <span className='inline-block text-red-700'>requirements for</span> </h2>
+    <h2 className=' text-xl md:text-4xl font-sans font-medium '> managing your prep center.</h2>
     </div>
     <div className='flex mt-8 '>
 

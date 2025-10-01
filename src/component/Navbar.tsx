@@ -28,7 +28,7 @@ export default function Navbar() {
     <nav className={`bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500 ${show ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="max-w-7xl mx-auto px-8 h-full flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center ">
+        <div className="flex items-center   ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
           <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700   hidden sm:block sm:text-2xl  text-transparent bg-clip-text ">
             BlackBoxPreps
