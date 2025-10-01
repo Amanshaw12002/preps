@@ -200,7 +200,7 @@ export default function Home() {
     
     <div className="flex flex-col lg:flex-row   gap-4   p-2 rounded-xl w-full">
       {/* Card 1 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-black hover:border-white  rounded-xl cursor-pointer shadow-sm  hover:bg-gradient-to-b from-red-400 to-cyan-700 group hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-black hover:border-white  rounded-xl cursor-pointer shadow-sm  hover:bg-gradient-to-b from-red-600 via-red-800 to-black   group hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3">
           <PackageSearch className="w-8 h-8 shrink-0 bg-red-800  text-white p-1 group-hover:bg-white group-hover:text-red-800 rounded-md" />
           <h3 className="text-md font-semibold text-black group-hover:text-white">
@@ -213,7 +213,7 @@ Inspect for damage, expiration dates, and compliance with Amazon’s prep requir
       </div>
 
       {/* Card 2 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-black hover:border-white rounded-xl cursor-pointer shadow-sm  hover:bg-gradient-to-b from-red-400 to-cyan-700 group   hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90 border border-black hover:border-white rounded-xl cursor-pointer shadow-sm  hover:bg-gradient-to-b from-red-600 via-red-800 to-black group   hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3 ">
           <PackageCheck className="w-8 h-8 shrink-0 bg-red-800 text-white p-1 rounded-md group-hover:bg-white group-hover:text-red-800" />
           <h3 className="text-md font-semibold text-black group-hover:text-white">
@@ -225,7 +225,7 @@ Apply Amazon-compliant barcodes (FNSKU) systematically to avoid delays or reject
       </div>
 
       {/* Card 3 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90  rounded-xl cursor-pointer border border-black hover:border-white  hover:bg-gradient-to-b from-red-400 to-cyan-700 group hover:shadow-xl transition-all duration-300 flex flex-col">
+      <div className="p-6 w-full md:w-1/2 bg-white/90  rounded-xl cursor-pointer border border-black hover:border-white  hover:bg-gradient-to-b from-red-600 via-red-800 to-black group hover:shadow-xl transition-all duration-300 flex flex-col">
         <div className="flex items-center mb-4 gap-3">
           <Truck className="w-8 h-8 shrink-0 bg-red-800 text-white p-1 rounded-md group-hover:bg-white group-hover:text-red-800" />
           <h3 className="text-md font-semibold text-black group-hover:text-white">
