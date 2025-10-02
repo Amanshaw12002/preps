@@ -7,6 +7,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [atTop, setAtTop] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +19,17 @@ export default function Navbar() {
         setShow(true);
       }
       setLastScrollY(window.scrollY);
+      setAtTop(window.scrollY <= 2);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
-
+ 
   return (
-    <nav className={`bg-white shadow-md h-16 w-full fixed top-0 z-50 transition-all duration-500 ${show ? "translate-y-0" : "-translate-y-full"}`}>
-      <div className="max-w-7xl mx-auto px-8 h-full flex items-center justify-between">
+    <nav className={`bg-transparent w-screen   h-16  flex-center fixed px-4 top-4 z-50 transition-all duration-500 ${show ? "translate-y-0" : "-translate-y-20"}`}>
+      <div className={`w-full xl:max-w-[160vh] mx-4  bg-white  rounded-lg  px-4 h-full flex-between transition-all duration-500
+       ${atTop ? "shadow-none" : "shadow-md shadow-black"}`}>
         {/* Logo */}
         <div className="flex items-center   ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
@@ -36,9 +39,9 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-3 items-center">
+        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-3 pl-6  items-center">
           <li className=" transition duration-300 ">
-            <Link to="/" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700   ">Home</Link>
+            <Link to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md hover:text-red-700   ">Home</Link>
           </li>
 
           <li className="group relative">
@@ -63,15 +66,22 @@ export default function Navbar() {
           </li>
 
           <li className=" transition">
-            <Link to="/Pricing" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700 ">Pricing</Link>
+            <Link to="/Pricing" className="hover:bg-gray-100 px-3 py-2 rounded-md hover:text-red-700 ">Pricing</Link>
           </li>
           <li className="  transition">
-            <Link to="/aboutUs" className="hover:bg-gray-200 px-3 py-2 rounded-md hover:text-red-700">About Us</Link>
+            <Link to="/aboutUs" className="hover:bg-gray-100 px-3 py-2 rounded-md hover:text-red-700">AboutUs</Link>
           </li>
-          <li>
-            <Link to="/contact"  className="    border-2 border-black rounded-xl  hover:scale-95 bg-gradient-to-r from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">Contact Us</Link>
+          <li className="  transition">
+            <Link to="/faq" className="hover:bg-gray-100 px-3 py-2 rounded-md hover:text-red-700">FAQ</Link>
           </li>
         </ul>
+        <div className="flex-between gap-4">
+
+            <Link to="/contact"  className="hover:text-red-700 text-blue-950 border-2 border-black     hover:scale-95   rounded-xl text-sm  font-semibold    p-2 transition">
+            Dashboard</Link>
+            <Link to="/contact"  className="hover:text-red-700     border-2 border-black rounded-xl  hover:scale-95 bg-gradient-to-r text-sm from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
+            Get in touch</Link>
+        </div>
 
         {/* Mobile Hamburger */}
         <div className="flex md:hidden items-center gap-2">

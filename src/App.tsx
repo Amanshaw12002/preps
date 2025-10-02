@@ -7,6 +7,7 @@ import Contact from './page/Contact';
 import AboutUs from './page/AboutUs';
 import FbaService from './page/ServicesForFba';
 import FbmService from './page/ServicesForFbm';
+import FAQ from './page/FAQ';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
        <Route path="/pricing" element={<Pricing/>}/>
        <Route path="/contact" element={<Contact/>}/>
        <Route path="/aboutUs" element={<AboutUs/>}/>
+       <Route path="/faq" element={<FAQ/>}/>
        <Route path='/service/fba' element={<FbaService/>}/>
        <Route path='/service/fbm' element={<FbmService/>}/>
         </Routes>

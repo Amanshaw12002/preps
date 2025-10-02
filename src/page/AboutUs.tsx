@@ -3,7 +3,7 @@ import man from "../asset/man.jpg";
 import { Briefcase, Users,  Globe } from "lucide-react";
 export default function AboutUs() {
   return (
-    <section className="bg-gray-50 flex-center py-16 mt-12 px-6">
+    <section className=" flex-center py-16 mt-24 px-6">
       <div className="max-w-6xl">
       <div className="max-w-5xl mx-12 flex-between  mb-12">
         <h1 className="text-6xl font-mon text-gray-800"> About Us </h1>
@@ -17,8 +17,8 @@ export default function AboutUs() {
 
       {/* Our Story */}
       <div className="flex-col flex text-sm md:text-md  mx-auto   ">
-          <div className=" flex-between mx-12  transition">
-            <img src={man} alt="packing" className="w-54 object-cover rounded-2xl  m-4"/>
+          <div className=" flex-between mx-12 mb-4 bg-gradient-to-b from-gray-300 to-gray-400  transition">
+            <img src={man} alt="packing" className="w-54 object-cover m-4"/>
 <div className="flex flex-col max-w-3xl p-4 m-4">
 
             <h3 className="text-3xl font-sans  text-gray-800 mb-2">Our Mission</h3>
@@ -34,7 +34,7 @@ export default function AboutUs() {
 
 <img src={packing} className="object-cover h-96"/>
       {/* Why Choose Us */}
-      <div className="max-w-5xl max-auto  flex-between  p-8 mb-12">
+      <div className="max-w-6xl max-auto bg-gray-200  flex-between  p-8 my-4">
         <h2 className="text-4xl font-sans text-gray-800 mb-4 flex flex-col">Why Choose Us?</h2>
         <ul className="list-disc list-inside font-open-sans text-gray-700 space-y-3">
           <li> Amazon-compliant packaging & labeling</li>

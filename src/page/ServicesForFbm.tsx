@@ -11,11 +11,11 @@ export default function FbmService() {
     <>
       <section className="bg-gray-50 py-16 mt-16 px-6">
         {/* Heading */}
-        <div className="max-w-5xl mx-auto text-center mb-12">
-          <h1 className="text-3xl font-mon text-gray-900">
+        <div className="max-w-4xl mx-auto flex items-start flex-col mb-12">
+          <h1 className="text-3xl font-sans  text-gray-900">
              Fulfilled by Merchant (FBM) Services
           </h1>
-          <p className="mt-4 text-gray-600 font-open-sans text-sm max-w-3xl mx-auto">
+          <p className="mt-4 text-gray-800 font-open-sans text-sm max-w-xl ">
             FBM lets you handle fulfillment on your terms—keeping full control over
             storage, packaging, and shipping. We simplify the process with 
             streamlined logistics and support, so you can focus on growing your
@@ -25,21 +25,7 @@ export default function FbmService() {
 
         {/* Service Details */}
         <div className="bg-white flex flex-col lg:flex-row items-center justify-between rounded-2xl shadow-md p-8 max-w-5xl mx-auto gap-8">
-          <div className="flex-1">
-            <h2 className="text-2xl font-inter mb-4 text-gray-800 flex items-center gap-2">
-              What We Offer
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-3">
-              <li> Secure & climate-controlled warehouse storage</li>
-              <li> Pick, pack & ship directly to customers across regions</li>
-              <li> Custom packaging, inserts, and branding options</li>
-              <li> Real-time order tracking & automated updates</li>
-              <li> Professional returns handling & customer support</li>
-              <li> Scalable operations whether you ship 10 or 10,000 orders</li>
-              <li> Cost-effective logistics tailored to your business size</li>
-            </ul>
-          </div>
-
+          
           <div className="flex  flex-wrap gap-1 max-w-xl">
 
           <img
@@ -64,6 +50,21 @@ export default function FbmService() {
   className="w-80 shadow"
   />
             </div>
+            <div className="flex-1">
+            <h2 className="text-3xl font-inter mb-4 text-gray-800 flex items-center gap-2">
+              What We Offer
+            </h2>
+            <ul className="list-disc list-inside text-sm text-gray-700 space-y-3">
+              <li> Secure & climate-controlled warehouse storage</li>
+              <li> Pick, pack & ship directly to customers across regions</li>
+              <li> Custom packaging, inserts, and branding options</li>
+              <li> Real-time order tracking & automated updates</li>
+              <li> Professional returns handling & customer support</li>
+              <li> Scalable operations whether you ship 10 or 10,000 orders</li>
+              <li> Cost-effective logistics tailored to your business size</li>
+            </ul>
+          </div>
+
         </div>
         {/* Why Choose Us */}
         <div className="max-w-5xl mx-auto mt-16 grid md:grid-cols-3 gap-8 text-center">

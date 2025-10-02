@@ -22,12 +22,12 @@ export default function Contact() {
 
   return (
     <>
-    <section className="flex-center px-2 bg-gray-200  ">
-      <div className="grid sm:grid-cols-2  max-w-4xl  bg-white rounded-2xl shadow-lg mt-20 mb-10 p-4 md:p-8">
+    <section className="flex-center px-2 bg-gray-200   ">
+      <div className="grid sm:grid-cols-2  max-w-4xl  bg-white rounded-2xl shadow-lg mt-24 mb-10 p-4 md:p-8">
         {/* Heading */}
 
         <div className=" ">
-             <h2 className="text-5xl mb-4 font-inter font-normal   ">Contact Us</h2>
+             <h2 className="text-5xl mb-4 font-inter font-normal   ">Get in touch</h2>
 
         <p className="text-gray-600 text-sm  mb-6">
           Have a question?  

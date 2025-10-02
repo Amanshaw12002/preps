@@ -5,22 +5,23 @@ export default function Pricing() {
 
   return (
 <>
-    <section className="bg-gradient-to-b from-gray-50 to-white pt-24 pb-12 px-6">
-  <div className="mx-auto max-w-6xl">
+    <section className=" z-10   relative pb-24">
+      <div className="absolute top-0 h-62 bg-gradient-to-b from-red-900 via-red-800 to-red-700  w-full -z-1"></div>
+  <div className="mx-auto max-w-6xl pt-32 z-10 ">
     {/* Section Heading */}
-    <div className="max-w-5xl mx-auto text-center mb-16">
-      <h1 className="text-4xl font-mon mb-4 text-gray-900">Our Pricing</h1>
-      <p className=" text-md text-gray-800  mx-auto">
+    <div className="max-w-5xl mx-auto text-center   mb-16">
+      <h1 className="text-5xl font-mon mb-4 text-white">Our Pricing</h1>
+      <p className=" text-md text-gray-100  mx-auto">
         Transparent and competitive pricing for Amazon prep services.
-        <span className="font-medium text-gray-900"> No hidden fees</span> — pay
+        <span className="font-medium text-gray-200"> No hidden fees</span> — pay
         only for what you use.
       </p>
     </div>
 
     {/* Pricing Cards */}
-    <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div className="grid md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl  mx-auto">
       {/* Online Arbitrage */}
-      <div className="bg-white rounded-xl shadow-lg border border-black hover:shadow-xl transition p-6 flex flex-col">
+      <div className="bg-white rounded-xl shadow-md  border-black  shadow-black  transition p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-6">
           <ShoppingBag className="w-8  h-8 p-1 text-black  border-2 rounded-lg" />
           <h2 className="text-md font-sans text-gray-800">Online Arbitrage</h2>
@@ -41,7 +42,7 @@ export default function Pricing() {
       </div>
 
       {/* Wholesale & Private Label */}
-      <div className="bg-white rounded-xl shadow-lg border border-black hover:shadow-xl transition p-6 flex flex-col">
+      <div className="bg-white rounded-xl shadow-md shadow-black border-black  transition p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-6">
           <Package className="w-8  h-8 p-1 text-black  border-2 rounded-lg"/>
           <h2 className="text-md font-sans text-gray-800">
@@ -64,7 +65,7 @@ export default function Pricing() {
       </div>
 
       {/* Additional Fees */}
-      <div className="bg-white rounded-xl shadow-lg border border-black p-6 flex flex-col">
+      <div className="bg-white rounded-xl shadow-md shadow-black border-black p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-6">
           <DollarSign className="w-8  h-8 p-1 text-black  border-2 rounded-lg"/>
           <h2 className="text-md font-sans text-gray-800">Additional Fees</h2>
@@ -87,9 +88,9 @@ export default function Pricing() {
     </div>
 
     {/* Bottom Row */}
-    <div className="grid md:grid-cols-2 gap-6 max-w-6xl mt-6 mx-auto">
+    <div className="grid md:grid-cols-2 gap-6 max-w-5xl xl:max-w-6xl  mt-6 mx-auto">
       {/* Additional Services */}
-      <div className="bg-white rounded-xl shadow-lg border border-black p-6 flex flex-col">
+      <div className="bg-white rounded-xl shadow-md shadow-black border-black p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-6">
           <Truck className="w-8  h-8 p-1 text-black  border-2 rounded-lg"/>
           <h2 className="text-md font-sans text-gray-800">
@@ -111,7 +112,7 @@ export default function Pricing() {
       </div>
 
       {/* Storage */}
-      <div className="bg-white rounded-xl shadow-lg border border-black p-6 flex flex-col">
+      <div className="bg-white rounded-xl shadow-md shadow-black border-black p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-6">
           <Warehouse className="w-8  h-8 p-1 text-black  border-2 rounded-lg"/>
           <h2 className="text-md font-sans text-gray-800">Storage</h2>

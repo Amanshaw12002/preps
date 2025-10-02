@@ -9,43 +9,33 @@ import product3 from "../asset/product1.png";
 export default function FbaService() {
   return (
     <>
-      <section className="bg-gray-50 py-16 mt-16 px-6">
+      <section className="py-16 mt-16 px-6">
         {/* Heading */}
-        <div className="max-w-5xl mx-auto text-center mb-12">
-          <h1 className="text-3xl font-mon text-gray-900">
+        <div className="max-w-4xl mx-auto flex items-start flex-col mb-12">
+          <h1 className="text-4xl font-inter text-gray-900">
             Fulfilled by Amazon (FBA) Services
           </h1>
-          <p className="mt-4 text-gray-700 text-sm font-open-sans max-w-3xl mx-auto">
+          <p className="mt-4 text-gray-700 text-sm font-open-sans max-w-xl">
             With our professional FBA prep services, your <span className="font-semibold text-gray-800"> products are inspected,
             labeled, packed, and shipped directly to Amazon fulfillment centers </span>—
             making them 100% ready to reach millions of Prime customers worldwide.
           </p>
         </div>
 
-        {/* Service Details */}
-        <div className="bg-white flex flex-col lg:flex-row items-center justify-between rounded-2xl shadow-md p-8 max-w-5xl mx-auto gap-8">
-          <div className="flex-1">
-            <h2 className="text-2xl font-inter mb-4 text-gray-800 flex items-center gap-2">
-              What We Offer
-            </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-3">
-              <li> Product inspection & quality control before shipping</li>
-              <li> Amazon-compliant labeling & barcoding</li>
-              <li> Poly bagging, bubble wrapping & kitting/bundling</li>
-              <li> Fragile item protection with secure packaging</li>
-              <li> Carton forwarding & palletizing as per Amazon guidelines</li>
-              <li> Direct delivery to Amazon fulfillment centers</li>
-              <li> Scalable services for small sellers & large brands</li>
-            </ul>
-          </div>
-          <div className="flex  flex-wrap gap-1 max-w-xl">
-
-          <img
+ <img
             src={product2}
             alt="FBM box service"
-            className=" w-80 object-cover   shadow"
+            className=" max-w-7xl  w-full h-90 object-cover   mx-auto shadow"
             />
 
+        {/* Service Details */}
+        <div className="bg-white flex flex-col lg:flex-row items-center justify-between rounded-2xl shadow-md p-8 max-w-5xl mx-auto gap-8">
+
+          
+
+
+          <div className="flex  flex-wrap gap-1 max-w-xl">
+         
 <img
   src={product}
   alt="FBM box service"
@@ -62,6 +52,18 @@ export default function FbaService() {
   className="w-80 shadow"
   />
             </div>
+            <div className="flex-1">
+            <h2 className="text-4xl font-inter mb-4 text-gray-800 flex items-center gap-2">
+              What We Offer
+            </h2>
+            <ul className="list-disc list-inside text-sm text-gray-700 space-y-3">
+              <li> Product inspection & quality control </li>
+              <li> Amazon-compliant labeling & barcodes</li>
+              <li> Poly bagging, bubble wrap & bundling</li>
+              <li> Carton forwarding & palletizing as per Amazon guidelines</li>
+            </ul>
+          </div>
+
         </div>
 
         {/* Why Choose Us */}
