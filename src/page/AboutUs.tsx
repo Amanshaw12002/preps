@@ -17,7 +17,7 @@ export default function AboutUs() {
 
       {/* Our Story */}
       <div className="flex-col flex text-sm md:text-md  mx-auto   ">
-          <div className=" flex-between mx-12 mb-4 bg-gradient-to-b from-gray-300 to-gray-400  transition">
+          <div className=" flex-between mx-12 mb-4 bg-gradient-to-b from-gray-300 to-gray-200  transition">
             <img src={man} alt="packing" className="w-54 object-cover m-4"/>
 <div className="flex flex-col max-w-3xl p-4 m-4">
 

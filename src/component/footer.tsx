@@ -13,7 +13,7 @@ export default function Footer() {
     className="flex-col flex-center   
     text-black      pt-6 px-6  mt-12 mb-4">
 
-   <div className="flex-col flex max-w-7xl mx-auto self-start mb-2">
+   <div className="flex-col flex  w-full  mx-auto max-w-7xl  items-start mb-2">
                    
       
         <div className="flex flex-col w-54 ml-20 mb-10 items-start">
@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
         
     
-      <div className="max-w-6xl mx-auto  mb-12   grid grid-cols-1 md:grid-cols-4 items-start p-2 gap-8">
+      <div className="  mb-12 w-full   grid grid-cols-1 md:grid-cols-4 items-start p-2 gap-8">
 
         {/* Links */}
         <div className="flex flex-col  items-center bg-white  p-2 ">
@@ -69,7 +69,7 @@ export default function Footer() {
         {/* Social */}
  
         </div>
-      <div className='    w-full flex-between   bg-white   text-center text-sm'>
+      <div className='    w-10/12 mx-auto flex-between   bg-white   text-center text-sm'>
         <div className="  text-gray-600 py-4 px-2   text-center">
 
         © {new Date().getFullYear()} |BlackBoxPreps
