@@ -7,8 +7,8 @@ import {  useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <nav className={`bg-transparent w-screen   h-16  flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
-      <div className="w-full xl:max-w-[160vh] mx-4 shadow-2xl  bg-white  rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
+    <nav className={`bg-transparent w-screen   h-16   flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
+      <div className="  mx-4 shadow-2xl  bg-white  w-5xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
         <div className="flex items-center   ">
           <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
           <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700   hidden sm:block sm:text-2xl  text-transparent bg-clip-text ">

@@ -1,7 +1,6 @@
 
 import { Truck,  Settings,House,Warehouse} from 'lucide-react';
 import inventory from "../asset/inventory.png"
-
 import truck from "../asset/truck.png"
 import one from "../asset/1.png"
 import two from "../asset/2.png"
@@ -68,8 +67,8 @@ export default function Home() {
     <>
     
 
-      <section className="flex-center relative mt-16   overflow-hidden ">
-       <div className="absolute bottom-0 w-full h-64 bg-gradient-to-b from-transparent via-red-700 to-transparent  -z-1"></div>
+      <section className="flex-center relative mt-20   overflow-hidden ">
+       <div className="absolute bottom-0  h-64 w-full bg-gradient-to-b from-white via-red-700 to-white  -z-1"></div>
       <div className=' max-w-6xl  lg:flex  z-10  '>
 
                     <div className="  pl-14 mx-auto xl:max-w-xl  lg:max-w-lg max-w-xl lg:mt-32    shrink-0   text-black ">
@@ -117,8 +116,8 @@ export default function Home() {
                               </h2>
                             <div className="flex-between text-gray-500 mx-auto font-semibold gap-4 mt-4">
 
-                              <button className='    cursor-pointer rounded-xl border-2 bg-gradient-to-r from-gray-200  to-white font-medium` shadow-sm shadow-black text-black px-4 py-2'>FBA Service</button>
-                              Or<button className='  cursor-pointer rounded-xl border-2 border-amber-700 bg-gradient-to-r from-white  to-gray-200 font-medium shadow-sm shadow-black text-black px-4 py-2'>FBM Service</button>
+                              <button className='    cursor-pointer rounded-xl border-2 bg-white font-medium` shadow-sm shadow-black text-black px-4 py-2'>FBA Service</button>
+                              |<button className='  cursor-pointer rounded-xl border-2 border-amber-700 bg-white font-medium shadow-sm shadow-black text-red-800 px-4 py-2'>FBM Service</button>
                               
                             </div>
                         </div>
@@ -256,12 +255,14 @@ export default function Home() {
 
 <section className=''>
   <div
-  className='max-w-5xl h-50 mx-auto relative flex items-start flex-col gap-2 px-12 py-4 bg-gradient-to-br from-red-600  to-black  '> 
-  <div className='absolute -top-10 left-2/3 w-18 h-96 bg-white/20 -rotate-24'></div>
-  <div className='absolute -top-10 left-1/3 w-12 h-96 bg-white/20 -rotate-24'></div>
-  <div className='absolute -top-10 left-1/4 w-6 h-96 bg-white/20 -rotate-24'></div>
-    <h2 className='text-white font-inter   sm:text-4xl text-2xl font-medium '>Simplify Your Business </h2>
-    <h2 className='text-white font-inter   sm:text-4xl text-2xl '>Get started with <span className='font-semibold'> BlackBoxPreps</span> today! </h2>
+  className='max-w-5xl h-50 mx-auto relative flex-between  gap-2 px-12 py-4 bg-gradient-to-br from-gray-300  to-gray-400 overflow-hidden  '> 
+
+  <div className='absolute -top-10 left-3/4 w-18 h-96 bg-white/40 -rotate-24  z-0'></div>
+  <div className='absolute -top-10 left-1/3 w-12 h-96  bg-white/40 -rotate-24 z-0'></div>
+  <div className='absolute -top-10 left-1/4 w-6 h-96 bg-white/40 -rotate-24 z-0'></div>
+  <div className='flex flex-col items-start z-10'>
+    <h2 className='text-black font-inter   sm:text-4xl text-2xl font-medium '>Simplify Your Business.</h2>
+    <h2 className='text-black font-inter   sm:text-4xl text-2xl mt-1'>Get started  today! </h2>
 
               <div className='bg-white    rounded-xl p-2 mt-2'>
               <Link to="/contact" className=" bg-gradient-to-r from-black   to-red-600 bg-clip-text font-medium  text-transparent   hover:scale-95 hover:shadow-none text-xl  p-2 transition">
@@ -270,6 +271,8 @@ export default function Home() {
               </div>
 
   </div>
+  </div>
+
 </section>
 
 
