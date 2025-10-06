@@ -4,7 +4,7 @@ import { Briefcase, Users,  Globe } from "lucide-react";
 export default function AboutUs() {
   return (
     <section className=" flex-center py-16 mt-24 px-6">
-      <div className="max-w-6xl">
+      <div className="max-w-5xl">
       <div className="max-w-5xl mx-12 flex-between  mb-12">
         <h1 className="text-6xl font-mon text-gray-800"> About Us </h1>
         <p className="mt-4 text-gray-900 font-sans text-xs max-w-lg ">
@@ -16,8 +16,8 @@ export default function AboutUs() {
       </div>
 
       {/* Our Story */}
-      <div className="flex-col flex text-sm md:text-md  mx-auto   ">
-          <div className=" flex-between mx-12 mb-4 bg-gradient-to-b from-gray-300 to-gray-200  transition">
+      <div className="flex-col flex text-sm md:text-md max-w-5xl  mx-auto   ">
+          <div className=" flex-between mx-12  mb-4 bg-gradient-to-b from-gray-300 to-gray-200  transition">
             <img src={man} alt="packing" className="w-54 object-cover m-4"/>
 <div className="flex flex-col max-w-3xl p-4 m-4">
 
@@ -32,9 +32,9 @@ export default function AboutUs() {
 </div>
           </div>
 
-<img src={packing} className="object-cover h-96"/>
+<img src={packing} className="object-cover h-96 w-5xl mx-auto "/>
       {/* Why Choose Us */}
-      <div className="max-w-6xl max-auto bg-gray-200  flex-between  p-8 my-4">
+      <div className="w-5xl max-auto bg-gray-200  flex-between  p-8 my-4">
         <h2 className="text-4xl font-sans text-gray-800 mb-4 flex flex-col">Why Choose Us?</h2>
         <ul className="list-disc list-inside font-open-sans text-gray-700 space-y-3">
           <li> Amazon-compliant packaging & labeling</li>

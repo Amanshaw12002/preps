@@ -26,7 +26,7 @@ export default function CustomCalendar() {
 
         {/* Calendly widget */}
         <div 
-          className="calendly-inline-widget rounded-xl overflow-hidden border-2 border-black" 
+          className="calendly-inline-widget rounded-xl overflow-hidden " 
           data-url="https://calendly.com/amanshaw12002/new-meeting" 
           style={{ width: "100%", height: "660px" }}
         ></div>

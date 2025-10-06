@@ -1,8 +1,15 @@
 
-import { Truck,  Settings,House,Warehouse, PackageCheck, PackageSearch, Activity, LayoutDashboard, BarChart3} from 'lucide-react';
+import { Truck,  Settings,House,Warehouse} from 'lucide-react';
 import inventory from "../asset/inventory.png"
 
-import dash from "../asset/dash.jpg"
+import truck from "../asset/truck.png"
+import one from "../asset/1.png"
+import two from "../asset/2.png"
+import three from "../asset/3.png"
+import four from "../asset/4.png"
+import prep from "../asset/prep.png"
+import rec from "../asset/rec.png"
+import warehouse from "../asset/warehouse.png"
 import dashboard from "../asset/dashboard.png"
 import { Link } from 'react-router-dom';
 import GetQuoteForm from '@/component/GetQuote';
@@ -61,58 +68,130 @@ export default function Home() {
     <>
     
 
+      <section className="flex-center relative mt-16   overflow-hidden ">
+       <div className="absolute bottom-0 w-full h-64 bg-gradient-to-b from-transparent via-red-700 to-transparent  -z-1"></div>
+      <div className=' max-w-6xl  lg:flex  z-10  '>
 
-    <section className="flex-center relative   overflow-hidden ">
-           <div className='absolute bottom-0 hidden  lg:block h-72 w-full bg-gradient-to-b from-transparent  via-red-800  to-transparent z-0'>
-           </div>
-      <div className=' xl:max-w-8xl  lg:flex md:mt-24 lg:max-h-screen  z-10  '>
-
-                    <div className="  lg:pl-8 mx-auto xl:max-w-3xl 2xl:max-w-4xl lg:max-w-xl max-w-xl lg:mt-12 xl:mt-24  pr-14 shrink-0 bg-white/20  text-black ">
+                    <div className="  pl-14 mx-auto xl:max-w-xl  lg:max-w-lg max-w-xl lg:mt-32    shrink-0   text-black ">
                                 
-                         <div className="flex lg:flex-col ">
-<h2 className="text-5xl font-semibold font-open-sans text-shadow-2xs">
-  <span className="bg-gradient-to-r from-red-500  to-black bg-clip-text text-transparent ">
-    Smooth {" "} 
+                         <div className="flex lg:flex-col lg:w-sm ">
+<h2 className="text-6xl font-semibold font-inter text-black text-shadow-2xs">
+  <span className=" block">
+    New look   {" "} 
   </span>
-  process for your
-  <span className='bg-gradient-to-r from-blue-900  to-red-500 bg-clip-text text-transparent '>{" "} prep center.  </span>
+  <span className=" block">
+  for your FBA
+  </span>
+  <span className='bg-gradient-to-r from-blue-800   to-red-500 bg-clip-text  text-transparent '>{" "}   prep service.  </span>
     
 </h2>
                          </div>
-                        
-                          <h2 className=' text-xl font-sans font-normal text-gray-900  mt-4  '>You sell, we handle the rest.</h2>
-                          <p className='font-open-sans text-xs font-medium inline text-slate-900 '>We provide safe storage to professional packing  and fast shipping.With our fast reliable  FBA service,your  products  are always  ready to reach  customers  quickly and  securely.</p>
+
+                          <h2 className=' text-xl font-sans font-normal text-gray-900  mt-4 mb-2  '>You sell, we handle the rest.</h2>
+                          <p className='font-sans text-sm  pr-12  text-gray-900 '>We provide safe storage to professional packing  and fast shipping.With our fast reliable  FBA service,your  products  are always  ready to reach  customers  quickly and  securely.</p>
+
                          
                     </div>
                       
-                    <div className='lg:max-w-none  lg:flex-none flex max-w-2xl mt-4  lg:mt-12 lg:ml-0 sm:rounded-xl lg:bg-gradient-to-br from-black via-red-700 via-35%   to-red-500 shadow-xl  lg:shadow-red-700'>
+                    <div className='lg:max-w-none  lg:flex-none flex max-w-2xl   lg:ml-0 shadow-2xl shadow-red-700 bg-gradient-to-r from-red-700 via-black to-red-800 rounded-2xl'>
                     <div className='max-w-3xl flex-none sm:max-w-5xl lg:max-w-none'>
-                      <div className='   border-gray-400    p-1 sm:p-4 border lg:border-0  rounded-sm sm:rounded-xl  border-b-0 bg-gray-200 lg:bg-transparent'>
-                      <img src={dashboard} alt="" className=" rounded-xs  w-[54rem] sm:rounded-xl border-gray-400  border border-b-0     "/>
+                      <div className='   border-gray-400     border lg:border-0 p-4  rounded-sm sm:rounded-xl   bg-gray-200 lg:bg-transparent'>
+                      <img src={prep} alt="" className=" rounded-xs xl:w-[38rem]  w-[38rem] sm:rounded-xl      "/>
                         </div>  
                         </div>  
                     </div>
 
-                     <div className='bottom-0 h-14 bg-gradient-to-t from-white  to-transparent z-20 absolute w-full'></div>
                             </div>
 
         </section>
 
+<section className=' relative'>
+  <div className='flex-between  max-w-5xl mx-auto' >
 
+                      <img src={warehouse} alt="" className=" rounded-xs  w-[32rem] sm:rounded-xl      "/>
+                      <div className='flex flex-col max-w-xl  ml-12 '>
+                        <h2 className='font-sans text-md'>Let's grow your business together.</h2>
+                        <h2 className='text-3xl font-inter font-normal mb-4  '>Setting up <span className='text-red-700'>new business on Amazon </span> or  have a <span className='text-gray-900'> existing one,</span> who is looking for a reliable <span className='bg-gradient-to-r from-blue-800   to-red-500 bg-clip-text font-medium  text-transparent '> prep services</span>.</h2>
+                        <h2 className='font-sans text-md text-gray-900 font-normal mb-2'>Then you are in right place in right time,we will  cover all your fullfillment needs in one place for your preps requirements to get you started with FBA or FBM.We also provide plateform to stay connected with our prep center that you never miss anything on our prep center. </h2>
+                              <h2 className='font-open-sans text-md text-gray-700 font-semibold'>Know more:
+                              </h2>
+                            <div className="flex-between text-gray-500 mx-auto font-semibold gap-4 mt-4">
 
+                              <button className='    cursor-pointer rounded-xl border-2 bg-gradient-to-r from-gray-200  to-white font-medium` shadow-sm shadow-black text-black px-4 py-2'>FBA Service</button>
+                              Or<button className='  cursor-pointer rounded-xl border-2 border-amber-700 bg-gradient-to-r from-white  to-gray-200 font-medium shadow-sm shadow-black text-black px-4 py-2'>FBM Service</button>
+                              
+                            </div>
+                        </div>
 
+</div>
+</section>
+
+<section className=' relative'>
+  <div className='mx-auto max-w-5xl flex-center flex-col '>
+    <div className='w-1/2 self-start ml-26'>
+
+ <h2 className=' text-4xl font-normal text-black border-l-2 pl-2 '>  <span className="text-red-700">You are 3 s|</span>teps away to get started with us. </h2>
+    </div>
+<div className='flex-between max-w-4xl mx-auto gap-6'>
+ <div className='flex-between  max-w-md   gap-4'>
+    <div className='text-center border-2   rounded-2xl p-6    font-medium text-4xl'>1</div>
+   <h2 className='text-2xl font-inter font-normal text-black border-l-2 pl-2'>First you send us <span className='text-gray-600'>your  inventory to <span className='text-red-700'>our prep center</span>.We inspect the packages,ensuring</span> everything is correct .   </h2>
+ </div>
+ <img src={rec} alt="" className=" rounded-xs  w-[22rem] sm:rounded-xl      "/>
+</div>
+  </div>
+<div className='flex-center flex-col'>
+ <div className='flex-between flex-col   gap-4'>
+    <div className='text-center border-2   rounded-2xl p-6  font-medium text-4xl'>2</div>
+   <h2 className='text-3xl font-inter text-black border-t-2'>Second <span className='text-gray-700'>your pakages will </span>pass through <span className='text-red-700'>our optimized workflow.</span></h2>
+   <h2 className='text-3xl font-inter text-black '></h2>
+ </div>
+ <div className='flex items-center max-w-4xl mx-auto bg-gray-200 rounded-2xl gap-6 mt-8'>
+<div className='  relative m-2 '>
+  <img src={one} alt="" className="       rounded-full      "/>
+
+  <div className='flex items-center shadow-black  rounded-3xl bg-white mt-2'>
+   <h2 className='text-center   rounded-full w-10 h-10 p-2 m-1   text-white bg-black   font-medium text-xl'>1</h2>
+   <h2 className=' text-black  px-4 font-medium text-md font-sans py-1'>Inspecting</h2>
+  </div>
+</div>
+<div className='  relative m-2'>
+  <img src={four} alt="" className="   rounded-full border-black             "/>
+
+  <div className='flex items-center shadow-black  rounded-3xl bg-white mt-2'>
+   <h2 className='text-center   rounded-full w-10 h-10 p-2 m-1   text-white bg-black   font-medium text-xl'>2</h2>
+   <h2 className=' text-black  px-4 font-medium text-md font-sans py-1'>Packaging</h2>
+  </div></div>
+<div className='  relative m-2'>
+  <img src={two} alt="" className="  rounded-full      "/>
+
+  <div className='flex items-center shadow-black  rounded-3xl bg-white mt-2'>
+   <h2 className='text-center   rounded-full w-10 h-10 p-2 m-1 text-white bg-black   font-medium text-xl'>3</h2>
+   <h2 className=' text-black  px-4 font-medium text-md font-sans py-1'>Barcodes</h2>
+  </div></div>
+<div className='  relative m-2'>
+  <img src={three} alt="" className="  rounded-full      "/>
+
+  <div className='flex items-center shadow-black  rounded-3xl bg-white mt-2'>
+   <h2 className='text-center   rounded-full w-10 h-10 p-2 m-1 text-white bg-black   font-medium text-xl'>4</h2>
+   <h2 className=' text-black  px-4 font-medium text-sm font-sans py-1'>Label</h2>
+  </div></div>
+ </div>
+
+</div>
+</section>
           
          
 
            
-<section className="relative flex justify-center items-center overflow-hidden bg-white py-4 px-4">
+<section className="relative flex justify-center items-center overflow-hidden  bg-white py-4 px-4">
   {/* Top fading gradient for effect */}
 
   <div className="max-w-7xl  flex flex-col items-center justify-center pt-12    ">
     {/* Tabs / Items */}
     <div className='flex flex-col items-end self-end border-r-2 pr-2   text-gray-900'>
       
-    <h2 className='text-xl md:text-4xl font-open-sans font-medium    '>We provide all your  </h2>
+    <h2 className='text-xl md:text-4xl font-open-sans font-medium    '>We provide all </h2>
     <span className='inline-block text-xl md:text-4xl font-open-sans text-red-700'>requirements for</span> 
     <h2 className=' text-xl md:text-4xl font-open-sans font-medium '> managing your prep center.</h2>
     </div>
@@ -158,91 +237,43 @@ export default function Home() {
   </div>
 </section>
 
+<section className='flex-center'>
+  <div className="max-w-5xl ">
+    <div className='flex-between  max-w-5xl mx-auto gap-6 mt-8 mb-8'>
+    <img src={truck} alt="" className=" rounded-xs  w-[24rem] sm:rounded-xl      "/>
+    <div className='flex-between  max-w-xl   gap-4'>
+    <div className='text-center border-2   rounded-2xl p-6    font-medium text-4xl'>3</div>
+   <h2 className='text-2xl font-inter font-normal text-black border-l-2 pl-2'>Third after <span className='text-red-700'>prep & pack</span>,we  <span className='text-gray-600'> ship your packages to the requested center.Also we notify you</span> with our means of communication.   </h2>
+    </div>
+ </div>
+ 
+  </div>
+
+  </section>
+
+
       
-            <section className="flex-center    ">
-              
-<div className='   max-w-7xl   rounded-xl flex-center flex-col    mt-16  mx-4 bg-white   overflow-hidden  sm:p-0'>
-
-              <div className="flex items-center justify-center flex-col sm:flex-row p-4    text-slate-900  ">
-                       <img src={dash} className="object-cover w-80   border-gray-200  "/>
-                             <div className=" mx-2   ml-12 w-1/2  ">
-                              <h2 className="text-3xl font-open-sans font-medium mb-4   ">Always<span className='text-red-800'> stay updated</span> with our dashboard overview.</h2>
-                              <div className=' text-gray-900 text-sm gap-5 font-normal flex  items-center flex-wrap font-inter mt-4'>
-                                <h2 className='flex flex-col text-sm w-58 h-48 border-2 rounded-xl p-4 gap-2'><Activity className='border-2 h-7 w-7 p-1 rounded-sm text-red-800'/> <span className='font-semibold '>Real-Time Insights</span> <span> Track key activities instantly with live updates so you never miss important changes.</span></h2>
-                                <h2 className='flex flex-col text-sm w-58 h-48 border-2 rounded-xl p-4 gap-2'><LayoutDashboard className='border-2 h-7 w-7 p-1 rounded-sm text-red-800'/> <span className='font-semibold '>Centralized Control </span><span> Manage  operations, monitor performance, and access all critical information from one place.</span></h2>
-                                <h2 className='flex flex-col text-sm w-58 h-48 border-2 rounded-xl p-4 gap-2'> <BarChart3 className='border-2 h-7 w-7  p-1 rounded-sm text-red-800 '/><span className='font-semibold'>Data-Driven Decisions </span><span> Use clear visual informations and analytics to make smarter, faster, and more reliable business choices.</span></h2>
-                              </div>
-                              </div>
-
-
-                   </div>    
-              </div>
-                       
-            </section>
 
 <section className=''>
   <div
-  className='max-w-7xl h-42 mx-auto flex-center gap-8 px-12 lg:px-32  '> 
-    <h2 className='text-black font-inter   sm:text-4xl text-2xl '>Get Started for free </h2>
-              <Link to="/contact" className=" border border-gray-700 rounded-xl text-black  hover:scale-95 hover:shadow-none text-xl  p-2 transition">
+  className='max-w-5xl h-50 mx-auto relative flex items-start flex-col gap-2 px-12 py-4 bg-gradient-to-br from-red-600  to-black  '> 
+  <div className='absolute -top-10 left-2/3 w-18 h-96 bg-white/20 -rotate-24'></div>
+  <div className='absolute -top-10 left-1/3 w-12 h-96 bg-white/20 -rotate-24'></div>
+  <div className='absolute -top-10 left-1/4 w-6 h-96 bg-white/20 -rotate-24'></div>
+    <h2 className='text-white font-inter   sm:text-4xl text-2xl font-medium '>Simplify Your Business </h2>
+    <h2 className='text-white font-inter   sm:text-4xl text-2xl '>Get started with <span className='font-semibold'> BlackBoxPreps</span> today! </h2>
+
+              <div className='bg-white    rounded-xl p-2 mt-2'>
+              <Link to="/contact" className=" bg-gradient-to-r from-black   to-red-600 bg-clip-text font-medium  text-transparent   hover:scale-95 hover:shadow-none text-xl  p-2 transition">
             Get in touch
           </Link>
+              </div>
 
   </div>
 </section>
 
 
 
-       <section className=" flex-center    ">
-  <div className="bg-white max-w-5xl  flex-center flex-col h-full  z-10 my-12 mx-8">
-    <h2 className="text-4xl font-mont font-medium my-2 ">
-<span className="text-red-700">Optimized Process</span> for Prep & FBA
-    </h2>
-    <p className="text-gray-700 mb-8 ml-4">
-      We've got you covered with all your tensions and frustrations that you can work with ease.
-    </p>
-    
-    <div className="flex flex-col lg:flex-row   gap-4   p-2 rounded-xl w-full">
-      {/* Card 1 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90 border-2 border-black   rounded-xl cursor-pointer shadow-sm     group hover:shadow-xl transition-all duration-300 flex flex-col">
-        <div className="flex items-center mb-4 gap-3">
-          <PackageSearch className="w-8 h-8 shrink-0   text-red-700 p-1 border-2 border-red-800  rounded-md" />
-          <h3 className="text-md font-semibold text-black ">
-              Standardized Receiving & Inspection
-          </h3>
-        </div>
-        <p className="text-gray-900 text-sm ">
-Check and sort all incoming inventory against purchase orders.
-Inspect for damage, expiration dates, and compliance with Amazon’s prep requirements before processing.        </p>
-      </div>
-
-      {/* Card 2 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90 border-2 border-black  rounded-xl cursor-pointer shadow-sm   group   hover:shadow-xl transition-all duration-300 flex flex-col">
-        <div className="flex items-center mb-4 gap-3 ">
-          <PackageCheck className="w-8 h-8 shrink-0 text-red-700 border-2 border-red-800 p-1 rounded-md " />
-          <h3 className="text-md font-semibold text-black ">
-Efficient Prep & Packaging          </h3>
-        </div>
-        <p className="text-gray-900 text-sm ">
-Use automation-friendly stations with labeled zones for polybagging, bubble wrapping, labeling, and bundling.
-Apply Amazon-compliant barcodes (FNSKU) systematically to avoid delays or rejections at FBA.        </p>
-      </div>
-
-      {/* Card 3 */}
-      <div className="p-6 w-full md:w-1/2 bg-white/90  rounded-xl cursor-pointer border-2 border-black  group hover:shadow-xl transition-all duration-300 flex flex-col">
-        <div className="flex items-center mb-4 gap-3">
-          <Truck className="w-8 h-8 shrink-0 text-red-700 border-2 border-red-800 p-1 rounded-md " />
-          <h3 className="text-md font-semibold text-black ">
-            Shipment Planning & Tracking
-          </h3>
-        </div>
-        <p className="text-gray-900 text-sm ">
-Consolidate shipments to reduce costs while following Amazon’s warehouse distribution requirements.
-Leverage software (Seller Central, 3rd-party tools, or WMS) to optimize carton contents, generate shipping plans, and maintain real-time tracking.        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -252,7 +283,6 @@ Leverage software (Seller Central, 3rd-party tools, or WMS) to optimize carton c
 
 
 
-
-    </>
+</>
   )
 }
