@@ -13,7 +13,7 @@ import FAQ from './page/FAQ';
 function App() {
  return (
   <>
-  <main className='  '>
+  <main className=' relative '>
        <Navbar/>
         <Routes>
 

@@ -15,9 +15,9 @@ export default function CustomCalendar() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center  bg-gray-50 px-4 py-8">
-      <div className="bg-white shadow-2xl rounded-3xl max-w-5xl w-full p-8 md:p-12">
-        <h2 className="text-2xl md:text-3xl font-inter text-gray-900 text-center mb-4">
+    <div className="flex justify-center items-center  bg-gray-100 mt-12 ">
+      <div className="bg-white shadow-2xl rounded-3xl max-w-5xl w-full p-8 ">
+        <h2 className="text-2xl font-inter text-gray-900 text-center mb-4">
           Schedule a Onboarding Meeting
         </h2>
         <p className="text-center text-sm text-gray-600 mb-8">
@@ -28,7 +28,7 @@ export default function CustomCalendar() {
         <div 
           className="calendly-inline-widget rounded-xl overflow-hidden " 
           data-url="https://calendly.com/amanshaw12002/new-meeting" 
-          style={{ width: "100%", height: "660px" }}
+          style={{ width: "1020px", height: "660px" }}
         ></div>
       </div>
     </div>

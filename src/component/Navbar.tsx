@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import main from "../asset/main.png";
+import logo1 from "../asset/logo1.png";
 
 import { Package, Truck, Menu, X } from "lucide-react";
 import {  useState } from "react";
@@ -7,17 +7,17 @@ import {  useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <nav className={`bg-transparent w-screen   h-16   flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
-      <div className="  mx-4 shadow-2xl  bg-white  w-5xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
+    <nav className={`bg-transparent w-screen   h-14   flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
+      <div className="  mx-4 shadow-2xl shadow-black  bg-white  w-5xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
         <div className="flex items-center   ">
-          <img src={main} alt="Logo" className="h-10 w-10 object-cover" />
-          <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700   hidden sm:block sm:text-2xl  text-transparent bg-clip-text ">
+          <img src={logo1} alt="Logo" className="h-8 w-8 rounded-xl  object-cover" />|
+          <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700   hidden sm:block sm:text-xl  text-transparent bg-clip-text ">
             BlackBoxPreps
           </h2>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex font-inter text-xs md:text-sm text-gray-800 gap-3 pl-6  items-center">
+        <ul className="hidden md:flex font-inter text-xs  text-gray-800 gap-3 pl-6  items-center">
           <li className=" transition duration-300 ">
             <Link to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md hover:text-red-700   ">Home</Link>
           </li>
@@ -51,9 +51,9 @@ export default function Navbar() {
           </li>
         <div className="flex-between gap-4">
 
-            <Link to="/contact"  className="hover:text-red-700 text-blue-950 border-2 border-black     hover:scale-95   rounded-xl text-sm  font-semibold    p-2 transition">
+            <Link to="/contact"  className=" bg-white text-black border-2 border-black       hover:scale-95   rounded-xl text-xs  font-semibold    px-2 py-2 transition">
             Dashboard</Link>
-            <Link to="/contact"  className="hover:text-red-700     border-2 border-red-700 rounded-xl  hover:scale-95 bg-gradient-to-r text-sm from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
+            <Link to="/contact"  className="hover:text-red-700     border-2 border-red-700 rounded-xl  hover:scale-95 bg-gradient-to-r text-xs from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
             Get in touch</Link>
         </div>
         </ul>
