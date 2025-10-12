@@ -1,8 +1,5 @@
-import GetQuoteForm from "@/component/GetQuote";
 import product1 from "../asset/IMG_6565 2.png";
-import product from "../asset/product.png";
-import product2 from "../asset/IMG_6347 2.png";
-import product3 from "../asset/product1.png";
+import man4 from "../asset/man4.jpg";
 
 import {  Package, DollarSign, Truck } from "lucide-react";
 
@@ -24,49 +21,44 @@ export default function FbmService() {
         </div>
 
         {/* Service Details */}
-        <div className="bg-white flex flex-col lg:flex-row items-center justify-between rounded-2xl shadow-md p-8 max-w-5xl mx-auto gap-8">
-          
-          <div className="flex  flex-wrap gap-1 max-w-xl">
 
-          <img
-            src={product2}
-            alt="FBM box service"
-            className=" w-80 object-cover   shadow"
-            />
+      </section>
 
-<img
-  src={product}
-  alt="FBM box service"
-  className="w-54  shadow"
-  />
-  <img
-    src={product1}
-    alt="FBM box service"
-    className="w-54 shadow"
-    />
-<img
-  src={product3}
-  alt="FBM box service"
-  className="w-80 shadow"
-  />
-            </div>
-            <div className="flex-1">
-            <h2 className="text-3xl font-inter mb-4 text-gray-800 flex items-center gap-2">
-              What We Offer
-            </h2>
-            <ul className="list-disc list-inside text-sm text-gray-700 space-y-3">
-              <li> Secure & climate-controlled warehouse storage</li>
-              <li> Pick, pack & ship directly to customers across regions</li>
-              <li> Custom packaging, inserts, and branding options</li>
-              <li> Real-time order tracking & automated updates</li>
-              <li> Professional returns handling & customer support</li>
-              <li> Scalable operations whether you ship 10 or 10,000 orders</li>
-              <li> Cost-effective logistics tailored to your business size</li>
-            </ul>
-          </div>
+<section className="py-16 px-6">
+  <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+    {/* Image Section */}
+    <div className="flex-shrink-0">
+      <img
+        src={product1}
+        alt="FBM Illustration"
+        className="w-72 h-auto rounded-xl object-cover shadow-md"
+      />
+    </div>
 
-        </div>
+    {/* Text Section */}
+    <div className="flex flex-col text-gray-800 max-w-xl">
+      <h2 className="text-4xl font-semibold mb-4 flex items-center gap-2 text-gray-800">
+        What is FBM?
+      </h2>
+      <p className="mb-6 text-base leading-relaxed">
+        Fulfilled by Merchant (FBM) allows you, the seller, to manage storage, packaging, and shipping of your products yourself.
+        You retain full control over your inventory and fulfillment methods, unlike FBA where Amazon handles it for you.
+      </p>
+      <p className="text-sm leading-relaxed">
+        Choosing <span className="font-semibold text-red-800">BlackBoxPreps</span> as your FBM partner ensures that
+        your products are stored securely, picked and packed professionally, and shipped reliably.
+        We help you manage the heavy lifting while you focus on selling and growing your business.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+         <section className="py-16 px-6 bg-gray-100">
         {/* Why Choose Us */}
+        <h2 className="text-4xl max-w-5xl mx-auto font-medium">Why Choose FBM with Us</h2>
         <div className="max-w-5xl mx-auto mt-16 grid md:grid-cols-3 gap-8 text-center">
           <div className="bg-white p-6 flex flex-col items-start rounded-xl border-2 border-black   shadow-md">
             <Package className="w-10 h-10  text-white bg-black p-2 rounded-xl" />
@@ -94,8 +86,136 @@ export default function FbmService() {
           </div>
         </div>
       </section>
+         <section className="py-16 px-6 bg-gray-100">
+  <h2 className="text-4xl font-semibold mb-4 mx-auto max-w-5xl flex items-center gap-2 text-gray-800">
+    How we do FBM Prep
+  </h2>
 
-      <GetQuoteForm />
+  <div className="grid md:grid-cols-2 mx-auto max-w-5xl gap-6 mt-8">
+
+    {/* Step 1 */}
+    <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+      <h2 className="border-2 rounded-2xl m-4 p-6 text-center text-4xl">1</h2>
+      <div className="flex flex-col">
+        <h3 className="text-md font-semibold mb-2">Product Storage & Inventory Management</h3>
+        <p className="text-gray-700 text-xs leading-relaxed">
+          We securely store your inventory in our warehouse and maintain accurate tracking to ensure your stock levels are always up to date.
+        </p>
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+      <h2 className="border-2 rounded-2xl m-4 p-6 text-center text-4xl">2</h2>
+      <div className="flex flex-col">
+        <h3 className="text-md font-semibold mb-2">Order Processing & Pick-Pack Services</h3>
+        <p className="text-gray-700 text-xs leading-relaxed">
+          Once an order is placed, we pick, pack, and prepare your items for direct shipment to your customers with professional care and accuracy.
+        </p>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+      <h2 className="border-2 rounded-2xl m-4 p-6 text-center text-4xl">3</h2>
+      <div className="flex flex-col">
+        <h3 className="text-md font-semibold mb-2">Custom Packaging & Branding</h3>
+        <p className="text-gray-700 text-xs leading-relaxed">
+          We offer custom packaging and inserts, helping your brand stand out while maintaining the professionalism expected by your customers.
+        </p>
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+      <h2 className="border-2 rounded-2xl m-4 p-6 text-center text-4xl">4</h2>
+      <div className="flex flex-col">
+        <h3 className="text-md font-semibold mb-2">Shipping & Tracking Management</h3>
+        <p className="text-gray-700 text-xs leading-relaxed">
+          We handle the shipping process end-to-end — from generating labels to carrier coordination — and provide full tracking visibility for you and your customers.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section className="py-16 px-6 bg-white">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-semibold text-gray-800 mb-6">
+      Types of Products We Handle
+    </h2>
+    <p className="text-gray-700 text-sm leading-relaxed max-w-3xl mx-auto mb-10">
+      From private label and wholesale to retail arbitrage, we manage each product type 
+      with the care and compliance needed for FBM fulfillment.
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-8 text-left">
+      <div className="bg-gray-50 p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Private Label</h3>
+        <p className="text-gray-700 text-sm">Custom branding, labeling, and packaging tailored to your products.</p>
+      </div>
+      <div className="bg-gray-50 p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Wholesale</h3>
+        <p className="text-gray-700 text-sm">Bulk handling, quality inspection, and efficient distribution for your business.</p>
+      </div>
+      <div className="bg-gray-50 p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Retail Arbitrage</h3>
+        <p className="text-gray-700 text-sm">Inspection, relabeling, and repackaging to ensure your items meet Amazon standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="py-16 px-6 bg-gray-50">
+  <div className="max-w-5xl mx-auto text-center">
+    <h2 className="text-4xl font-semibold text-gray-800 mb-6">
+      Common FBM Challenges & How We Solve Them
+    </h2>
+    <p className="text-gray-700 text-sm leading-relaxed max-w-3xl mx-auto mb-10">
+      FBM fulfillment can be tricky — from inventory errors to missed shipping deadlines. 
+      We provide solutions that remove stress and improve your customer experience.
+    </p>
+
+    <div className="grid md:grid-cols-3 gap-8 text-left">
+      <div className="bg-white p-6 rounded-xl shadow-md border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Inventory Management</h3>
+        <p className="text-gray-700 text-sm">
+          Accurate tracking and reporting prevent stockouts and overselling.
+        </p>
+      </div>
+      <div className="bg-white p-6 rounded-xl shadow-md border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Shipping Errors</h3>
+        <p className="text-gray-700 text-sm">
+          Professional pick-pack services ensure orders go out correctly and on time.
+        </p>
+      </div>
+      <div className="bg-white p-6 rounded-xl shadow-md border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">Customer Returns</h3>
+        <p className="text-gray-700 text-sm">
+          We help manage returns efficiently, keeping your inventory organized and customer satisfaction high.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section className="   ">
+  <div className="max-w-4xl text-white text-center rounded-t-3xl py-4 bg-red-800 mx-auto px-6">
+    <h2 className="text-4xl font-medium font-inter mb-4">Ready to Simplify Your FBM Prep?</h2>
+    <p className="text-sm mb-8 leading-relaxed">
+        Let us handle the heavy lifting while you focus on growing your business. 
+      From inventory management to shipping, we make FBM simple and reliable.</p>
+    <button className="bg-white cursor-pointer text-red-800 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition">
+      Get Started Today
+    </button>
+  </div>
+  <img src={man4} className="w-4xl rounded-b-2xl object-cover h-96  mx-auto"/>
+</section>
+
+
     </>
   );
 }

@@ -4,7 +4,7 @@ import logo1 from "../asset/logo1.png";
 
 export default function Footer() {
   return (
-    <footer className=" text-gray-700   border-t border-gray-200 mt-24">
+    <footer className=" text-gray-700    border-t border-gray-200 mt-24">
       <div className="max-w-5xl mx-auto relative pt-10 mb-12 rounded-2xl bg-gradient-to-br from-red-900 via-red-800 to-red-900 px-6 lg:px-10">
         {/* Top section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full mx-12  gap-10 mb-10 ">
@@ -12,17 +12,17 @@ export default function Footer() {
           <div className="flex-center flex-col">
             <h3 className="text-sm font-semibold mb-4 text-gray-100">Company</h3>
             <ul className="space-y-4 text-sm text-white font-medium">
-              <li className="bg-white  text-red-700 rounded-md w-24 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
                 <a href="#" className=" transition">
                   Home
                 </a>
               </li>
-              <li className="bg-white text-red-700 rounded-md w-24 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
                 <a href="#" className=" transition">
                   About Us
                 </a>
               </li>
-              <li className="bg-white text-red-700 rounded-md w-24 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
                 <a href="#" className="transition">
                   Contact
                 </a>
@@ -36,17 +36,17 @@ export default function Footer() {
               Services
             </h3>
             <ul className="space-y-4 text-white text-sm font-medium">
-              <li className="bg-white text-red-700 rounded-lg w-36 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-3 py-2 text-center">
                 <a href="#" className=" transition">
                   Order Fulfillment
                 </a>
               </li>
-              <li className="bg-white text-red-700 rounded-lg w-36 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-1 py-2 text-center">
                 <a href="#" className=" transition">
                   Amazon FBA Prep
                 </a>
               </li>
-              <li className="bg-white text-red-700 rounded-lg w-36 px-3 py-2 text-center">
+              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-3 py-2 text-center">
                 <a href="#" className=" transition">
                   Kitting & Bundling
                 </a>

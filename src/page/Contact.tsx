@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 interface FormData {
   name: string;
   email: string;
@@ -22,7 +21,7 @@ export default function Contact() {
 
   return (
     <>
-    <section className="flex-center px-2 bg-gray-200   ">
+    <section className="flex-center flex-col px-2 ">
       <div className="grid sm:grid-cols-2  max-w-4xl  bg-white rounded-2xl shadow-lg mt-24 mb-10 p-4 md:p-8">
         {/* Heading */}
 
@@ -125,7 +124,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="hover:bg-gradient-to-r self-end bg-black from-black to-red-500 text-white w-fit font-mon hover:scale-95 transition duration-300 py-3 px-6 rounded-lg cursor-pointer  shadow-md"
+            className="hover:bg-gradient-to-r self-end bg-black from-black to-red-500 text-white w-fit font-inter hover:scale-95 transition duration-300 py-3 px-6 rounded-lg cursor-pointer  shadow-md"
           >
             Send Message
           </button>

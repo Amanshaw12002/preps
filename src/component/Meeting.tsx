@@ -15,7 +15,7 @@ export default function CustomCalendar() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center  bg-gray-100 mt-12 ">
+    <div className="flex justify-center items-center  bg-gray-100 p-12 ">
       <div className="bg-white shadow-2xl rounded-3xl max-w-5xl w-full p-8 ">
         <h2 className="text-2xl font-inter text-gray-900 text-center mb-4">
           Schedule a Onboarding Meeting
