@@ -17,10 +17,10 @@ export default function CustomCalendar() {
   return (
     <div className="flex justify-center items-center  bg-gray-100 p-12 ">
       <div className="bg-white shadow-2xl rounded-3xl max-w-5xl w-full p-8 ">
-        <h2 className="text-2xl font-inter text-gray-900 text-center mb-4">
+        <h2 className="text-3xl font-inter text-gray-900 text-center mb-2">
           Schedule a Onboarding Meeting
         </h2>
-        <p className="text-center text-sm text-gray-600 mb-8">
+        <p className="text-center text-sm text-gray-800 ">
           Pick a time that works best for you.Our <span className="font-bold"> one to one call </span> or <span className="font-bold"> video conference</span>  will help you get started smoothly.
         </p>
 

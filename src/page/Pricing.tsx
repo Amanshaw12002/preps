@@ -11,7 +11,7 @@ export default function Pricing() {
   <div className="mx-auto max-w-6xl pt-32 z-10">
     {/* Section Heading */}
     <div className="max-w-5xl mx-auto text-center mb-16">
-      <h1 className="text-6xl font-mon mb-4 text-white">Our Pricing</h1>
+      <h1 className="text-6xl font-mon  mb-4 text-white">Our Pricing</h1>
       <h2 className="text-md text-white mx-auto">
         Transparent and competitive pricing for Amazon prep services.
         <span className="font-medium text-yellow-300"> No hidden fees</span> — pay
@@ -86,7 +86,7 @@ export default function Pricing() {
 
 
 
-      <div className="bg-[#292929] rounded-xl shadow-md shadow-black border-gray-400 border p-6 flex flex-col hover:scale-105 duration-600 transition">
+      <div className="bg-[#292929] rounded-xl shadow-md shadow-black border-gray-400 border p-6 flex flex-col hover:scale-105  duration-600 transition">
         <div className="flex items-center gap-2 mb-6 text-white">
                     <Package className="w-8  h-8 p-1   border-2 text-red-700 rounded-lg"/>
 

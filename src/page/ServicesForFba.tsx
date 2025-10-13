@@ -134,8 +134,8 @@ for Your Amazon </h2>
     </div>
 
     <div className="grid grid-cols-2 gap-6">
-      <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-        <h2 className="border-2 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-bold w-20 h-20 flex items-center justify-center">
+      <div className="flex bg-white p-8 border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+        <h2 className="border-2 border-r-0 border-black  rounded-2xl mr-4 p-6 text-center text-3xl font-normal w-20 h-20 flex items-center justify-center">
           1
         </h2>
         <div className="flex flex-col justify-center">
@@ -148,8 +148,8 @@ for Your Amazon </h2>
         </div>
       </div>
 
-      <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-        <h2 className="border-2 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-bold w-20 h-20 flex items-center justify-center">
+      <div className="flex bg-white p-8 border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+        <h2 className="border-2 border-r-0 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-normal w-20 h-20 flex items-center justify-center">
           2
         </h2>
         <div className="flex flex-col justify-center">
@@ -162,8 +162,8 @@ for Your Amazon </h2>
         </div>
       </div>
 
-      <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-        <h2 className="border-2 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-bold w-20 h-20 flex items-center justify-center">
+      <div className="flex bg-white p-8 border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+        <h2 className="border-2 border-r-0 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-normal w-20 h-20 flex items-center justify-center">
           3
         </h2>
         <div className="flex flex-col justify-center">
@@ -176,8 +176,8 @@ for Your Amazon </h2>
         </div>
       </div>
 
-      <div className="flex bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-        <h2 className="border-2 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-bold w-20 h-20 flex items-center justify-center">
+      <div className="flex bg-white p-8 border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+        <h2 className="border-2 border-r-0 border-black rounded-2xl mr-4 p-6 text-center text-3xl font-normal w-20 h-20 flex items-center justify-center">
           4
         </h2>
         <div className="flex flex-col justify-center">

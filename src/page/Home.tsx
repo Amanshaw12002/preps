@@ -3,9 +3,6 @@ import { Truck,  Settings,House,Warehouse} from 'lucide-react';
 import inventory from "../asset/inventory.png"
 import truck from "../asset/truck.png"
 import rec from "../asset/rec.png"
-import def from "../asset/default-4.png"
-import def2 from "../asset/default-13.jpg"
-import def3 from "../asset/default-31.jpg"
 import dashboard from "../asset/dashboard.png"
 import box from "../asset/box.png"
 import { useState } from 'react';
@@ -13,6 +10,7 @@ import CustomCalendar from '@/component/Meeting';
 import MotionCrousel from '@/component/slider';
 import PrepServicesSection from '@/component/PrepServicesSection';
 import WhatSetsUsApart from '@/component/Apart';
+import FAQ from './FAQ';
 
 
 
@@ -285,7 +283,7 @@ Focus on growth, we’ll handle the rest. </h2>
 
 
 
-<section className="py-16 bg-gray-100">
+{/* <section className="py-16 bg-gray-100">
   <div className="max-w-5xl mx-auto flex flex-col   rounded-2xl py-8 items-center text-center px-4">
     <h2 className="text-xl mb-2 text-gray-800">Solutions</h2>
     <h2 className="text-3xl font-inter font-medium  text-black  mb-2">
@@ -295,9 +293,7 @@ Focus on growth, we’ll handle the rest. </h2>
       Efficient and reliable logistics for Amazon sellers
     </h3>
 
-    {/* Cards */}
     <div className="flex flex-wrap justify-between gap-6 w-full">
-      {/* FBA Card */}
       <div className="flex flex-col md:flex-row items-center bg-white border rounded-2xl shadow-md w-full md:w-[48%] overflow-hidden hover:shadow-lg transition">
         <div className="flex flex-col w-full border-gray-400 border md:w-1/2 p-6 text-left gap-3">
           <h3 className="text-xl font-semibold text-gray-800">FBA</h3>
@@ -318,7 +314,6 @@ Focus on growth, we’ll handle the rest. </h2>
         />
       </div>
 
-      {/* FBM Card */}
       <div className="flex flex-col bg-gray-100 rounded-2xl shadow-md border w-full md:w-[23%] overflow-hidden hover:shadow-lg transition">
         <img src={def2} alt="FBM" className="w-full h-60 object-cover" />
         <div className="flex flex-col p-6 gap-3 text-left">
@@ -336,7 +331,6 @@ Focus on growth, we’ll handle the rest. </h2>
         </div>
       </div>
 
-      {/* Prep Card */}
       <div className="flex flex-col bg-gray-100 rounded-2xl shadow-md w-full md:w-[23%] border overflow-hidden hover:shadow-lg transition">
         <div className="flex flex-col p-6 gap-3 text-left">
           <h3 className="text-xl font-semibold text-gray-800">Prep</h3>
@@ -354,11 +348,11 @@ Focus on growth, we’ll handle the rest. </h2>
       </div>
     </div>
   </div>
-</section>
+</section> */}
 
       
   <CustomCalendar/>
-
+  <FAQ/>
 
 
 

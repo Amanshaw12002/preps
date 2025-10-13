@@ -4,8 +4,8 @@ import logo1 from "../asset/logo1.png";
 
 export default function Footer() {
   return (
-    <footer className=" text-gray-700    border-t border-gray-200 mt-24">
-      <div className="max-w-5xl mx-auto relative pt-10 mb-12 rounded-2xl bg-gradient-to-br from-red-900 via-red-800 to-red-900 px-6 lg:px-10">
+    <footer className=" text-gray-700    border-t border-gray-200    py-12">
+      <div className="max-w-5xl mx-auto relative pt-10  rounded-2xl bg-gradient-to-br from-red-800 via-red-900 to-red-800 px-6 lg:px-10">
         {/* Top section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full mx-12  gap-10 mb-10 ">
           {/* Company Links */}

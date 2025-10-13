@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Warehouse, Truck, Package } from "lucide-react";
 import { motion } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
@@ -15,7 +15,7 @@ export default function PrepServicesSection() {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 6000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [words.length]);
 
@@ -67,7 +67,7 @@ export default function PrepServicesSection() {
         "Stronger retailer relationships, fewer chargebacks, and faster reorder cycles.",
     },
   ];
-
+const [expanded, setExpanded] = useState(false);
   return (
     <section className="py-12  bg-gray-50">
       <div className="max-w-6xl   mx-auto px-6 text-center">
@@ -105,26 +105,51 @@ export default function PrepServicesSection() {
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service) => (
-            <div
-              key={service.id}
-              className="group bg-white border-1 border-gray-400 hover:border-red-700 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2  p-8 text-left"
-            >
-              <div className="flex items-center  mb-4">
-                <div className=" bg-white p-2 border-red-800 rounded-lg border ">{service.icon}</div>
-                <h3 className="ml-3 text-md font-semibold text-gray-800">
-                  {service.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-              <ul className="space-y-2 text-gray-700 mb-4 text-sm ">
-                {service.points.map((point, index) => (
-                  <li className="border-t border-gray-600 pt-2" key={index}>{point}</li>
-                ))}
-              </ul>
-              <p className="text-sm group-hover:text-black text-gray-800 border-t pt-3 italic">
-                → {service.result}
-              </p>
-            </div>
+           <div
+      key={service.id}
+      className="group bg-white border border-gray-400 hover:border-red-700 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-8 text-left"
+    >
+      {/* Header */}
+      <div className="flex items-center mb-4">
+        <div className="bg-white p-2 border-red-800 rounded-lg border">
+          {service.icon}
+        </div>
+        <h3 className="ml-3 text-md font-semibold text-gray-800">
+          {service.title}
+        </h3>
+      </div>
+
+      {/* Description */}
+      <p className="text-gray-600 text-sm mb-4">{service.description}</p>
+
+      {/* Expandable Points */}
+      <div
+        className={`overflow-hidden transition-all duration-500 ${
+          expanded ? "max-h-[500px]" : "max-h-[0px]"
+        }`}
+      >
+        <ul className="space-y-2 text-gray-700 mb-4 text-sm">
+          {service.points.map((point, index) => (
+            <li className="border-t border-gray-600 pt-2" key={index}>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Result */}
+      <p className="text-sm group-hover:text-black text-gray-800 border-t pt-3 italic">
+        → {service.result}
+      </p>
+
+      {/* Read More / Less Button */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="mt-3 text-sm font-medium text-gray-500 hover:underline focus:outline-none"
+      >
+        {expanded ? "Read Less ▲" : "Read More ▼"}
+      </button>
+    </div>
           ))}
         </div>
 
