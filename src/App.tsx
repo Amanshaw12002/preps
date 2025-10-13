@@ -8,6 +8,7 @@ import AboutUs from './page/AboutUs';
 import FbaService from './page/ServicesForFba';
 import FbmService from './page/ServicesForFbm';
 import FAQ from './page/FAQ';
+import GetQuoteForm from './component/GetQuote';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
        <Route path="/" element={<Home/>}/>
        <Route path="/pricing" element={<Pricing/>}/>
        <Route path="/contact" element={<Contact/>}/>
+       <Route path="/quote" element={<GetQuoteForm/>}/>
        <Route path="/aboutUs" element={<AboutUs/>}/>
        <Route path="/faq" element={<FAQ/>}/>
        <Route path='/service/fba' element={<FbaService/>}/>

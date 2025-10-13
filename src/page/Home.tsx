@@ -104,10 +104,9 @@ export default function Home() {
     <>
     
 
-       <div className="absolute bottom-0  h-64  bg-gradient-to-b from-white via-red-700 to-white  -z-1"></div>
       <section className="flex-center relative py-14   overflow-hidden ">
 
-      <div className=' lg:w-screen xl:max-w-7xl mx-2  mt-8 xl:mx-0   lg:flex  z-10 overflow-hidden rounded-xl'>
+      <div className=' max-w-6xl mx-2  mt-8 xl:mx-0   lg:flex  z-10 overflow-hidden rounded-xl'>
 
                     <div className="  pl-14 mx-auto xl:max-w-xl    max-w-xl lg:pt-24    shrink-0   text-black ">
                                 
@@ -121,7 +120,7 @@ Prep Services {" "}
   </span>
   for All Your
   <span
-   className='block'>{" "}  Fulfillment Needs.  </span>
+   className='bg-gradient-to-r pb-1 block  from-black  to-blue-600 bg-clip-text  text-transparent '>{" "}  Fulfillment Needs.  </span>
     
 </h2>
                          </div>
@@ -143,43 +142,93 @@ Prep Services {" "}
 
         </section>
 
-<section className=' bg-red-50 py-12'>
-      <div className="max-w-6xl mx-auto flex flex-col items-start justify-center text-black px-12 ">
-  <h2 className="font-sans text-2xl mb-2">
-    Let's grow your business together.
-  </h2>
+<section className='relative py-16 overflow-hidden bg-radial from-red-100'>
+  {/* Background Pattern - Subtle Grid */}
+  {/* Background Pattern - Minimal Grid */}
+<div className="absolute inset-0 opacity-15">
+  <div className="absolute top-0 left-1/4 w-px h-full bg-red-800"></div>
+  <div className="absolute top-0 left-1/2 w-px h-full bg-red-900"></div>
+  <div className="absolute top-0 left-3/4 w-px h-full bg-red-800"></div>
+  <div className="absolute top-1/4 left-0 w-full h-px bg-red-900"></div>
+  <div className="absolute top-1/2 left-0 w-full h-px bg-red-800"></div>
+  <div className="absolute top-3/4 left-0 w-full h-px bg-red-900"></div>
+</div>
+  {/* Background Pattern - Floating Dots */}
+  <div className="absolute inset-0 opacity-100">
+    {[...Array(15)].map((_, i) => (
+      <div
+        key={i}
+        className="absolute rounded-full bg-red-300"
+        style={{
+          width: `${Math.random() * 8 + 2}px`,
+          height: `${Math.random() * 8 + 2}px`,
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+        }}
+      />
+    ))}
+  </div>
 
-  <h2 className="text-5xl font-medium pb-12">
-       <span className="bg-gradient-to-r pb-2 from-black to-red-700 bg-clip-text text-transparent font-medium block">New to Amazon or already selling? </span>  
-    <span className="text-red-700"> </span> <span className="bg-gradient-to-r from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium">We’ve got your prep covered...
+  {/* Corner Accents */}
+  <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-bl from-red-200 to-transparent opacity-30 rounded-full"></div>
+  <div className="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-tr from-red-200 to-transparent opacity-30 rounded-full"></div>
+
+  <div className="relative max-w-6xl mx-auto">
+    {/* Header Section */}
+    <div className="flex flex-col items-start justify-center text-black px-12">
+      <h2 className="font-sans text-2xl mb-2">
+        Let's grow your business together.
+      </h2>
+
+      <h2 className="text-5xl font-medium pb-12">
+        <span className="bg-gradient-to-r pb-2 from-black to-red-700 bg-clip-text text-transparent font-medium block">
+          New to Amazon or already selling?
+        </span>  
+        <span className="bg-gradient-to-r from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium">
+          We've got your prep covered...
+        </span>
+      </h2>
+    </div>
+
+    {/* Stats & Content Section */}
+    <div className='flex justify-between max-w-6xl mx-auto py-6 px-12 mb-4'>
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 gap-8">
+        <div className='border-l-2 border-red-600 flex flex-col items-start pl-4'>
+          <h2 className="text-4xl font-inter font-normal mb-2">50K+</h2>
+          <p className="text-gray-800 text-md mb-2">Orders Processed</p>
+          <p className='text-gray-700 text-xs text-left'>Successfully prepped and shipped units.</p>
+        </div>
+        <div className='border-l-2 border-red-600 flex flex-col items-start pl-4'>
+          <h2 className="text-4xl font-normal font-inter text-black mb-2">99%</h2>
+          <h2 className="text-gray-800 text-md mb-2">Client Satisfaction</h2>
+          <p className='text-gray-700 text-xs text-left'>Based on customer feedback & repeat business.</p>
+        </div>
+        <div className='border-l-2 border-red-600 flex flex-col items-start pl-4'>
+          <h2 className="text-4xl font-normal text-gray-900 mb-2">$0</h2>
+          <p className="text-gray-800 text-md mb-2">Tax Advantage</p>
+          <p className='text-gray-600 text-xs text-left leading-relaxed'>
+            Operating from Delaware's tax-free zone
+          </p>
+        </div>
+        <div className='border-l-2 border-red-600 flex flex-col items-start pl-4'>
+          <h2 className="text-4xl font-normal text-gray-900 mb-2">24-48h</h2>
+          <p className="text-gray-800 text-md mb-2">Average Turnaround</p>
+          <p className='text-gray-600 text-xs text-left leading-relaxed'>
+            Fast processing from receiving to shipment
+          </p>
+        </div>
+      </div>
       
-    </span>
-  </h2>
-</div>
-                      
-  <div className='flex-between  max-w-6xl   mx-auto py-6 px-12 mb-4' >
-
-<div className="max-w-6xl mx-auto px-4 self-start grid grid-cols-2 gap-8 text-center">
-    <div className='border-l-2 flex flex-col items-start pl-2 '>
-      <h2 className="text-2xl font-inter font-normal ">50K+</h2>
-      <p className="text-gray-800 text-md">Orders Processed</p>
-      <p className='text-gray-700 text-xs text-left'>Successfully prepped and shipped units.</p>
+      {/* Content Section */}
+      <div className='flex flex-col w-1/2 pl-8'>
+        <h2 className='font-sans text-md mt-12 text-gray-800 font-normal leading-relaxed'>
+          Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
+          Focus on growth, we'll handle the rest.
+        </h2>
+      </div>
     </div>
-    <div className='border-l-2 flex flex-col items-start pl-2'>
-      <h2 className="text-2xl  font-normal font-inter text-black ">99%</h2>
-      <h2 className="text-gray-800 text-md">Client Satisfaction</h2>
-      <p className='text-gray-700 text-xs text-left'>Based on customer feedback & repeat business.</p>
-    </div>
-</div>
-                            
-                            <div className='flex flex-col  w-1/2 '>
-                        <h2 className='font-sans text-sm text-gray-700 font-normal '>Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware’s tax-free zone, cutting costs and turnaround time.
-Focus on growth, we’ll handle the rest. </h2>
-                
-                        </div>
-
-</div>
-
+  </div>
 </section>
 
 

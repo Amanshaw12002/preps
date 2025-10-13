@@ -21,7 +21,7 @@ export default function WhatSetsUsApart() {
   ];
 
   return (
-    <section className="py-24 bg-red-100">
+    <section className="py-24 bg-radial from-red-100 to-white">
       <div className="max-w-6xl mx-auto px-6 text-center  rounded-2xl">
         <div className="w-full flex items-center px-8">
 

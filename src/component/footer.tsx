@@ -1,121 +1,155 @@
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram, FaSquareXTwitter } from "react-icons/fa6";
-import logo1 from "../asset/logo1.png";
+import { FaFacebook, FaInstagram,FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className=" text-gray-700    border-t border-gray-200    py-12">
-      <div className="max-w-5xl mx-auto relative pt-10  rounded-2xl bg-gradient-to-br from-red-800 via-red-900 to-red-800 px-6 lg:px-10">
-        {/* Top section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full mx-12  gap-10 mb-10 ">
-          {/* Company Links */}
-          <div className="flex-center flex-col">
-            <h3 className="text-sm font-semibold mb-4 text-gray-100">Company</h3>
-            <ul className="space-y-4 text-sm text-white font-medium">
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
-                <a href="#" className=" transition">
-                  Home
-                </a>
-              </li>
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
-                <a href="#" className=" transition">
-                  About Us
-                </a>
-              </li>
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-md w-24 px-3 py-2 text-center">
-                <a href="#" className="transition">
-                  Contact
-                </a>
-              </li>
+    <footer className="bg-gradient-to-br from-white text-black pb-8 px-4  ">
+      <div className="max-w-6xl overflow-hidden mx-auto border-t pt-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          {/* Brand Section */}
+          <div className="lg:col-span-4">
+            <div className="flex items-center mb-6">
+              
+              <div>
+                <h2 className="text-4xl font-light text-black">BlackBoxPreps</h2>
+                <div className="w-12 h-1 bg-red-800 mt-2"></div>
+              </div>
+            </div>
+            <p className="text-slate-800 font-light text-sm leading-relaxed mb-6 max-w-md">
+              Professional fulfillment solutions tailored to scale your e-commerce business. 
+              Trusted by sellers worldwide for reliable and efficient service.
+            </p>
+            
+            {/* Social Icons */}
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="p-3 bg-slate-700 rounded-xl hover:bg-royal-red transition duration-300 transform hover:-translate-y-1"
+                aria-label="Facebook"
+              >
+                <FaFacebook className="h-5 w-5 text-white" />
+              </a>
+              <a
+                href="#"
+                className="p-3 bg-slate-700 rounded-xl hover:bg-royal-red transition duration-300 transform hover:-translate-y-1"
+                aria-label="Twitter"
+              >
+                <FaTwitter className="h-5 w-5 text-white" />
+              </a>
+              <a
+                href="#"
+                className="p-3 bg-slate-700 rounded-xl hover:bg-royal-red transition duration-300 transform hover:-translate-y-1"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="h-5 w-5 text-white" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="lg:col-span-2">
+            <h3 className="text-lg font-normal mb-6 text-black relative pb-2">
+              Quick Links
+              <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"></div>
+            </h3>
+            <ul className="space-y-4">
+              {['Home', 'About Us', 'Services', 'Contact', 'Blog'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href="#" 
+                    className="text-slate-800 font-light text-sm hover:text-red-800 transition duration-300 flex items-center group"
+                  >
+                    <span className="w-2 h-2 bg-royal-red rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
-          <div className="flex-center flex-col">
-            <h3 className="text-sm font-semibold mb-4 text-gray-100">
-              Services
+          <div className="lg:col-span-3">
+            <h3 className="text-lg font-normal mb-6 text-black relative pb-2">
+              Our Services
+              <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"></div>
             </h3>
-            <ul className="space-y-4 text-white text-sm font-medium">
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-3 py-2 text-center">
-                <a href="#" className=" transition">
-                  Order Fulfillment
-                </a>
-              </li>
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-1 py-2 text-center">
-                <a href="#" className=" transition">
-                  Amazon FBA Prep
-                </a>
-              </li>
-              <li className="bg-gray-100 border-1 border-gray-400  text-red-800 rounded-lg w-36 px-3 py-2 text-center">
-                <a href="#" className=" transition">
-                  Kitting & Bundling
-                </a>
-              </li>
+            <ul className="space-y-4">
+              {[
+                'Amazon FBA Prep',
+                'Order Fulfillment',
+                'Kitting & Bundling',
+                'Storage Solutions',
+                'Returns Handling',
+                'Custom Packaging'
+              ].map((service) => (
+                <li key={service}>
+                  <a 
+                    href="#" 
+                    className="text-slate-800 text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
+                  >
+                    <span className="w-2 h-2 bg-royal-red rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"></span>
+                    {service}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-sm font-semibold mb-4 mt-2 text-white">
-              Contact Us
+          {/* Contact Info */}
+          <div className="lg:col-span-3">
+            <h3 className="text-lg font-normal mb-6 text-black relative pb-2">
+              Get In Touch
+              <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"></div>
             </h3>
-            <ul className="space-y-2 text-sm text-gray-200">
-              <li>Darwin First, Chicago</li>
-              <li>
-                <a
-                  href="mailto:contact@blackboxpreps.com"
-                  className="text-white transition"
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <FaMapMarkerAlt className="h-5 w-5 text-royal-red  mr-3 mt-1 flex-shrink-0" />
+                <span className="text-slate-800 text-sm font-light">
+                  Darwin First, Chicago<br />
+                  Illinois, USA
+                </span>
+              </li>
+              <li className="flex items-center">
+                <FaEnvelope className="h-5 w-5 text-red-800 mr-3 flex-shrink-0" />
+                <a 
+                  href="mailto:contact@blackboxpreps.com" 
+                  className="text-slate-800 font-light text-sm hover:text-royal-red transition duration-300"
                 >
                   contact@blackboxpreps.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="tel:+15017772993"
-                  className="text-white transition"
+              <li className="flex items-center">
+                <FaPhone className="h-5 w-5 text-royal-red text-sm mr-3 flex-shrink-0" />
+                <a 
+                  href="tel:+15017772993" 
+                  className="text-slate-800 font-light hover:text-royal-red transition duration-300"
                 >
                   (501) 777-2993
                 </a>
               </li>
             </ul>
-          </div>
-          <div className="flex flex-col items-center">
 
-          <img src={logo1} alt="Logo" className="rounded-3xl  h-32"/>
-          
-          {/* Social Icons */}
-          <div className="flex-between">
-            <a
-              href="#"
-              className="p-2 rounded-full hover:bg-blue-100 transition"
-              aria-label="Facebook"
-            >
-              <FaFacebook className="h-5 w-5 text-blue-100" />
-            </a>
-            <a
-              href="#"
-              className="p-2 rounded-full hover:bg-gray-100 transition"
-              aria-label="Twitter"
-            >
-              <FaSquareXTwitter className="h-5 w-5 text-gray-100" />
-            </a>
-            <a
-              href="#"
-              className="p-2 rounded-full hover:bg-pink-100 transition"
-              aria-label="Instagram"
-            >
-              <FaInstagram className="h-5 w-5 text-pink-100" />
-            </a>
-          </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-300 pt-6 flex-center">
-          <p className="text-sm text-gray-100 text-center pb-4">
-            © {new Date().getFullYear()} BlackBoxPreps. All rights reserved.
-          </p>
-
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-700 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-slate-400 font-light text-sm mb-4 md:mb-0">
+              © {new Date().getFullYear()} BlackBoxPreps. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-slate-400 font-light hover:text-royal-red transition duration-300">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-slate-400 font-light hover:text-royal-red transition duration-300">
+                Terms of Service
+              </a>
+              <a href="#" className="text-slate-400 font-light hover:text-royal-red transition duration-300">
+                Cookie Policy
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
