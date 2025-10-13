@@ -107,8 +107,16 @@ export default function Home() {
       <section className="flex-center relative py-14   overflow-hidden ">
 <div className=' max-w-6xl mx-2  mt-8 xl:mx-0   lg:flex  z-10 overflow-hidden rounded-xl'>
 
-                    <div className="  pl-14 mx-auto xl:max-w-xl    max-w-xl lg:pt-24    shrink-0   text-black ">
-                                
+                    <div className="relative  pl-14 mx-auto xl:max-w-xl    max-w-xl lg:pt-24    shrink-0   text-black ">
+                                <div className='h-full w-0.5 absolute top-20 left-20 bg-gradient-to-b from-white via-slate-200 to-white  -z-1'></div>
+                                <div className='h-0.5 w-full absolute top-20 left-20 bg-gradient-to-r from-white via-slate-200 to-white  -z-1'></div>
+                                <div className='h-0.5 w-full absolute top-40 left-20 bg-gradient-to-r from-white via-red-200 to-white  -z-1'></div>
+                                <div className='h-0.5 w-full absolute top-80 left-20 bg-gradient-to-r from-red-200 via-slate-200 to-white  -z-1'></div>
+                                <div className='h-0.5 w-full absolute top-100 left-20 bg-gradient-to-r from-white via-slate-200 to-white  -z-1'></div>
+                                <div className='h-full w-0.5 absolute top-20 left-40 bg-gradient-to-b from-white via-slate-200 to-white -z-1'></div>
+                                <div className='h-full w-0.5 absolute top-20 left-60 bg-gradient-to-b from-white via-slate-300 to-white -z-1'></div>
+                                <div className='h-full w-0.5 absolute top-20 left-80 bg-gradient-to-b from-white via-slate-400 to-white -z-1'></div>
+                                <div className='h-full w-0.5 absolute top-20 left-100 bg-gradient-to-b from-white  via-red-200 to-white -z-1'></div>
                          <div className="flex  lg:flex-col w-lg ">
 <h2 className="text-5xl font-semibold font-inter text-black text-shadow-2xs">
   <span className="block pb-1">
@@ -154,9 +162,7 @@ Prep Services {" "}
 </div>
 
   {/* Corner Accents */}
-  <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-bl from-red-200 to-transparent opacity-30 rounded-full"></div>
-  <div className="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-tr from-red-200 to-transparent opacity-30 rounded-full"></div>
-
+  <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-bl from-red-200   rounded-full"></div>
   <div className="relative max-w-6xl mx-auto">
     {/* Header Section */}
     <div className="flex flex-col items-start justify-center text-black px-12">
