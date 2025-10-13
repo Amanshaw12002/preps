@@ -105,8 +105,7 @@ export default function Home() {
     
 
       <section className="flex-center relative py-14   overflow-hidden ">
-
-      <div className=' max-w-6xl mx-2  mt-8 xl:mx-0   lg:flex  z-10 overflow-hidden rounded-xl'>
+<div className=' max-w-6xl mx-2  mt-8 xl:mx-0   lg:flex  z-10 overflow-hidden rounded-xl'>
 
                     <div className="  pl-14 mx-auto xl:max-w-xl    max-w-xl lg:pt-24    shrink-0   text-black ">
                                 
@@ -125,7 +124,7 @@ Prep Services {" "}
 </h2>
                          </div>
 
-                          <h2 className=' text-md font-sans font-normal text-black  mt-4   '>You sell, we handle the rest.</h2>
+                          <h2 className=' text-md font-sans font-normal text-black  mt-4  mb-2 '>You sell, we handle the rest.</h2>
                           <p className='font-sans text-xs  pr-12  text-gray-700 '>Safe storage to professional packing & fast shipping.With our fast and reliable  FBA service,your  products  are always  ready to reach  customers  quickly and  securely.</p>
                     </div>
                       
@@ -153,21 +152,6 @@ Prep Services {" "}
   <div className="absolute top-1/2 left-0 w-full h-px bg-red-800"></div>
   <div className="absolute top-3/4 left-0 w-full h-px bg-red-900"></div>
 </div>
-  {/* Background Pattern - Floating Dots */}
-  <div className="absolute inset-0 opacity-100">
-    {[...Array(15)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute rounded-full bg-red-300"
-        style={{
-          width: `${Math.random() * 8 + 2}px`,
-          height: `${Math.random() * 8 + 2}px`,
-          top: `${Math.random() * 100}%`,
-          left: `${Math.random() * 100}%`,
-        }}
-      />
-    ))}
-  </div>
 
   {/* Corner Accents */}
   <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-bl from-red-200 to-transparent opacity-30 rounded-full"></div>
