@@ -21,23 +21,23 @@ export default function WhatSetsUsApart() {
   ];
 
   return (
-    <section className="py-24 bg-radial from-red-100 to-white">
+    <section className="py-24 border-y border-red-200 bg-radial from-red-100 to-white">
       <div className="max-w-6xl mx-auto px-6 text-center  rounded-2xl">
         <div className="w-full flex items-center px-8">
 
         <h2 className="text-5xl font-semibold font-inter w-fit text-gray-800 text-left  m-4">
            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-red-800 to-red-800">What Sets Us Apart</span>
         </h2>
-        <p className="text-xl text-right font-inter text-gray-800 max-w-lg ml-auto border-t-2 border-black pt-2">
+        <p className="text-xl text-right font-inter text-gray-800 max-w-lg ml-auto border-t-2 border-red-800 pt-2">
           We go beyond basic prep — offering precision, reliability, and a true partnership
           built for<span className="font-semibold block">  scalable e-commerce growth.</span>
         </p>
 </div>
-        <div className="grid md:grid-cols-3 gap-6 p-8">
+        <div className="grid md:grid-cols-3  p-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className=" border border-red-800 group  hover:border-red-800 rounded-2xl shadow-sm hover:shadow-md p-6 text-left transition-all duration-300 hover:-translate-y-1"
+              className=" border border-red-800 group  hover:border-red-800  shadow-sm hover:shadow-md p-6 text-left transition-all duration-300 hover:-translate-y-1"
             >
               <div className="mb-3 flex items-center justify-start">
                 <div className="p-3  rounded-xl border-red-800 border">{feature.icon}</div>

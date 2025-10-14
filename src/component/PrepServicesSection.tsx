@@ -69,7 +69,7 @@ export default function PrepServicesSection() {
   ];
 const [expanded, setExpanded] = useState(false);
   return (
-    <section className="py-12  bg-gray-50">
+    <section className="py-12 border-y border-red-200  bg-gradient-to-b from-red-50 to-white">
       <div className="max-w-6xl   mx-auto px-6 text-center">
         {/* Section Header */}  <div className=" flex-center overflow-hidden">
       <motion.h2
@@ -128,9 +128,9 @@ const [expanded, setExpanded] = useState(false);
           expanded ? "max-h-[500px]" : "max-h-[0px]"
         }`}
       >
-        <ul className="space-y-2 text-gray-700 mb-4 text-sm">
+        <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-sm">
           {service.points.map((point, index) => (
-            <li className="border-t border-gray-600 pt-2" key={index}>
+            <li className=" pt-2" key={index}>
               {point}
             </li>
           ))}
@@ -138,7 +138,7 @@ const [expanded, setExpanded] = useState(false);
       </div>
 
       {/* Result */}
-      <p className="text-sm group-hover:text-black text-gray-800 border-t pt-3 italic">
+      <p className="text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic">
         → {service.result}
       </p>
 

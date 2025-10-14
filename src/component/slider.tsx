@@ -56,7 +56,7 @@ export default function MotionCarousel() {
   const Icon = step.icon;
 
   return (
-    <section className="w-72  text-center">
+    <section className="w-full  text-center">
       <AnimatePresence mode="wait">
         <motion.div
           key={step.id}
@@ -64,10 +64,11 @@ export default function MotionCarousel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.5 }}
-          className="bg-gray-200 rounded-t-2xl p-2"
+          className="bg-gray-200 relative rounded-t-2xl "
         >
-          <div className="flex items-center justify-center bg-gray-50 border border-gray-400 rounded-xl w-fit  mb-2 overflow-hidden ">
-            <div className="bg-red-700 px-1 h-full"><Icon className="text-white bg-red-700 rounded-sm w-6 h-6 p-1  m-2 " />
+          <div className="flex items-center absolute top-0 left-0 justify-center bg-gray-50 border border-gray-400 rounded-xl w-fit  mb-2 overflow-hidden ">
+            <div className="bg-red-700 px-1 h-full">
+              <Icon className="text-white bg-red-700 rounded-sm w-6 h-6 p-1  m-2 " />
             </div>
             <h2 className="text-red-700 px-4 font-medium text-md">
               {step.title}
@@ -77,13 +78,10 @@ export default function MotionCarousel() {
           <img
             src={step.image}
             alt={step.title}
-            className="rounded-sm w-full h-42 border-gray-400 border object-cover mb-1"
+            className=" w-full h-48 border border-gray-400 rounded-2xl object-cover "
           />
 
 
-          <p className="text-xs p-2 text-gray-900 rounded-md border border-gray-400 bg-white">
-            {step.description}
-          </p>
         </motion.div>
       </AnimatePresence>
     </section>

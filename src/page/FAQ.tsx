@@ -46,7 +46,7 @@ export default function FAQ() {
     <div className="max-w-5xl  mx-auto  flex flex-col">
    <div className="flex-between">
 
-      <h2 className="text-4xl p-4  border-t-2 border-l-2 h-fit font-medium text-left mb-10 text-black">
+      <h2 className="text-4xl p-4   border-l-2 h-fit font-medium text-left mb-10 text-black">
         Frequently Asked Questions
       </h2>
    </div>
