@@ -3,13 +3,11 @@ import { Warehouse, Truck, Package } from "lucide-react";
 import { motion } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
 
-
-
 export default function PrepServicesSection() {
-
- const icons = [<TrendingUp />, <Workflow />, <Trophy />];
+  const icons = [<TrendingUp />, <Workflow />, <Trophy />];
   const words = ["Scale", "Streamline", "Succeed"];
   const [index, setIndex] = React.useState(0);
+  const [expanded, setExpanded] = useState(false);
 
   // Rotate words every 2.5 seconds
   React.useEffect(() => {
@@ -18,7 +16,6 @@ export default function PrepServicesSection() {
     }, 4000);
     return () => clearInterval(interval);
   }, [words.length]);
-
 
   const services = [
     {
@@ -67,104 +64,223 @@ export default function PrepServicesSection() {
         "Stronger retailer relationships, fewer chargebacks, and faster reorder cycles.",
     },
   ];
-const [expanded, setExpanded] = useState(false);
+
   return (
-    <section className="py-12 border-y border-red-200  bg-gradient-to-b from-red-50 to-white">
-      <div className="max-w-6xl   mx-auto px-6 text-center">
-        {/* Section Header */}  <div className=" flex-center overflow-hidden">
-      <motion.h2
-        key={index}
-        initial={{ x: 10,  }}
-        animate={{ x: 0,  }}
-        exit={{ x: -10,  }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        className="text-3xl flex items-center font-semibold text-gray-800 mb-6 text-center"
-      >
-        How <span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-black via-red-800 to-red-500">BlackBoxPreps </span> Help You{" "}
-        <motion.span
-          key={words[index]}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="flex items-center w-fit px-4 mx-2 text-black bg-white  border border-gray-400 rounded-xl py-2"
-        > <span className="text-xl p-1 text-white bg-red-800  mr-2 rounded-md">{icons[index]}</span>
-         <span> {words[index]}</span>
-        </motion.span>{" "}
-        Your Business
-      </motion.h2>
-    </div>
-        <p className="text-sm text-gray-800 max-w-3xl mx-auto mb-16">
+    <section className="py-12 relative border-y border-red-200 bg-gradient-to-b from-red-50 to-white">
+      {/* Animated Corner Elements */}
+      <motion.div 
+        className="absolute -top-1 left-6.5 w-3 h-2 bg-red-900"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute -top-1 right-6.5 w-3 h-2 bg-red-900"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900"
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      ></motion.div>
+      
+      {/* Animated Border Lines */}
+      <motion.div 
+        className="absolute top-0 left-8 w-px h-full bg-red-900"
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      ></motion.div>
+      <motion.div 
+        className="absolute top-0 right-8 w-px h-full bg-red-900"
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      ></motion.div>
+
+      <div className="max-w-5xl mx-auto px-10 text-center">
+        {/* Section Header */}
+        <div className="flex-center ">
+          <motion.h2
+            initial={{ y: 200}}
+            whileInView={{  y: 0}}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-3xl flex items-center font-semibold text-gray-800 mb-6 text-center"
+          >
+            How <span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-black via-red-800 to-red-500">BlackBoxPreps </span> Help You{" "}
+            <motion.span
+              key={words[index]}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="flex items-center w-fit px-4 mx-2 text-black bg-white border border-gray-400 rounded-xl py-2"
+            > 
+              <span className="text-xl p-1 text-white bg-red-800 mr-2 rounded-md">{icons[index]}</span>
+              <span>{words[index]}</span>
+            </motion.span>{" "}
+            Your Business
+          </motion.h2>
+        </div>
+
+        <motion.p 
+          className="text-sm text-gray-800 max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           Whether you sell through <span className="font-medium">FBA & WFS</span>, manage
           orders via <span className="font-medium">FBM</span>, or supply to{" "}
           <span className="font-medium">Wholesale</span> partners — our end-to-end prep
           solutions ensure every unit leaves your inventory compliant, protected, and
           ready to sell.
-        </p>
+        </motion.p>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service) => (
-           <div
-      key={service.id}
-      className="group bg-white border border-gray-400 hover:border-red-700 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-8 text-left"
-    >
-      {/* Header */}
-      <div className="flex items-center mb-4">
-        <div className="bg-white p-2 border-red-800 rounded-lg border">
-          {service.icon}
-        </div>
-        <h3 className="ml-3 text-md font-semibold text-gray-800">
-          {service.title}
-        </h3>
-      </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {services.map((service, serviceIndex) => (
+            <motion.div
+              key={service.id}
+              className="group bg-white border border-gray-400 hover:border-red-700 rounded-lg shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 text-left"
+              initial={{ opacity: 0.6, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 + serviceIndex * 0.3, duration: 1.5 }}
+            >
+              {/* Header */}
+              <motion.div 
+                className="flex items-center mb-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + serviceIndex * 0.1, duration: 0.5 }}
+              >
+                <div className="bg-white p-2 border-red-800 rounded-sm border">
+                  {service.icon}
+                </div>
+                <h3 className="ml-3 text-md font-semibold text-gray-800">
+                  {service.title}
+                </h3>
+              </motion.div>
 
-      {/* Description */}
-      <p className="text-gray-600 text-sm mb-4">{service.description}</p>
+              {/* Description */}
+              <motion.p 
+                className="text-gray-600 text-sm mb-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 + serviceIndex * 0.1, duration: 0.5 }}
+              >
+                {service.description}
+              </motion.p>
 
-      {/* Expandable Points */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ${
-          expanded ? "max-h-[500px]" : "max-h-[0px]"
-        }`}
-      >
-        <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-sm">
-          {service.points.map((point, index) => (
-            <li className=" pt-2" key={index}>
-              {point}
-            </li>
-          ))}
-        </ul>
-      </div>
+              {/* Expandable Points */}
+              <motion.div
+                className={`overflow-hidden transition-all duration-500 ${
+                  expanded ? "max-h-[500px]" : "max-h-[0px]"
+                }`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 + serviceIndex * 0.1, duration: 0.5 }}
+              >
+                <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-sm">
+                  {service.points.map((point, pointIndex) => (
+                    <motion.li 
+                      className="pt-2" 
+                      key={pointIndex}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.8 + serviceIndex * 0.1 + pointIndex * 0.1, duration: 0.4 }}
+                    >
+                      {point}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
 
-      {/* Result */}
-      <p className="text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic">
-        → {service.result}
-      </p>
+              {/* Result */}
+              <motion.p 
+                className="text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9 + serviceIndex * 0.1, duration: 0.5 }}
+              >
+                → {service.result}
+              </motion.p>
 
-      {/* Read More / Less Button */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="mt-3 text-sm font-medium text-gray-500 hover:underline focus:outline-none"
-      >
-        {expanded ? "Read Less ▲" : "Read More ▼"}
-      </button>
-    </div>
+              {/* Read More / Less Button */}
+              <motion.button
+                onClick={() => setExpanded(!expanded)}
+                className="mt-3 text-sm cursor-pointer font-medium text-red-800 hover:underline focus:outline-none"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1.0 + serviceIndex * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                {expanded ? "Read Less" : "Read More"}
+              </motion.button>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-inter font-semibold w-fit mx-auto text-transparent bg-gradient-to-r from-black via-red-600  to-red-700 bg-clip-text mb-3">
+        <motion.div 
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          <motion.h3 
+            className="text-3xl font-inter font-semibold w-fit mx-auto text-transparent bg-gradient-to-r from-black via-red-600 to-red-700 bg-clip-text mb-3"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
             Streamline. Scale. Succeed.
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Let’s take the prep work off your plate — so you can focus on growth.
-          </p>
-          <button className="bg-white border border-gray-400   text-gray-800 px-8 py-3 rounded-xl font-semibold shadow-md transition-all">
+          </motion.h3>
+          <motion.p 
+            className="text-gray-600 text-xs mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+          >
+            Let's take the prep work off your plate — so you can focus on growth.
+          </motion.p>
+          <motion.button 
+            className="bg-white border border-gray-400 text-gray-800 px-8 py-3 rounded-xl font-semibold shadow-md transition-all"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.1, duration: 0.5 }}
+            whileHover={{ scale: 1.05, backgroundColor: "#fef2f2" }}
+          >
             Get a Custom Quote
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

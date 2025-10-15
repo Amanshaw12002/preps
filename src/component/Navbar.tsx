@@ -3,17 +3,57 @@ import logo from "../asset/logo.png";
 
 import { Package, Truck, Menu, X } from "lucide-react";
 import {  useState } from "react";
+import { motion, type Variants } from "framer-motion";
+
+const text = "BlackBoxPreps";
+const textVariants:Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  })
+};
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <nav className={`bg-transparent w-screen   h-14   flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
       <div className="  mx-4 shadow-2xl shadow-black  bg-white  w-5xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
-        <Link to="/" className="flex items-center text-gray-900   ">
-          <img src={logo} alt="Logo" className="h-10 w-10  object-cover  " />|
-          <h2 className=" font-inter font-semibold bg-gradient-to-r from-black  to-red-700 pl-1   hidden sm:block text-2xl  text-transparent bg-clip-text ">
-            BlackBoxPreps
-          </h2>
+        <Link to="/" className="flex group items-center text-gray-900 overflow-hidden  ">
+          <motion.img 
+          initial={{x:-45}} 
+          animate={{ x: 0 }}
+          transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+          
+          src={logo} alt="Logo" className="h-10 w-10  object-cover  " />
+    
+<motion.h2 
+  className="relative font-inter font-semibold bg-gradient-to-r from-black to-red-700 pl-1 hidden sm:block text-2xl text-transparent bg-clip-text"
+>
+  <motion.div 
+    className="absolute bottom-0 w-8 h-[2px] bg-red-800"
+    initial={{ scaleX: 0 }}
+    animate={{ scaleX: 1 }}
+    transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+    style={{ originX: 0 }}
+  />
+  {text.split("").map((char, index) => (
+    <motion.span
+      key={index}
+      custom={index}
+      variants={textVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {char}
+    </motion.span>
+  ))}
+</motion.h2>
         </Link>
 
         {/* Desktop Menu */}
@@ -53,8 +93,8 @@ export default function Navbar() {
 
             <Link to="/contact"  className=" bg-white text-black border border-black       hover:scale-95   rounded-lg text-xs  font-semibold    px-2 py-2 transition">
             Dashboard</Link>
-            <Link to="/contact"  className="hover:text-red-700     border border-red-700 rounded-lg  hover:scale-95 bg-gradient-to-r text-xs from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
-            Get in touch</Link>
+            <Link to="/quote"  className="hover:text-red-700     border border-red-700 rounded-lg  hover:scale-95 bg-gradient-to-r text-xs from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
+            Get a Quote</Link>
         </div>
         </ul>
 
