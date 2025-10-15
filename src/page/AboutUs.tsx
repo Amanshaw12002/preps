@@ -119,7 +119,7 @@ export default function AboutUs() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants}>
               <motion.h1 
-                className="text-5xl lg:text-7xl font-semibold text-white mb-8"
+                className="text-5xl lg:text-7xl  font-inter text-white mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -127,7 +127,7 @@ export default function AboutUs() {
                 About Us
               </motion.h1>
               <motion.p 
-                className="text-xl text-gray-200 leading-relaxed max-w-lg"
+                className="text-lg text-gray-200 leading-relaxed max-w-lg"
                 variants={itemVariants}
               >
                 We help Amazon sellers grow by{" "}

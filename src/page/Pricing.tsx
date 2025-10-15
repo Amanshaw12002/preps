@@ -6,20 +6,20 @@ export default function Pricing() {
 <>
 <section className="relative pb-24 z-10">
   {/* Background Gradient */}
-  <div className="absolute top-0 h-64 bg-gradient-to-b from-red-900 via-red-800 to-red-700 w-full -z-1"></div>
+  <div className="absolute top-0 h-106 bg-gradient-to-b from-red-900 via-red-800 to-red-700 w-full -z-1"></div>
 
-  <div className="mx-auto max-w-6xl pt-32 z-10">
+  <div className="mx-auto max-w-6xl pt-42 z-10">
     {/* Section Heading */}
     <div className="max-w-5xl mx-auto text-center mb-16">
-      <h1 className="text-6xl font-mon  mb-4 text-white">Our Pricing</h1>
-      <h2 className="text-md text-white mx-auto">
+      <h1 className="text-5xl font-mon  mb-4 text-white">Our Pricing</h1>
+      <h2 className="text-md text-white  max-w-lg mx-auto mb-12">
         Transparent and competitive pricing for Amazon prep services.
-        <span className="font-medium text-yellow-300"> No hidden fees</span> — pay
+        <span className="font-semibold text-black"> No hidden fees</span> — pay
         only for what you use.
       </h2>
+         <h2 className=" w-fit  mx-auto text-center mb-12 font-semibold  p-2   text-6xl">Choose Your Plan</h2>
     </div>
 
-         <h2 className=" w-fit  mx-auto text-center mb-12 font-semibold  p-2   text-6xl">Choose Your Plan</h2>
     {/* Pricing Cards */}
     <div className="grid md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl mx-auto">
       {/* Online Arbitrage */}
