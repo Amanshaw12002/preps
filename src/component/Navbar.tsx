@@ -66,26 +66,40 @@ export default function Navbar() {
             <Link to="/Pricing" className="hover:bg-white border-1 border-transparent hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700 ">Pricing</Link>
           </li>
 
-          <li className="group relative ml-1">
-            <span className="cursor-pointer inline-block  ">Services</span>
-            <ul
-              className="absolute top-4 left-0 w-48 flex-col bg-gray-100 border border-gray-300 rounded-md shadow-lg p-2 opacity-0 scale-90 pointer-events-none
-                group-hover:opacity-100  group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-500 origin-top"
-            >
-              <li className="flex items-center gap-2 pl-2 overflow-hidden  rounded  hover:text-red-800  mb-2  hover:bg-white hover:border border cursor-pointer transition ">
-                <Link to="/service/fba" className="flex-between h-10 gap-2">
-                <Package  className="text-red-800 w-8 p-1 h-full  "/>
-                <span className="text-md font-semibold" >FBA & WFS</span>
-                </Link>
-              </li>
-              <li className="flex items-center gap-2 pl-2 overflow-hidden hover:border border rounded hover:text-red-800  mb-2  hover:bg-white transition">
-                <Link to="/service/fbm" className="flex-between h-10 gap-2">
-                <Truck className="text-red-800 w-8 p-1 h-full "/>
-                <span className="text-md font-semibold" >FBM</span>
-                </Link>
-              </li>
-            </ul>
-          </li>
+         <li className="group relative ml-1">
+  <span className="cursor-pointer inline-block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-red-800 transition-all duration-300 font-medium">
+    Services
+  </span>
+  
+  <ul
+    className="absolute top-full left-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-2 opacity-0 scale-95 pointer-events-none
+      group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-300 origin-top"
+  >
+    <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-red-50 hover:text-red-800 mb-2 transition-all duration-300 group/item">
+      <div className="flex items-center justify-center w-8 h-8 bg-red-100 rounded-lg">
+        <Package className="text-red-700 w-4 h-4" />
+      </div>
+      <Link to="/service/fba" className="flex-1">
+        <span className="text-sm font-semibold">FBA & WFS</span>
+        <span className="text-xs text-gray-500 opacity-0 group-hover/item:opacity-100 block transition-opacity duration-300">
+          Amazon fulfillment
+        </span>
+      </Link>
+    </li>
+    
+    <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-red-50 hover:text-red-800 transition-all duration-300 group/item">
+      <div className="flex items-center justify-center w-8 h-8 bg-red-100 rounded-lg">
+        <Truck className="text-red-700 w-4 h-4" />
+      </div>
+      <Link to="/service/fbm" className="flex-1">
+        <span className="text-sm font-semibold">FBM</span>
+        <span className="text-xs text-gray-500 opacity-0 group-hover/item:opacity-100 block transition-opacity duration-300">
+          Merchant fulfillment
+        </span>
+      </Link>
+    </li>
+  </ul>
+</li>
           <li className="  transition">
             <Link to="/aboutUs" className="hover:bg-white px-2 py-2 mx-1 rounded-md border-1 border-transparent hover:border-red-400 hover:text-red-700">AboutUs</Link>
           </li>
