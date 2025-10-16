@@ -23,7 +23,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <nav className={`bg-transparent w-screen   h-14   flex-center fixed px-4 top-4 z-50 transition-all duration-500`}>
-      <div className="  mx-4 shadow-2xl shadow-black  bg-white  w-5xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
+      <div className="  mx-4 shadow-2xl shadow-black  bg-white  w-4xl rounded-lg  px-4 h-full flex-between transition-all duration-500">        {/* Logo */}
         <Link to="/" className="flex group items-center text-gray-900 overflow-hidden  ">
           <motion.img 
           initial={{x:-45}} 

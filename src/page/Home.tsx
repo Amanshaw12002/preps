@@ -4,7 +4,6 @@ import inventory from "../asset/inventory.png"
 import truck from "../asset/truck.png"
 import rec from "../asset/rec.png"
 import dashboard from "../asset/dashboard.png"
-import { useState } from 'react';
 import CustomCalendar from '@/component/Meeting';
 import MotionCrousel from '@/component/slider';
 import PrepServicesSection from '@/component/PrepServicesSection';
@@ -13,6 +12,10 @@ import FAQ from './FAQ';
 import OptimizedSection from '@/component/section1';
 import { easeOut, motion } from 'framer-motion';
 
+import { useState } from "react";
+;
+import { useLenis } from '@/component/lenis';
+import Head from '@/component/Head';
 
 
 export const processSteps: ProcessStep[] = [
@@ -100,36 +103,43 @@ interface ProcessStep {
 }
 
 export default function Home() {
-  const [itemSelected,setItemSelected] = useState(0);
+   const [itemSelected,setItemSelected] =useState(0);
+
+ useLenis();
+
+
   return (
     <>
+      <Head title="BlackBoxPreps | Amazon Prep Center"   />
     <OptimizedSection/>
 
-    <section className='relative py-16 border-y border-red-900 bg-radial from-red-100'>
+    <section className='relative py-16 border-y border-red-800 bg-radial from-red-100'>
+      
+    
   {/* Animated Corner Dots */}
   <motion.div 
-    className="absolute -top-1.5 left-6.5 w-3 h-3 bg-red-900 rounded-full"
+    className="absolute -top-1.5 left-6.5 w-3 h-3 bg-red-800 "
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.1, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -top-1.5 right-6.5 w-3 h-3 bg-red-900 rounded-full"
+    className="absolute -top-1.5 right-6.5 w-3 h-3 bg-red-800 "
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.2, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900 rounded-full"
+    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800 "
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.3, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900 rounded-full"
+    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800 "
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
@@ -138,14 +148,14 @@ export default function Home() {
 
   {/* Animated Border Lines */}
   <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-900"
+    className="absolute top-0 left-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
   ></motion.div>
   <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-900"
+    className="absolute top-0 right-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}
@@ -162,7 +172,7 @@ export default function Home() {
       transition={{ delay: 0.3, duration: 0.6 }}
     ></motion.div>
     <motion.div 
-      className="absolute top-0 left-1/2 w-px h-full bg-red-900"
+      className="absolute top-0 left-1/2 w-px h-full bg-red-800"
       initial={{ scaleY: 0 }}
       whileInView={{ scaleY: 1 }}
       viewport={{ once: true }}
@@ -176,7 +186,7 @@ export default function Home() {
       transition={{ delay: 0.5, duration: 0.6 }}
     ></motion.div>
     <motion.div 
-      className="absolute top-1/4 left-0 w-full h-px bg-red-900"
+      className="absolute top-1/4 left-0 w-full h-px bg-red-800"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -190,7 +200,7 @@ export default function Home() {
       transition={{ delay: 0.5, duration: 0.6 }}
     ></motion.div>
     <motion.div 
-      className="absolute top-3/4 left-0 w-full h-px bg-red-900"
+      className="absolute top-3/4 left-0 w-full h-px bg-red-800"
       initial={{ scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
@@ -344,28 +354,28 @@ export default function Home() {
   
   {/* Animated Corner Dots */}
   <motion.div 
-    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-900"
+    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.1, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-900"
+    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.2, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900"
+    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.3, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900"
+    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
@@ -374,22 +384,22 @@ export default function Home() {
   
   {/* Animated Border Lines */}
   <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-900"
+    className="absolute top-0 left-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
   ></motion.div>
   <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-900"
+    className="absolute top-0 right-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, delay: 0.2 }}
   ></motion.div>
- 
+
   {/* Animated Grid Lines */}
-  <div className='text-left relative mb-12 ml-4'>
+  <div className=' relative max-w-6xl  mx-auto mb-12 '>
     {[
       'h-full w-0.5 absolute top-20 left-20 bg-gradient-to-b from-white via-slate-200 to-white -z-1',
       'h-px w-full absolute top-20 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
@@ -418,7 +428,7 @@ export default function Home() {
     ))}
                          
     <motion.div 
-      className='inline-flex border border-red-200 items-center gap-2 bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm'
+      className='inline-flex border border-red-200  items-center gap-2 bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm'
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -793,28 +803,28 @@ export default function Home() {
 <section className="relative flex justify-center items-center overflow-hidden bg-gray-100 py-8 px-4">
   {/* Animated Corner Dots */}
   <motion.div 
-    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-900"
+    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.1, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-900"
+    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.2, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900"
+    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
     transition={{ delay: 0.3, duration: 0.5 }}
   ></motion.div>
   <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900"
+    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
     initial={{ scale: 0 }}
     whileInView={{ scale: 1 }}
     viewport={{ once: true }}
@@ -823,14 +833,14 @@ export default function Home() {
   
   {/* Animated Border Lines */}
   <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-900"
+    className="absolute top-0 left-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
   ></motion.div>
   <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-900"
+    className="absolute top-0 right-8 w-px h-full bg-red-800"
     initial={{ scaleY: 0 }}
     whileInView={{ scaleY: 1 }}
     viewport={{ once: true }}

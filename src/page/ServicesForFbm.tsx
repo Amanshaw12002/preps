@@ -1,11 +1,17 @@
+
+import Head from "@/component/Head";
 import product1 from "../asset/IMG_6565 2.png";
 import man4 from "../asset/man4.jpg";
 
 import {  Package, DollarSign, Truck } from "lucide-react";
 
 export default function FbmService() {
+
+
   return (
     <>
+      <Head title=" BlackBoxPreps | FBM service"  />
+    
       <section className="bg-gray-50 py-16 mt-16 px-6">
         {/* Heading */}
         <div className="max-w-4xl mx-auto flex items-start flex-col mb-12">

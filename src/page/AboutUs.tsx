@@ -4,6 +4,8 @@ import man3 from "../asset/man3.jpg";
 import { Briefcase, Users, Globe, ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Head from "@/component/Head";
+
 
 // Animation variants
 const containerVariants:Variants = {
@@ -89,7 +91,7 @@ export default function AboutUs() {
     triggerOnce: true,
     threshold: 0.3
   });
-
+  
   const stats = [
     { number: "500+", label: "Sellers Helped" },
     { number: "99.8%", label: "Success Rate" },
@@ -97,9 +99,11 @@ export default function AboutUs() {
     { number: "2M+", label: "Units Processed" }
   ];
 
+
+
   return (
     <>
-      {/* ======================= Section 1: Hero ======================= */}
+  <Head title=" BlackBoxPreps | AboutUs" />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <motion.div
           initial={{ opacity: 0, scale: 1.2 }}
@@ -288,7 +292,7 @@ export default function AboutUs() {
               <div className="w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center mb-6">
                 <Briefcase className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Our Experience
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -306,7 +310,7 @@ export default function AboutUs() {
               <div className="w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center mb-6">
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Our Team
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -324,7 +328,7 @@ export default function AboutUs() {
               <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                 <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="text-xl font-semibold mb-4">
                 Our Vision
               </h3>
               <p className="text-gray-200 leading-relaxed">

@@ -21,31 +21,31 @@ export default function WhatSetsUsApart() {
   ];
 
   return (
-    <section className="py-12 relative border-y border-red-900 bg-radial from-red-100 to-white">
+    <section className="py-12 relative border-y border-red-800 bg-radial from-red-100 to-white">
       {/* Animated Corner Dots */}
       <motion.div 
-        className="absolute -top-1 left-6.5 w-3 h-3 bg-red-900"
+        className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -top-1 right-6.5 w-3 h-3 bg-red-900"
+        className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900"
+        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900"
+        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
@@ -54,14 +54,14 @@ export default function WhatSetsUsApart() {
       
       {/* Animated Border Lines */}
       <motion.div 
-        className="absolute top-0 left-8 w-px h-full bg-red-900"
+        className="absolute top-0 left-8 w-px h-full bg-red-800"
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       ></motion.div>
       <motion.div 
-        className="absolute top-0 right-8 w-px h-full bg-red-900"
+        className="absolute top-0 right-8 w-px h-full bg-red-800"
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true }}

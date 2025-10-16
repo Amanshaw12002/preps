@@ -4,6 +4,8 @@ import product from "../asset/product.png";
 import check from "../asset/check.jpg";
 import { motion,type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Head from "@/component/Head";
+
 
 // Animation variants
 const containerVariants:Variants = {
@@ -114,6 +116,8 @@ const AnimatedSection: React.FC<{
   );
 };
 
+
+
 export default function FbaService() {
   const [ctaRef, ctaInView] = useInView({
     triggerOnce: true,
@@ -208,8 +212,9 @@ export default function FbaService() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="py-16 px-6">
+  <Head title=" BlackBoxPreps | FBA service"  />
+  
+        <section className="py-16 px-6">
         <AnimatedSection className="max-w-4xl mx-auto flex items-center">
           <motion.div variants={itemVariants} className="flex text-5xl font-inter font-medium items-start flex-col mt-12">
             <h2 className="text-gray-900">Simplified Workflow</h2>

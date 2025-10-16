@@ -3,7 +3,6 @@ import Home from './page/Home'
 import Pricing from './page/Pricing'
 import Navbar from "@/component/Navbar";
 import Footer from './component/footer';
-import Contact from './page/Contact';
 import AboutUs from './page/AboutUs';
 import FbaService from './page/ServicesForFba';
 import FbmService from './page/ServicesForFbm';
@@ -20,7 +19,6 @@ function App() {
 
        <Route path="/" element={<Home/>}/>
        <Route path="/pricing" element={<Pricing/>}/>
-       <Route path="/contact" element={<Contact/>}/>
        <Route path="/quote" element={<GetQuoteForm/>}/>
        <Route path="/aboutUs" element={<AboutUs/>}/>
        <Route path="/faq" element={<FAQ/>}/>

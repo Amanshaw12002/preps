@@ -69,28 +69,28 @@ export default function PrepServicesSection() {
     <section className="py-12 relative border-y border-red-200 bg-gradient-to-b from-red-50 to-white">
       {/* Animated Corner Elements */}
       <motion.div 
-        className="absolute -top-1 left-6.5 w-3 h-2 bg-red-900"
+        className="absolute -top-1 left-6.5 w-3 h-2 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -top-1 right-6.5 w-3 h-2 bg-red-900"
+        className="absolute -top-1 right-6.5 w-3 h-2 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-900"
+        className="absolute -bottom-1 right-6.5 w-3 h-3  bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-900"
+        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
@@ -99,14 +99,14 @@ export default function PrepServicesSection() {
       
       {/* Animated Border Lines */}
       <motion.div 
-        className="absolute top-0 left-8 w-px h-full bg-red-900"
+        className="absolute top-0 left-8 w-px h-full bg-red-800"
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       ></motion.div>
       <motion.div 
-        className="absolute top-0 right-8 w-px h-full bg-red-900"
+        className="absolute top-0 right-8 w-px h-full bg-red-800"
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true }}
@@ -121,20 +121,24 @@ export default function PrepServicesSection() {
             whileInView={{  y: 0}}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-3xl flex items-center font-semibold text-gray-800 mb-6 text-center"
+            className="text-3xl flex items-center font-semibold text-slate-900 mb-6 text-center"
           >
-            How <span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-black via-red-800 to-red-500">BlackBoxPreps </span> Help You{" "}
+            How 
+<span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>             Help You{" "}
+            <div className="border rounded-xl px-2 mx-4 transition-transform duration-500">
+
             <motion.span
               key={words[index]}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="flex items-center w-fit px-4 mx-2 text-black bg-white border border-gray-400 rounded-xl py-2"
-            > 
-              <span className="text-xl p-1 text-white bg-red-800 mr-2 rounded-md">{icons[index]}</span>
+              className="flex items-center w-fit  mx-2 text-black  rounded-xl py-2"
+              > 
+              <span className="text-xl p-1 text-white bg-red-600 mr-2 rounded-md">{icons[index]}</span>
               <span>{words[index]}</span>
-            </motion.span>{" "}
+            </motion.span>
+              </div>{" "}
             Your Business
           </motion.h2>
         </div>
