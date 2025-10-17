@@ -105,7 +105,7 @@ export default function Navbar() {
           </li>
         <div className="flex-between gap-4">
 
-            <Link to="/contact"  className=" bg-white text-black border border-black       hover:scale-95   rounded-lg text-xs  font-semibold    px-2 py-2 transition">
+            <Link to="https://dashboard.blackboxpreps.com/login"  className=" bg-white text-black border border-black       hover:scale-95   rounded-lg text-xs  font-semibold    px-2 py-2 transition">
             Dashboard</Link>
             <Link to="/quote"  className="hover:text-red-700     border border-red-700 rounded-lg  hover:scale-95 bg-gradient-to-r text-xs from-black  to-red-600 bg-clip-text text-transparent font-semibold    p-2 transition">
             Get a Quote</Link>

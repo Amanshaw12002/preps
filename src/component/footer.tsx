@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import { Link } from "react-router-dom";
 // Animation variants
 const containerVariants:Variants = {
   hidden: { opacity: 0 },
@@ -124,21 +124,24 @@ export default function Footer() {
             {/* Social Icons */}
             <motion.div variants={itemVariants} className="flex space-x-4">
               {[
-                { icon: FaFacebook, label: "Facebook" },
-                { icon: FaTwitter, label: "Twitter" },
-                { icon: FaInstagram, label: "Instagram" }
+                { icon: FaFacebook, label: "Facebook",to:"https://x.com/BlackboxPreps" },
+                { icon: FaTwitter, label: "Twitter",to:"" },
+                { icon: FaInstagram, label: "Instagram",to:"https://www.instagram.com/blackboxprepco/" }
               ].map((social, index) => (
-                <motion.a
+                <Link
+                to={social.to}
+                >
+                <motion.div
                   key={social.label}
-                  href="#"
                   variants={socialIconVariants}
                   whileHover="hover"
                   className="p-3 bg-slate-700 rounded-xl hover:bg-royal-red transition duration-300"
                   aria-label={social.label}
                   style={{ transitionDelay: `${index * 0.1}s` }}
-                >
+                  >
                   <social.icon className="h-5 w-5 text-white" />
-                </motion.a>
+                </motion.div>
+                  </Link>
               ))}
             </motion.div>
           </div>
@@ -240,8 +243,9 @@ export default function Footer() {
               <motion.li variants={itemVariants} className="flex items-start">
                 <FaMapMarkerAlt className="h-5 w-5 text-royal-red mr-3 mt-1 flex-shrink-0" />
                 <span className="text-slate-800 text-sm font-light">
-                  Darwin First, Chicago<br />
-                  Illinois, USA
+                  9 brookside dr Unit B,<br/>
+                   Wilmington DE 19804
+
                 </span>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center">
@@ -250,7 +254,8 @@ export default function Footer() {
                   href="mailto:contact@blackboxpreps.com" 
                   className="text-slate-800 font-light text-sm hover:text-royal-red transition duration-300"
                 >
-                  contact@blackboxpreps.com
+                  blackboxprepcenter@gmail.com
+
                 </a>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center">
@@ -259,7 +264,8 @@ export default function Footer() {
                   href="tel:+15017772993" 
                   className="text-slate-800 font-light hover:text-royal-red transition duration-300"
                 >
-                  (501) 777-2993
+                  201-628-6391
+
                 </a>
               </motion.li>
             </ul>
