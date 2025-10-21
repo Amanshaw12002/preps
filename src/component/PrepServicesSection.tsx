@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Warehouse, Truck, Package } from "lucide-react";
 import { motion } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function PrepServicesSection() {
   const icons = [<TrendingUp />, <Workflow />, <Trophy />];
@@ -278,16 +279,9 @@ export default function PrepServicesSection() {
           >
             Let's take the prep work off your plate — so you can focus on growth.
           </motion.p>
-          <motion.button 
-            className="bg-white border border-gray-400 text-gray-800 px-8 py-3 rounded-xl font-semibold shadow-md transition-all"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.1, duration: 0.5 }}
-            whileHover={{ scale: 1.05, backgroundColor: "#fef2f2" }}
-          >
-            Get a Custom Quote
-          </motion.button>
+           <Link to="/quote" className=" border-2 border-red-700 rounded-lg  bg-gradient-to-r text-xs from-black to-red-600 bg-clip-text text-transparent font-semibold px-4 py-3 transition">
+              Get a Custom Quote
+            </Link>
         </motion.div>
       </div>
     </section>
