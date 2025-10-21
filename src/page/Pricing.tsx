@@ -4,6 +4,7 @@ import Section2 from "@/component/section2";
 import { motion, type Variants } from "framer-motion";
 import { Package, ShoppingBag, DollarSign, Truck, Warehouse, Crown, Check } from "lucide-react";
 import { Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Pricing() {
   const containerVariants:Variants = {
@@ -410,32 +411,24 @@ export default function Pricing() {
                 viewport={{ once: true }}
                 transition={{ delay: 1.2 }}
               >
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.3 }}>
+                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }}  whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.3 }}>
                   <DollarSign className="inline w-4 h-4 mr-1" /> Additional Fees
                 </motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.4 }}>
+                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.4 }}>
                   <Truck className="inline w-4 h-4 mr-1" /> Additional Services
                 </motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.5 }}>
+                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.5 }}>
                   <Warehouse className="inline w-4 h-4 mr-1" /> Storage Options
                 </motion.li>
               </motion.ul>
               
               <div className="mt-auto">
-                <motion.button 
-                  className="font-semibold text-lg w-full border-2 border-gray-400 bg-gray-200 text-black cursor-pointer rounded-sm py-2"
-                  whileHover={{ scale: 1.05, backgroundColor: "#e5e7eb" }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 1.6 }}
-                >
-                  Contact Us
-                </motion.button>
+                <Link to="/quote" className=" rounded-lg px-14 hover:border-gray-400 hover:border border py-3 transition">
+              Get a Custom Quote
+            </Link>
 
                 <motion.p 
-                  className="text-xs text-gray-500 mt-2 italic"
+                  className="text-xs text-gray-500 mt-4 italic"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
