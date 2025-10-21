@@ -7,6 +7,14 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss(),
   ],
+   server: {
+    open: true, // optional - opens browser automatically
+  },
+    build: {
+    rollupOptions: {
+      input: '/index.html',
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -66,7 +66,9 @@ export default function PrepServicesSection() {
   ];
 
   return (
-    <section className="py-12 relative border-y border-red-200 bg-gradient-to-b from-red-50 to-white">
+    <section className="py-12 relative border-y border-red-200 ">
+
+
       {/* Animated Corner Elements */}
       <motion.div 
         className="absolute -top-1 left-6.5 w-3 h-2 bg-red-800"
@@ -113,7 +115,9 @@ export default function PrepServicesSection() {
         transition={{ duration: 0.8, delay: 0.2 }}
       ></motion.div>
 
-      <div className="max-w-5xl mx-auto px-10 text-center">
+      <div className="max-w-5xl mx-auto relative px-10 text-center">
+
+        
         {/* Section Header */}
         <div className="flex-center ">
           <motion.h2
@@ -144,7 +148,7 @@ export default function PrepServicesSection() {
         </div>
 
         <motion.p 
-          className="text-sm text-gray-800 max-w-3xl mx-auto mb-16"
+          className="text-sm text-gray-700 max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

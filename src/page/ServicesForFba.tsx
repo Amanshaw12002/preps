@@ -1,10 +1,10 @@
 import { ShieldCheck, TrendingUp, Clock } from "lucide-react";
-import man4 from "../asset/man4.jpg";
 import product from "../asset/product.png";
 import check from "../asset/check.jpg";
 import { motion,type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Head from "@/component/Head";
+import Section2 from "@/component/section2";
 
 
 // Animation variants
@@ -119,10 +119,6 @@ const AnimatedSection: React.FC<{
 
 
 export default function FbaService() {
-  const [ctaRef, ctaInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2
-  });
 
   const features = [
     {
@@ -467,39 +463,9 @@ export default function FbaService() {
       </section>
 
       {/* CTA Section */}
-      <motion.section 
-        ref={ctaRef}
-        initial="hidden"
-        animate={ctaInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        className="relative mt-12 flex flex-col items-center"
-      >
-        <motion.div 
-          variants={itemVariants}
-          className="max-w-4xl text-white text-center rounded-t-3xl pt-12 pb-6 bg-red-800 mx-auto px-6 relative z-10"
-        >
-          <h2 className="text-3xl font-medium mb-4">Ready to Simplify Your FBA Prep?</h2>
-          <p className="text-sm mb-8 leading-relaxed">
-            Partner with <span className="font-semibold">BlackBoxPreps</span> today and experience
-            stress-free product preparation, faster delivery, and complete Amazon compliance.
-          </p>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white cursor-pointer text-red-800 px-8 py-3 rounded-xl font-medium hover:bg-gray-100 transition"
-          >
-            Get Started Today
-          </motion.button>
-        </motion.div>
-
-        <motion.img
-          variants={imageVariants}
-          whileHover="hover"
-          src={man4}
-          className="w-full md:w-4xl rounded-b-2xl object-cover h-96 mx-auto"
-          alt="FBA illustration"
-        />
-      </motion.section>
+   
+            <Section2/>
+      
     </>
   );
 }

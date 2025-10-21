@@ -60,14 +60,14 @@ export default function FAQ() {
         transition={{ delay: 0.2, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
+        className="absolute -bottom-11 right-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
       ></motion.div>
       <motion.div 
-        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
+        className="absolute -bottom-11 left-6.5 w-3 h-3 bg-red-800"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
@@ -94,7 +94,6 @@ export default function FAQ() {
   
   
   <div className="flex-between relative border-l-2 overflow-hidden">
-  
   <motion.h2 
     className="text-4xl p-4 h-fit font-medium text-left mb-10 text-black"
     initial="hidden"
@@ -107,16 +106,16 @@ export default function FAQ() {
         }
       }
     }}
-  >
+    >
     {"Frequently Asked Questions".split("").map((char, index) => (
       <motion.span
-        key={index}
-        variants={{
-          hidden: { opacity: 0, x: -100 },
-          visible: { opacity: 1, x: 0 }
-        }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="inline-block"
+      key={index}
+      variants={{
+        hidden: { opacity: 0, x: -100 },
+        visible: { opacity: 1, x: 0 }
+      }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="inline-block"
       >
         {char === " " ? "\u00A0" : char}
       </motion.span>

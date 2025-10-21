@@ -1,5 +1,6 @@
 import Head from "@/component/Head";
 import { useLenis } from "@/component/lenis";
+import Section2 from "@/component/section2";
 import { motion, type Variants } from "framer-motion";
 import { Package, ShoppingBag, DollarSign, Truck, Warehouse, Crown, Check } from "lucide-react";
 import { Settings } from "lucide-react";
@@ -99,14 +100,14 @@ export default function Pricing() {
               Our Pricing
             </motion.h1>
             <motion.h2 
-              className="text-md text-white max-w-lg mx-auto mb-4"
+              className="text-md text-white max-w-lg mx-auto mb-8"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Transparent and competitive pricing for Amazon prep services.
-              <span className="font-semibold text-black"> No hidden fees</span> — pay
-              only for what you use.
+              Transparent and competitive pricing
+               — only pay
+               for what you use.
             </motion.h2>
             
             <motion.div 
@@ -140,7 +141,7 @@ export default function Pricing() {
 
           {/* Pricing Cards */}
           <motion.div 
-            className="grid md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl mx-auto"
+            className="grid md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl mx-auto mt-4"
             variants={containerVariants}
           >
             {/* Online Arbitrage */}
@@ -255,7 +256,7 @@ export default function Pricing() {
             >
               
               <motion.div 
-                className="flex items-center gap-2 mb-6 text-white"
+                className="flex items-center  gap-2  text-white"
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -271,7 +272,7 @@ export default function Pricing() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                <h2 className="text-sm border-b border-gray-400 pb-6 mb-6 font-medium text-gray-300">
+                <h2 className="text-sm border-b border-gray-400 py-6 mb-6 font-medium text-gray-300">
                   Designed for bulk shipments and brand products. Includes labeling, bundling, custom packaging, and quality inspection for professional presentation.
                 </h2>
               </motion.div>
@@ -601,7 +602,7 @@ export default function Pricing() {
                 <div className="flex-between border p-1 border-gray-400 rounded-lg">
                   <span className="font-medium flex p-2 text-gray-800">After 14 days</span>
                   <motion.div 
-                    className="flex-between px-4 py-2 gap-1 mx-2 border-gray-400 bg-red-800 rounded-lg"
+                    className="flex-between px-4 py-2 gap-1 mx-2 border-gray-400 bg-red-600 rounded-lg"
                     whileHover={{ scale: 1.1 }}
                   >
                     <span className="font-medium text-xs flex border-gray-400 text-white">First 14 days-</span>
@@ -615,6 +616,7 @@ export default function Pricing() {
           </motion.div>
         </motion.div>
       </section>
+      <Section2/>
     </>
   );
 }

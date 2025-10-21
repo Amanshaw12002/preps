@@ -1,22 +1,26 @@
 import { easeIn, easeOut, motion } from 'framer-motion';
 import { Zap, Shield, DollarSign } from 'lucide-react';
-import box from '../asset/box.png'
+import box from '../asset/box2.png'
 
-export default function OptimizedSection() {
+export default function HeroSection() {
+
+
+
+
   return (
-    <section className="flex-center relative pt-4 pb-60 ">
+    <section className="flex-center relative pt-4 pb-50 ">
   
              
 
   <motion.div 
-         className="absolute top-20 left-6.5 w-3 h-3 bg-red-800"
+         className="absolute top-10 left-6.5 w-3 h-3 bg-red-800"
          initial={{ scale: 0 }}
          whileInView={{ scale: 1 }}
          viewport={{ once: true }}
          transition={{ delay: 0.1, duration: 0.5 }}
        ></motion.div>
        <motion.div 
-         className="absolute top-20 right-6.5 w-3 h-3 bg-red-800"
+         className="absolute top-10 right-6.5 w-3 h-3 bg-red-800"
          initial={{ scale: 0 }}
          whileInView={{ scale: 1 }}
          viewport={{ once: true }}
@@ -25,7 +29,6 @@ export default function OptimizedSection() {
        <motion.div 
          className="absolute -bottom-1 right-6.5 w-3 h-3  bg-red-800"
          initial={{ scale: 0 }}
-         whileInView={{ scale: 1 }}
          viewport={{ once: true }}
          transition={{ delay: 0.3, duration: 0.5 }}
        ></motion.div>
@@ -53,7 +56,7 @@ export default function OptimizedSection() {
          transition={{ duration: 0.8, delay: 0.2 }}
        ></motion.div>
        <motion.div 
-         className="absolute top-21  w-full h-px bg-red-800"
+         className="absolute top-11  w-full h-px bg-red-800"
          initial={{ scaleY: 0 }}
          whileInView={{ scaleY: 1 }}
          viewport={{ once: true }}
@@ -69,11 +72,11 @@ export default function OptimizedSection() {
       >
         
         {/* Animated Value Cards */}
-        <div className='absolute -bottom-60 w-full max-w-4xl left-1/2 rounded-2xl py-4 pr-18 transform -translate-x-1/2 flex justify-between gap-4'>
+        <div className='absolute -bottom-50 w-full max-w-4xl left-1/2 rounded-2xl py-4  transform -translate-x-1/2 flex justify-between gap-4'>
           {/* Value 1 */}
       {/* Value 1 */}
 <motion.div 
-  className='group relative flex-1 max-w-48 h-48 bg-white border-2 border-red-400  rounded-2xl shadow-2xl p-6 hover:-translate-y-3 transition-all duration-500'
+  className='group relative flex-1 max-w-48 h-fit bg-white border border-red-400  rounded-2xl hover:shadow-red-600 shadow-black shadow-lg p-6 hover:-translate-y-3 transition-all duration-500'
   initial={{  y: 100 ,scale:0.7}}
   whileInView={{ y: 0 ,scale:1}}
   viewport={{once:true}}
@@ -81,18 +84,19 @@ export default function OptimizedSection() {
   transition={{  duration: 0.8 , ease:easeIn}}
 >
   <motion.div 
-    className='w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center mb-3'
+    className=' w-fit gap-2 h-fit  rounded-xl flex-between mb-3'
   >
-    <Zap className="w-5 h-5 text-white" />
-  </motion.div>
-  <motion.h3 
-    className='text-black text-xs font-semibold mb-2'
+    <Zap className="w-5 h-5 text-red-800" />
+    <motion.h3 
+    className='text-black text-xs font-semibold '
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 0.3, duration: 0.6 }}
   >
     Fast Processing
   </motion.h3>
+  </motion.div>
+  
   <motion.p 
     className='text-black text-xs leading-relaxed'
     initial={{ opacity: 0 }}
@@ -106,7 +110,7 @@ export default function OptimizedSection() {
 
 {/* Value 2 */}
 <motion.div 
-  className='group relative flex-1 max-w-48 h-48 bg-white border-2 border-red-400 rounded-2xl shadow-2xl p-6 hover:-translate-y-3 transition-all duration-500'
+  className='group relative flex-1 max-w-48 h-fit hover:shadow-red-600 shadow-black shadow-lg bg-white border border-red-400 rounded-2xl  p-6 hover:-translate-y-3 transition-all duration-500'
   initial={{  y: 100 ,scale:0.6}}
   whileInView={{ y: 0 ,scale:1}}
   viewport={{once:true}}
@@ -114,18 +118,19 @@ export default function OptimizedSection() {
   transition={{  duration: 1 , ease:easeOut}}
 >
   <motion.div 
-    className='w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center mb-3'
+    className='w-fit gap-2  flex-between mb-3'
   >
-    <Shield className="w-5 h-5 text-white" />
-  </motion.div>
+    <Shield className="w-5 h-5 text-red-800" />
+    
   <motion.h3 
-    className='text-black text-xs font-semibold mb-2'
+    className='text-black text-xs font-semibold '
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 0.5, duration: 0.6 }}
   >
     Quality Guarantee
   </motion.h3>
+  </motion.div>
   <motion.p 
     className='text-black text-xs leading-relaxed'
     initial={{ opacity: 0 }}
@@ -139,7 +144,7 @@ export default function OptimizedSection() {
 
 {/* Value 3 */}
 <motion.div 
-  className='group relative flex-1 max-w-48 h-48 bg-white border-2 border-red-400 rounded-2xl shadow-2xl p-6 hover:-translate-y-3 transition-all duration-500'
+  className='group relative flex-1 max-w-48 h-fit bg-white border hover:shadow-red-600 shadow-black shadow-lg border-red-400 rounded-2xl p-6 hover:-translate-y-3 transition-all duration-500'
   initial={{  y: 100 ,scale:0.7}}
   whileInView={{ y: 0 ,scale:1}}
   viewport={{once:true}}
@@ -147,19 +152,20 @@ export default function OptimizedSection() {
   transition={{  duration: 0.8 , ease:easeOut}}
 >
   <motion.div 
-    className='w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center mb-3'
+    className='flex-between mb-3'
 
   >
-    <DollarSign className="w-5 h-5 text-white" />
-  </motion.div>
-  <motion.h3 
-    className='text-black text-xs font-semibold mb-3'
+    <DollarSign className="w-5 h-5 text-red-800" />
+    <motion.h3 
+    className='text-black text-xs font-semibold '
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 0.7, duration: 0.6 }}
   >
     Transparent Pricing
   </motion.h3>
+  </motion.div>
+  
   <motion.p 
     className='text-black text-xs leading-relaxed'
     initial={{ opacity: 0 }}
@@ -177,7 +183,7 @@ export default function OptimizedSection() {
         
 
         {/* Content Section with Animated Grid Lines */}
-        <div className="relative pl-14 mx-auto xl:max-w-xl max-w-xl lg:pt-24 shrink-0 text-black">
+        <div className="relative pl-14 mx-auto xl:max-w-4xl max-w-3xl lg:pt-24 shrink-0 text-black">
 
  
 
@@ -190,11 +196,20 @@ export default function OptimizedSection() {
             { class: 'h-px w-full top-40 left-20 bg-gradient-to-r from-red-800 via-red-200 to-white', delay: 0.2 },
             { class: 'h-px w-full top-60 left-20 bg-gradient-to-r from-red-800 via-slate-200 to-white', delay: 0.3 },
             { class: 'h-px w-full top-80 left-20 bg-gradient-to-r from-red-200 via-slate-200 to-white', delay: 0.4 },
-            { class: 'h-px w-full top-100 left-20 bg-gradient-to-r from-red-800  via-slate-200 to-red-800', delay: 0.5 },
-            { class: 'h-full w-px top-20 left-40 bg-gradient-to-b from-red-800 via-slate-200 to-red-800', delay: 0.6 },
+            { class: 'h-px w-full top-100 left-20 bg-gradient-to-r from-red-500  via-white to-red-800', delay: 0.5 },
+            { class: 'h-px w-full -bottom-20 left-20 bg-gradient-to-r from-red-300  via-white to-red-200', delay: 0.5 },
+            { class: 'h-px w-full -bottom-10 left-20 bg-gradient-to-r from-red-300  via-white to-red-200', delay: 0.5 },
+            { class: 'h-full w-px top-20 left-40 bg-gradient-to-b from-red-800 via-white to-red-800', delay: 0.6 },
             { class: 'h-full w-px top-20 left-60 bg-gradient-to-b from-red-800 via-slate-300 to-red-800', delay: 0.7 },
             { class: 'h-full w-px top-20 left-80 bg-gradient-to-b from-red-800 via-slate-400 to-red-800', delay: 0.8 },
-            { class: 'h-full w-px top-20 left-100 bg-gradient-to-b from-white via-red-200 to-white', delay: 0.9 },
+            { class: 'h-full w-px top-20 left-100 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.2 },
+            { class: 'h-full w-px top-20 right-0 bg-gradient-to-b from-white via-red-200 to-red-700', delay: 1.4 },
+            { class: 'h-full w-px top-20 right-20 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.5 },
+            { class: 'h-full w-px top-20 right-40 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.6 },
+            { class: 'h-full w-px top-20 right-60 bg-gradient-to-b from-white via-red-200 to-red-500', delay: 1.7 },
+            { class: 'h-full w-px top-20 right-80 bg-gradient-to-b from-white via-red-200 to-red-400', delay: 1.8 },
+            { class: 'h-full w-px top-20 right-100 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.9 },
+            { class: 'h-full w-px top-20 -right-20 bg-gradient-to-b from-white via-red-200 to-red-500', delay: 1.9 },
           ].map((line, index) => (
             <motion.div
               key={index}
@@ -206,9 +221,9 @@ export default function OptimizedSection() {
           ))}
           
           {/* Animated Text Content */}
-          <div className="flex lg:flex-col w-lg relative ">
+          <div className="flex lg:flex-col w-2xl relative ">
 
-            <h2 className="text-5xl font-semibold font-inter text-red-700 text-shadow-2xs">
+            <h2 className="text-5xl  font-semibold font-inter text-red-700 text-shadow-2xs">
               <motion.span 
                 className="block pb-1"
                 initial={{ opacity: 0, y: 30,scale:0.7 }}
@@ -245,7 +260,7 @@ export default function OptimizedSection() {
           </div>
 
           <motion.h2 
-            className='text-md font-sans font-normal text-black mt-4 mb-2'
+            className='text-md font-sans font-normal text-red-800 mt-4 mb-2'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -253,7 +268,7 @@ export default function OptimizedSection() {
             You sell, we handle the rest.
           </motion.h2>
           <motion.p 
-            className='font-sans text-xs pr-12 text-gray-700'
+            className='font-sans text-xs pr-12 text-red-700'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
@@ -263,10 +278,10 @@ export default function OptimizedSection() {
         </div>
         
         {/* Animated Image */}
-        <div className='lg:max-w-none relative mt-16 lg:flex-none flex max-w-2xl lg:ml-0'>
-          <div className='max-w-xl flex-none lg:max-w-none'>
+        <div className='lg:max-w-none  absolute left-2/5 -top-30 overflow-hidden -z-1 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='max-w-2xl flex-none lg:max-w-none'>
             <motion.div 
-              className='border-gray-400 border lg:border-0 bg-gray-200 lg:bg-transparent'
+              className='border-gray-400 border lg:border-0  bg-transparent'
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
@@ -274,7 +289,7 @@ export default function OptimizedSection() {
               <motion.img 
                 src={box} 
                 alt="" 
-                className="w-[24rem] object-cover rounded-xl"
+                className="w-[42rem] object-cover rounded-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

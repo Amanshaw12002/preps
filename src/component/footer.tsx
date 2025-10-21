@@ -89,8 +89,8 @@ export default function Footer() {
   });
 
   return (
-    <footer className="bg-gradient-to-br from-white text-black pb-8 px-4">
-      <AnimatedSection className="max-w-6xl overflow-hidden mx-auto border-t pt-12">
+    <footer className="bg-gradient-to-br from-white text-black pb-8 px-8">
+      <AnimatedSection className="max-w-5xl overflow-hidden mx-auto border pt-12 px-14">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Brand Section */}
@@ -105,7 +105,7 @@ export default function Footer() {
                   BlackBoxPreps
                 </motion.h2>
                 <motion.div 
-                  className="w-12 h-1 bg-red-800 mt-2"
+                  className="w-12 h-0.5 bg-red-800 mt-2"
                   initial={{ width: 0 }}
                   animate={{ width: 48 }}
                   transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
@@ -118,14 +118,14 @@ export default function Footer() {
               className="text-slate-800 font-light text-sm leading-relaxed mb-6 max-w-md"
             >
               Professional fulfillment solutions tailored to scale your e-commerce business. 
-              Trusted by sellers worldwide for reliable and efficient service.
+              
             </motion.p>
             
             {/* Social Icons */}
             <motion.div variants={itemVariants} className="flex space-x-4">
               {[
-                { icon: FaFacebook, label: "Facebook",to:"https://x.com/BlackboxPreps" },
-                { icon: FaTwitter, label: "Twitter",to:"" },
+                { icon: FaFacebook, label: "Facebook",to: ""},
+                { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },
                 { icon: FaInstagram, label: "Instagram",to:"https://www.instagram.com/blackboxprepco/" }
               ].map((social, index) => (
                 <Link
@@ -135,11 +135,11 @@ export default function Footer() {
                   key={social.label}
                   variants={socialIconVariants}
                   whileHover="hover"
-                  className="p-3 bg-slate-700 rounded-xl hover:bg-royal-red transition duration-300"
+                  className="p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
                   aria-label={social.label}
                   style={{ transitionDelay: `${index * 0.1}s` }}
                   >
-                  <social.icon className="h-5 w-5 text-white" />
+                  <social.icon className="h-5 w-5 text-black" />
                 </motion.div>
                   </Link>
               ))}
@@ -147,12 +147,12 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <motion.div variants={itemVariants} className="lg:col-span-2">
+          <motion.div variants={itemVariants} className="lg:col-span-2 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
-              className="text-lg font-normal mb-6 text-black relative pb-2"
+              className="text-sm font-medium mb-6 text-gray-700 relative pb-2"
             >
-              Quick Links
+               LINKS
               <motion.div 
                 className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
                 initial={{ width: 0 }}
@@ -161,34 +161,34 @@ export default function Footer() {
               />
             </motion.h3>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Contact', 'Blog'].map((item, index) => (
+              {[{name:'Home',to:"/"},{name: 'About Us',to:"aboutUs"},{name: 'Get a Quote',to:"quote"}].map((item, index) => (
                 <motion.li 
-                  key={item}
+                  key={item.name}
                   variants={linkItemVariants}
                   custom={index}
                 >
-                  <a 
-                    href="#" 
+                  <Link 
+                    to={item.to} 
                     className="text-slate-800 font-light text-sm hover:text-red-800 transition duration-300 flex items-center group"
                   >
                     <motion.span 
                       className="w-2 h-2 bg-royal-red rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"
                       whileHover={{ scale: 1.2 }}
                     />
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
 
           {/* Services */}
-          <motion.div variants={itemVariants} className="lg:col-span-3">
+          <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
-              className="text-lg font-normal mb-6 text-black relative pb-2"
+              className="text-sm font-medium mb-6 text-gray-700 relative pb-2"
             >
-              Our Services
+              SERVICES
               <motion.div 
                 className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
                 initial={{ width: 0 }}
@@ -197,41 +197,46 @@ export default function Footer() {
               />
             </motion.h3>
             <ul className="space-y-4">
-              {[
-                'Amazon FBA Prep',
-                'Order Fulfillment',
-                'Kitting & Bundling',
-                'Storage Solutions',
-                'Returns Handling',
-                'Custom Packaging'
+              {[{
+                name:'Amazon FBA Prep',
+                to:'service/fba'
+               },
+               {
+                name:'FBM Prep',
+                to:'service/fbm'
+               },
+               { 
+               name:'Pricing',
+               to:'pricing'
+              }
               ].map((service, index) => (
                 <motion.li 
-                  key={service}
+                  key={service.name}
                   variants={linkItemVariants}
                   custom={index}
                 >
-                  <a 
-                    href="#" 
-                    className="text-slate-800 text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
+                  <Link 
+                    to={service.to} 
+                    className="text-slate-900 text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
                   >
                     <motion.span 
-                      className="w-2 h-2 bg-royal-red rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"
+                      className="w-2 h-2 bg-red-800 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"
                       whileHover={{ scale: 1.2 }}
                     />
-                    {service}
-                  </a>
+                    {service.name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-3">
+          <motion.div variants={itemVariants} className="lg:col-span-3 pr-4">
             <motion.h3 
               variants={itemVariants}
-              className="text-lg font-normal mb-6 text-black relative pb-2"
+              className="text-sm font-medium text-gray-700 mb-6  relative pb-2"
             >
-              Get In Touch
+              GET IN TOUCH
               <motion.div 
                 className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
                 initial={{ width: 0 }}
@@ -239,19 +244,19 @@ export default function Footer() {
                 transition={{ delay: 0.5, duration: 0.6 }}
               />
             </motion.h3>
-            <ul className="space-y-4">
+            <ul className="space-y-4 ">
               <motion.li variants={itemVariants} className="flex items-start">
                 <FaMapMarkerAlt className="h-5 w-5 text-royal-red mr-3 mt-1 flex-shrink-0" />
                 <span className="text-slate-800 text-sm font-light">
-                  9 brookside dr Unit B,<br/>
+                  9 Brookside Drive, Unit B,<br/>
                    Wilmington DE 19804
 
                 </span>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center">
-                <FaEnvelope className="h-5 w-5 text-red-800 mr-3 flex-shrink-0" />
+                <FaEnvelope className="h-5 w-5 text-slate-800 mr-3 flex-shrink-0" />
                 <a 
-                  href="mailto:contact@blackboxpreps.com" 
+                  href="mailto:blackboxprepcenter@gmail.com" 
                   className="text-slate-800 font-light text-sm hover:text-royal-red transition duration-300"
                 >
                   blackboxprepcenter@gmail.com
@@ -259,10 +264,10 @@ export default function Footer() {
                 </a>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center">
-                <FaPhone className="h-5 w-5 text-royal-red text-sm mr-3 flex-shrink-0" />
+                <FaPhone className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
                 <a 
                   href="tel:+15017772993" 
-                  className="text-slate-800 font-light hover:text-royal-red transition duration-300"
+                  className="text-slate-800 text-sm font-light hover:text-royal-red transition duration-300"
                 >
                   201-628-6391
 

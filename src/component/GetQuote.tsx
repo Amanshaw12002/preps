@@ -1,23 +1,25 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+
+
 
 export default function GetQuoteForm() {
-  const [submitted, setSubmitted] = useState(false);
+ const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = new FormData(form);
-
+ 
     try {
-      const res = await fetch("https://formspree.io/f/mzzjozle", {
-        method: "POST",
-        body: data,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      const res = await emailjs.sendForm(
+        "service_966gesk", // replace with your EmailJS service ID
+        "template_ir9k3oh", // replace with your EmailJS template ID
+        form,
+        "y_qjCnzrK3upvP7hQ" // replace with your EmailJS public key
+      );
 
-      if (res.ok) {
+      if (res.status === 200) {
         setSubmitted(true);
         form.reset();
       } else {
@@ -49,7 +51,6 @@ export default function GetQuoteForm() {
       </section>
     );
   }
-
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

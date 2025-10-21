@@ -1,9 +1,9 @@
 
 import Head from "@/component/Head";
 import product1 from "../asset/IMG_6565 2.png";
-import man4 from "../asset/man4.jpg";
 
 import {  Package, DollarSign, Truck } from "lucide-react";
+import Section2 from "@/component/section2";
 
 export default function FbmService() {
 
@@ -206,21 +206,7 @@ export default function FbmService() {
   </div>
 </section>
 
-
-
-<section className="   ">
-  <div className="max-w-4xl text-white text-center rounded-t-3xl py-4 bg-red-800 mx-auto px-6">
-    <h2 className="text-4xl font-medium font-inter mb-4">Ready to Simplify Your FBM Prep?</h2>
-    <p className="text-sm mb-8 leading-relaxed">
-        Let us handle the heavy lifting while you focus on growing your business. 
-      From inventory management to shipping, we make FBM simple and reliable.</p>
-    <button className="bg-white cursor-pointer text-red-800 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition">
-      Get Started Today
-    </button>
-  </div>
-  <img src={man4} className="w-4xl rounded-b-2xl object-cover h-96  mx-auto"/>
-</section>
-
+<Section2/>
 
     </>
   );

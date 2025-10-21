@@ -9,11 +9,11 @@ import MotionCrousel from '@/component/slider';
 import PrepServicesSection from '@/component/PrepServicesSection';
 import WhatSetsUsApart from '@/component/Apart';
 import FAQ from './FAQ';
-import OptimizedSection from '@/component/section1';
+import OptimizedSection from '@/sections/HeroSection';
 import { easeOut, motion } from 'framer-motion';
 
 import { useState } from "react";
-;
+import Section2 from '@/component/section2';
 import { useLenis } from '@/component/lenis';
 import Head from '@/component/Head';
 
@@ -113,7 +113,7 @@ export default function Home() {
       <Head title="BlackBoxPreps | Amazon Prep Center"   />
     <OptimizedSection/>
 
-    <section className='relative py-16 border-y border-red-800 bg-radial from-red-100'>
+    <section className='relative py-16 border-y '>
       
     
   {/* Animated Corner Dots */}
@@ -209,17 +209,10 @@ export default function Home() {
   </div>
 
   {/* Animated Gradient Circle */}
-  <motion.div 
-    className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-bl from-red-200 rounded-full"
-    initial={{ scale: 0, opacity: 0 }}
-    whileInView={{ scale: 1, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-  ></motion.div>
 
   <div className="relative max-w-6xl mx-auto">
     {/* Header Section */}
-    <div className="flex flex-col items-start justify-center text-black px-12">
+    <div className="flex-center flex-col max-w-5xl mx-auto text-black ">
       <motion.h2 
         className="font-sans text-md mb-2"
         initial={{ opacity: 0, y: 20 }}
@@ -231,7 +224,7 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className="text-4xl font-medium pb-12"
+        className="text-3xl font-medium pb-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -247,7 +240,7 @@ export default function Home() {
           New to Amazon or already selling?
         </motion.span>  
         <motion.span 
-          className="bg-gradient-to-r from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
+          className="bg-gradient-to-r text-2xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -256,34 +249,64 @@ export default function Home() {
           We've got your prep covered...
         </motion.span>
       </motion.h2>
-    </div>
+
+ <motion.div 
+        className=''
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+      >
+
+       
+        <motion.h2 
+          className='font-sans text-sm mx-auto max-w-xl text-center   px-2  text-red-800 font-normal leading-relaxed'
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
+          Focus on growth, we'll handle the rest.
+        </motion.h2>
+      </motion.div>
 
     {/* Stats & Content Section */}
-    <div className='flex justify-between max-w-6xl mx-auto py-6 px-12 mb-4'>
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 gap-8">
+
+ {/* Content Section */}
+     
+
+      <div className="flex-between  pl-4  gap-8 mt-8">
         {[
           { number: "50K+", title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-600", bg: "from-red-200", color: "text-red-800" },
-          { number: "99%", title: "Client Satisfaction", desc: "Based on customer feedback & repeat business.", border: "border-black", bg: "from-white", color: "text-black" },
-          { number: "24-48h", title: "Average Turnaround", desc: "Fast processing from receiving to shipment", border: "border-red-600", bg: "from-red-200", color: "text-red-900" },
-          { number: "$0", title: "Tax Advantage", desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
+{
+  number: "4.8+",
+  title: "Average Rating",
+  desc: "From verified client reviews and testimonials.",
+  border: "border-black",
+  bg: "from-white",
+  color: "text-black",
+},
+{ number: "24-48h", title: "Average Turnaround", desc: "Fast processing from receiving to shipment", border: "border-red-600", bg: "from-red-200", color: "text-red-900" },
+{ number: "$0", title: "Tax Advantage", desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
         ].map((stat, index) => (
           <motion.div
-            key={index}
-            className={`border-l-2 ${stat.border} bg-gradient-to-r ${stat.bg} flex flex-col items-start p-4`}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          key={index}
+          className={`border ${stat.border}  flex flex-col items-start p-4 w-52`}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
             transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
           >
             <motion.h2 
-              className={`text-3xl font-inter font-normal mb-2 ${stat.color}`}
+              className={`text-2xl font-inter font-normal mb-2 ${stat.color}`}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-            >
+              >
               {stat.number}
             </motion.h2>
             <motion.p 
@@ -292,7 +315,7 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.1 + index * 0.1, duration: 0.5 }}
-            >
+              >
               {stat.title}
             </motion.p>
             <motion.p 
@@ -307,40 +330,9 @@ export default function Home() {
           </motion.div>
         ))}
       </div>
+              
       
-      {/* Content Section */}
-      <motion.div 
-        className='flex flex-col w-1/2 pl-8 relative'
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-      >
-        <motion.div 
-          className='w-42 h-0.5 bg-gradient-to-r from-black absolute top-10 left-0'
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-        ></motion.div>
-        <motion.div 
-          className='w-0.5 h-32 bg-gradient-to-b from-black absolute top-6 left-4'
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.5, duration: 0.6 }}
-        ></motion.div>
-        <motion.h2 
-          className='font-sans text-md mt-12 text-red-800 font-normal leading-relaxed'
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.6, duration: 0.8 }}
-        >
-          Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
-          Focus on growth, we'll handle the rest.
-        </motion.h2>
-      </motion.div>
+     
     </div>
   </div>
 </section>
@@ -1044,7 +1036,7 @@ export default function Home() {
 
   <CustomCalendar/>
   <FAQ/>
-
+   <Section2/>
 
 
 

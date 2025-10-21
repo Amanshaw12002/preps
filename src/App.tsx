@@ -8,6 +8,7 @@ import FbaService from './page/ServicesForFba';
 import FbmService from './page/ServicesForFbm';
 import FAQ from './page/FAQ';
 import GetQuoteForm from './component/GetQuote';
+import ScrollToTop from './component/ScrollToTop';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   <>
   <main className=' relative '>
        <Navbar/>
+         <ScrollToTop />
         <Routes>
 
        <Route path="/" element={<Home/>}/>
