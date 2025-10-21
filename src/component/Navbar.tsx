@@ -23,7 +23,7 @@ export default function Navbar() {
   
   return (
     <nav className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}>
-      <div className=" w-full mx-10 sm:mx-12   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
+      <div className=" w-full max-w-5xl    mx-10  sm:mx-10 lg:mx-14   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
         <Link to="/" className="flex  group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
@@ -37,7 +37,7 @@ export default function Navbar() {
           />
           
           <motion.h2 
-            className="relative font-inter  font-semibold bg-gradient-to-r from-black to-red-700 pl-1 hidden sm:block text-2xl text-transparent bg-clip-text"
+            className="relative font-inter  font-semibold bg-gradient-to-r from-black to-red-700 pl-1 hidden md:block text-2xl text-transparent bg-clip-text"
           >
             <motion.div 
               className="absolute bottom-0 w-8 h-[2px] bg-black"
