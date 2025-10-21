@@ -340,7 +340,7 @@ export default function AboutUs() {
           </motion.div>
         </AnimatedSection>
       </section>
-      <Section2/>
+      <Section2 topPadding="pt-10"/>
     </>
   );
 }

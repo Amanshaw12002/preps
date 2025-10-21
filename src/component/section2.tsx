@@ -2,8 +2,17 @@ import { motion, type Variants } from "framer-motion";
 import darklogo from "../asset/logo.png"
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import SectionLayout from "@/layout/sectionLayout";
 
-export default function Section2() {
+
+
+interface TopPaddingProps {
+  topPadding?: 'pt-10';
+}
+
+
+
+const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
   // Animation variants
   const containerVariants:Variants = {
     hidden: { opacity: 0 },
@@ -66,59 +75,8 @@ export default function Section2() {
 
   return (
     <>
-      <section className="py-12 relative">
-        <motion.div 
-         className="absolute top-10 left-6.5 w-3 h-3 bg-red-800"
-         initial={{ scale: 0 }}
-         whileInView={{ scale: 1 }}
-         viewport={{ once: true }}
-         transition={{ delay: 0.1, duration: 0.5 }}
-       />
-       <motion.div 
-         className="absolute top-10 right-6.5 w-3 h-3 bg-red-800"
-         initial={{ scale: 0 }}
-         whileInView={{ scale: 1 }}
-         viewport={{ once: true }}
-         transition={{ delay: 0.2, duration: 0.5 }}
-       />
-       <motion.div 
-         className="absolute -bottom-1 left-6.5 w-3 h-3  bg-red-800"
-         initial={{ scale: 0 }}
-         whileInView={{ scale: 1 }}
-         viewport={{ once: true }}
-         transition={{ delay: 0.3, duration: 0.5 }}
-       />
-       <motion.div 
-         className="absolute -bottom-1 right-6.5 w-3 h-3  bg-red-800"
-         initial={{ scale: 0 }}
-         whileInView={{ scale: 1 }}
-         viewport={{ once: true }}
-         transition={{ delay: 0.4, duration: 0.5 }}
-       />
-       
-       {/* Animated Border Lines */}
-       <motion.div 
-         className="absolute top-0 left-8 w-px h-full bg-red-800"
-         initial={{ scaleY: 0 }}
-         whileInView={{ scaleY: 1 }}
-         viewport={{ once: true }}
-         transition={{ duration: 0.8 }}
-       />
-       <motion.div 
-         className="absolute top-0 right-8 w-px h-full bg-red-800"
-         initial={{ scaleY: 0 }}
-         whileInView={{ scaleY: 1 }}
-         viewport={{ once: true }}
-         transition={{ duration: 0.8, delay: 0.2 }}
-       ></motion.div>
-       <motion.div 
-         className="absolute top-11  w-full h-px bg-red-800"
-         initial={{ scaleY: 0 }}
-         whileInView={{ scaleY: 1 }}
-         viewport={{ once: true }}
-         transition={{ duration: 0.8, delay: 0.2 }}
-       ></motion.div>
-
+      <SectionLayout sectionTopPadding={topPadding}>
+        
         <motion.div 
           className="relative mx-auto max-w-5xl border-red-500  py-12    text-white "
           initial="hidden"
@@ -223,7 +181,10 @@ export default function Section2() {
             </motion.div>
           </div>
         </motion.div>
-      </section>
+      </SectionLayout>
     </>
   )
 }
+
+
+export default Section2

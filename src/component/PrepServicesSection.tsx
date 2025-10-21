@@ -3,6 +3,7 @@ import { Warehouse, Truck, Package } from "lucide-react";
 import { motion } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
+import SectionLayout from "@/layout/sectionLayout";
 
 export default function PrepServicesSection() {
   const icons = [<TrendingUp />, <Workflow />, <Trophy />];
@@ -67,54 +68,9 @@ export default function PrepServicesSection() {
   ];
 
   return (
-    <section className="py-12 relative border-y border-red-200 ">
+    <SectionLayout >
 
 
-      {/* Animated Corner Elements */}
-      <motion.div 
-        className="absolute -top-1 left-6.5 w-3 h-2 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -top-1 right-6.5 w-3 h-2 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-1 right-6.5 w-3 h-3  bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      ></motion.div>
-      
-      {/* Animated Border Lines */}
-      <motion.div 
-        className="absolute top-0 left-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute top-0 right-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      ></motion.div>
 
       <div className="max-w-5xl mx-auto relative px-10 text-center">
 
@@ -284,6 +240,6 @@ export default function PrepServicesSection() {
             </Link>
         </motion.div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }

@@ -23,7 +23,7 @@ export default function Navbar() {
   
   return (
     <nav className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}>
-      <div className=" w-fit mx-auto shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
+      <div className=" w-full mx-10 sm:mx-12 md:w-fit md:mx-auto shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
         <Link to="/" className="flex  group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
@@ -58,7 +58,7 @@ export default function Navbar() {
               </motion.span>
             ))}
           </motion.h2>
-          <div className="pl-3 text-red-400">|</div>
+          <div className="pl-3 hidden sm:block text-red-400">|</div>
         </Link>
 
         {/* Desktop Menu - Unchanged */}
@@ -190,18 +190,16 @@ export default function Navbar() {
             </li>
             
             {/* Mobile CTA Buttons */}
-            <div className="flex flex-col gap-3 mt-2 px-3 pt-2 border-t border-gray-100">
-              <Link 
-                to="https://dashboard.blackboxpreps.com/login" 
-                onClick={() => setOpen(false)}
-                className="bg-white text-black border border-black rounded-lg text-center font-semibold px-4 py-3 transition hover:bg-gray-50 text-sm"
-              >
-                Dashboard
-              </Link>
+            <div className="flex-between gap-3 mx-auto mt-2 px-3 pt-2 border-t border-gray-100">
+              
+            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1    rounded-lg text-md font-semibold p-3 transition-all duration-500">
+              <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-6 transition duration-700"/>
+            </Link>
               <Link 
                 to="/quote" 
                 onClick={() => setOpen(false)}
-                className="bg-gradient-to-r from-black to-red-700  text-white rounded-lg text-center font-semibold px-4 py-3 transition hover:opacity-90 text-sm"
+                className="bg-gradient-to-r from-black to-red-700   text-transparent bg-clip-text border-2 border-red-800 rounded-lg text-center font-semibold px-4 py-3 transition hover:opacity-90 text-sm"
               >
                 Get a Quote
               </Link>

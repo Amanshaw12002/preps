@@ -16,6 +16,7 @@ import { useState } from "react";
 import Section2 from '@/component/section2';
 import { useLenis } from '@/component/lenis';
 import Head from '@/component/Head';
+import SectionLayout from '@/layout/sectionLayout';
 
 
 export const processSteps: ProcessStep[] = [
@@ -113,100 +114,8 @@ export default function Home() {
       <Head title="BlackBoxPreps | Amazon Prep Center"   />
     <OptimizedSection/>
 
-    <section className='relative py-16 border-y '>
+    <SectionLayout >
       
-    
-  {/* Animated Corner Dots */}
-  <motion.div 
-    className="absolute -top-1.5 left-6.5 w-3 h-3 bg-red-800 "
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.1, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -top-1.5 right-6.5 w-3 h-3 bg-red-800 "
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.2, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800 "
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.3, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800 "
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4, duration: 0.5 }}
-  ></motion.div>
-
-  {/* Animated Border Lines */}
-  <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-  ></motion.div>
-
-  {/* Animated Grid Lines */}
-  <div className="absolute inset-0 opacity-15">
-    <motion.div 
-      className="absolute top-0 left-1/4 w-px h-full bg-red-800"
-      initial={{ scaleY: 0 }}
-      whileInView={{ scaleY: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.3, duration: 0.6 }}
-    ></motion.div>
-    <motion.div 
-      className="absolute top-0 left-1/2 w-px h-full bg-red-800"
-      initial={{ scaleY: 0 }}
-      whileInView={{ scaleY: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.4, duration: 0.6 }}
-    ></motion.div>
-    <motion.div 
-      className="absolute top-0 left-3/4 w-px h-full bg-red-800"
-      initial={{ scaleY: 0 }}
-      whileInView={{ scaleY: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.5, duration: 0.6 }}
-    ></motion.div>
-    <motion.div 
-      className="absolute top-1/4 left-0 w-full h-px bg-red-800"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.4, duration: 0.6 }}
-    ></motion.div>
-    <motion.div 
-      className="absolute top-1/2 left-0 w-full h-px bg-red-800"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.5, duration: 0.6 }}
-    ></motion.div>
-    <motion.div 
-      className="absolute top-3/4 left-0 w-full h-px bg-red-800"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.6, duration: 0.6 }}
-    ></motion.div>
-  </div>
 
   {/* Animated Gradient Circle */}
 
@@ -335,60 +244,15 @@ export default function Home() {
      
     </div>
   </div>
-</section>
+</SectionLayout>
 
 <PrepServicesSection/>
 
 <WhatSetsUsApart/>
 
 
-<section className='relative border-y border-red-800 bg-gradient-to-br from-red-50 to-white py-12 px-4 sm:px-6 lg:px-12 overflow-hidden'>
+<SectionLayout >
   
-  {/* Animated Corner Dots */}
-  <motion.div 
-    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.1, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.2, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.3, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4, duration: 0.5 }}
-  ></motion.div>
-  
-  {/* Animated Border Lines */}
-  <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-  ></motion.div>
 
   {/* Animated Grid Lines */}
   <div className=' relative max-w-6xl  mx-auto mb-12 '>
@@ -418,24 +282,9 @@ export default function Home() {
         transition={{ delay: 0.5 + index * 0.05, duration: 0.6 }}
       />
     ))}
-                         
-    <motion.div 
-      className='inline-flex border border-red-200  items-center gap-2 bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm'
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.3, duration: 0.5 }}
-    >
-      <motion.div 
-        className='w-2 h-2 bg-red-600 rounded-full'
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      ></motion.div>
-      PROCESS
-    </motion.div>
-
+               
     <motion.h2 
-      className='text-5xl font-inter text-left text-gray-900 mb-8'
+      className='text-4xl font-inter text-center text-gray-900 mb-8'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -472,7 +321,7 @@ export default function Home() {
     </motion.h2>
 
     <motion.h2 
-      className='text-sm font-bold text-gray-900'
+      className='text-xs text-center font-bold text-gray-900'
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -662,57 +511,11 @@ export default function Home() {
       </motion.div>
     </motion.div>
   </motion.div>
-</section>
+</SectionLayout>
 
 
 
-<section className="relative flex justify-center items-center overflow-hidden bg-gray-100 py-8 px-4">
-  {/* Animated Corner Dots */}
-  <motion.div 
-    className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.1, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.2, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.3, duration: 0.5 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
-    initial={{ scale: 0 }}
-    whileInView={{ scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4, duration: 0.5 }}
-  ></motion.div>
-  
-  {/* Animated Border Lines */}
-  <motion.div 
-    className="absolute top-0 left-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-  ></motion.div>
-  <motion.div 
-    className="absolute top-0 right-8 w-px h-full bg-red-800"
-    initial={{ scaleY: 0 }}
-    whileInView={{ scaleY: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-  ></motion.div>
-
+<SectionLayout>
   <div className="max-w-5xl flex flex-col items-center justify-center bg-gray-50 p-2 rounded-xl">
     {/* Header */}
     <motion.div 
@@ -839,74 +642,8 @@ export default function Home() {
       </motion.div>
     </div>
   </div>
-</section>
+</SectionLayout>
 
-{/* <section className="py-16 bg-gray-100">
-  <div className="max-w-5xl mx-auto flex flex-col   rounded-2xl py-8 items-center text-center px-4">
-    <h2 className="text-xl mb-2 text-gray-800">Solutions</h2>
-    <h2 className="text-3xl font-inter font-medium  text-black  mb-2">
-      Comprehensive Fulfillment Services
-    </h2>
-    <h3 className="text-md font-medium text-gray-700 mb-12">
-      Efficient and reliable logistics for Amazon sellers
-    </h3>
-
-    <div className="flex flex-wrap justify-between gap-6 w-full">
-      <div className="flex flex-col md:flex-row items-center bg-white border rounded-2xl shadow-md w-full md:w-[48%] overflow-hidden hover:shadow-lg transition">
-        <div className="flex flex-col w-full border-gray-400 border md:w-1/2 p-6 text-left gap-3">
-          <h3 className="text-xl font-semibold text-gray-800">FBA</h3>
-          <p className="text-gray-900 text-2xl font-medium">
-            Amazon FBA fulfillment made simple
-          </p>
-          <p className="text-gray-600">
-            Complete control over your Amazon selling strategy.
-          </p>
-          <button className="mt-2 bg-black text-white px-4 py-2 rounded-xl w-fit hover:bg-gray-800 transition">
-            Learn More
-          </button>
-        </div>
-        <img
-          src={def}
-          alt="FBA"
-          className="w-full md:w-1/2 h-full  object-cover object-[64%_center]"
-        />
-      </div>
-
-      <div className="flex flex-col bg-gray-100 rounded-2xl shadow-md border w-full md:w-[23%] overflow-hidden hover:shadow-lg transition">
-        <img src={def2} alt="FBM" className="w-full h-60 object-cover" />
-        <div className="flex flex-col p-6 gap-3 text-left">
-          <h3 className="text-xl font-semibold text-gray-800">FBM</h3>
-          <p className="text-gray-900 text-2xl font-medium">
-            Merchant fulfilled solutions
-          </p>
-          <p className="text-gray-600">
-            Seamless inventory management and shipping for your products.
-            
-          </p>
-          <button className="mt-2 bg-black text-white px-4 py-2 rounded-xl w-fit hover:bg-gray-800 transition">
-            Explore
-          </button>
-        </div>
-      </div>
-
-      <div className="flex flex-col bg-gray-100 rounded-2xl shadow-md w-full md:w-[23%] border overflow-hidden hover:shadow-lg transition">
-        <div className="flex flex-col p-6 gap-3 text-left">
-          <h3 className="text-xl font-semibold text-gray-800">Prep</h3>
-          <p className="text-gray-900 text-2xl font-medium">
-            Product preparation services
-          </p>
-          <p className="text-gray-600">
-            Expert handling to meet Amazon’s strict requirements.
-          </p>
-          <button className="mt-2 bg-black text-white px-4 py-2 rounded-xl w-fit hover:bg-gray-800 transition">
-            Discover
-          </button>
-        </div>
-        <img src={def3} alt="Prep" className="w-full h-60 object-cover" />
-      </div>
-    </div>
-  </div>
-</section> */}
 
   <CustomCalendar/>
   <FAQ/>

@@ -1,5 +1,6 @@
 import { ShieldCheck, Eye, Layers } from "lucide-react";
 import { motion } from "framer-motion";
+import SectionLayout from "@/layout/sectionLayout";
 
 export default function WhatSetsUsApart() {
   const features = [
@@ -21,54 +22,10 @@ export default function WhatSetsUsApart() {
   ];
 
   return (
-    <section className="py-12 relative border-y border-red-800 bg-radial from-red-100 to-white">
-      {/* Animated Corner Dots */}
-      <motion.div 
-        className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      ></motion.div>
+    <SectionLayout>
       
-      {/* Animated Border Lines */}
-      <motion.div 
-        className="absolute top-0 left-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute top-0 right-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      ></motion.div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center rounded-2xl">
+      <div className="max-w-5xl mx-auto px-6 text-center rounded-2xl">
         {/* Header Section */}
         <motion.div 
           className="w-full flex items-center px-8"
@@ -120,14 +77,14 @@ export default function WhatSetsUsApart() {
   </span>
 </motion.h2>
           <motion.p 
-            className="text-xl text-right font-inter text-red-800 max-w-lg ml-auto border-r-2 border-red-800 pr-2"
+            className="text-sm text-right font-inter text-red-800 max-w-lg ml-auto border-r-2 border-red-800 pr-2"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.9 }}
           >
-            We go beyond basic prep — offering precision, reliability, and a true partnership
-            built for<span className="font-semibold block"> scalable e-commerce growth.</span>
+            We go beyond basic prep — offering  <br/> and a true partnership
+            built for precision, reliability,<span className="font-semibold block"> scalable e-commerce growth.</span>
           </motion.p>
         </motion.div>
 
@@ -170,7 +127,7 @@ export default function WhatSetsUsApart() {
               </motion.h3>
               
               <motion.p 
-                className=" text-gray-800 leading-relaxed"
+                className=" text-gray-800 text-sm leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -182,6 +139,6 @@ export default function WhatSetsUsApart() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }

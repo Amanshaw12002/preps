@@ -1,3 +1,4 @@
+import SectionLayout from "@/layout/sectionLayout";
 import { useEffect } from "react";
 
 export default function CustomCalendar() {
@@ -15,14 +16,7 @@ export default function CustomCalendar() {
   }, []);
 
   return (
-    <div className="flex justify-center border-y border-red-800 items-center relative bg-gray-100 p-12 ">
-      
-  <div className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"></div>
-  <div className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"></div>
-  <div className="absolute -bottom-1 right-6.5 w-3 h-3 bg-red-800"></div>
-  <div className="absolute -bottom-1 left-6.5 w-3 h-3 bg-red-800"></div>
-  <div className="absolute top-0 left-8 w-px h-full bg-red-800"></div>
-  <div className="absolute top-0 right-8 w-px h-full bg-red-800"></div>
+    <SectionLayout  >
  
 
       <div className="bg-white shadow-2xl rounded-3xl max-w-5xl w-full p-8 ">
@@ -40,6 +34,6 @@ export default function CustomCalendar() {
           style={{ width: "1020px", height: "660px" }}
         ></div>
       </div>
-    </div>
+    </SectionLayout>
   );
 }

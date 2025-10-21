@@ -70,8 +70,11 @@ export default function Pricing() {
   return (
     <>
   <Head title="BlackBoxPreps | Transparent Pricing" />
-  
-        <section className="relative pb-24 z-10 overflow-hidden">
+          
+
+
+
+        <section className="relative  z-10 overflow-hidden">
         {/* Background Gradient */}
         <motion.div 
           className="absolute top-0 h-106 bg-gradient-to-b from-red-900 via-red-800 to-red-700 w-full -z-1"
@@ -609,7 +612,7 @@ export default function Pricing() {
           </motion.div>
         </motion.div>
       </section>
-      <Section2/>
+      <Section2 topPadding="pt-10"/>
     </>
   );
 }

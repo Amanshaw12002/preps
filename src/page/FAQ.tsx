@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionLayout from "@/layout/sectionLayout";
 
 interface FAQItem {
   question: string;
@@ -43,52 +44,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="pb-16 pt-12 px-6 relative">
-      {/* Animated Corner Dots */}
-      <motion.div 
-        className="absolute -top-1 left-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -top-1 right-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-11 right-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-11 left-6.5 w-3 h-3 bg-red-800"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      ></motion.div>
-      
-      {/* Animated Border Lines */}
-      <motion.div 
-        className="absolute top-0 left-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute top-0 right-8 w-px h-full bg-red-800"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      ></motion.div>
+    <SectionLayout >
 
       <div className="max-w-5xl mx-auto flex flex-col px-8">
   
@@ -192,6 +148,6 @@ export default function FAQ() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }

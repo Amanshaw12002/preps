@@ -2,6 +2,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
+import SectionLayout from "@/layout/sectionLayout";
 // Animation variants
 const containerVariants:Variants = {
   hidden: { opacity: 0 },
@@ -89,8 +90,8 @@ export default function Footer() {
   });
 
   return (
-    <footer className="bg-white text-black pb-8 px-8">
-      <AnimatedSection className="max-w-5xl border-gray-400 overflow-hidden mx-auto border pt-12 px-14">
+    <SectionLayout>
+      <AnimatedSection className="max-w-5xl   mx-auto  pt-12 pl-4 pr-18">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Brand Section */}
@@ -311,6 +312,6 @@ export default function Footer() {
           </motion.div>
         </div>
       </motion.div>
-    </footer>
+</SectionLayout>
   );
 }

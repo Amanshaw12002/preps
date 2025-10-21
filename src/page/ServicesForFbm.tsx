@@ -206,7 +206,7 @@ export default function FbmService() {
   </div>
 </section>
 
-<Section2/>
+      <Section2 topPadding="pt-10"/>
 
     </>
   );

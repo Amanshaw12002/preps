@@ -464,7 +464,7 @@ export default function FbaService() {
 
       {/* CTA Section */}
    
-            <Section2/>
+      <Section2 topPadding="pt-10"/>
       
     </>
   );
