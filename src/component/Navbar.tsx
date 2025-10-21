@@ -23,7 +23,7 @@ export default function Navbar() {
   
   return (
     <nav className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}>
-      <div className=" w-full mx-10 sm:mx-12 md:w-fit md:mx-auto shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
+      <div className=" w-full mx-10 sm:mx-12   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
         <Link to="/" className="flex  group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
@@ -58,7 +58,6 @@ export default function Navbar() {
               </motion.span>
             ))}
           </motion.h2>
-          <div className="pl-3 hidden sm:block text-red-400">|</div>
         </Link>
 
         {/* Desktop Menu - Unchanged */}
