@@ -89,8 +89,8 @@ export default function Footer() {
   });
 
   return (
-    <footer className="bg-gradient-to-br from-white text-black pb-8 px-8">
-      <AnimatedSection className="max-w-5xl overflow-hidden mx-auto border pt-12 px-14">
+    <footer className="bg-white text-black pb-8 px-8">
+      <AnimatedSection className="max-w-5xl border-gray-400 overflow-hidden mx-auto border pt-12 px-14">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Brand Section */}
@@ -284,7 +284,7 @@ export default function Footer() {
         initial="hidden"
         animate={bottomInView ? "visible" : "hidden"}
         variants={containerVariants}
-        className="border-t border-slate-700 pt-8"
+        className=" pt-8"
       >
         <div className="flex flex-col md:flex-row justify-between items-center">
           <motion.p 

@@ -224,7 +224,7 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className="text-3xl font-medium pb-12"
+        className="text-4xl font-medium pb-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -240,7 +240,7 @@ export default function Home() {
           New to Amazon or already selling?
         </motion.span>  
         <motion.span 
-          className="bg-gradient-to-r text-2xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
+          className="bg-gradient-to-r text-3xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -293,7 +293,7 @@ export default function Home() {
         ].map((stat, index) => (
           <motion.div
           key={index}
-          className={`border ${stat.border}  flex flex-col items-start p-4 w-52`}
+          className={`border ${stat.border} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -538,14 +538,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <motion.div 
-              className='w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center group-hover:bg-red-100 transition-colors duration-300'
-              whileHover={{ rotate: 5, scale: 1.1 }}
-            >
-              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              </svg>
-            </motion.div>
+           
             <h3 className='text-sm font-semibold text-gray-900'>Receiving Packages</h3>
           </motion.div>
           <motion.p 
@@ -560,37 +553,7 @@ export default function Home() {
           </motion.p>
           
           {/* Features List */}
-          <motion.ul 
-            className='mt-4 space-y-2'
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-          >
-            {["Secure package handling", "Detailed inspection report", "Immediate status updates"].map((item, index) => (
-              <motion.li 
-                key={index}
-                className='flex items-center gap-2 text-sm text-gray-500'
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  visible: { opacity: 1, y: 0 }
-                  
-                }}
-              >
-                <motion.div 
-                  className='w-1.5 h-1.5 bg-red-500 rounded-full'
-                  whileHover={{ scale: 1.5 }}
-                ></motion.div>
-                {item}
-              </motion.li>
-            ))}
-          </motion.ul>
+        
         </div>
       </motion.div>
     </motion.div>
@@ -625,14 +588,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
           >
-            <motion.div 
-              className='w-10 h-10 bg-red-50 rounded-md flex items-center justify-center group-hover:bg-red-100 transition-colors duration-300'
-              whileHover={{ rotate: 5, scale: 1.1 }}
-            >
-              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-              </svg>
-            </motion.div>
+            
             <h3 className='text-sm font-semibold text-gray-900'>Prep & Pack</h3>
           </motion.div>
           <motion.p 
@@ -646,37 +602,7 @@ export default function Home() {
             ensuring perfect preparation and packaging.
           </motion.p>
           
-          {/* Features List */}
-          <motion.ul 
-            className='mt-4 space-y-2'
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-          >
-            {["Quality assurance checks", "Brand-compliant packaging", "Real-time progress tracking"].map((item, index) => (
-              <motion.li 
-                key={index}
-                className='flex items-center gap-2 text-sm text-gray-500'
-                variants={{
-                  hidden: { opacity: 0, x: -10 },
-                  visible: { opacity: 1, x: 0 }
-                }}
-              >
-                <motion.div 
-                  className='w-1.5 h-1.5 bg-red-500 rounded-full'
-                  whileHover={{ scale: 1.5 }}
-                ></motion.div>
-                {item}
-              </motion.li>
-            ))}
-          </motion.ul>
+         
         </div>
       </motion.div>
     </motion.div>
@@ -705,22 +631,7 @@ export default function Home() {
             className="w-full h-full object-cover"
           />
           <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent'></div>
-          <motion.div 
-            className="absolute top-4 right-4 flex gap-1"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.0, duration: 0.5 }}
-          >
-            {[1, 2, 3].map((dot) => (
-              <motion.div 
-                key={dot} 
-                className="w-2 h-2 bg-white rounded-full opacity-80"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, delay: dot * 0.2, repeat: Infinity }}
-              ></motion.div>
-            ))}
-          </motion.div>
+         
         </motion.div>
         
         {/* Content */}
@@ -732,14 +643,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <motion.div 
-              className='w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center group-hover:bg-red-100 transition-colors duration-300'
-              whileHover={{ rotate: 5, scale: 1.1 }}
-            >
-              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </motion.div>
+            
             <h3 className='text-sm font-semibold text-gray-900'>Final Shipment</h3>
           </motion.div>
           <motion.p 
@@ -753,37 +657,7 @@ export default function Home() {
             tracking with instant notifications at every milestone.
           </motion.p>
           
-          {/* Features List */}
-          <motion.ul 
-            className='mt-4 space-y-2'
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-          >
-            {["Multiple carrier options", "Real-time tracking", "Delivery confirmation"].map((item, index) => (
-              <motion.li 
-                key={index}
-                className='flex items-center gap-2 text-sm text-gray-500'
-                variants={{
-                  hidden: { opacity: 0, x: -10 },
-                  visible: { opacity: 1, x: 0 }
-                }}
-              >
-                <motion.div 
-                  className='w-1.5 h-1.5 bg-red-500 rounded-full'
-                  whileHover={{ scale: 1.5 }}
-                ></motion.div>
-                {item}
-              </motion.li>
-            ))}
-          </motion.ul>
+         
         </div>
       </motion.div>
     </motion.div>

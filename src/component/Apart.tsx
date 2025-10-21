@@ -141,7 +141,7 @@ export default function WhatSetsUsApart() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-              whileHover={{ scale: 1.02 }}
+             
             >
               <motion.div 
                 className="mb-3 flex items-center justify-start"
@@ -151,8 +151,8 @@ export default function WhatSetsUsApart() {
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
               >
                 <motion.div 
-                  className="p-3 rounded-xl border-red-800 border"
-                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  className="p-3 rounded-xl group-hover:rotate-6 group-hover:scale-105 border-red-800 border"
+                 
                   transition={{ duration: 0.3 }}
                 >
                   {feature.icon}
@@ -170,7 +170,7 @@ export default function WhatSetsUsApart() {
               </motion.h3>
               
               <motion.p 
-                className="group-hover:text-sm text-gray-800 leading-relaxed"
+                className=" text-gray-800 leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
