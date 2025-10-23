@@ -278,7 +278,7 @@ export default function Home() {
     ))}
                
     <motion.h2 
-      className=' text-xl  sm:text-4xl font-inter text-center text-gray-900 my-4 sm:mb-8'
+      className=' text-xl  sm:text-4xl font-semibold text-center text-gray-900 my-4 sm:mb-8'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

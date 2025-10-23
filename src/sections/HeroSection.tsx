@@ -108,23 +108,16 @@ export default function HeroSection() {
           </motion.p>
 
 
-          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-2/5  lg:-top-40 overflow-hidden -z-1 lg:flex-none flex max-w-3xl lg:ml-0'>
-          <div className='max-w-2xl flex-none lg:max-w-none'>
-            <motion.div 
-              className='  bg-transparent'
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
+          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-2/5  lg:-top-40 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='max-w-2xl flex-none lg:max-w-none relative'>
               <motion.img 
                 src={box} 
                 alt="" 
-                className=" w-[22rem] sm:w-[32rem] lg:w-[42rem] object-cover rounded-xl"
+                className=" w-[22rem] sm:w-[32rem] lg:w-[42rem] object-cover z-1 rounded-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
               />
-            </motion.div>  
           </div>  
         </div>
       

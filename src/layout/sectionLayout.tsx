@@ -20,12 +20,12 @@ const SectionLayout: React.FC<AdvancedSectionLayoutProps> = ({
 }) => {
  
   return (
-    <section className={`px-4 overflow-hidden  ${sectionTopPadding}`}
+    <section className={`px-4 overflow-hidden bg-gray-100 ${sectionTopPadding}`}
     >
       <div
-        className='px-2 sm:px-6 lg:p-8  relative 
+        className='px-2 sm:px-6 lg:p-8  relative bg-white
         max-w-6xl mx-auto
-        border border-red-200 border-b-0
+        border border-red-300 border-b-0
         '  
       >
         {hero && (
@@ -39,10 +39,10 @@ const SectionLayout: React.FC<AdvancedSectionLayoutProps> = ({
           
 
         {/* boxes */}
-        <div className='absolute w-2 h-2 -left-1 -top-1 rounded-xs sm:-left-1.5 sm:-top-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-left-2 lg:-top-2  sm:rounded-sm bg-red-100 border border-red-300  '></div>
-        <div className='absolute w-2 h-2 -right-1 -top-1 rounded-xs sm:-right-1.5 sm:-top-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-right-2 lg:-top-2  sm:rounded-sm bg-red-100 border border-red-200 '></div>
-        <div className='absolute w-2 h-2 -left-1 -bottom-1 rounded-xs sm:-left-1.5 sm:-bottom-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-left-2 lg:-bottom-2  sm:rounded-sm bg-red-100 border border-red-400  '></div>
-        <div className='absolute w-2 h-2 -right-1 -bottom-1 rounded-xs sm:-right-1.5 sm:-bottom-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-right-2  lg:-bottom-2  sm:rounded-sm bg-red-100 border border-red-200 '></div>
+        <div className='absolute w-2 h-2 -left-1 -top-1 rounded-xs sm:-left-1.5 sm:-top-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-left-2 lg:-top-2  sm:rounded-sm bg-white border border-red-300  '></div>
+        <div className='absolute w-2 h-2 -right-1 -top-1 rounded-xs sm:-right-1.5 sm:-top-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-right-2 lg:-top-2  sm:rounded-sm bg-white border border-red-300 '></div>
+        <div className='absolute w-2 h-2 -left-1 -bottom-1 rounded-xs sm:-left-1.5 sm:-bottom-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-left-2 lg:-bottom-2  sm:rounded-sm bg-white border border-red-300  '></div>
+        <div className='absolute w-2 h-2 -right-1 -bottom-1 rounded-xs sm:-right-1.5 sm:-bottom-1.5  sm:w-3 sm:h-3  lg:h-4 lg:w-4 lg:-right-2  lg:-bottom-2  sm:rounded-sm bg-white border border-red-300 '></div>
         {children}
       </div>
     </section>
