@@ -23,7 +23,7 @@ const SectionLayout: React.FC<AdvancedSectionLayoutProps> = ({
     <section className={`px-4 overflow-hidden  ${sectionTopPadding}`}
     >
       <div
-        className='px-4 sm:px-6 lg:p-8  relative 
+        className='px-2 sm:px-6 lg:p-8  relative 
         max-w-6xl mx-auto
         border border-red-400 border-b-0
         '  

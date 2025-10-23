@@ -114,16 +114,11 @@ export default function Home() {
       <Head title="BlackBoxPreps | Amazon Prep Center"   />
     <OptimizedSection/>
 
-    <SectionLayout >
+    <SectionLayout>
       
-
-  {/* Animated Gradient Circle */}
-
-  <div className="relative max-w-6xl mx-auto">
-    {/* Header Section */}
-    <div className="flex-center flex-col max-w-5xl mx-auto text-black ">
+<div className="flex-center flex-col mt-12 max-w-5xl mx-auto text-black ">
       <motion.h2 
-        className="font-sans text-md mb-2"
+        className="font-sans text-xs sm:text-lg mb-2"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -133,7 +128,7 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className="text-4xl font-medium pb-12"
+        className=" text-3xl sm:text-4xl font-medium pb-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -149,7 +144,7 @@ export default function Home() {
           New to Amazon or already selling?
         </motion.span>  
         <motion.span 
-          className="bg-gradient-to-r text-3xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
+          className="bg-gradient-to-r text-2xl sm:text-3xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -186,7 +181,7 @@ export default function Home() {
  {/* Content Section */}
      
 
-      <div className="flex-between  pl-4  gap-8 mt-8">
+      <div className="flex-between flex-col sm:flex-row pl-4 gap-4  sm:gap-8 my-8">
         {[
           { number: "50K+", title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-600", bg: "from-red-200", color: "text-red-800" },
 {
@@ -242,7 +237,6 @@ export default function Home() {
               
       
      
-    </div>
   </div>
 </SectionLayout>
 
@@ -255,7 +249,7 @@ export default function Home() {
   
 
   {/* Animated Grid Lines */}
-  <div className=' relative max-w-6xl  mx-auto mb-12 '>
+  <div className=' relative max-w-5xl  mx-auto mb-12 '>
     {[
       'h-full w-0.5 absolute top-20 left-20 bg-gradient-to-b from-white via-slate-200 to-white -z-1',
       'h-px w-full absolute top-20 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
@@ -284,7 +278,7 @@ export default function Home() {
     ))}
                
     <motion.h2 
-      className='text-4xl font-inter text-center text-gray-900 mb-8'
+      className=' text-xl  sm:text-4xl font-inter text-center text-gray-900 my-4 sm:mb-8'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -321,7 +315,7 @@ export default function Home() {
     </motion.h2>
 
     <motion.h2 
-      className='text-xs text-center font-bold text-gray-900'
+      className=' text-[12px] sm:text-xs text-center font-bold text-gray-900'
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -339,7 +333,7 @@ export default function Home() {
 
   {/* Steps Container */}
   <motion.div 
-    className='flex flex-col lg:flex-row justify-center items-stretch gap-4 px-8 mt-16'
+    className='flex flex-col lg:flex-row justify-center items-stretch gap-4 pb-8 sm:pb-0 px-8 mt-16'
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
@@ -354,7 +348,7 @@ export default function Home() {
     
     {/* Step 1: Receive Packages */}
     <motion.div 
-      className='group relative flex-1 max-w-md'
+      className='group relative flex-1 w-full  sm:max-w-md'
       variants={{
         hidden: { opacity: 0, y: 200 },
         visible: { opacity: 1, y: 0 }
@@ -379,7 +373,7 @@ export default function Home() {
         </motion.div>
         
         {/* Content */}
-        <div className='p-6'>
+        <div className='p-2 sm:p-4'>
           <motion.div 
             className='flex items-center gap-3 mb-4'
             initial={{ opacity: 0, x: -20 }}
@@ -388,10 +382,10 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
            
-            <h3 className='text-sm font-semibold text-gray-900'>Receiving Packages</h3>
+            <h3 className= ' text-xs sm:text-sm font-semibold text-gray-900'>Receiving Packages</h3>
           </motion.div>
           <motion.p 
-            className='text-gray-800 text-sm leading-relaxed'
+            className='text-gray-800 text-[12px] sm:text-sm leading-relaxed'
             initial={{ opacity: 0 , x:-40}}
             whileInView={{ opacity: 1 ,x:0}}
             viewport={{ once: true }}
@@ -429,7 +423,7 @@ export default function Home() {
         </motion.div>
         
         {/* Content */}
-        <div className='p-6'>
+        <div className='p-2 sm:p-4'>
           <motion.div 
             className='flex items-center gap-3 mb-4'
             initial={{ opacity: 0, x: -20 }}
@@ -438,10 +432,10 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.5 }}
           >
             
-            <h3 className='text-sm font-semibold text-gray-900'>Prep & Pack</h3>
+            <h3 className='text-xs sm:text-sm font-semibold text-gray-900'>Prep & Pack</h3>
           </motion.div>
           <motion.p 
-            className='text-gray-800 text-sm leading-relaxed'
+            className='text-gray-800 text-[10px] sm:text-sm leading-relaxed'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -484,7 +478,7 @@ export default function Home() {
         </motion.div>
         
         {/* Content */}
-        <div className='p-6'>
+        <div className='p-2 sm:p-4'>
           <motion.div 
             className='flex items-center gap-3 mb-4'
             initial={{ opacity: 0, x: -20 }}
@@ -493,10 +487,10 @@ export default function Home() {
             transition={{ delay: 0.7, duration: 0.5 }}
           >
             
-            <h3 className='text-sm font-semibold text-gray-900'>Final Shipment</h3>
+            <h3 className='text-xs sm:text-sm font-semibold text-gray-900'>Final Shipment</h3>
           </motion.div>
           <motion.p 
-            className='text-gray-800 text-sm leading-relaxed'
+            className='text-gray-800 text-[10px] sm:text-sm leading-relaxed'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -519,7 +513,7 @@ export default function Home() {
   <div className="max-w-5xl flex flex-col items-center justify-center bg-gray-50 p-2 rounded-xl">
     {/* Header */}
     <motion.div 
-      className='flex flex-col items-center text-4xl font-inter font-medium text-gray-900'
+      className='flex flex-col items-center text-2xl sm:text-4xl font-inter font-medium text-gray-900'
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -563,10 +557,10 @@ export default function Home() {
       </motion.h2>
     </motion.div>
 
-    <div className='flex mt-8'>
+    <div className='flex flex-col sm:flex-row  sm:mt-8'>
       {/* Tabs */}
       <motion.div 
-        className="grid grid-cols-1 gap-2 h-1/2 mt-4 w-full"
+        className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:h-1/2 sm:mt-4 m-4 sm:w-full"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -579,7 +573,7 @@ export default function Home() {
               key={index}
               onClick={() => setItemSelected(index)}
               className={`
-                flex items-center gap-2 px-4 pr-4 py-2 w-36 h-12 rounded-l-xl border sm:border-2 
+                flex items-center gap-2 px-1 sm:px-4 py-2 w-24 sm:w-36 h-8 sm:h-12 rounded-sm sm:rounded-l-xl border sm:border-2 
                 ${active ? " border-red-700 bg-red-700 text-white shadow-none" : "bg-white border-gray-300 shadow-xl hover:shadow-none hover:scale-95"}
                 cursor-pointer transition-transform duration-300 flex-shrink-0
               `}
@@ -592,16 +586,16 @@ export default function Home() {
             >
               <motion.div
                 className={`
-                  w-8 h-8  rounded-md
+                  sm:size-8 size-6 rounded-sm sm:rounded-md
                   ${active ? "bg-white text-red-700" : "bg-gray-200 text-gray-800"}
                 `}
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <Icon className='w-full h-full p-2'/>
+                <Icon className='w-full h-full p-1 sm:p-2'/>
               </motion.div>
               <motion.span 
-                className="whitespace-nowrap font-medium text-xs"
+                className="whitespace-nowrap font-medium text-[10px] sm:text-xs"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -625,7 +619,7 @@ export default function Home() {
         {itemsImage.map(({ index, image }) => (
           <motion.div
             key={index}
-            className={`${itemSelected === index ? "block" : "hidden"} w-[46rem] rounded-sm sm:rounded-xl overflow-hidden border border-gray-400`}
+            className={`${itemSelected === index ? "block" : "hidden"} w-full sm:w-[46rem] rounded-sm sm:rounded-xl overflow-hidden border border-gray-400`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={itemSelected === index ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5, ease: "easeOut" }}

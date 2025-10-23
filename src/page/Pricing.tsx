@@ -74,7 +74,7 @@ export default function Pricing() {
 
 
 
-        <section className="relative  z-10 overflow-hidden">
+        <section className="relative  z-10 ">
         {/* Background Gradient */}
         <motion.div 
           className="absolute top-0 h-106 bg-gradient-to-b from-red-900 via-red-800 to-red-700 w-full -z-1"
@@ -96,7 +96,7 @@ export default function Pricing() {
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-5xl font-mon mb-4 text-white"
+              className="text-2xl sm:text-5xl font-mon mb-4 text-white"
               initial={{ y: 50, opacity: 0,scale:0.6 }}
               animate={{ y: 0, opacity: 1 ,scale:1}}
               transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
@@ -104,7 +104,7 @@ export default function Pricing() {
               Our Pricing
             </motion.h1>
             <motion.h2 
-              className="text-md text-white max-w-lg mx-auto mb-8"
+              className="text-xs px-4 sm:px-0 sm:text-md text-white max-w-lg mx-auto mb-8"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -139,18 +139,18 @@ export default function Pricing() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              <h2 className="text-center font-semibold pb-2 text-6xl">Choose Your Plan</h2>
+              <h2 className="text-center font-semibold pb-2 text-4xl sm:text-6xl">Choose Your Plan</h2>
             </motion.div>
           </motion.div>
 
           {/* Pricing Cards */}
           <motion.div 
-            className="grid md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl mx-auto mt-4"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl p-4 sm:mx-auto  mt-4"
             variants={containerVariants}
           >
             {/* Online Arbitrage */}
             <motion.div 
-              className="bg-gray-200 rounded-xl shadow-md shadow-black border-gray-400 border p-6 flex flex-col transition"
+              className="bg-gray-200  rounded-xl shadow-md shadow-black border-gray-400 border p-4 sm:p-6 flex-none flex flex-col transition"
               variants={cardVariants}
               whileHover="hover"
             >
@@ -171,13 +171,13 @@ export default function Pricing() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <h2 className="text-sm border-b border-gray-400 pb-4 mb-4 font-medium text-gray-700">
+                <h2 className="text-xs sm:text-sm border-b border-gray-400 pb-4 mb-4 font-medium text-gray-700">
                   Ideal for sellers sourcing products online and shipping directly to prep centers. Fast turnaround, sticker removal, labeling, and FBA shipment creation included.
                 </h2>
               </motion.div>
               
               <motion.ul 
-                className="space-y-2 flex gap-4 h-42 text-gray-700 text-sm mb-6"
+                className="space-y-2 flex  gap-4  sm:h-42 text-gray-700 text-xs sm:text-sm mb-6"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -188,7 +188,7 @@ export default function Pricing() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-3xl text-black">
+                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-xl sm:text-3xl text-black">
                     $1.20 <span className="text-sm font-medium">/ unit</span>
                   </span>
                   <span className="font-medium text-black">0–999 units/month</span>
@@ -198,7 +198,7 @@ export default function Pricing() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="font-bold text-3xl border-b border-gray-400 p-2 mb-2 text-black">
+                  <span className="font-bold text-xl sm:text-3xl border-b border-gray-400 p-2 mb-2 text-black">
                     $1.00 <span className="text-sm font-medium">/ unit</span>
                   </span>
                   <span className="font-medium text-black">1,000+ units/month</span>
@@ -276,13 +276,13 @@ export default function Pricing() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                <h2 className="text-sm border-b border-gray-400 py-6 mb-6 font-medium text-gray-300">
+                <h2 className=" text-xs sm:text-sm border-b border-gray-400 py-6 mb-6 font-medium text-gray-300">
                   Designed for bulk shipments and brand products. Includes labeling, bundling, custom packaging, and quality inspection for professional presentation.
                 </h2>
               </motion.div>
 
               <motion.ul 
-                className="space-y-2 flex gap-4 h-42 text-gray-700 text-sm mb-6"
+                className="space-y-2 flex gap-4 h-38 sm:h-42 text-gray-700 text-xs sm:text-sm mb-6"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -293,7 +293,7 @@ export default function Pricing() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-3xl text-white">
+                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-xl sm:text-3xl text-white">
                     $0.70 <span className="text-sm font-medium">/ unit</span>
                   </span>
                   <span className="font-medium text-white">0–999 units/month</span>
@@ -303,7 +303,7 @@ export default function Pricing() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="font-bold text-3xl border-b border-gray-400 p-2 mb-2 text-white">
+                  <span className="font-bold  text-xl sm:text-3xl border-b border-gray-400 p-2 mb-2 text-white">
                     $0.50 <span className="text-sm font-medium">/ unit</span>
                   </span>
                   <span className="font-medium text-white">1,000+ units/month</span>
@@ -408,7 +408,7 @@ export default function Pricing() {
               </motion.h3>
               
               <motion.ul 
-                className="space-y-2 text-gray-700 text-sm"
+                className="space-y-2 text-gray-700 text-sm mb-12 sm:mb-0" 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -425,8 +425,8 @@ export default function Pricing() {
                 </motion.li>
               </motion.ul>
               
-              <div className="mt-auto">
-                <Link to="/quote" className=" rounded-lg px-14 hover:border-gray-400 hover:border border py-3 transition">
+              <div className="mt-auto ">
+                <Link to="/quote" className=" rounded-lg  px-4 sm:px-14 hover:border-gray-400 hover:border border py-3 transition">
               Get a Custom Quote
             </Link>
 
@@ -472,7 +472,7 @@ export default function Pricing() {
           </motion.p>
           
           <motion.ul 
-            className="space-y-2 flex-between w-10/12 mx-auto text-sm mb-6"
+            className="space-y-2 flex-between flex-col sm:flex-row w-10/12 mx-auto text-sm mb-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -498,7 +498,7 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div 
-          className="m-8 flex-between rounded-2xl mx-auto max-w-5xl"
+          className="m-8 flex-between flex-col sm:flex-row rounded-2xl mx-auto max-w-5xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -544,13 +544,13 @@ export default function Pricing() {
               ].map((item, index) => (
                 <motion.li 
                   key={index}
-                  className="p-4 h-42 w-1/2 flex-between flex-col border border-gray-400 rounded-lg"
+                  className="sm:p-4 p-2 h-42 w-1/2 flex-between flex-col border border-gray-400 rounded-lg"
                   variants={itemVariants}
                   whileHover={{ scale: 1.05 }}
                 >
                   <span className="font-medium flex border-b border-gray-400 p-2 text-gray-800">{item.title}</span>
-                  <span className="font-semibold p-2 text-3xl text-black">{item.price}</span>
-                  <span className="font-semibold text-md border-gray-400 p-2 rounded-r-lg text-black">{item.unit}</span>
+                  <span className="font-semibold p-2 text-xl sm:text-3xl text-black">{item.price}</span>
+                  <span className="font-semibold text-xs sm:text-md border-gray-400 p-2 rounded-r-lg text-black">{item.unit}</span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -584,7 +584,7 @@ export default function Pricing() {
             </motion.p>
             
             <motion.ul 
-              className="space-y-2 flex-between mx-auto gap-8 text-gray-700 text-sm"
+              className="space-y-2 flex-between mx-auto gap-8 text-gray-700 text-xs sm:text-sm"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -601,11 +601,10 @@ export default function Pricing() {
                     className="flex-between px-4 py-2 gap-1 mx-2 border-gray-400 bg-red-600 rounded-lg"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <span className="font-medium text-xs flex border-gray-400 text-white">First 14 days-</span>
-                    <span className="font-semibold text-xs text-white">Free</span>
+                    <span className="font-medium text-[10px] sm:text-xs flex border-gray-400 text-white">First 14 days-Free</span>
                   </motion.div>
                 </div>
-                <span className="font-semibold text-3xl border-gray-400 p-2 rounded-r-lg text-black">$0.01</span>
+                <span className="font-semibold text-xl sm:text-3xl border-gray-400 p-2 rounded-r-lg text-black">$0.01</span>
                 <span className="font-semibold text-md border-gray-400 p-2 rounded-r-lg text-black"> / day per unit</span>
               </motion.li>
             </motion.ul>

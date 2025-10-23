@@ -66,7 +66,7 @@ export default function MotionCarousel() {
           transition={{ duration: 0.5 }}
           className="bg-gray-200 relative rounded-t-2xl "
         >
-          <div className="flex items-center absolute top-0 left-0 justify-center bg-gray-50 border border-gray-400 rounded-xl w-fit  mb-2 overflow-hidden ">
+          <div className="flex items-center absolute top-1 left-1 justify-center bg-gray-50 border border-gray-400 rounded-xl w-fit  mb-2 overflow-hidden ">
             <div className="bg-red-700 px-1 h-full">
               <Icon className="text-white bg-red-700 rounded-sm w-6 h-6 p-1  m-2 " />
             </div>

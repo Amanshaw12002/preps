@@ -14,7 +14,7 @@ export default function HeroSection() {
              
 
         {/* Content Section with Animated Grid Lines */}
-        <div className="relative py-14 pl-8  mx-auto  max-w-3xl  shrink-0 text-black">
+        <div className="relative py-14 lg:pl-8   mx-auto  max-w-3xl  shrink-0 text-black">
 
  
 
@@ -44,7 +44,7 @@ export default function HeroSection() {
           ].map((line, index) => (
             <motion.div
               key={index}
-              className={`absolute -z-1 ${line.class}`}
+              className={`absolute hidden lg:block -z-1 ${line.class}`}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 0.5 }}
               transition={{ delay: line.delay, duration: 0.8 }}
@@ -52,9 +52,9 @@ export default function HeroSection() {
           ))}
           
           {/* Animated Text Content */}
-          <div className="flex lg:flex-col w-2xl  relative ">
+          <div className="flex lg:flex-col lg:w-2xl  relative ">
 
-            <h2 className="text-5xl  font-semibold font-inter text-red-700 text-shadow-2xs">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl  font-semibold font-inter text-red-700 text-shadow-2xs">
               <motion.span 
                 className="block pb-1"
                 initial={{ opacity: 0, y: 30,scale:0.7 }}
@@ -91,7 +91,7 @@ export default function HeroSection() {
           </div>
 
           <motion.h2 
-            className='text-md font-sans font-normal text-red-800 mt-4 mb-2'
+            className= 'text-xs sm:text-md font-sans font-normal text-red-800 mt-4 mb-2'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -99,7 +99,7 @@ export default function HeroSection() {
             You sell, we handle the rest.
           </motion.h2>
           <motion.p 
-            className='font-sans text-xs pr-12 text-red-700'
+            className='font-sans text-[10px] sm:text-xs pr-12 text-red-700'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
@@ -108,10 +108,10 @@ export default function HeroSection() {
           </motion.p>
 
 
-          <div className='lg:max-w-none  absolute left-2/5 -top-40 overflow-hidden -z-1 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-2/5  lg:-top-40 overflow-hidden -z-1 lg:flex-none flex max-w-3xl lg:ml-0'>
           <div className='max-w-2xl flex-none lg:max-w-none'>
             <motion.div 
-              className='border-gray-400 border lg:border-0  bg-transparent'
+              className='  bg-transparent'
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
@@ -119,7 +119,7 @@ export default function HeroSection() {
               <motion.img 
                 src={box} 
                 alt="" 
-                className="w-[42rem] object-cover rounded-xl"
+                className=" w-[22rem] sm:w-[32rem] lg:w-[42rem] object-cover rounded-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

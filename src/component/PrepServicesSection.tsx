@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SectionLayout from "@/layout/sectionLayout";
 
 export default function PrepServicesSection() {
-  const icons = [<TrendingUp />, <Workflow />, <Trophy />];
+  const icons = [<TrendingUp className="h-4 w-4 sm:h-6 sm:w-6"/>, <Workflow className="h-4 w-4 sm:h-6 sm:w-6"/>, <Trophy className="h-4 w-4 sm:h-6 sm:w-6"/>];
   const words = ["Scale", "Streamline", "Succeed"];
   const [index, setIndex] = React.useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -72,31 +72,31 @@ export default function PrepServicesSection() {
 
 
 
-      <div className="max-w-5xl mx-auto relative px-10 text-center">
+      <div className="max-w-5xl mx-auto relative mt-12 text-center">
 
         
         {/* Section Header */}
-        <div className="flex-center ">
+        <div className="flex-center  text-2xl sm:text-3xl ">
           <motion.h2
             initial={{ y: 200}}
             whileInView={{  y: 0}}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-3xl flex items-center font-semibold text-slate-900 mb-6 text-center"
+            className=" flex items-center flex-col sm:flex-row font-semibold text-slate-900 mb-6 text-center"
           >
             How 
-<span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>             Help You{" "}
-            <div className="border rounded-xl px-2 mx-4 transition-transform duration-500">
+<span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>Help You{" "}
 
+<div className="border rounded-lg sm:rounded-xl px-2 mx-4 transition-transform duration-500">
             <motion.span
               key={words[index]}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="flex items-center w-fit  mx-2 text-black  rounded-xl py-2"
+              className="flex items-center w-fit  sm:mx-2 text-black  p-1  sm:rounded-xl sm:py-2"
               > 
-              <span className="text-xl p-1 text-white bg-red-600 mr-2 rounded-md">{icons[index]}</span>
+              <span className="  sm:text-xl sm:p-1 p-0.5 text-white bg-red-600 mr-1 rounded-md">{icons[index]}</span>
               <span>{words[index]}</span>
             </motion.span>
               </div>{" "}
@@ -105,7 +105,7 @@ export default function PrepServicesSection() {
         </div>
 
         <motion.p 
-          className="text-sm text-gray-700 max-w-3xl mx-auto mb-16"
+          className="text-[10px] sm:text-sm text-gray-700 max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -119,11 +119,11 @@ export default function PrepServicesSection() {
         </motion.p>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-2 sm:gap-4">
           {services.map((service, serviceIndex) => (
             <motion.div
               key={service.id}
-              className="group bg-white border border-gray-400 hover:border-red-700 rounded-lg shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 text-left"
+              className="group  bg-white border border-gray-400 hover:border-red-700 rounded-lg shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 text-left"
               initial={{ opacity: 0.6, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -137,17 +137,17 @@ export default function PrepServicesSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 + serviceIndex * 0.1, duration: 0.5 }}
               >
-                <div className="bg-white p-2 border-red-800 rounded-sm border">
+                <div className="bg-white p-0.5 sm:p-2 border-red-800 rounded-sm border">
                   {service.icon}
                 </div>
-                <h3 className="ml-3 text-md font-semibold text-gray-800">
+                <h3 className="ml-3 text-xs sm:text-md font-semibold text-gray-800">
                   {service.title}
                 </h3>
               </motion.div>
 
               {/* Description */}
               <motion.p 
-                className="text-gray-600 text-sm mb-4"
+                className="text-gray-600 text-xs sm:text-sm mb-4"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -166,7 +166,7 @@ export default function PrepServicesSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.7 + serviceIndex * 0.1, duration: 0.5 }}
               >
-                <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-sm">
+                <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-xs sm:text-sm">
                   {service.points.map((point, pointIndex) => (
                     <motion.li 
                       className="pt-2" 
@@ -184,7 +184,7 @@ export default function PrepServicesSection() {
 
               {/* Result */}
               <motion.p 
-                className="text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic"
+                className=" text-xs sm:text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -211,14 +211,14 @@ export default function PrepServicesSection() {
 
         {/* CTA */}
         <motion.div 
-          className="mt-16"
+          className="pb-8 sm:p-0 mt-8 sm:mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
           <motion.h3 
-            className="text-3xl font-inter font-semibold w-fit mx-auto text-transparent bg-gradient-to-r from-black via-red-600 to-red-700 bg-clip-text mb-3"
+            className="text-xl sm:text-3xl font-inter font-semibold w-fit mx-auto text-transparent bg-gradient-to-r from-black via-red-600 to-red-700 bg-clip-text mb-3"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -227,7 +227,7 @@ export default function PrepServicesSection() {
             Streamline. Scale. Succeed.
           </motion.h3>
           <motion.p 
-            className="text-gray-600 text-xs mb-6"
+            className="text-gray-600 text-[10px] sm:text-xs sm:mb-6 mb-2 "
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -235,7 +235,7 @@ export default function PrepServicesSection() {
           >
             Let's take the prep work off your plate — so you can focus on growth.
           </motion.p>
-           <Link to="/quote" className=" border-2 border-red-700 rounded-lg  bg-gradient-to-r text-xs from-black to-red-600 bg-clip-text text-transparent font-semibold px-4 py-3 transition">
+           <Link to="/quote" className=" border-2 border-red-700 rounded-lg  bg-gradient-to-r text-xs from-black to-red-600 bg-clip-text text-transparent font-semibold px-2 sm:px-4 py-1 sm:py-3 transition">
               Get a Custom Quote
             </Link>
         </motion.div>

@@ -25,17 +25,17 @@ export default function WhatSetsUsApart() {
     <SectionLayout>
       
 
-      <div className="max-w-5xl mx-auto px-6 text-center rounded-2xl">
+      <div className="max-w-5xl mx-auto sm:px-6 text-center rounded-2xl">
         {/* Header Section */}
         <motion.div 
-          className="w-full flex items-center px-8"
+          className="w-full flex items-center p-2 sm:px-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-  className="text-5xl font-semibold font-inter w-fit text-gray-800 text-left m-4"
+  className="text-xl sm:text-3xl font-semibold font-inter w-fit text-gray-800 text-left sm:m-4"
 >
   <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-red-800">
     <motion.span
@@ -77,7 +77,7 @@ export default function WhatSetsUsApart() {
   </span>
 </motion.h2>
           <motion.p 
-            className="text-sm text-right font-inter text-red-800 max-w-lg ml-auto border-r-2 border-red-800 pr-2"
+            className=" text-[10px] sm:text-sm text-right font-inter text-red-800 max-w-lg ml-auto border-r sm:border-r-2 border-red-800 pr-2"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -89,7 +89,7 @@ export default function WhatSetsUsApart() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 p-8">
+        <div className="grid md:grid-cols-3 pt-2 pb-8 sm:p-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}

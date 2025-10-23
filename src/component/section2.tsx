@@ -78,7 +78,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
       <SectionLayout sectionTopPadding={topPadding}>
         
         <motion.div 
-          className="relative mx-auto max-w-5xl border-red-500  py-12    text-white "
+          className="relative mx-auto max-w-5xl border-red-500 mt-8 sm:py-12 rounded-4xl  bg-black/20  text-white "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -91,7 +91,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
             <motion.img 
               src={darklogo} 
               alt="logo" 
-              className="z-10   bg-transparent rounded-full    -top-0 absolute w-72 left-3/8  "
+              className="z-10   bg-white rounded-3xl   top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8  "
               variants={logoVariants}
               initial="hidden"
               whileInView="visible"
@@ -101,16 +101,37 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
           </div>
 
           <motion.div 
-            className="flex-center flex-wrap absolute top-0 p-8  flex-center  z-0"
+            className="flex-center md:block hidden  rounded-2xl flex-wrap absolute top-10 left-1 p-8  flex-center  z-0"
             variants={gridVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {[...Array(42)].map((_, index) => (
+            {[...Array(24)].map((_, index) => (
+             <>
+             <motion.div 
+                key={index} 
+                className={`w-[1px] ml-4 h-42  rounded-sm    bg-gradient-to-b from-transparent   to-red-800`}      
+                variants={gridItemVariants}
+                whileHover={{ 
+                  scale: 1.2, 
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  transition: { duration: 0.3 }
+                }}
+                />
+                <motion.div 
+                  key={index} 
+                  className={`w-[0.5px] mx-6  h-24    bg-black  `}      
+                  variants={gridItemVariants}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                    transition: { duration: 0.3 }
+                  }}
+                />
               <motion.div 
                 key={index} 
-                className="w-28 h-28  border border-red-200  "
+                className={`w-[0.5px]  h-54  rounded-sm  mx-2 bg-gradient-to-b from-red-800   to-transparent`}      
                 variants={gridItemVariants}
                 whileHover={{ 
                   scale: 1.2, 
@@ -118,6 +139,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                   transition: { duration: 0.3 }
                 }}
               />
+                  </>
             ))}
           </motion.div>
 
@@ -141,37 +163,37 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
               <div className="flex flex-col  mt-12 mx-auto w-full">
 
               <p 
-                className="text-4xl font-bold mb-2 text-gray-800  "
+                className="text-2xl sm:text-4xl font-bold mb-2 text-black "
                 >
                 Let's Grow Your Business Together,
               </p>
 
               <p 
-                className="text-4xl font-bold mb-4 text-gray-800 "
+                className="text-2xl sm:text-4xl font-bold mb-4 text-black "
                 >
                 Get Started Today.
               </p>
               <p 
-                className="text-lg font-medium  text-gray-600 mb-12 "
+                className=" text-sm sm:text-lg font-medium  text-gray-800 mb-12 "
                 >
                   Get in touch to streamline your workflow.
                 </p>
                   </div>
               
               <div 
-                className="flex flex-col mb-8 sm:flex-row gap-4 justify-center"
+                className="flex flex-col mb-2 sm:mb-8 mx-12 sm:mx-0 sm:flex-row gap-4 justify-center"
               >
                 <Link 
                 to="/quote" 
                 
-                className="bg-gradient-to-r from-black to-red-700   border-2 border-red-800 bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                className="bg-gradient-to-r from-black to-red-600   border-2 border-red-500 bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
                 Get a Quote
               </Link>
                 
                 <Link 
                 to="/pricing" 
-                  className="border-[#292929] group flex-between gap-1 overflow-hidden bg-white border hover:border-gray-400 text-black px-4 py-3 rounded-lg font-semibold transition-colors"
+                  className="border-white  group flex-between gap-1 overflow-hidden bg-white border hover:border-gray-400 text-black px-4 py-3 rounded-lg font-semibold transition-colors"
 
                 >
                   <span className="group-hover:translate-x-3 duration-400">View Pricing</span>
