@@ -78,7 +78,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
       <SectionLayout sectionTopPadding={topPadding}>
         
         <motion.div 
-          className="relative mx-auto max-w-5xl border-red-500 mt-8 sm:py-12 rounded-4xl  bg-black/20  text-white "
+          className="relative mx-auto max-w-5xl bg-gradient-to-tl from-red-200 via-white to-white  border-red-500 mt-8 sm:py-12 rounded-4xl  text-white "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -91,7 +91,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
             <motion.img 
               src={darklogo} 
               alt="logo" 
-              className="z-10   bg-white rounded-3xl   top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8  "
+              className="z-10    rounded-3xl shadow-2xl shadow-red-800 border border-black/20 top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8   "
               variants={logoVariants}
               initial="hidden"
               whileInView="visible"
@@ -101,17 +101,17 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
           </div>
 
           <motion.div 
-            className="flex-center md:block hidden  rounded-2xl flex-wrap absolute top-10 left-1 p-8  flex-center  z-0"
+            className="flex-center sm::block hidden  rounded-2xl flex-wrap absolute left-1/3 top-20 -rotate-45 p-8  flex-center  z-20"
             variants={gridVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {[...Array(24)].map((_, index) => (
+            {[...Array(6)].map((_, index) => (
              <>
              <motion.div 
                 key={index} 
-                className={`w-[1px] ml-4 h-42  rounded-sm    bg-gradient-to-b from-transparent   to-red-800`}      
+                className={`w-[2px] ml-4 h-96  rounded-sm    bg-gradient-to-b from-transparent via-transparent   to-red-600`}      
                 variants={gridItemVariants}
                 whileHover={{ 
                   scale: 1.2, 
@@ -121,7 +121,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                 />
                 <motion.div 
                   key={index} 
-                  className={`w-[0.5px] mx-6  h-24    bg-black  `}      
+                  className={`w-2 mx-2  h-42 rounded-xl   bg-gradient-to-b from-transparent via-red-200/20 to-red-600  `}      
                   variants={gridItemVariants}
                   whileHover={{ 
                     scale: 1.2, 
@@ -131,7 +131,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                 />
               <motion.div 
                 key={index} 
-                className={`w-[0.5px]  h-54  rounded-sm  mx-2 bg-gradient-to-b from-red-800   to-transparent`}      
+                className={`w-[4px]   h-54  rounded-sm  mx-2 bg-gradient-to-t from-red-500   to-transparent`}      
                 variants={gridItemVariants}
                 whileHover={{ 
                   scale: 1.2, 
@@ -152,7 +152,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
             }}></div>
           </div>
           
-          <div className="relative max-w-6xl mx-auto  z-10 pt-64 pb-8">
+          <div className="relative max-w-6xl mx-auto  z-30 pt-64 pb-8">
             <motion.div 
               className="text-center"
               variants={containerVariants}

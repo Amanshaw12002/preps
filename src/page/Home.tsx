@@ -560,7 +560,7 @@ export default function Home() {
     <div className='flex flex-col sm:flex-row  sm:mt-8'>
       {/* Tabs */}
       <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:h-1/2 sm:mt-4 m-4 sm:w-full"
+        className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:h-1/2 sm:mt-4 mt-4 sm:w-full"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
