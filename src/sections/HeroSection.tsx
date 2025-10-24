@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 
 import box from '../asset/box2.png'
 import SectionLayout from '@/layout/sectionLayout';
+import { ChevronRight, MoveRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
 
@@ -54,7 +56,7 @@ export default function HeroSection() {
           {/* Animated Text Content */}
           <div className="flex lg:flex-col lg:w-2xl  relative ">
 
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl  font-semibold font-inter text-red-700 text-shadow-2xs">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-red-700 text-shadow-2xs">
               <motion.span 
                 className="block pb-1"
                 initial={{ opacity: 0, y: 30,scale:0.7 }}
@@ -88,6 +90,13 @@ export default function HeroSection() {
                 {" "} Fulfillment Needs. {" "}
               </motion.span>
             </h2>
+
+              <Link to="/quote" className=" border-2 group overflow-hidden flex-between mt-6  py-1 rounded-xl  w-fit text-sm font-semibold  transition">
+                         <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+
+              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
           </div>
 
           <motion.h2 
@@ -106,14 +115,14 @@ export default function HeroSection() {
           >
             Safe storage to professional packing & fast shipping. With our fast and reliable FBA service, your products are always ready to reach customers quickly and securely.
           </motion.p>
+          
 
-
-          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-2/5  lg:-top-40 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-1/3  lg:-top-50 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
           <div className='max-w-2xl flex-none lg:max-w-none relative'>
               <motion.img 
                 src={box} 
                 alt="" 
-                className=" w-[22rem] sm:w-[32rem] lg:w-[42rem] object-cover z-1 rounded-xl"
+                className=" w-[22rem] sm:w-[32rem] lg:w-[52rem] object-cover z-1 rounded-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

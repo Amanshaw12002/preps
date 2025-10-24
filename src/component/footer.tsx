@@ -95,9 +95,9 @@ export default function Footer() {
     <SectionLayout>
       <AnimatedSection className="max-w-5xl  rounded-2xl mx-auto ">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 border border-gray-400 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
+        <div className="grid grid-cols-1  border border-gray-400 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
           {/* Brand Section */}
-          <div className="lg:col-span-4  bg-black/10 border-gray-600 flex-between  rounded-2xl p-4">
+          <div className="lg:col-span-4  bg-black/5 border-gray-600 flex-between  rounded-2xl p-4">
         <div className="flex flex-col ml-8">
             <motion.div variants={itemVariants} className="flex items-center   mb-6">
               <div>
@@ -266,7 +266,7 @@ export default function Footer() {
             </ul>
           </div>
             
-<motion.div variants={itemVariants} className="flex  flex-col my-2 border p-4 rounded-2xl gap-2">
+<motion.div variants={itemVariants} className="flex  bg-black/80 flex-col my-2 border p-4 rounded-2xl gap-2">
               {[
                 { icon: FaFacebook, label: "Facebook",to: ""},
                 { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },

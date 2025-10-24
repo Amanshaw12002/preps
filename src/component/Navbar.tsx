@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className=" w-full max-w-5xl    mx-4  sm:mx-10 lg:mx-14   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
-        <Link to="/" className="flex  group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex lg:ml-2 group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
           <motion.img 
             initial={{x:-45}} 
             animate={{ x: 0 }}
@@ -61,8 +61,8 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu - Unchanged */}
-        <ul className="hidden  md:flex font-inter text-xs text-gray-800 gap-2 pl-6 items-center">
-          <li className="transition duration-300">
+        <ul className="hidden   md:flex font-inter text-xs text-gray-800 gap-2 pl-6 items-center">
+          <li className="transition border-l-2 border-black pl-2 duration-300">
             <Link to="/" className="border-1 border-transparent hover:bg-white hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Home</Link>
           </li>
           <li className="transition">
