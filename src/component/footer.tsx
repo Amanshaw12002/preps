@@ -3,6 +3,8 @@ import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import SectionLayout from "@/layout/sectionLayout";
+import logo from "../asset/logo.png";
+import { ChevronRight, MoveRight } from "lucide-react";
 // Animation variants
 const containerVariants:Variants = {
   hidden: { opacity: 0 },
@@ -91,15 +93,16 @@ export default function Footer() {
 
   return (
     <SectionLayout>
-      <AnimatedSection className="max-w-5xl   mx-auto  pt-12 pl-4 pr-18">
+      <AnimatedSection className="max-w-5xl  rounded-2xl mx-auto ">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        <div className="grid grid-cols-1 border border-gray-400 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
           {/* Brand Section */}
-          <div className="lg:col-span-4">
-            <motion.div variants={itemVariants} className="flex items-center mb-6">
+          <div className="lg:col-span-4  bg-black/10 border-gray-600 flex-between  rounded-2xl p-4">
+        <div className="flex flex-col ml-8">
+            <motion.div variants={itemVariants} className="flex items-center   mb-6">
               <div>
                 <motion.h2 
-                  className="text-4xl font-light text-black"
+                  className="text-4xl font-medium text-black"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -122,36 +125,26 @@ export default function Footer() {
               
             </motion.p>
             
-            {/* Social Icons */}
-            <motion.div variants={itemVariants} className="flex space-x-4">
-              {[
-                { icon: FaFacebook, label: "Facebook",to: ""},
-                { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },
-                { icon: FaInstagram, label: "Instagram",to:"https://www.instagram.com/blackboxprepco/" }
-              ].map((social, index) => (
-                <Link
-                to={social.to}
-                >
-                <motion.div
-                  key={social.label}
-                  variants={socialIconVariants}
-                  whileHover="hover"
-                  className="p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
-                  aria-label={social.label}
-                  style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                  <social.icon className="h-5 w-5 text-black" />
-                </motion.div>
-                  </Link>
-              ))}
-            </motion.div>
-          </div>
+                <Link to="/quote" className=" border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
+                         <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
+              <span className=" text-black py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
 
+              <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
+            
+
+          </div>
+              <img src={logo} className=" rounded-xl w-1/4"/>
+
+          
+
+          </div>
+          
           {/* Quick Links */}
-          <motion.div variants={itemVariants} className="lg:col-span-2 flex flex-col items-center">
+          <motion.div variants={itemVariants} className="lg:col-span-1 bg-black/5 rounded-2xl py-8 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
-              className="text-sm font-medium mb-6 text-gray-700 relative pb-2"
+              className="text-sm font-medium mb-6 border-b text-center text-gray-900 relative pb-2"
             >
                LINKS
               <motion.div 
@@ -167,15 +160,12 @@ export default function Footer() {
                   key={item.name}
                   variants={linkItemVariants}
                   custom={index}
+                  className=""
                 >
                   <Link 
                     to={item.to} 
-                    className="text-slate-800 font-light text-sm hover:text-red-800 transition duration-300 flex items-center group"
+                    className="text-black font-light  text-sm hover:text-red-800 transition duration-300 flex items-center group"
                   >
-                    <motion.span 
-                      className="w-2 h-2 bg-royal-red rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"
-                      whileHover={{ scale: 1.2 }}
-                    />
                     {item.name}
                   </Link>
                 </motion.li>
@@ -184,10 +174,10 @@ export default function Footer() {
           </motion.div>
 
           {/* Services */}
-          <motion.div variants={itemVariants} className="lg:col-span-3 flex flex-col items-center">
+          <motion.div variants={itemVariants} className="lg:col-span-1 bg-black/5 rounded-2xl py-8 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
-              className="text-sm font-medium mb-6 text-gray-700 relative pb-2"
+              className="text-sm font-medium mb-6 border-b text-gray-900 relative pb-2"
             >
               SERVICES
               <motion.div 
@@ -218,12 +208,9 @@ export default function Footer() {
                 >
                   <Link 
                     to={service.to} 
-                    className="text-slate-900 text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
+                    className="text text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
                   >
-                    <motion.span 
-                      className="w-2 h-2 bg-red-800 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition duration-300"
-                      whileHover={{ scale: 1.2 }}
-                    />
+                   
                     {service.name}
                   </Link>
                 </motion.li>
@@ -232,10 +219,12 @@ export default function Footer() {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-3 pr-4">
+          <motion.div variants={itemVariants} className="lg:col-span-2 flex-between p-4 rounded-2xl  bg-black/5 ">
+                    <div className="w-2/3  rounded-xl  flex flex-col items-center">
+
             <motion.h3 
               variants={itemVariants}
-              className="text-sm font-medium text-gray-700 mb-6  relative pb-2"
+              className="text-sm font-medium border-b text-gray-900 mb-6  relative pb-2"
             >
               GET IN TOUCH
               <motion.div 
@@ -255,16 +244,6 @@ export default function Footer() {
                 </span>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center">
-                <FaEnvelope className="h-5 w-5 text-slate-800 mr-3 flex-shrink-0" />
-                <a 
-                  href="mailto:blackboxprepcenter@gmail.com" 
-                  className="text-slate-800 font-light text-sm hover:text-royal-red transition duration-300"
-                >
-                  blackboxprepcenter@gmail.com
-
-                </a>
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center">
                 <FaPhone className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
                 <a 
                   href="tel:+15017772993" 
@@ -274,7 +253,41 @@ export default function Footer() {
 
                 </a>
               </motion.li>
+              <motion.li variants={itemVariants} className="flex items-center">
+                <FaEnvelope className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
+                <a 
+                  href="mailto:blackboxprepcenter.com" 
+                  className="text-slate-800 text-sm font-light hover:text-royal-red transition duration-300"
+                >
+                  blackboxprepcenter.com
+
+                </a>
+              </motion.li>
             </ul>
+          </div>
+            
+<motion.div variants={itemVariants} className="flex  flex-col my-2 border p-4 rounded-2xl gap-2">
+              {[
+                { icon: FaFacebook, label: "Facebook",to: ""},
+                { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },
+                { icon: FaInstagram, label: "Instagram",to:"https://www.instagram.com/blackboxprepco/" }
+              ].map((social, index) => (
+                <Link
+                to={social.to}
+                >
+                <motion.div
+                  key={social.label}
+                  variants={socialIconVariants}
+                  whileHover="hover"
+                  className="p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
+                  aria-label={social.label}
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                  >
+                  <social.icon className="h-5 w-5 text-black" />
+                </motion.div>
+                  </Link>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </AnimatedSection>

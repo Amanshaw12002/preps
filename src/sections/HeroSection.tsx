@@ -91,7 +91,7 @@ export default function HeroSection() {
           </div>
 
           <motion.h2 
-            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-red-800 mt-4 mb-2'
+            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-black mt-4 mb-2'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -99,7 +99,7 @@ export default function HeroSection() {
             You sell, we handle the rest.
           </motion.h2>
           <motion.p 
-            className='font-sans text-[10px] sm:text-xs pr-12 text-red-700'
+            className='font-sans text-[10px] sm:text-xs pr-12 text-black'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Warehouse, Truck, Package } from "lucide-react";
+import React from "react";
+import { Warehouse, Truck, Package, MoveRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,8 +9,7 @@ export default function PrepServicesSection() {
   const icons = [<TrendingUp className="h-4 w-4 sm:h-6 sm:w-6"/>, <Workflow className="h-4 w-4 sm:h-6 sm:w-6"/>, <Trophy className="h-4 w-4 sm:h-6 sm:w-6"/>];
   const words = ["Scale", "Streamline", "Succeed"];
   const [index, setIndex] = React.useState(0);
-  const [expanded, setExpanded] = useState(false);
-
+``
   // Rotate words every 2.5 seconds
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -21,49 +20,26 @@ export default function PrepServicesSection() {
 
   const services = [
     {
-      id: 1,
-      title: "FBA & WFS Prep",
-      icon: <Warehouse className="w-6 h-6 text-red-700" />,
+      id: 2,
+      title: "FBM & DTC Prep",
+      icon: <Truck className="w-12 h-12 z-20  text-black border rounded-xl p-2 mx-auto" />,
       description:
-        "Grow faster with compliant, retailer-ready shipments. We handle every requirement from labeling and poly-bagging to palletization — all following Amazon and Walmart standards.",
-      points: [
-        "Accurate FNSKU labeling & documentation",
-        "Optimized cartonization to cut freight costs",
-        "Reduced delays and inbound rejections",
-        "Photo & QC reports for full visibility",
-      ],
-      result:
-        "Faster restocks, higher Buy Box uptime, and smoother scaling on marketplace platforms.",
+      "From same-day order prep to custom packaging, we help you deliver on time and exceed buyer expectations.",
     },
     {
-      id: 2,
-      title: "FBM Prep & Fulfillment",
-      icon: <Truck className="w-6 h-6 text-red-700" />,
+      id: 1,
+      title: "FBA & WFS Prep",
+      icon: <Warehouse className="w-12 h-12 z-20  text-black border rounded-2xl p-2 mx-auto " />,
       description:
-        "Efficient merchant shipping that builds customer trust. From same-day order prep to custom packaging, we help you deliver on time and exceed buyer expectations.",
-      points: [
-        "Ready-to-ship order handling with protective packaging",
-        "Pick, pack, and dispatch within SLA windows",
-        "Kitting, bundling & branded inserts for marketing",
-        "Return handling and restock solutions",
-      ],
-      result:
-        "Lower return rates, improved seller metrics, and a premium brand experience for every order.",
+        "At BlackBox, our experienced warehouse team handles everything, picking, packing, prepping, labeling, repacking, and shipping, all in full compliance with Amazon’s FBA standards. We help you save time, cut costs, and focus on scaling your business.",
+
     },
     {
       id: 3,
       title: "Wholesale Prep",
-      icon: <Package className="w-6 h-6 text-red-700" />,
+      icon: <Package className="w-12 h-12 z-20  text-black border rounded-xl p-2 mx-auto" />,
       description:
-        "Make your wholesale operations seamless and scalable. We manage bulk receiving, re-packing, and compliance for every retail partner you work with.",
-      points: [
-        "Batch QC and defect reporting",
-        "Case packing & relabeling for retail compliance",
-        "Cross-docking & inventory consolidation",
-        "Barcode tracking & lot control for traceability",
-      ],
-      result:
-        "Stronger retailer relationships, fewer chargebacks, and faster reorder cycles.",
+        "Built for wholesale sellers, our Delaware tax-free warehouse handles your storage, prep, and shipments, helping you scale efficiently and reach new markets faster.",
     },
   ];
 
@@ -105,7 +81,7 @@ export default function PrepServicesSection() {
         </div>
 
         <motion.p 
-          className="text-[10px] sm:text-sm text-gray-700 max-w-3xl mx-auto mb-16"
+          className="text-[10px] sm:text-xs text-black max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,7 +99,7 @@ export default function PrepServicesSection() {
           {services.map((service, serviceIndex) => (
             <motion.div
               key={service.id}
-              className="group  bg-white border border-gray-400 hover:border-red-700 rounded-lg shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-6 text-left"
+              className="group  bg-white border border-black  rounded-lg shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-4 text-left"
               initial={{ opacity: 0.6, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -131,16 +107,18 @@ export default function PrepServicesSection() {
             >
               {/* Header */}
               <motion.div 
-                className="flex items-center mb-4"
+                className="flex border-b pb-4 items-center  flex-col mb-2"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 + serviceIndex * 0.1, duration: 0.5 }}
               >
-                <div className="bg-white p-0.5 sm:p-2 border-red-800 rounded-sm border">
+                <div className=" relative  h-14 w-full my-4   p-0.5 sm:p-2">
+                                  
                   {service.icon}
+
                 </div>
-                <h3 className="ml-3 text-xs sm:text-sm  font-semibold text-gray-800">
+                <h3 className="ml-3 text-xs sm:text-lg  font-semibold text-gray-800">
                   {service.title}
                 </h3>
               </motion.div>
@@ -156,55 +134,6 @@ export default function PrepServicesSection() {
                 {service.description}
               </motion.p>
 
-              {/* Expandable Points */}
-              <motion.div
-                className={`overflow-hidden transition-all duration-500 ${
-                  expanded ? "max-h-[500px]" : "max-h-[0px]"
-                }`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7 + serviceIndex * 0.1, duration: 0.5 }}
-              >
-                <ul className="space-y-2 list-disc list-inside text-gray-700 mb-4 text-xs sm:text-sm">
-                  {service.points.map((point, pointIndex) => (
-                    <motion.li 
-                      className="pt-2" 
-                      key={pointIndex}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.8 + serviceIndex * 0.1 + pointIndex * 0.1, duration: 0.4 }}
-                    >
-                      {point}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Result */}
-              <motion.p 
-                className=" text-xs sm:text-sm group-hover:text-black text-gray-700 border-t border-gray-400 pt-3 italic"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.9 + serviceIndex * 0.1, duration: 0.5 }}
-              >
-                → {service.result}
-              </motion.p>
-
-              {/* Read More / Less Button */}
-              <motion.button
-                onClick={() => setExpanded(!expanded)}
-                className="mt-3 text-sm cursor-pointer font-medium text-red-800 hover:underline focus:outline-none"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.0 + serviceIndex * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                {expanded ? "Read Less" : "Read More"}
-              </motion.button>
             </motion.div>
           ))}
         </div>
@@ -218,7 +147,7 @@ export default function PrepServicesSection() {
           transition={{ delay: 0.8, duration: 0.6 }}
         >
           <motion.h3 
-            className="text-xl sm:text-3xl font-inter font-semibold w-fit mx-auto text-transparent bg-gradient-to-r from-black via-red-600 to-red-700 bg-clip-text mb-3"
+            className="text-xl sm:text-3xl font-inter font-semibold w-fit mx-auto  mb-3"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -235,8 +164,11 @@ export default function PrepServicesSection() {
           >
             Let's take the prep work off your plate — so you can focus on growth.
           </motion.p>
-           <Link to="/quote" className=" border-2 border-red-700 rounded-lg  bg-gradient-to-r text-xs from-black to-red-600 bg-clip-text text-transparent font-semibold px-2 sm:px-4 py-1 sm:py-3 transition">
-              Get a Custom Quote
+           <Link to="/quote" className=" border-2 group overflow-hidden flex-between mx-auto  p-1 rounded-xl  w-fit font-semibold  transition">
+                         <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+
+              <span className=" text-black py-2 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
+              <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
         </motion.div>
       </div>

@@ -73,7 +73,7 @@ export default function Home() {
       
 <div className="flex-center flex-col mt-12 max-w-5xl mx-auto text-black ">
       <motion.h2 
-        className="font-sans text-xs sm:text-lg mb-2"
+        className="font-sans text-xs font-semibold sm:text-sm mb-2"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -83,14 +83,14 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className=" text-3xl sm:text-4xl font-medium pb-2"
+        className=" text-3xl sm:text-4xl  flex-center flex-col font-medium pb-2"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.8 }}
       >
         <motion.span 
-          className="bg-gradient-to-r pb-2 from-black to-red-700 bg-clip-text text-transparent font-medium block"
+          className="bg-gradient-to-r pb-8 from-black to-red-700 bg-clip-text text-transparent font-medium block"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -99,13 +99,13 @@ export default function Home() {
           New to Amazon or already selling?
         </motion.span>  
         <motion.span 
-          className="bg-gradient-to-r text-2xl sm:text-3xl from-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
+          className="bg-gradient-to-r text-2xl sm:text-3xl from-red-800  via-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          We've got your prep covered...
+          We've got your prep covered.
         </motion.span>
       </motion.h2>
 
@@ -119,14 +119,14 @@ export default function Home() {
 
        
         <motion.h2 
-          className='font-sans text-sm mx-auto max-w-xl text-center   px-2  text-red-800 font-normal leading-relaxed'
+          className='font-sans text-sm pb-8 mx-auto max-w-xl text-center   px-2  text-black font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
-          Focus on growth, we'll handle the rest.
+          <span className="block text-red-800 font-semibold"> We'll handle the rest, while you focus on growth.</span>
         </motion.h2>
       </motion.div>
 
@@ -138,21 +138,22 @@ export default function Home() {
 
       <div className="flex-between flex-col sm:flex-row pl-4 gap-4  sm:gap-8 my-8">
         {[
-          { number: "50K+", title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-600", bg: "from-red-200", color: "text-red-800" },
+          { number: "100K+", shadow:'shadow-red-500',title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-400", bg: "from-red-200", color: "text-red-700" },
 {
-  number: "4.8+",
-  title: "Average Rating",
+  number: "★ ★ ★ ★ ★",
+  title: "Full 5 Stars Rating",
   desc: "From verified client reviews and testimonials.",
   border: "border-black",
+  shadow:'shadow-black',
   bg: "from-white",
   color: "text-black",
 },
-{ number: "24-48h", title: "Average Turnaround", desc: "Fast processing from receiving to shipment", border: "border-red-600", bg: "from-red-200", color: "text-red-900" },
-{ number: "$0", title: "Tax Advantage", desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
+{ number: "24-48h", title: "Average Turnaround",shadow:'shadow-red-600', desc: "Fast processing from receiving to shipment", border: "border-red-500", bg: "from-red-200", color: "text-red-700" },
+{ number: "100%", title: "Tax Advantage",shadow:'shadow-black', desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
         ].map((stat, index) => (
           <motion.div
           key={index}
-          className={`border ${stat.border} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
+          className={`border ${stat.border} hover:shadow-xl shadow-lg hover:scale-110 hover:border transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -178,7 +179,7 @@ export default function Home() {
               {stat.title}
             </motion.p>
             <motion.p 
-              className={`${stat.color.replace('800', '700').replace('900', '700')} text-xs text-left`}
+              className={`${stat.color.replace('800', '700').replace('800', '700')} text-xs text-left`}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -233,7 +234,7 @@ export default function Home() {
     ))}
                
     <motion.h2 
-      className=' text-xl  sm:text-4xl font-semibold text-center text-gray-900 my-4 sm:mb-8'
+      className=' text-xl  sm:text-4xl font-medium leading-12 text-center text-gray-900 my-4 sm:mb-8'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

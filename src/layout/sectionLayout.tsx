@@ -20,7 +20,7 @@ const SectionLayout: React.FC<AdvancedSectionLayoutProps> = ({
 }) => {
  
   return (
-    <section className={`px-4 overflow-hidden bg-gray-100 ${sectionTopPadding}`}
+    <section className={`px-4 overflow-hidden  bg-slate-600/20 ${sectionTopPadding}`}
     >
       <div
         className='px-2 sm:px-6 lg:p-8  relative bg-white

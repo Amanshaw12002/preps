@@ -1,7 +1,7 @@
 import { motion, type Variants } from "framer-motion";
-import darklogo from "../asset/logo.png"
+import darklogo from "../asset/logo.png";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, MoveRight } from "lucide-react";
 import SectionLayout from "@/layout/sectionLayout";
 
 
@@ -49,49 +49,25 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
     }
   };
 
-  
-  const gridVariants:Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.5
-      }
-    }
-  };
-
-  const gridItemVariants:Variants = {
-    hidden: {y:200, },
-    visible: {
-      
-      y:0,
-      transition: {
-        duration: 1,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <>
       <SectionLayout sectionTopPadding={topPadding}>
         
         <motion.div 
-          className="relative mx-auto max-w-5xl bg-gradient-to-tl from-red-200 via-white to-white  border-red-500 mt-8 sm:py-12 rounded-4xl  text-white "
+          className="relative mx-auto max-w-5x border   border-red-500 mt-8 sm:py-12 rounded-4xl  text-white "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <div className="w-full relative">
+          <div className="w-full bg-transparent relative">
          
             
             
             <motion.img 
               src={darklogo} 
               alt="logo" 
-              className="z-10    rounded-3xl shadow-2xl shadow-red-800 border border-black/20 top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8   "
+              className="z-10    rounded-3xl  top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8   "
               variants={logoVariants}
               initial="hidden"
               whileInView="visible"
@@ -100,49 +76,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
             /> 
           </div>
 
-          <motion.div 
-            className="flex-center sm::block hidden  rounded-2xl flex-wrap absolute left-1/3 top-20 -rotate-45 p-8  flex-center  z-20"
-            variants={gridVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {[...Array(6)].map((_, index) => (
-             <>
-             <motion.div 
-                key={index} 
-                className={`w-[2px] ml-4 h-96  rounded-sm    bg-gradient-to-b from-transparent via-transparent   to-red-600`}      
-                variants={gridItemVariants}
-                whileHover={{ 
-                  scale: 1.2, 
-                  backgroundColor: "rgba(255,255,255,0.2)",
-                  transition: { duration: 0.3 }
-                }}
-                />
-                <motion.div 
-                  key={index} 
-                  className={`w-2 mx-2  h-42 rounded-xl   bg-gradient-to-b from-transparent via-red-200/20 to-red-600  `}      
-                  variants={gridItemVariants}
-                  whileHover={{ 
-                    scale: 1.2, 
-                    backgroundColor: "rgba(255,255,255,0.2)",
-                    transition: { duration: 0.3 }
-                  }}
-                />
-              <motion.div 
-                key={index} 
-                className={`w-[4px]   h-54  rounded-sm  mx-2 bg-gradient-to-t from-red-500   to-transparent`}      
-                variants={gridItemVariants}
-                whileHover={{ 
-                  scale: 1.2, 
-                  backgroundColor: "rgba(255,255,255,0.2)",
-                  transition: { duration: 0.3 }
-                }}
-              />
-                  </>
-            ))}
-          </motion.div>
-
+          
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" style={{
@@ -181,24 +115,22 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                   </div>
               
               <div 
-                className="flex flex-col mb-2 sm:mb-8 mx-12 sm:mx-0 sm:flex-row gap-4 justify-center"
+                className="flex  flex-col sm:flex-row w-fit  mb-2   sm:mx-auto  gap-4 justify-center"
               >
                 <Link 
-                to="/quote" 
+                to="/pricing"  
                 
-                className="bg-gradient-to-r from-black to-red-600   border-2 border-red-500 bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
-                Get a Quote
+               View Pricing
               </Link>
-                
-                <Link 
-                to="/pricing" 
-                  className="border-white  group flex-between gap-1 overflow-hidden bg-white border hover:border-gray-400 text-black px-4 py-3 rounded-lg font-semibold transition-colors"
+                              <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
+                         <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-                >
-                  <span className="group-hover:translate-x-3 duration-400">View Pricing</span>
-                  <ChevronRight className="group-hover:translate-x-10 duration-700 text-gray-700"/>
-                </Link>
+              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
+               
               </div>
             </motion.div>
           </div>
