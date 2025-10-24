@@ -85,7 +85,7 @@ export default function PrepServicesSection() {
             className=" flex items-center flex-col sm:flex-row font-semibold text-slate-900 mb-6 text-center"
           >
             How 
-<span className="mx-2 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>Help You{" "}
+<span className="mx-2  text-transparent bg-clip-text bg-gradient-to-r  from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>Help You{" "}
 
 <div className="border rounded-lg sm:rounded-xl px-2 mx-4 transition-transform duration-500">
             <motion.span
@@ -140,7 +140,7 @@ export default function PrepServicesSection() {
                 <div className="bg-white p-0.5 sm:p-2 border-red-800 rounded-sm border">
                   {service.icon}
                 </div>
-                <h3 className="ml-3 text-xs sm:text-md font-semibold text-gray-800">
+                <h3 className="ml-3 text-xs sm:text-sm  font-semibold text-gray-800">
                   {service.title}
                 </h3>
               </motion.div>

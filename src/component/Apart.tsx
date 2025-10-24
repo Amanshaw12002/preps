@@ -89,11 +89,11 @@ export default function WhatSetsUsApart() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 pt-2 pb-8 sm:p-8">
+        <div className="grid md:grid-cols-3  pt-2 pb-8 sm:p-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="border border-red-800 group hover:border-red-800 shadow-sm hover:shadow-md p-6 text-left transition-all duration-300 hover:-translate-y-1"
+              className="border border-red-800 group  hover:border-red-800 shadow-sm hover:shadow-md p-6 text-left transition-all duration-300 hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

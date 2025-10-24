@@ -91,7 +91,7 @@ export default function HeroSection() {
           </div>
 
           <motion.h2 
-            className= 'text-xs sm:text-md font-sans font-normal text-red-800 mt-4 mb-2'
+            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-red-800 mt-4 mb-2'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
