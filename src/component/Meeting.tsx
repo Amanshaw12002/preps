@@ -15,11 +15,11 @@ export default function CustomCalendar() {
 
   return (
     <SectionLayout>
-      <div className="bg-white rounded-2xl flex  w-full max-w-5xl mx-auto pt-8 sm: sm:pt-0 sm:p-8">
+      <div className="bg-white rounded-2xl flex  w-full max-w-5xl mx-auto pt-8 sm: sm:pt-0 ">
         {/* Heading */}
         <div>
 
-        <h2 className="text-xl sm:text-3xl border-l-2 pl-2 mt-12  font-inter text-gray-900 text-left mb-5">
+        <h2 className="text-xl sm:text-4xl border-l-2 pl-2 mt-12  font-inter text-gray-900 text-left mb-5">
           Schedule an Onboarding Meeting
         </h2>
         <p className="text-left text-xs sm:text-sm text-gray-800 ">
@@ -31,7 +31,7 @@ export default function CustomCalendar() {
 
         {/* Calendly widget */}
         <div
-          className="calendly-inline-widget scale-80 inset-x-12 overflow-hidden   sm:-mt-34 sm:-mb-12 rounded-xl w-full  "
+          className="calendly-inline-widget scale-80 inset-x-12 overflow-hidden   sm:-mt-14 sm:-mb-12 rounded-xl w-full  "
           data-url="https://calendly.com/amanshaw12002/new-meeting"
           style={{
             minWidth: "420px",

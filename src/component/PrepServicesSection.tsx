@@ -60,8 +60,8 @@ export default function PrepServicesSection() {
             transition={{ duration: 1 }}
             className=" flex items-center flex-col sm:flex-row font-semibold text-slate-900 mb-6 text-center"
           >
-            How 
-<span className="mx-2  text-transparent bg-clip-text bg-gradient-to-r  from-slate-800 via-red-700 to-red-600">BlackBoxPreps</span>Help You{" "}
+             
+BlackBoxPreps Help You{" "}
 
 <div className="border rounded-lg sm:rounded-xl px-2 mx-4 transition-transform duration-500">
             <motion.span
@@ -70,13 +70,13 @@ export default function PrepServicesSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="flex items-center w-fit  sm:mx-2 text-black  p-1  sm:rounded-xl sm:py-2"
+              className="flex items-center  w-fit  sm:mx-2 text-black  p-1  sm:rounded-xl sm:py-2"
               > 
-              <span className="  sm:text-xl sm:p-1 p-0.5 text-white bg-red-600 mr-1 rounded-md">{icons[index]}</span>
+              <span className="  sm:text-xl sm:p-1 p-0.5 text-white bg-red-600 mr-2 rounded-md">{icons[index]}</span>
               <span>{words[index]}</span>
             </motion.span>
               </div>{" "}
-            Your Business
+            Your Business.
           </motion.h2>
         </div>
 

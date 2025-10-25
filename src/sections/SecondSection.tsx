@@ -24,7 +24,7 @@ export default function SecondSection() {
             <Link 
                 to="/pricing"  
                 
-                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-5 py-3 transition hover:opacity-90 "
+                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 hover:border-red-600 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-5 py-3 transition  "
                 >
                Check Pricing
               </Link>
@@ -57,7 +57,7 @@ export default function SecondSection() {
 ].map((stat, index) => (
           <motion.div
           key={index}
-          className={`border ${stat.border} hover:shadow-lg hover:scale-105 hover:border transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
+          className={`border ${stat.border} hover:shadow-lg hover:scale-105  transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
