@@ -19,12 +19,12 @@ export default function CustomCalendar() {
         {/* Heading */}
         <div>
 
-        <h2 className="text-xl sm:text-3xl pt-12 font-inter text-gray-900 text-left mb-2">
+        <h2 className="text-xl sm:text-3xl border-l-2 pl-2 mt-12  font-inter text-gray-900 text-left mb-5">
           Schedule an Onboarding Meeting
         </h2>
         <p className="text-left text-xs sm:text-sm text-gray-800 ">
-          Pick a time that works best for you. Our{" "}
-          <span className="font-bold block">one-to-one call</span> or{" "}
+          Pick a time that works best for you.
+          <span className="font-bold block">Our one-to-one call</span> or{" "}
           <span className="font-bold">video conference</span> will help you get started smoothly.
         </p>
         </div>

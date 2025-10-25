@@ -77,7 +77,7 @@ export default function WhatSetsUsApart() {
   </span>
 </motion.h2>
           <motion.p 
-            className=" text-[10px] sm:text-sm text-right font-inter text-red-800 max-w-lg ml-auto border-r sm:border-r-2 border-red-800 pr-2"
+            className=" text-[10px] sm:text-sm text-right font-inter text-black max-w-lg ml-auto border-r sm:border-r-2 border-black pr-2"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
