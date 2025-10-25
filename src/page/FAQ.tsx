@@ -45,7 +45,7 @@ export default function FAQ() {
 
   return (
     <SectionLayout>
-      <div className="max-w-5xl mx-auto flex flex-col sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
+      <div className="max-w-5xl mx-auto flex flex-col sm:py-12 sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Title Section */}
         <div className="flex-between relative  overflow-hidden mb-6">
           <motion.h2

@@ -95,7 +95,7 @@ export default function Footer() {
     <SectionLayout>
       <AnimatedSection className="max-w-5xl  rounded-2xl mx-auto ">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1  border border-gray-400 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
+        <div className="grid grid-cols-1  border border-gray-200 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
           {/* Brand Section */}
           <div className="lg:col-span-4  bg-black/5 border-gray-600 flex-between  rounded-2xl p-4">
         <div className="flex flex-col ml-8">

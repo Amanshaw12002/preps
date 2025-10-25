@@ -11,7 +11,7 @@ export default function HeroSection() {
 
 
   return (
-    <SectionLayout sectionTopPadding='pt-10' hero={true}>
+    <SectionLayout sectionTopPadding='pt-10' >
   
              
 

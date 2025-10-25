@@ -14,7 +14,7 @@ import ScrollToTop from './component/ScrollToTop';
 function App() {
  return (
   <>
-  <main className=' relative '>
+  <main className=' relative space-b-6 bg-slate-600/10 '>
        <Navbar/>
          <ScrollToTop />
         <Routes>

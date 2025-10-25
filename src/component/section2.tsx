@@ -54,7 +54,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
       <SectionLayout sectionTopPadding={topPadding}>
         
         <motion.div 
-          className="relative mx-auto max-w-5x border   border-red-500 mt-8 sm:py-12 rounded-4xl  text-white "
+          className="relative mx-auto max-w-5x border-2 border-black  mt-8 sm:py-12 rounded-4xl  text-white "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
