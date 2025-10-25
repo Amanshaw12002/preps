@@ -8,12 +8,14 @@ import WhatSetsUsApart from '@/component/Apart';
 import FAQ from './FAQ';
 import OptimizedSection from '@/sections/HeroSection';
 import { easeOut, motion } from 'framer-motion';
-
+import blackbox from '../asset/blackbox.png';
 import Section2 from '@/component/section2';
 import { useLenis } from '@/component/lenis';
 import Head from '@/component/Head';
 import SectionLayout from '@/layout/sectionLayout';
 import Software_Display from "@/sections/Software_Display";
+import { Link } from "react-router-dom";
+import { ChevronRight, MoveRight } from "lucide-react";
 
 
 export const processSteps: ProcessStep[] = [
@@ -71,7 +73,9 @@ export default function Home() {
 
     <SectionLayout>
       
-<div className="flex-center flex-col mt-12 max-w-5xl mx-auto text-black ">
+<div className="flex-center flex-col mt-12 max-w-5xl mx-auto text-black relative">
+  <div className="bg-black h-px absolute top-5 left-1/4 w-1/2 z-0"></div>
+      <img src={blackbox} className="w-10 h-10  rounded-2xl mb-2 z-10" />
       <motion.h2 
         className="font-sans text-xs font-semibold sm:text-sm mb-2"
         initial={{ opacity: 0, y: 20 }}
@@ -83,29 +87,30 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className=" text-3xl sm:text-4xl  flex-center flex-col font-medium pb-2"
+        className=" text-3xl sm:text-4xl  flex-center flex-col font-medium "
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.8 }}
       >
         <motion.span 
-          className="bg-gradient-to-r pb-8 from-black to-red-700 bg-clip-text text-transparent font-medium block"
+          className="bg-gradient-to-r pb-4 from-black to-red-700 bg-clip-text text-transparent font-medium block"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          New to Amazon or already selling?
+          New to Amazon or already selling !
         </motion.span>  
         <motion.span 
-          className="bg-gradient-to-r text-2xl sm:text-3xl from-red-800  via-red-700 to-yellow-300 bg-clip-text text-transparent font-medium"
+          className="text-gray-900 text-4xl font-semibold text-center mb-6"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          We've got your prep covered.
+          <span className="bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps handles all,</span>
+           <span >  To get you started.</span>
         </motion.span>
       </motion.h2>
 
@@ -116,7 +121,24 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 1.2, duration: 0.8 }}
       >
+       <div 
+                className="flex  flex-col sm:flex-row w-fit  my-6   sm:mx-auto  gap-4 justify-center"
+              >
+                              <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
+                         <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
+              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
+                <Link 
+                to="/pricing"  
+                
+                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                >
+               View Pricing
+              </Link>
+               
+              </div>
        
         <motion.h2 
           className='font-sans text-sm pb-8 mx-auto max-w-xl text-center   px-2  text-black font-normal leading-relaxed'

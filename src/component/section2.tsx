@@ -96,6 +96,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
             >
               <div className="flex flex-col  mt-12 mx-auto w-full">
 
+              
               <p 
                 className="text-2xl sm:text-4xl font-bold mb-2 text-black "
                 >
@@ -117,6 +118,12 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
               <div 
                 className="flex  flex-col sm:flex-row w-fit  mb-2   sm:mx-auto  gap-4 justify-center"
               >
+                              <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
+                         <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+
+              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
                 <Link 
                 to="/pricing"  
                 
@@ -124,12 +131,6 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                 >
                View Pricing
               </Link>
-                              <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
-                         <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
-
-              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
-              <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
-            </Link>
                
               </div>
             </motion.div>

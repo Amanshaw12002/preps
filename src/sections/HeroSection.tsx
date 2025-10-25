@@ -90,7 +90,15 @@ export default function HeroSection() {
                 {" "} Fulfillment Needs. {" "}
               </motion.span>
             </h2>
-            <div className="flex-between w-fit gap-4  mt-4">
+          <motion.h2 
+            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-black mt-2 '
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            You sell, we handle the rest.
+          </motion.h2>
+            <div className="flex-between w-fit gap-4  my-4">
 
               <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
@@ -105,14 +113,6 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <motion.h2 
-            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-black mt-4 mb-2'
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            You sell, we handle the rest.
-          </motion.h2>
           <motion.p 
             className='font-sans text-[10px] sm:text-xs pr-12 text-black'
             initial={{ opacity: 0, y: 30 }}
