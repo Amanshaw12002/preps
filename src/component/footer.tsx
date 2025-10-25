@@ -124,15 +124,20 @@ export default function Footer() {
               Professional fulfillment solutions tailored to scale your e-commerce business. 
               
             </motion.p>
-            
+            <div className=" flex-between gap-4 w-fit ">
+
                 <Link to="/quote" className=" border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
                          <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
               <span className=" text-black py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
 
               <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            
+            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
+              <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
 
+            </div>
           </div>
               <img src={logo} className=" rounded-xl w-1/4"/>
 

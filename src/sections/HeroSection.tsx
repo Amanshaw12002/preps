@@ -54,7 +54,7 @@ export default function HeroSection() {
           ))}
           
           {/* Animated Text Content */}
-          <div className="flex lg:flex-col lg:w-2xl  relative ">
+          <div className="flex lg:flex-col lg:w-2xl  relative z-20 ">
 
             <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-red-700 text-shadow-2xs">
               <motion.span 
@@ -90,13 +90,19 @@ export default function HeroSection() {
                 {" "} Fulfillment Needs. {" "}
               </motion.span>
             </h2>
+            <div className="flex-between w-fit gap-4  mt-4">
 
-              <Link to="/quote" className=" border-2 group overflow-hidden flex-between mt-6  py-1 rounded-xl  w-fit text-sm font-semibold  transition">
+              <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
               <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
+            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1     rounded-lg text-sm font-semibold px-4 py-3   transition-all duration-500">
+              <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
+            </div>
           </div>
 
           <motion.h2 

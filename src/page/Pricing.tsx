@@ -446,7 +446,7 @@ export default function Pricing() {
 
         {/* Additional Sections */}
         <motion.div 
-          className="m-8 flex flex-col border rounded-2xl mx-auto max-w-5xl border-gray-400 bg-white"
+          className="m-8 flex flex-col border rounded-2xl shadow-2xl shadow-black/40 mx-auto max-w-5xl border-gray-400 bg-white"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -506,7 +506,7 @@ export default function Pricing() {
         >
           {/* Additional Services */}
           <motion.div 
-            className="m-8 p-4 flex flex-col border rounded-2xl max-w-md border-gray-400 bg-white"
+            className="m-8 p-4 flex flex-col border shadow-2xl shadow-black/40 rounded-2xl max-w-md border-gray-400 bg-white"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -558,7 +558,7 @@ export default function Pricing() {
 
           {/* Storage */}
           <motion.div 
-            className="m-8 flex flex-col border max-w-md p-4 rounded-2xl border-gray-400 bg-white"
+            className="m-8 flex flex-col border shadow-2xl shadow-black/40 max-w-md p-4 rounded-2xl border-gray-400 bg-white"
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
