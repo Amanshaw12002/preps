@@ -16,6 +16,7 @@ import SectionLayout from '@/layout/sectionLayout';
 import Software_Display from "@/sections/Software_Display";
 import { Link } from "react-router-dom";
 import { ChevronRight, MoveRight } from "lucide-react";
+import SecondSection from "@/sections/SecondSection";
 
 
 export const processSteps: ProcessStep[] = [
@@ -70,12 +71,20 @@ export default function Home() {
     <>
       <Head title="BlackBoxPreps | Amazon Prep Center"   />
     <OptimizedSection/>
+    
+
 
     <SectionLayout>
       
-<div className="flex-center flex-col mt-12 max-w-5xl mx-auto text-black relative">
-  <div className="bg-black h-px absolute top-5 left-1/4 w-1/2 z-0"></div>
-      <img src={blackbox} className="w-10 h-10  rounded-2xl mb-2 z-10" />
+<div className="flex-center flex-col  max-w-5xl mx-auto text-black relative">
+  <div className="bg-black h-0.5 absolute top-5 left-1/4 w-1/2 z-0">
+   <div className="flex-between -mt-1.5">
+
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   </div>
+  </div>
+      <img src={blackbox} className="w-10 h-10 border-2  rounded-2xl mb-2 z-10" />
       <motion.h2 
         className="font-sans text-xs font-semibold sm:text-sm mb-2"
         initial={{ opacity: 0, y: 20 }}
@@ -94,7 +103,7 @@ export default function Home() {
         transition={{ delay: 0.4, duration: 0.8 }}
       >
         <motion.span 
-          className="bg-gradient-to-r pb-4 from-black to-red-700 bg-clip-text text-transparent font-medium block"
+          className="bg-gradient-to-r pb-4 from-black to-red-700 bg-clip-text text-transparent font-semibold block"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -109,8 +118,8 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
         >
-          <span className="bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps handles all,</span>
-           <span >  To get you started.</span>
+          <span className="bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps Handles All,</span>
+           <span >  To Get Started.</span>
         </motion.span>
       </motion.h2>
 
@@ -122,7 +131,7 @@ export default function Home() {
         transition={{ delay: 1.2, duration: 0.8 }}
       >
        <div 
-                className="flex  flex-col sm:flex-row w-fit  my-6   sm:mx-auto  gap-4 justify-center"
+                className="flex  flex-col sm:flex-row w-fit  mt-2 mb-6  sm:mx-auto  gap-4 justify-center"
               >
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
@@ -135,20 +144,19 @@ export default function Home() {
                 
                 className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
-               View Pricing
+               Check Pricing
               </Link>
                
               </div>
-       
         <motion.h2 
-          className='font-sans text-sm pb-8 mx-auto max-w-xl text-center   px-2  text-black font-normal leading-relaxed'
+          className='font-sans text-sm  mx-auto max-w-xl text-center py-4 bg-black/5 rounded-2xl  px-8  text-black font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
-          <span className="block text-red-800 font-semibold"> We'll handle the rest, while you focus on growth.</span>
+         
         </motion.h2>
       </motion.div>
 
@@ -156,67 +164,12 @@ export default function Home() {
       {/* Stats Grid */}
 
  {/* Content Section */}
-     
-
-      <div className="flex-between flex-col sm:flex-row pl-4 gap-4  sm:gap-8 my-8">
-        {[
-          { number: "100K+", shadow:'shadow-red-500',title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-400", bg: "from-red-200", color: "text-red-700" },
-{
-  number: "★ ★ ★ ★ ★",
-  title: "Full 5 Stars Rating",
-  desc: "From verified client reviews and testimonials.",
-  border: "border-black",
-  shadow:'shadow-black',
-  bg: "from-white",
-  color: "text-black",
-},
-{ number: "24-48h", title: "Average Turnaround",shadow:'shadow-red-600', desc: "Fast processing from receiving to shipment", border: "border-red-500", bg: "from-red-200", color: "text-red-700" },
-{ number: "100%", title: "Tax Advantage",shadow:'shadow-black', desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
-        ].map((stat, index) => (
-          <motion.div
-          key={index}
-          className={`border ${stat.border} hover:shadow-xl shadow-lg hover:scale-110 hover:border transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-            transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <motion.h2 
-              className={`text-2xl font-inter font-normal mb-2 ${stat.color}`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-              >
-              {stat.number}
-            </motion.h2>
-            <motion.p 
-              className={`${stat.color} text-xs font-semibold mb-2`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1.1 + index * 0.1, duration: 0.5 }}
-              >
-              {stat.title}
-            </motion.p>
-            <motion.p 
-              className={`${stat.color.replace('800', '700').replace('800', '700')} text-xs text-left`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
-            >
-              {stat.desc}
-            </motion.p>
-          </motion.div>
-        ))}
-      </div>
               
       
      
   </div>
 </SectionLayout>
+    <SecondSection/>
 
 <PrepServicesSection/>
 
@@ -293,20 +246,21 @@ export default function Home() {
     </motion.h2>
 
     <motion.h2 
-      className=' text-[12px] sm:text-xs text-center font-bold text-gray-900'
+      className=' text-[12px] sm:text-xs text-center z-10 font-bold w-1/2 mx-auto    text-gray-900'
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.8, duration: 0.9 }}
     >
-      HOW IT <motion.span 
-        className='text-red-600'
+      <motion.span 
+        className=' z-10 mt-6 text-red-600 border overflow-hidden rounded-2xl p-2 '
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 1.0, duration: 0.9 }}
-      >WORKS</motion.span>
+      >HOW IT WORKS</motion.span>
     </motion.h2>
+    
   </div>
 
   {/* Steps Container */}

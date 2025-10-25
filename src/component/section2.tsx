@@ -129,7 +129,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                 
                 className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
-               View Pricing
+               Check Pricing
               </Link>
                
               </div>
