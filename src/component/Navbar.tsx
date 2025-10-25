@@ -62,7 +62,7 @@ export default function Navbar() {
 
         {/* Desktop Menu - Unchanged */}
         <ul className="hidden   md:flex font-inter text-xs text-gray-800 gap-2 pl-6 items-center">
-          <li className="transition border-l-2 border-black pl-2 duration-300">
+          <li className="transition  duration-300">
             <Link to="/" className="border-1 border-transparent hover:bg-white hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Home</Link>
           </li>
           <li className="transition">

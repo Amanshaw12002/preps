@@ -47,7 +47,7 @@ export default function FAQ() {
     <SectionLayout>
       <div className="max-w-5xl mx-auto flex flex-col sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Title Section */}
-        <div className="flex-between relative border-l-2 overflow-hidden mb-6">
+        <div className="flex-between relative  overflow-hidden mb-6">
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-semibold p-2 text-left text-black"
             initial="hidden"
@@ -90,19 +90,19 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-white hover:shadow-md transition-all"
+              onHoverStart={() => toggleFAQ(index)}
+              onHoverEnd={() => toggleFAQ(index)}
+              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-black/5 hover:shadow-md transition-all"
+              whileHover={{scale:1.02, backgroundColor: "rgba(0,0,0,0.0)" }}
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
             >
               <motion.button
-                onClick={() => toggleFAQ(index)}
+                
                 className="w-full flex justify-between items-center text-left font-medium text-base sm:text-lg text-gray-800"
-                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                whileTap={{ scale: 0.98 }}
               >
                 <motion.span
                   initial={{ opacity: 0 }}
