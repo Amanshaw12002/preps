@@ -49,7 +49,7 @@ export default function FAQ() {
         {/* Title Section */}
         <div className="flex-between relative  overflow-hidden mb-6">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold p-2 text-left text-black"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold p-2 text-center w-fit mx-auto text-black"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -200px 0px" }}
