@@ -15,16 +15,16 @@ export default function SecondSection() {
 
         <div className="flex-between w-fit gap-4  mt-2">
 
-              <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-3 rounded-xl  w-fit text-sm font-semibold  transition">
-                         <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+              <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2.5 px-3.5 rounded-xl  w-fit text-md font-semibold  transition">
+                         <ChevronRight className=" -translate-x-8  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
-              <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+              <span className=" text-black py-1 px-3 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-9 transition duration-700"/>
             </Link>
             <Link 
                 to="/pricing"  
                 
-                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-4 py-3 transition hover:opacity-90 "
+                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-5 py-3 transition hover:opacity-90 "
                 >
                Check Pricing
               </Link>
@@ -33,7 +33,7 @@ export default function SecondSection() {
         
         <div className="flex flex-col items-start gap-2 mb-6">
 
-        <div className="flex-between  font-medium w-fit">
+        <div className="flex-between   w-fit">
 
                          <ChevronRight className=" "/>
         <p>Our 200+ clients trust us.Be next join us.</p>
@@ -57,7 +57,7 @@ export default function SecondSection() {
 ].map((stat, index) => (
           <motion.div
           key={index}
-          className={`border ${stat.border} hover:shadow-xl shadow-lg hover:scale-105 hover:border transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
+          className={`border ${stat.border} hover:shadow-lg hover:scale-105 hover:border transition-all duration-600  ${stat.shadow} bg-white rounded-2xl flex flex-col items-start p-4 w-52`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

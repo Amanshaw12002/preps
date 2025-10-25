@@ -110,18 +110,20 @@ export default function Home() {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           New to Amazon or already selling !
-        </motion.span>  
+        </motion.span> 
+
         <motion.span 
           className="text-gray-900 text-4xl font-semibold text-center mb-6"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
-        >
+          >
           <span className="bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps Handles All,</span>
            <span >  To Get Started.</span>
         </motion.span>
       </motion.h2>
+          <p className="text-sm mb-2 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
 
  <motion.div 
         className=''
@@ -149,7 +151,7 @@ export default function Home() {
                
               </div>
         <motion.h2 
-          className='font-sans text-sm  mx-auto max-w-xl text-center py-4 bg-black/5 rounded-2xl  px-8  text-black font-normal leading-relaxed'
+          className='font-sans text-sm border-b-2 mx-auto max-w-xl text-center py-4 bg-black/5 rounded-2xl  px-8  text-black font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
