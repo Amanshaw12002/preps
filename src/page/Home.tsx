@@ -144,14 +144,14 @@ export default function Home() {
                 <Link 
                 to="/pricing"  
                 
-                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                className="w-fit hover:border-red-700 bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
                Check Pricing
               </Link>
                
               </div>
         <motion.h2 
-          className='font-sans text-sm border-b-2 mx-auto max-w-xl text-center py-4 bg-black/5 rounded-2xl  px-8  text-black font-normal leading-relaxed'
+          className='font-sans text-sm  mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

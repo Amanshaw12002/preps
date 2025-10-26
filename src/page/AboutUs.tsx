@@ -105,22 +105,22 @@ export default function AboutUs() {
   return (
     <>
   <Head title=" BlackBoxPreps | AboutUs" />
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative h-132 mt-12 flex-center overflow-hidden pt-20">
         <motion.div
           initial={{ opacity: 0, scale: 1.2 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 z-0"
+          className="absolute max-w-6xl mx-auto inset-0 z-0"
         >
           <img
             src={maninblack}
-            className="w-full h-full object-cover"
+            className="w-full   object-cover"
             alt="Our warehouse team"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+          <div className="absolute  inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         </motion.div>
 
-        <AnimatedSection className="relative z-10 max-w-6xl mx-auto px-6">
+        <AnimatedSection className="absolute bottom-12 z-10 max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants}>
               <motion.h1 

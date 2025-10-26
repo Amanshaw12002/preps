@@ -54,7 +54,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
       <SectionLayout sectionTopPadding={topPadding}>
         
         <motion.div 
-          className="relative mx-auto max-w-5x border-2 border-black  mt-8 sm:py-12 rounded-4xl  text-white "
+          className="relative mx-auto max-w-5xl my-4    rounded-4xl  text-white "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -62,31 +62,29 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
         >
           <div className="w-full bg-transparent relative">
          
-            
-            
+            <div className="bg-red-700 h-[1px] w-1/2 -mb-6 mx-auto flex-between">
+            <div className="h-4 w-4 bg-white border-red-700 rounded-sm border"></div>
+            <div className="h-4 w-4 bg-white border-red-700 rounded-sm border"></div>
+            </div>
+            <div className="flex-between z-10 gap-1 bg-white p-2   border rounded-xl  border-red-700  mx-auto w-fit">
+
             <motion.img 
               src={darklogo} 
               alt="logo" 
-              className="z-10    rounded-3xl  top-10 sm:-top-10 absolute w-52 sm:w-72 left-1/6 sm:left-3/8   "
+              className=" w-8   "
               variants={logoVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               animate="float"
-            /> 
+              /> 
+            <h2 className="text-black text-lg font-bold">BlackBoxPreps</h2>
+              </div>
           </div>
 
           
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, white 2%, transparent 3%), 
-              radial-gradient(circle at 75px 75px, white 2%, transparent 0%)`,
-              backgroundSize: '100px 100px'
-            }}></div>
-          </div>
           
-          <div className="relative max-w-6xl mx-auto  z-30 pt-64 pb-8">
+          <div className="relative max-w-5xl mx-auto  z-30 ">
             <motion.div 
               className="text-center"
               variants={containerVariants}
@@ -116,7 +114,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                   </div>
               
               <div 
-                className="flex  flex-col sm:flex-row w-fit  mb-2   sm:mx-auto  gap-4 justify-center"
+                className="flex  flex-col sm:flex-row w-fit    sm:mx-auto  gap-4 justify-center"
               >
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
@@ -127,7 +125,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                 <Link 
                 to="/pricing"  
                 
-                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                className="w-fit hover:border-red-700 bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
                Check Pricing
               </Link>

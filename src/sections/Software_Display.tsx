@@ -94,7 +94,7 @@ index:1,
           </motion.span>
         ))}
         <motion.span 
-          className="bg-clip-text bg-gradient-to-r from-red-800 to-blue-700 text-transparent font-semibold"
+          className="bg-clip-text bg-gradient-to-r from-red-800 to-red-700 text-transparent font-semibold"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

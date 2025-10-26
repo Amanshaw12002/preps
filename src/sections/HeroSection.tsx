@@ -123,12 +123,12 @@ export default function HeroSection() {
           </motion.p>
           
 
-          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:left-1/3  lg:-top-50 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
-          <div className='max-w-2xl flex-none lg:max-w-none relative'>
+          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:-right-40  lg:-top-5 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='max-w-2xl  flex-none lg:max-w-none relative'>
               <motion.img 
                 src={box} 
                 alt="" 
-                className=" w-[22rem] sm:w-[32rem] lg:w-[52rem] object-cover z-1 rounded-xl"
+                className=" w-[22rem] sm:w-[32rem]  lg:w-[32rem] object-cover z-1 rounded-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

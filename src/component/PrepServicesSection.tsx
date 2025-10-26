@@ -176,7 +176,7 @@ BlackBoxPreps Help You{" "}
                 <Link 
                 to="/pricing"  
                 
-                className="w-fit bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
+                className="w-fit hover:border-red-700 bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
                 >
                Check Pricing
               </Link>

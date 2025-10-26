@@ -47,7 +47,7 @@ export default function FAQ() {
     <SectionLayout>
       <div className="max-w-5xl mx-auto flex flex-col sm:py-12 sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Title Section */}
-        <div className="flex-between relative  overflow-hidden mb-6">
+        <div className="flex-between flex-col relative  overflow-hidden mb-6">
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-semibold p-2 text-center w-fit mx-auto text-black"
             initial="hidden"
@@ -73,6 +73,7 @@ export default function FAQ() {
               </motion.span>
             ))}
           </motion.h2>
+          <h2>Get a Quick Anwsers to Your Questions.</h2>
         </div>
 
         {/* FAQ List */}
