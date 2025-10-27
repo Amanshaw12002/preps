@@ -16,7 +16,7 @@ export default function HeroSection() {
              
 
         {/* Content Section with Animated Grid Lines */}
-        <div className="relative py-14 lg:pl-8   mx-auto  max-w-3xl  shrink-0 text-black">
+        <div className="relative py-12   mx-auto  max-w-3xl  shrink-0 text-black">
 
  
 
@@ -54,7 +54,7 @@ export default function HeroSection() {
           ))}
           
           {/* Animated Text Content */}
-          <div className="flex lg:flex-col lg:w-2xl  relative z-20 ">
+          <div className="flex lg:flex-col lg:w-3xl  relative z-20 ">
 
             <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-red-700 text-shadow-2xs">
               <motion.span 
@@ -63,18 +63,18 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 ,scale:1}}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
-                Optimized {" "} 
+                {" "} 
               </motion.span>
               <motion.span 
-                className="bg-gradient-to-r pb-1 block from-red-500 via-black to-black bg-clip-text text-transparent"
+                className="bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 30 ,scale:0.7}}
                 animate={{ opacity: 1, y: 0 ,scale:1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                Prep Services {" "} 
+                Optimized Prep Flow  {" "} 
               </motion.span>
               <motion.span 
-                className="bg-gradient-to-l pb-1 block from-black via-black to-red-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 30 ,scale:0.7}}
                 animate={{ opacity: 1, y: 0 ,scale:1 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -82,7 +82,7 @@ export default function HeroSection() {
               for All Your
               </motion.span>
               <motion.span 
-                className='bg-gradient-to-l pb-1 block from-black via-black to-red-500 bg-clip-text text-transparent'
+                className='bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent'
                 initial={{ opacity: 0, y: 30 ,scale:0.7}}
                 animate={{ opacity: 1, y: 0 ,scale:1}}
                 transition={{ delay: 0.6, duration: 0.6 }}
@@ -114,7 +114,7 @@ export default function HeroSection() {
           </div>
 
           <motion.p 
-            className='font-sans text-[10px] sm:text-xs pr-12 text-black'
+            className='font-sans text-[10px] sm:text-xs w-3/4 text-black'
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}

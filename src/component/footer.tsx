@@ -239,16 +239,16 @@ export default function Footer() {
                 transition={{ delay: 0.5, duration: 0.6 }}
               />
             </motion.h3>
-            <ul className="space-y-4 ">
-              <motion.li variants={itemVariants} className="flex items-start">
-                <FaMapMarkerAlt className="h-5 w-5 text-royal-red mr-3 mt-1 flex-shrink-0" />
+            <ul className="space-y-4                  rounded-2xl ">
+              <motion.li variants={itemVariants} className="flex items-start ">
+                <FaMapMarkerAlt className="h-5 w-5  mr-3 mt-1 flex-shrink-0" />
                 <span className="text-slate-800 text-sm font-light">
                   9 Brookside Drive, Unit B,<br/>
                    Wilmington DE 19804
 
                 </span>
               </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center">
+              <motion.li variants={itemVariants} className="flex items-center ">
                 <FaPhone className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
                 <a 
                   href="tel:+15017772993" 
@@ -258,7 +258,7 @@ export default function Footer() {
 
                 </a>
               </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center">
+              <motion.li variants={itemVariants} className="flex items-center ">
                 <FaEnvelope className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
                 <a 
                   href="mailto:blackboxprepcenter.com" 

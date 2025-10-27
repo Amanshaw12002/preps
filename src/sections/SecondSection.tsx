@@ -11,7 +11,7 @@ export default function SecondSection() {
 
       <div className="flex-between flex-col  pl-4 gap-4   my-8">
         <h2 className="text-4xl font-semibold  ">Build upon  performance & experience.</h2>
-                    <span className="block  font-medium      text-black "> BlackBoxPreps handle the rest, while you focus on growth.</span>
+                    <span className="block  font-medium      text-gray-700"> BlackBoxPreps handle the rest, while you focus on growth.</span>
 
         <div className="flex-between w-fit gap-4  mt-2">
 

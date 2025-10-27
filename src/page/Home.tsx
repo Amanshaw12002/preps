@@ -123,7 +123,7 @@ export default function Home() {
            <span >  To Get Started.</span>
         </motion.span>
       </motion.h2>
-          <p className="text-sm mb-2 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
+          <p className="text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
 
  <motion.div 
         className=''
