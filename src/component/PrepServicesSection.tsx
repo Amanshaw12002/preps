@@ -49,10 +49,18 @@ export default function PrepServicesSection() {
 
 
       <div className="max-w-5xl mx-auto relative mt-12 text-center">
+        <h2 className="mx-auto relative z-10  w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
+          SERVICES</h2>
 
-        
+       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
+   <div className="flex-between -mt-1.5">
+
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   </div>
+  </div>
         {/* Section Header */}
-        <div className="flex-center  text-2xl sm:text-3xl ">
+        <div className="flex-center  text-2xl sm:text-3xl  ">
           <motion.h2
             initial={{ y: 200}}
             whileInView={{  y: 0}}
@@ -147,13 +155,13 @@ BlackBoxPreps Help You{" "}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
           <motion.h3 
-            className="text-xl sm:text-3xl font-inter font-semibold w-fit mx-auto  mb-3"
+            className="text-xl sm:text-3xl font-inter font-semibold w-fit mx-auto border-t pt-4 border-gray-600  mb-3"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            Streamline. Scale. Succeed.
+            Streamline,Scale,Succeed.
           </motion.h3>
           <motion.p 
             className="text-gray-600 text-[10px] sm:text-xs sm:mb-6 mb-2 "

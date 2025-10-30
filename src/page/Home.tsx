@@ -17,6 +17,7 @@ import Software_Display from "@/sections/Software_Display";
 import { Link } from "react-router-dom";
 import { ChevronRight, MoveRight } from "lucide-react";
 import SecondSection from "@/sections/SecondSection";
+import { FaEnvelope } from "react-icons/fa";
 
 
 export const processSteps: ProcessStep[] = [
@@ -87,7 +88,7 @@ export default function Home() {
       <img src={blackbox} className="w-10 h-10 border-2  rounded-2xl mb-2 z-10" />
       <motion.h2 
         className="font-sans text-xs font-semibold sm:text-sm mb-2"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.6 }}
@@ -96,12 +97,11 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className=" text-3xl sm:text-4xl  flex-center flex-col font-medium "
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        className=" text-3xl sm:text-5xl  flex-center flex-col font-medium "
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-      >
+        transition={{ delay: 0.2, duration: 0.6 }}      >
         <motion.span 
           className="bg-gradient-to-r pb-4 from-black to-red-700 bg-clip-text text-transparent font-semibold block"
           initial={{ opacity: 0, x: -30 }}
@@ -113,14 +113,14 @@ export default function Home() {
         </motion.span> 
 
         <motion.span 
-          className="text-gray-900 text-4xl font-semibold text-center mb-6"
+          className="text-gray-900 text-5xl font-semibold text-center my-4"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           >
-          <span className="bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps Handles All,</span>
-           <span >  To Get Started.</span>
+          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps Handles All,</span>
+           <span className="text-5xl  text-black">  To Get Started.</span>
         </motion.span>
       </motion.h2>
           <p className="text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
@@ -161,12 +161,15 @@ export default function Home() {
          
         </motion.h2>
       </motion.div>
-
-    {/* Stats & Content Section */}
-      {/* Stats Grid */}
-
- {/* Content Section */}
-              
+<div className="flex-between flex-col  gap-2 border-t border-gray-400 p-2 ">
+  <p className="text-xs text-gray-600">We are available for 24/7 days. </p>
+  <a href="mailto:blackboxprepcenter.com" 
+     className="bg-black/80 group text-white flex-between gap-2 rounded-lg text-sm font-semibold p-3 transition-all duration-500 overflow-hidden">
+              <FaEnvelope className="w-4 h-4 group-hover:-translate-x-8 transition duration-700"/>
+              <span className="duration-700 group-hover:-translate-x-3 transition">Contact Us</span>
+            </a>
+            
+  </div>         
       
      
   </div>
@@ -183,6 +186,19 @@ export default function Home() {
 
   {/* Animated Grid Lines */}
   <div className=' relative max-w-5xl  mx-auto mb-12 '>
+
+<h2 className="mx-auto relative z-10  w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
+          WORKFLOW</h2>
+
+       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
+   <div className="flex-between -mt-1.5">
+
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   </div>
+  </div>
+
+
     {[
       'h-full w-0.5 absolute top-20 left-20 bg-gradient-to-b from-white via-slate-200 to-white -z-1',
       'h-px w-full absolute top-20 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
@@ -211,7 +227,7 @@ export default function Home() {
     ))}
                
     <motion.h2 
-      className=' text-xl  sm:text-4xl font-medium leading-12 text-center text-gray-900 my-4 sm:mb-8'
+      className=' text-xl  sm:text-4xl font-semibold leading-12 text-center text-gray-900 my-4 sm:mb-8'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

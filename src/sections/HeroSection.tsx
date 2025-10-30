@@ -56,49 +56,48 @@ export default function HeroSection() {
           {/* Animated Text Content */}
           <div className="flex lg:flex-col lg:w-3xl  relative z-20 ">
 
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-red-700 text-shadow-2xs">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-black text-shadow-2xs">
               <motion.span 
-                className="block pb-1"
-                initial={{ opacity: 0, y: 30,scale:0.7 }}
-                animate={{ opacity: 1, y: 0 ,scale:1}}
+                className="w-fit  pb-3 block text-black"
+                initial={{ opacity: 0, x:-100 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
+                Optimized Prep Flow
                 {" "} 
               </motion.span>
+              
               <motion.span 
-                className="bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 30 ,scale:0.7}}
-                animate={{ opacity: 1, y: 0 ,scale:1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                Optimized Prep Flow  {" "} 
-              </motion.span>
-              <motion.span 
-                className="bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent"
-                initial={{ opacity: 0, y: 30 ,scale:0.7}}
-                animate={{ opacity: 1, y: 0 ,scale:1 }}
+                className="text-black pb-3 block"
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0  }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
               for All Your
               </motion.span>
               <motion.span 
-                className='bg-gradient-to-l pb-3 block from-red-500 via-red-500 to-black bg-clip-text text-transparent'
-                initial={{ opacity: 0, y: 30 ,scale:0.7}}
-                animate={{ opacity: 1, y: 0 ,scale:1}}
-                transition={{ delay: 0.6, duration: 0.6 }}
+                className='block pb-3 text-black'
+                initial={{ opacity:0, x: -100 }}
+                animate={{ opacity:1, x: 0  }}
+                transition={{ delay: 0.4, duration: 0.6 }}
               >
-                {" "} Fulfillment Needs. {" "}
+              Fulfillment Needs.
               </motion.span>
             </h2>
           <motion.h2 
             className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-black mt-2 '
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            initial={{ opacity: 0, x: -200 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
             You sell, we handle the rest.
           </motion.h2>
-            <div className="flex-between w-fit gap-4  my-4">
+            <motion.div
+            initial={{x:-100, opacity: 0 }}
+          animate={{ opacity: 1,x:0 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            
+            className="flex-between w-fit gap-4  my-4">
 
               <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
@@ -110,14 +109,14 @@ export default function HeroSection() {
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            </div>
+            </motion.div>
           </div>
 
           <motion.p 
             className='font-sans text-[10px] sm:text-xs w-3/4 text-black'
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
           >
             Safe storage to professional packing & fast shipping. With our fast and reliable FBA service, your products are always ready to reach customers quickly and securely.
           </motion.p>
@@ -129,8 +128,8 @@ export default function HeroSection() {
                 src={box} 
                 alt="" 
                 className=" w-[22rem] sm:w-[32rem]  lg:w-[32rem] object-cover z-1 rounded-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 ,y:100}}
+                animate={{ opacity: 1,y:0 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
               />
           </div>  

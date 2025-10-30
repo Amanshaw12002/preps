@@ -1,6 +1,7 @@
 import SectionLayout from "@/layout/sectionLayout";
 import { motion } from "framer-motion";
 import { ChevronRight, MoveRight } from "lucide-react";
+import { FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function SecondSection() {
@@ -9,9 +10,18 @@ export default function SecondSection() {
     <SectionLayout>
         
 
-      <div className="flex-between flex-col  pl-4 gap-4   my-8">
+      <div className="flex-between relative flex-col  pl-4 gap-4   my-8">
+       <h2 className="mx-auto z-10  text-black bg-white font-medium  border px-2 py-1 rounded-lg">STATS</h2>
+       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
+   <div className="flex-between -mt-1.5">
+
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   </div>
+  </div>
+
         <h2 className="text-4xl font-semibold  ">Build upon  performance & experience.</h2>
-                    <span className="block  font-medium      text-gray-700"> BlackBoxPreps handle the rest, while you focus on growth.</span>
+                    <span className="block  font-medium text-sm      text-gray-700"> BlackBoxPreps handle the rest, while you focus on growth.</span>
 
         <div className="flex-between w-fit gap-4  mt-2">
 
@@ -95,6 +105,16 @@ export default function SecondSection() {
         ))}
         </div>
       </div>
+      
+      <div className="flex-between flex-col  gap-2 border-t border-gr w-fit mx-auto  p-2 ">
+        <p className="text-xs text-gray-600">We are available for 24/7 days. </p>
+        <a href="mailto:blackboxprepcenter.com" 
+           className="bg-black/80 group text-white flex-between gap-2    rounded-lg text-sm font-semibold p-3 transition-all duration-500 overflow-hidden">
+                    <FaEnvelope className="w-4 h-4 group-hover:-translate-x-8 transition duration-700"/>
+                    <span className="duration-700 group-hover:-translate-x-3 transition">Contact Us</span>
+                  </a>
+                  
+        </div>         
      
     </SectionLayout>
     </>

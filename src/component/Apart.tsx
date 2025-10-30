@@ -25,7 +25,18 @@ export default function WhatSetsUsApart() {
     <SectionLayout>
       
 
-      <div className="max-w-5xl mx-auto sm:px-6 text-center rounded-2xl">
+      <div className="max-w-5xl relative mx-auto sm:px-6 text-center rounded-2xl">
+
+<h2 className="mx-auto relative z-10  w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
+          COMPETITIVE</h2>
+
+       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
+   <div className="flex-between -mt-1.5">
+
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   </div>
+  </div>
         {/* Header Section */}
         <motion.div 
           className="w-full flex items-center p-2 sm:px-8"
