@@ -45,12 +45,12 @@ export default function SecondSection() {
 
         <div className="flex-between   w-fit">
 
-                         <ChevronRight className=" "/>
-        <p>Our 200+ clients trust us.Be next join us.</p>
+                         <ChevronRight className=" w-4 sm:w-6"/>
+        <p className="text-xs ">Our 200+ clients trust us.Be next join us.</p>
         </div>
         </div>
 
-        <div className="flex-between w-10/12 gap-4">
+        <div className="flex-between flex-col sm:flex-row w-10/12 gap-4">
         {[
             { number: "100K+", shadow:'shadow-red-500',title: "Orders Processed", desc: "Successfully prepped and shipped units.", border: "border-red-400", bg: "from-red-200", color: "text-red-700" },
             {

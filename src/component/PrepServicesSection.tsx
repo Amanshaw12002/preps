@@ -173,7 +173,7 @@ BlackBoxPreps Help You{" "}
             Let's take the prep work off your plate — so you can focus on growth.
           </motion.p>
                          <div 
-                className="flex  flex-col sm:flex-row w-fit  mb-2   sm:mx-auto  gap-4 justify-center"
+                className="flex  items-center flex-col sm:flex-row w-fit  mb-2   mx-auto  gap-4 justify-center"
               >
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>

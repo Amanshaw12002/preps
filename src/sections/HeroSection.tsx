@@ -16,7 +16,7 @@ export default function HeroSection() {
              
 
         {/* Content Section with Animated Grid Lines */}
-        <div className="relative py-12   mx-auto  max-w-3xl  shrink-0 text-black">
+        <div className="relative  py-6 sm:py-12   mx-auto  max-w-3xl  shrink-0 text-black">
 
  
 
@@ -54,11 +54,11 @@ export default function HeroSection() {
           ))}
           
           {/* Animated Text Content */}
-          <div className="flex lg:flex-col lg:w-3xl  relative z-20 ">
+          <div className="flex lg:flex-col lg:w-3xl flex-col  relative z-20 ">
 
             <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-black text-shadow-2xs">
               <motion.span 
-                className="w-fit  pb-3 block text-black"
+                className="w-fit  sm:pb-3 block text-black"
                 initial={{ opacity: 0, x:-100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
@@ -68,7 +68,7 @@ export default function HeroSection() {
               </motion.span>
               
               <motion.span 
-                className="text-black pb-3 block"
+                className="text-black sm:pb-3 block"
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0  }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -76,28 +76,28 @@ export default function HeroSection() {
               for All Your
               </motion.span>
               <motion.span 
-                className='block pb-3 text-black'
+                className='block sm:pb-3 text-black'
                 initial={{ opacity:0, x: -100 }}
                 animate={{ opacity:1, x: 0  }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
               Fulfillment Needs.
               </motion.span>
-            </h2>
-          <motion.h2 
-            className= 'text-xs sm:text-md md:text-lg font-sans font-normal text-black mt-2 '
+          <motion.span
+            className= 'text-xs sm:text-md md:text-lg font-sans   text-black mt-2 '
             initial={{ opacity: 0, x: -200 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             You sell, we handle the rest.
-          </motion.h2>
+          </motion.span>
+            </h2>
             <motion.div
             initial={{x:-100, opacity: 0 }}
           animate={{ opacity: 1,x:0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
             
-            className="flex-between w-fit gap-4  my-4">
+            className="flex-between flex-col  sm:flex-row w-fit gap-4  my-4">
 
               <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
@@ -105,7 +105,7 @@ export default function HeroSection() {
               <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1     rounded-lg text-sm font-semibold px-4 py-3   transition-all duration-500">
+            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] self-start sm:self-center group text-white flex-between gap-1     rounded-lg text-sm font-semibold px-4 py-3   transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
@@ -122,12 +122,12 @@ export default function HeroSection() {
           </motion.p>
           
 
-          <div className='lg:max-w-none  absolute -right-30 -top-20 sm:-right-10 sm:-top-30 lg:-right-40  lg:-top-5 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
+          <div className='lg:max-w-none  absolute -right-10 top-30 sm:-right-10 sm:-top-30 lg:-right-40  lg:-top-5 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
           <div className='max-w-2xl  flex-none lg:max-w-none relative'>
               <motion.img 
                 src={box} 
                 alt="" 
-                className=" w-[22rem] sm:w-[32rem]  lg:w-[32rem] object-cover z-1 rounded-xl"
+                className=" w-[16rem] sm:w-[32rem]  lg:w-[32rem] object-cover z-1 rounded-xl"
                 initial={{ opacity: 0 ,y:100}}
                 animate={{ opacity: 1,y:0 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

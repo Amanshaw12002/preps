@@ -97,7 +97,7 @@ export default function Home() {
       </motion.h2>
 
       <motion.h2 
-        className=" text-3xl sm:text-5xl  flex-center flex-col font-medium "
+        className=" text-md sm:text-5xl  flex-center flex-col font-medium "
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -113,17 +113,17 @@ export default function Home() {
         </motion.span> 
 
         <motion.span 
-          className="text-gray-900 text-5xl font-semibold text-center my-4"
+          className="text-gray-900 text-xl sm:text-5xl font-semibold text-center sm:my-4"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           >
-          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block mb-2">BlackBoxPreps Handles All,</span>
-           <span className="text-5xl  text-black">  To Get Started.</span>
+          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block sm:mb-2">BlackBoxPreps Handles All,</span>
+           <span className=" text-xl sm:text-5xl  text-black">  To Get Started.</span>
         </motion.span>
       </motion.h2>
-          <p className="text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
+          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
 
  <motion.div 
         className=''
@@ -133,7 +133,7 @@ export default function Home() {
         transition={{ delay: 1.2, duration: 0.8 }}
       >
        <div 
-                className="flex  flex-col sm:flex-row w-fit  mt-2 mb-6  sm:mx-auto  gap-4 justify-center"
+                className="flex  items-center flex-col sm:flex-row w-fit   mt-2 mb-6  mx-auto  gap-4 justify-center"
               >
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>

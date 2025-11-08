@@ -93,16 +93,16 @@ export default function Footer() {
 
   return (
     <SectionLayout>
-      <AnimatedSection className="max-w-5xl  rounded-2xl mx-auto ">
+      <AnimatedSection className="max-w-5xl  sm:rounded-2xl mx-auto ">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1  border border-gray-200 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
           {/* Brand Section */}
-          <div className="lg:col-span-4  bg-black/5 border-gray-600 flex-between  rounded-2xl p-4">
+          <div className="col-span-1 lg:col-span-4  bg-black/5 border-gray-600 flex-between flex-col sm:flex-row  rounded-2xl p-4">
         <div className="flex flex-col ml-8">
             <motion.div variants={itemVariants} className="flex items-center   mb-6">
               <div>
                 <motion.h2 
-                  className="text-4xl font-medium text-black"
+                  className="text-3xl sm:text-4xl font-medium text-black"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -119,12 +119,12 @@ export default function Footer() {
             
             <motion.p 
               variants={itemVariants}
-              className="text-slate-800 font-light text-sm leading-relaxed mb-6 max-w-md"
+              className="text-slate-800 font-light text-xs sm:text-sm leading-relaxed mb-6 max-w-md"
             >
               Professional fulfillment solutions tailored to scale your e-commerce business. 
               
             </motion.p>
-            <div className=" flex-between gap-4 w-fit ">
+            <div className=" flex-between flex-col gap-4 w-fit ">
 
                 <Link to="/quote" className=" border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
                          <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
@@ -139,7 +139,7 @@ export default function Footer() {
 
             </div>
           </div>
-              <img src={logo} className=" rounded-xl w-1/4"/>
+              <img src={logo} className=" rounded-xl mt-2 sm:mt-0 sm:w-1/4"/>
 
           
 
@@ -233,7 +233,7 @@ export default function Footer() {
             >
               GET IN TOUCH
               <motion.div 
-                className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
+                className="absolute bottom-0 left-0 w-8 h-0.5 "
                 initial={{ width: 0 }}
                 animate={{ width: 32 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -243,7 +243,7 @@ export default function Footer() {
               <motion.li variants={itemVariants} className="flex items-start ">
                 <FaMapMarkerAlt className="h-5 w-5  mr-3 mt-1 flex-shrink-0" />
                 <span className="text-slate-800 text-sm font-light">
-                  9 Brookside Drive, Unit B,<br/>
+                  9 Brookside Drive,<br className="sm:hidden block"/> Unit B,<br/>
                    Wilmington DE 19804
 
                 </span>
@@ -259,7 +259,7 @@ export default function Footer() {
                 </a>
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center ">
-                <FaEnvelope className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
+                <FaEnvelope className="h-5 w-5 text-slate-800   text-xs mr-3 flex-shrink-0" />
                 <a 
                   href="mailto:blackboxprepcenter.com" 
                   className="text-slate-800 text-sm font-light hover:text-royal-red transition duration-300"
@@ -271,7 +271,7 @@ export default function Footer() {
             </ul>
           </div>
             
-<motion.div variants={itemVariants} className="flex  bg-black/80 flex-col my-2 border p-4 rounded-2xl gap-2">
+<motion.div variants={itemVariants} className="flex  bg-black/80 flex-col my-2 border p-2 sm:p-4 rounded-2xl gap-2">
               {[
                 { icon: FaFacebook, label: "Facebook",to: ""},
                 { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },
@@ -284,7 +284,7 @@ export default function Footer() {
                   key={social.label}
                   variants={socialIconVariants}
                   whileHover="hover"
-                  className="p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
+                  className="p-2 sm:p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
                   aria-label={social.label}
                   style={{ transitionDelay: `${index * 0.1}s` }}
                   >

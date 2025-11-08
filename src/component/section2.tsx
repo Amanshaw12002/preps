@@ -114,7 +114,7 @@ const Section2: React.FC<TopPaddingProps> = ({  topPadding }) =>  {
                   </div>
               
               <div 
-                className="flex  flex-col sm:flex-row w-fit    sm:mx-auto  gap-4 justify-center"
+                className="flex items-center flex-col sm:flex-row w-fit    mx-auto  gap-4 justify-center"
               >
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>

@@ -93,6 +93,7 @@ export default function FAQ() {
               key={index}
               onHoverStart={() => toggleFAQ(index)}
               onHoverEnd={() => toggleFAQ(index)}
+              onClick={() => toggleFAQ(index)}
               className="border p-4 sm:p-5 rounded-xl shadow-sm bg-black/5 hover:shadow-md transition-all"
               whileHover={{scale:1.02, backgroundColor: "rgba(0,0,0,0.0)" }}
               variants={{
