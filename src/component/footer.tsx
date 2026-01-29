@@ -3,7 +3,7 @@ import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import SectionLayout from "@/layout/sectionLayout";
-import logo from "../asset/logo.png";
+import logo from "../asset/blackbox.png";
 import { ChevronRight, MoveRight } from "lucide-react";
 // Animation variants
 const containerVariants:Variants = {
@@ -124,7 +124,7 @@ export default function Footer() {
               Professional fulfillment solutions tailored to scale your e-commerce business. 
               
             </motion.p>
-            <div className=" flex-between flex-col gap-4 w-fit ">
+            <div className=" flex flex-col   gap-4 w-fit ">
 
                 <Link to="/quote" className=" border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
                          <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
@@ -132,7 +132,7 @@ export default function Footer() {
 
               <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            <Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
+            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-[#292929] mr-4  group text-white flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>

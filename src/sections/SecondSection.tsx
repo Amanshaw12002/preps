@@ -21,7 +21,7 @@ export default function SecondSection() {
   </div>
 
         <h2 className="text-4xl font-semibold  ">Build upon  performance & experience.</h2>
-                    <span className="block  font-medium text-sm      text-gray-700"> BlackBoxPreps handle the rest, while you focus on growth.</span>
+                    <span className="block  font-medium text-sm      text-gray-700"> Leave the steps to BlackBoxPreps, while you focus on growth.</span>
 
         <div className="flex-between w-fit gap-4  mt-2">
 
@@ -46,7 +46,7 @@ export default function SecondSection() {
         <div className="flex-between   w-fit">
 
                          <ChevronRight className=" w-4 sm:w-6"/>
-        <p className="text-xs ">Our 200+ clients trust us.Be next join us.</p>
+        <p className="text-xs ">Our 500+ clients trust us. Be next join us.</p>
         </div>
         </div>
 
@@ -62,7 +62,7 @@ export default function SecondSection() {
   bg: "from-white",
   color: "text-black",
 },
-{ number: "24-48h", title: "Average Turnaround",shadow:'shadow-red-600', desc: "Fast processing from receiving to shipment", border: "border-red-500", bg: "from-red-200", color: "text-red-700" },
+{ number: "24-72h", title: "Average Turnaround",shadow:'shadow-red-600', desc: "Fast processing from receiving to shipment", border: "border-red-500", bg: "from-red-200", color: "text-red-700" },
 { number: "100%", title: "Tax Advantage",shadow:'shadow-black', desc: "Operating from Delaware's tax-free zone", border: "border-black", bg: "from-white", color: "text-gray-900" }
 ].map((stat, index) => (
           <motion.div
@@ -107,7 +107,7 @@ export default function SecondSection() {
       </div>
       
       <div className="flex-between flex-col  gap-2 border-t border-gr w-fit mx-auto  p-2 ">
-        <p className="text-xs text-gray-600">We are available for 24/7 days. </p>
+        <p className="text-xs text-gray-600">We are available 24/7. </p>
         <a href="mailto:blackboxprepcenter.com" 
            className="bg-black/80 group text-white flex-between gap-2    rounded-lg text-sm font-semibold p-3 transition-all duration-500 overflow-hidden">
                     <FaEnvelope className="w-4 h-4 group-hover:-translate-x-8 transition duration-700"/>

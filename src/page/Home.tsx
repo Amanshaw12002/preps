@@ -109,7 +109,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          New to Amazon or already selling !
+          New to Amazon or Already Selling!
         </motion.span> 
 
         <motion.span 
@@ -119,11 +119,11 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           >
-          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block sm:mb-2">BlackBoxPreps Handles All,</span>
-           <span className=" text-xl sm:text-5xl  text-black">  To Get Started.</span>
+          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block sm:mb-2">We Handle Prep and Shipping </span>
+           <span className=" text-xl sm:text-5xl L text-black">You Focus on Growth.</span>
         </motion.span>
       </motion.h2>
-          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build benefits.</p>
+          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build.</p>
 
  <motion.div 
         className=''
@@ -162,7 +162,7 @@ export default function Home() {
         </motion.h2>
       </motion.div>
 <div className="flex-between flex-col  gap-2 border-t border-gray-400 p-2 ">
-  <p className="text-xs text-gray-600">We are available for 24/7 days. </p>
+  <p className="text-xs text-gray-600">We are available 24/7. </p>
   <a href="mailto:blackboxprepcenter.com" 
      className="bg-black/80 group text-white flex-between gap-2 rounded-lg text-sm font-semibold p-3 transition-all duration-500 overflow-hidden">
               <FaEnvelope className="w-4 h-4 group-hover:-translate-x-8 transition duration-700"/>

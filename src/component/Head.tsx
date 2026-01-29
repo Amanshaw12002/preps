@@ -6,7 +6,7 @@ interface HeadProps {
   favicon?: string; // optional, defaults to "/favicon.png"
 }
 
-export default function Head({ title, favicon = "/lt.png" }: HeadProps) {
+export default function Head({ title, favicon = "/bl.png" }: HeadProps) {
   useEffect(() => {
     // Set the page title
     document.title = title;

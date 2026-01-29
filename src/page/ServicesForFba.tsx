@@ -1,5 +1,4 @@
 import { ShieldCheck, TrendingUp, Clock } from "lucide-react";
-import product from "../asset/product.png";
 import check from "../asset/check.jpg";
 import { motion,type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -51,24 +50,24 @@ const cardVariants:Variants = {
   }
 };
 
-const imageVariants:Variants = {
-  hidden: { opacity: 0, scale: 0.6 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  }
-};
+// const imageVariants:Variants = {
+//   hidden: { opacity: 0, scale: 0.6 },
+//   visible: {
+//     opacity: 1,
+//     scale: 1,
+//     transition: {
+//       duration: 0.6,
+//       ease: "easeOut"
+//     }
+//   },
+//   hover: {
+//     scale: 1.05,
+//     transition: {
+//       duration: 0.4,
+//       ease: "easeInOut"
+//     }
+//   }
+// };
 
 const staggerContainer:Variants = {
   hidden: { opacity: 0 },
@@ -223,14 +222,7 @@ export default function FbaService() {
               We handle every step — from inspection to shipment — ensuring your products reach Amazon fully compliant and ready to sell
             </motion.p>
           </motion.div>
-          <motion.img 
-            variants={imageVariants}
-            whileHover="hover"
-            src={product} 
-            alt="FBA box service" 
-            className="w-[24rem] object-cover ml-8 rounded-lg shadow-lg hidden md:block"
-          />
-        </AnimatedSection>
+         </AnimatedSection>
 
         {/* Service Details */}
         <AnimatedSection className="bg-white flex flex-col lg:flex-row items-center justify-between rounded-2xl shadow-md p-8 max-w-5xl mx-auto gap-8 mt-12">

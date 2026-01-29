@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import darklogo from "../asset/logo.png";
+import darklogo from "../asset/blackbox.png";
 import { Link } from "react-router-dom";
 import { ChevronRight, MoveRight } from "lucide-react";
 import SectionLayout from "@/layout/sectionLayout";

@@ -39,7 +39,7 @@ export default function WhatSetsUsApart() {
   </div>
         {/* Header Section */}
         <motion.div 
-          className="w-full flex items-center p-2 sm:px-8"
+          className="w-full flex items-center justify-center p-2 sm:px-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -87,16 +87,6 @@ export default function WhatSetsUsApart() {
     </motion.span>
   </span>
 </motion.h2>
-          <motion.p 
-            className=" text-[10px] sm:text-sm text-right font-inter text-black max-w-lg ml-auto border-r sm:border-r-2 border-black pr-2"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.9 }}
-          >
-            We go beyond basic prep — offering  <br/> and a true partnership
-            built for precision, reliability,<span className="font-semibold block"> scalable e-commerce growth.</span>
-          </motion.p>
         </motion.div>
 
         {/* Features Grid */}

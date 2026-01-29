@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../asset/logo.png";
+import logo from "../asset/blackbox.png";
 import { Package, Truck, Menu, X,  ChevronRight, MoveRight } from "lucide-react";
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
@@ -98,7 +98,7 @@ export default function Navbar() {
             </ul>
           </li>
           <li className="transition border-r-2  pr-2 mr-2">
-            <Link to="/aboutUs" className="hover:bg-white px-2 py-2 mx-1 rounded-md border-1 border-transparent hover:border-red-400 hover:text-red-700">AboutUs</Link>
+            <Link to="/aboutUs" className="hover:bg-white px-2 py-2 mx-1 rounded-md border-1 border-transparent hover:border-red-400 hover:text-red-700">About Us</Link>
           </li>
           <div className="flex-between gap-4 ">
             

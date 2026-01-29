@@ -31,7 +31,7 @@ export default function PrepServicesSection() {
       title: "FBA & WFS Prep",
       icon: <Warehouse className="w-12 h-12 z-20  text-black border rounded-2xl p-2 mx-auto " />,
       description:
-        "At BlackBox, our experienced warehouse team handles everything, picking, packing, prepping, labeling, repacking, and shipping, all in full compliance with Amazon’s FBA standards. We help you save time, cut costs, and focus on scaling your business.",
+        "At BlackBox, our experienced warehouse team handles everything packing, prepping, labeling, repacking, and shipping, all in full compliance with Amazon’s FBA standards. We help you save time, cut costs, and focus on scaling your business.",
 
     },
     {
@@ -95,11 +95,8 @@ BlackBoxPreps Help You{" "}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Whether you sell through <span className="font-medium">FBA & WFS</span>, manage
-          orders via <span className="font-medium">FBM</span>, or supply to{" "}
-          <span className="font-medium">Wholesale</span> partners — our end-to-end prep
-          solutions ensure every unit leaves your inventory compliant, protected, and
-          ready to sell.
+          
+          Whether you sell through <span className="font-medium">FBA & WFS</span>, manage orders via <span className="font-medium"> FBM</span>, or ship to <span className="font-medium">  Wholesale partners</span>, our end-to-end prep solutions ensure every unit leaves your inventory compliant, protected, and ready to sell.
         </motion.p>
 
         {/* Cards */}
@@ -161,7 +158,7 @@ BlackBoxPreps Help You{" "}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            Streamline,Scale,Succeed.
+            Streamline, Scale, Succeed.
           </motion.h3>
           <motion.p 
             className="text-gray-600 text-[10px] sm:text-xs sm:mb-6 mb-2 "
@@ -170,7 +167,7 @@ BlackBoxPreps Help You{" "}
             viewport={{ once: true }}
             transition={{ delay: 1.0, duration: 0.5 }}
           >
-            Let's take the prep work off your plate — so you can focus on growth.
+            Let's take the prep work off your plate.
           </motion.p>
                          <div 
                 className="flex  items-center flex-col sm:flex-row w-fit  mb-2   mx-auto  gap-4 justify-center"

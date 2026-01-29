@@ -1,62 +1,75 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from "framer-motion";
 
-import box from '../asset/box2.png'
 import SectionLayout from '@/layout/sectionLayout';
 import { ChevronRight, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from "../asset/blackbox.png";
+
 
 export default function HeroSection() {
 
+const text = "BlackBoxPreps";
 
-
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  })
+};
 
   return (
     <SectionLayout sectionTopPadding='pt-10' >
   
              
 
-        {/* Content Section with Animated Grid Lines */}
-        <div className="relative  py-6 sm:py-12   mx-auto  max-w-3xl  shrink-0 text-black">
+        <div className="relative flex flex-col items-center text-center py-6 sm:py-12   mx-auto  max-w-3xl  shrink-0 text-black">
 
  
 
 
-
-          {/* Animated Grid Lines */}
-          {[
-            { class: 'h-10/12 w-px top-0 left-20 bg-gradient-to-b from-red-800 to-red-700 ', delay: 0 },
-            { class: 'h-px w-full top-0 left-20 bg-gradient-to-r from-red-800 via-red-200 to-white', delay: 0.1 },
-            { class: 'h-px w-full top-20 left-20 bg-gradient-to-r from-red-800 via-red-200 to-white', delay: 0.1 },
-            { class: 'h-px w-full bottom-23 left-20 bg-gradient-to-r from-red-800 via-red-200 to-white', delay: 0.1 },
-            { class: 'h-px w-full top-40 left-20 bg-gradient-to-r from-red-800 via-red-200 to-white', delay: 0.2 },
-            { class: 'h-px w-full top-60 left-20 bg-gradient-to-r from-red-800 via-slate-200 to-white', delay: 0.3 },
-            { class: 'h-px w-full top-80 left-20 bg-gradient-to-r from-red-200 via-slate-200 to-white', delay: 0.4 },
-            { class: 'h-px w-full top-100 left-20 bg-gradient-to-r from-red-500  via-white to-red-800', delay: 0.5 },
-            { class: 'h-10/12 w-px top-0 left-40 bg-gradient-to-b from-red-800 via-white to-red-800', delay: 0.6 },
-            { class: 'h-10/12 w-px top-0 left-60 bg-gradient-to-b from-red-800 via-slate-300 to-red-800', delay: 0.7 },
-            { class: 'h-10/12 w-px top-0 left-80 bg-gradient-to-b from-red-800 via-slate-400 to-red-800', delay: 0.8 },
-            { class: 'h-10/12 w-px top-0 left-100 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.2 },
-            { class: 'h-10/12 w-px top-0 right-0 bg-gradient-to-b from-white via-red-200 to-red-700', delay: 1.4 },
-            { class: 'h-10/12 w-px top-0 right-20 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.5 },
-            { class: 'h-10/12 w-px top-0 right-40 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.6 },
-            { class: 'h-10/12 w-px top-0 right-60 bg-gradient-to-b from-white via-red-200 to-red-500', delay: 1.7 },
-            { class: 'h-10/12 w-px top-0 right-80 bg-gradient-to-b from-white via-red-200 to-red-400', delay: 1.8 },
-            { class: 'h-10/12 w-px top-0 right-100 bg-gradient-to-b from-white via-red-200 to-white', delay: 1.9 },
-            { class: 'h-10/12 w-px top-0 -right-20 bg-gradient-to-b from-white via-red-200 to-red-500', delay: 1.9 },
-          ].map((line, index) => (
-            <motion.div
-              key={index}
-              className={`absolute hidden lg:block -z-1 ${line.class}`}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 0.5 }}
-              transition={{ delay: line.delay, duration: 0.8 }}
-            />
-          ))}
           
-          {/* Animated Text Content */}
-          <div className="flex lg:flex-col lg:w-3xl flex-col  relative z-20 ">
+          <div className="flex lg:flex-col lg:w-3xl items-center pt-2 text-center flex-col  relative z-20 ">
+<Link to="/" className="flex lg:mr-8 group items-center text-gray-900 overflow-hidden" >
+          <motion.img 
+            initial={{x:-45}} 
+            animate={{ x: 0 }}
+            transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+            src={logo} 
+            alt="Logo" 
+            className="h-10 w-10 object-cover" 
+          />
+          
+          <motion.h2 
+            className="relative font-inter  font-semibold bg-gradient-to-r from-black to-red-700 pl-1 hidden md:block text-2xl text-transparent bg-clip-text"
+          >
+            <motion.div 
+              className="absolute bottom-0 w-8 h-[2px] bg-black"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+              style={{ originX: 0 }}
+            />
+            {text.split("").map((char, index) => (
+              <motion.span
+                key={index}
+                custom={index}
+                variants={textVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.h2>
+        </Link>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-8 font-semibold font-inter text-black text-shadow-2xs">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl pt-2 font-semibold font-inter text-black text-shadow-2xs">
               <motion.span 
                 className="w-fit  sm:pb-3 block text-black"
                 initial={{ opacity: 0, x:-100 }}
@@ -122,18 +135,6 @@ export default function HeroSection() {
           </motion.p>
           
 
-          <div className='lg:max-w-none  absolute -right-10 top-30 sm:-right-10 sm:-top-30 lg:-right-40  lg:-top-5 overflow-hidden z-10 lg:flex-none flex max-w-3xl lg:ml-0'>
-          <div className='max-w-2xl  flex-none lg:max-w-none relative'>
-              <motion.img 
-                src={box} 
-                alt="" 
-                className=" w-[16rem] sm:w-[32rem]  lg:w-[32rem] object-cover z-1 rounded-xl"
-                initial={{ opacity: 0 ,y:100}}
-                animate={{ opacity: 1,y:0 }}
-                transition={{ delay: 1.0, duration: 0.8 }}
-              />
-          </div>  
-        </div>
       
         </div>
         
