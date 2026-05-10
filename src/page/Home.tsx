@@ -116,7 +116,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.6 }}      >
         <motion.span 
-          className="bg-gradient-to-r pb-2 from-red-800 to-red-700 bg-clip-text text-transparent font-semibold block"
+          className="text-black pb-2 font-semibold block"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -132,7 +132,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           >
-          <span className=" pb-2  text-red-700 flex items-center font-semibold  sm:mb-2">We Handle 
+          <span className=" pb-2  text-black flex items-center font-semibold  sm:mb-2">We Handle 
           <div className=" px-2  transition-transform duration-500">
                       <motion.span
                         key={words[index]}
@@ -149,7 +149,7 @@ export default function Home() {
            <span className=" text-xl sm:text-5xl  text-black">You Focus on Growth.</span>
         </motion.span>
       </motion.h2>
-          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-red-700 font-medium"><span className="font-semibold">BlackBoxPreps</span> handles preps,while you build.</p>
+          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-600 font-medium"><span className="font-semibold text-red-700">BlackBoxPreps</span> handles preps,while you build.</p>
 
  <motion.div 
         className=''
