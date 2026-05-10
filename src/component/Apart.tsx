@@ -1,18 +1,17 @@
-import { ShieldCheck, Eye, Layers } from "lucide-react";
+import { MessageCircleQuestion, Eye, Layers } from "lucide-react";
 import { motion } from "framer-motion";
-import SectionLayout from "@/layout/sectionLayout";
 
 export default function WhatSetsUsApart() {
   const features = [
     {
-      icon: <ShieldCheck className="w-6 h-6 text-red-800" />,
-      title: "Retail-Grade Accuracy",
-      desc: "Every order goes through a multi-step QC process with barcode verification and photo documentation to ensure 100% compliance with Amazon, Walmart, and wholesale standards.",
+      icon: <MessageCircleQuestion  className="w-6 h-6 text-red-800" />,
+      title: "Communication",
+      desc: "Automated updates and direct communication with the prep team to ensure every order is handled correctly.",
     },
     {
       icon: <Eye className="w-6 h-6 text-red-800" />,
       title: "Transparent Operations",
-      desc: "Full visibility through order tracking, prep reports, and proof-of-prep images — no hidden steps, no surprises.",
+      desc: "Full visibility on inventory from check in to shipment, with clear and detailed billing breakdowns.",
     },
     {
       icon: <Layers className="w-6 h-6 text-red-800" />,
@@ -22,7 +21,7 @@ export default function WhatSetsUsApart() {
   ];
 
   return (
-    <SectionLayout>
+    <section className="max-w-7xl py-8 mx-auto">
       
 
       <div className="max-w-5xl relative mx-auto sm:px-6 text-center rounded-2xl">
@@ -140,6 +139,6 @@ export default function WhatSetsUsApart() {
           ))}
         </div>
       </div>
-    </SectionLayout>
+    </section>
   );
 }

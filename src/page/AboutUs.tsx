@@ -5,7 +5,6 @@ import { Briefcase, Users, Globe, ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Head from "@/component/Head";
-import Section2 from "@/component/section2";
 
 
 // Animation variants
@@ -340,7 +339,6 @@ export default function AboutUs() {
           </motion.div>
         </AnimatedSection>
       </section>
-      <Section2 topPadding="pt-10"/>
     </>
   );
 }

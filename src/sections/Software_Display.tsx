@@ -4,7 +4,6 @@ import { Truck,  Settings,House,Warehouse} from 'lucide-react';
 import inventory from "../asset/inventory.png"
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import SectionLayout from "@/layout/sectionLayout";
 
 
 export default function Software_Display() {
@@ -57,17 +56,17 @@ index:1,
   return (
     <>
         
-<SectionLayout>
+<section className="max-w-7xl mx-auto  py-12">
   <div className="max-w-5xl flex flex-col items-center justify-center bg-gray-50 mx-auto  rounded-xl">
 
     <h2 className="mx-auto relative z-10   w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
           SOFTWARE</h2>
 
-       <div className="bg-black h-px absolute top-13 left-1/4 w-1/2 z-0">
+       <div className="bg-black h-px absolute top-18 left-1/4 w-1/2 z-0">
    <div className="flex-between -mt-1.5">
 
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   <div className="bg-black border-black border-2 rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-black border-black border-2 rounded-sm h-3.5 w-3"></div>
    </div>
   </div>
     {/* Header */}
@@ -195,7 +194,7 @@ index:1,
       </motion.div>
     </div>
   </div>
-</SectionLayout>    
+</section>    
     </>
   )
 }

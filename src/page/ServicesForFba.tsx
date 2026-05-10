@@ -3,7 +3,6 @@ import check from "../asset/check.jpg";
 import { motion,type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Head from "@/component/Head";
-import Section2 from "@/component/section2";
 
 
 // Animation variants
@@ -456,7 +455,6 @@ export default function FbaService() {
 
       {/* CTA Section */}
    
-      <Section2 topPadding="pt-10"/>
       
     </>
   );

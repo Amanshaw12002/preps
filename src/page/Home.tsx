@@ -9,16 +9,14 @@ import FAQ from './FAQ';
 import OptimizedSection from '@/sections/HeroSection';
 import { easeOut, motion } from 'framer-motion';
 import blackbox from '../asset/blackbox.png';
-import Section2 from '@/component/section2';
 import { useLenis } from '@/component/lenis';
 import Head from '@/component/Head';
-import SectionLayout from '@/layout/sectionLayout';
 import Software_Display from "@/sections/Software_Display";
 import { Link } from "react-router-dom";
-import { ChevronRight, MoveRight } from "lucide-react";
+import { ChevronRight, HandHeart, MoveRight, SearchCheck,PackageOpen, Boxes, PackageCheck, Truck } from "lucide-react";
 import SecondSection from "@/sections/SecondSection";
 import { FaEnvelope } from "react-icons/fa";
-
+import React from "react";
 
 export const processSteps: ProcessStep[] = [
   {
@@ -55,6 +53,7 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
+
 interface ProcessStep {
   id: number;
   title: string;
@@ -64,6 +63,20 @@ interface ProcessStep {
 }
 
 export default function Home() {
+
+    const icons = [<HandHeart  className="h-4 w-4 sm:h-6 sm:w-6"/>, <SearchCheck className="h-4 w-4 sm:h-6 sm:w-6"/>,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 12V9a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/><path d="M16 20v-3a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 22V2"/><path d="M4 12h16"/><path d="M4 20h16"/><path d="M4 2v20"/><path d="M4 4h16"/></svg>,<PackageOpen />,<Boxes />,<PackageCheck />,<Truck />];
+
+  const words = ['Receiving', 'Inspection', 'Shelving','Picking', 'Prepping', 'Packaging', 'Shipping '];
+  const [index, setIndex] = React.useState(0);
+
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [words.length]);
+
 
  useLenis();
 
@@ -75,19 +88,19 @@ export default function Home() {
     
 
 
-    <SectionLayout>
+    <section className="bg-white">
       
-<div className="flex-center flex-col  max-w-5xl mx-auto text-black relative">
-  <div className="bg-black h-0.5 absolute top-5 left-1/4 w-1/2 z-0">
+<div className="flex-center flex-col mt-8 max-w-5xl mx-auto text-red-700 relative">
+  <div className="bg-red-900 h-0.5 absolute top-5 left-1/4 w-1/2 z-0">
    <div className="flex-between -mt-1.5">
 
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
+   <div className="bg-red-800  rounded-sm h-3.5 w-3 "></div>
+   <div className="bg-red-800  rounded-sm h-3.5 w-3"></div>
    </div>
   </div>
       <img src={blackbox} className="w-10 h-10 border-2  rounded-2xl mb-2 z-10" />
       <motion.h2 
-        className="font-sans text-xs font-semibold sm:text-sm mb-2"
+        className="font-sans text-xs text-white font-semibold sm:text-sm mb-2"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -103,7 +116,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.6 }}      >
         <motion.span 
-          className="bg-gradient-to-r pb-4 from-black to-red-700 bg-clip-text text-transparent font-semibold block"
+          className="bg-gradient-to-r pb-2 from-red-800 to-red-700 bg-clip-text text-transparent font-semibold block"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -113,17 +126,30 @@ export default function Home() {
         </motion.span> 
 
         <motion.span 
-          className="text-gray-900 text-xl sm:text-5xl font-semibold text-center sm:my-4"
+          className="text-gray-200 text-xl sm:text-5xl font-semibold text-center sm:mb-4"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           >
-          <span className=" pb-2 bg-gradient-to-r  from-black to-red-700 bg-clip-text text-transparent font-semibold block sm:mb-2">We Handle Prep and Shipping </span>
-           <span className=" text-xl sm:text-5xl L text-black">You Focus on Growth.</span>
+          <span className=" pb-2  text-red-700 flex items-center font-semibold  sm:mb-2">We Handle 
+          <div className=" px-2  transition-transform duration-500">
+                      <motion.span
+                        key={words[index]}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
+                        className="flex items-center  w-fit  sm:mx-2 border border-red-700 px-4 text-red-700  p-1  sm:rounded-xl sm:py-2"
+                        > 
+                        <span className="  sm:text-xl scale-130  p-0.5 text-red-600 mr-4 ">{icons[index]}</span>
+                        <span>{words[index]}</span>
+                      </motion.span>
+                        </div></span>
+           <span className=" text-xl sm:text-5xl  text-black">You Focus on Growth.</span>
         </motion.span>
       </motion.h2>
-          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-700 font-medium">BlackBoxPreps handles preps,while you build.</p>
+          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-red-700 font-medium"><span className="font-semibold">BlackBoxPreps</span> handles preps,while you build.</p>
 
  <motion.div 
         className=''
@@ -138,7 +164,7 @@ export default function Home() {
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <span className=" text-black py-2 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
               <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
                 <Link 
@@ -151,7 +177,7 @@ export default function Home() {
                
               </div>
         <motion.h2 
-          className='font-sans text-sm  mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
+          className='font-sans text-sm text-red-600 mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -173,7 +199,7 @@ export default function Home() {
       
      
   </div>
-</SectionLayout>
+</section>
     <SecondSection/>
 
 <PrepServicesSection/>
@@ -181,7 +207,7 @@ export default function Home() {
 <WhatSetsUsApart/>
 
 
-<SectionLayout >
+<section className="max-w-7xl mx-auto  py-12" >
   
 
   {/* Animated Grid Lines */}
@@ -455,7 +481,7 @@ export default function Home() {
       </motion.div>
     </motion.div>
   </motion.div>
-</SectionLayout>
+</section>
 
 
 
@@ -463,7 +489,6 @@ export default function Home() {
 
   <CustomCalendar/>
   <FAQ/>
-   <Section2/>
 
 
 

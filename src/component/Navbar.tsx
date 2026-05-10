@@ -100,21 +100,21 @@ export default function Navbar() {
           <li className="transition border-r-2  pr-2 mr-2">
             <Link to="/aboutUs" className="hover:bg-white px-2 py-2 mx-1 rounded-md border-1 border-transparent hover:border-red-400 hover:text-red-700">About Us</Link>
           </li>
-          <div className="flex-between gap-4 ">
+          <div className="flex-between gap-4  ">
             
-              <Link to="/quote" className=" border-2 group overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-sm font-semibold  transition">
+              <Link to="/quote" className=" border-2 group bg-black text-white  overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-black py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <span className=" text-white shadow-sm shadow-black  py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-<Link to="https://dashboard.blackboxpreps.com/login" className="bg-[#292929] group text-white flex-between gap-1    rounded-lg text-xs font-semibold p-2.5 transition-all duration-500">
+<Link to="https://dashboard.blackboxpreps.com/login" className=" text-red-600 group bg-white border-2 flex-between gap-1    rounded-lg text-xs font-semibold p-2.5 transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-6 transition duration-700"/>
             </Link>
           </div>
         </ul>
-
+{/* bg-[#292929] */}
         {/* Mobile Hamburger */}
         <div className="flex md:hidden items-center gap-2">
           <button

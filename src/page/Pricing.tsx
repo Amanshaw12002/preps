@@ -1,6 +1,5 @@
 import Head from "@/component/Head";
 import { useLenis } from "@/component/lenis";
-import Section2 from "@/component/section2";
 import { motion, type Variants } from "framer-motion";
 import { Package, ShoppingBag, DollarSign, Truck, Warehouse, Crown, Check } from "lucide-react";
 import { Settings } from "lucide-react";
@@ -77,14 +76,14 @@ export default function Pricing() {
         <section className="relative  z-10 ">
         {/* Background Gradient */}
         <motion.div 
-          className="absolute top-0 h-106 bg-gradient-to-b from-red-900 via-red-800 to-red-700 w-full -z-1"
+          className="absolute top-0 h-124 bg-gradient-to-b from-black via-red-950 to-red-600 w-full -z-1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         />
 
         <motion.div 
-          className="mx-auto max-w-6xl pt-42 z-10"
+          className="mx-auto max-w-6xl pt-48 z-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -96,7 +95,7 @@ export default function Pricing() {
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-2xl sm:text-5xl font-mon mb-4 text-white"
+              className="text-2xl sm:text-7xl font-mon mb-4 text-white"
               initial={{ y: 50, opacity: 0,scale:0.6 }}
               animate={{ y: 0, opacity: 1 ,scale:1}}
               transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
@@ -104,7 +103,7 @@ export default function Pricing() {
               Our Pricing
             </motion.h1>
             <motion.h2 
-              className="text-xs px-4 sm:px-0 sm:text-md text-white max-w-lg mx-auto mb-8"
+              className="text-xs px-4 sm:px-0 sm:text-md text-white max-w-lg mx-auto mb-12"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -139,7 +138,7 @@ export default function Pricing() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              <h2 className="text-center font-semibold pb-2 text-4xl sm:text-6xl">Choose Your Plan</h2>
+              <h2 className="text-center font-semibold pb-4 text-4xl sm:text-6xl">Choose Your Plan</h2>
             </motion.div>
           </motion.div>
 
@@ -446,7 +445,7 @@ export default function Pricing() {
 
         {/* Additional Sections */}
         <motion.div 
-          className="m-8 flex flex-col border rounded-2xl shadow-2xl shadow-black/40 mx-auto max-w-5xl border-gray-400 bg-white"
+          className="my-8 flex flex-col border rounded-2xl shadow-2xl shadow-black/40 mx-auto sm:max-w-5xl xl:max-w-6xl border-gray-400 bg-white"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -485,7 +484,7 @@ export default function Pricing() {
             ].map((item, index) => (
               <motion.li 
                 key={index}
-                className="m-2 p-4 flex-between flex-col border border-gray-400 rounded-lg"
+                className="m-2 p-4 w-54 h-44 flex-between flex-col border border-gray-400 rounded-lg"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
               >
@@ -498,7 +497,7 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div 
-          className="m-8 flex-between flex-col sm:flex-row rounded-2xl mx-auto max-w-5xl"
+          className="my-8  gap-8 flex-between flex-col sm:flex-row rounded-2xl mx-auto max-w-5xl xl:max-w-6xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -506,7 +505,7 @@ export default function Pricing() {
         >
           {/* Additional Services */}
           <motion.div 
-            className="m-8 p-4 flex flex-col border shadow-2xl shadow-black/40 rounded-2xl max-w-md border-gray-400 bg-white"
+            className="my-8 h-86 p-4 flex flex-col border shadow-2xl shadow-black/40 rounded-2xl w-full border-gray-400 bg-white"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -558,7 +557,7 @@ export default function Pricing() {
 
           {/* Storage */}
           <motion.div 
-            className="m-8 flex flex-col border shadow-2xl shadow-black/40 max-w-md p-4 rounded-2xl border-gray-400 bg-white"
+            className="my-8 h-86 flex flex-col border shadow-2xl shadow-black/40 w-full p-4 rounded-2xl border-gray-400 bg-white"
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -611,7 +610,6 @@ export default function Pricing() {
           </motion.div>
         </motion.div>
       </section>
-      <Section2 topPadding="pt-10"/>
     </>
   );
 }

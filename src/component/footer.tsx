@@ -2,7 +2,6 @@ import { FaFacebook, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
-import SectionLayout from "@/layout/sectionLayout";
 import logo from "../asset/blackbox.png";
 import { ChevronRight, MoveRight } from "lucide-react";
 // Animation variants
@@ -92,24 +91,24 @@ export default function Footer() {
   });
 
   return (
-    <SectionLayout>
+    <section className="max-w-7xl mx-auto ">
       <AnimatedSection className="max-w-5xl  sm:rounded-2xl mx-auto ">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1  border border-gray-200 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
+        <div className="grid grid-cols-1 bg-black/10 border border-gray-200 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
           {/* Brand Section */}
-          <div className="col-span-1 lg:col-span-4  bg-black/5 border-gray-600 flex-between flex-col sm:flex-row  rounded-2xl p-4">
+          <div className="col-span-1 lg:col-span-4  bg-red-800 border-gray-600 flex-between flex-col sm:flex-row  rounded-2xl p-4">
         <div className="flex flex-col ml-8">
-            <motion.div variants={itemVariants} className="flex items-center   mb-6">
+            <motion.div variants={itemVariants} className="flex items-center   my-6">
               <div>
                 <motion.h2 
-                  className="text-3xl sm:text-4xl font-medium text-black"
+                  className="text-3xl sm:text-4xl font-medium text-white"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
                   BlackBoxPreps
                 </motion.h2>
                 <motion.div 
-                  className="w-12 h-0.5 bg-red-800 mt-2"
+                  className="w-12 h-0.5 bg-red-800 "
                   initial={{ width: 0 }}
                   animate={{ width: 48 }}
                   transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
@@ -119,20 +118,20 @@ export default function Footer() {
             
             <motion.p 
               variants={itemVariants}
-              className="text-slate-800 font-light text-xs sm:text-sm leading-relaxed mb-6 max-w-md"
+              className="text-slate-100 font-light text-xs sm:text-sm leading-relaxed mb-6 max-w-md"
             >
               Professional fulfillment solutions tailored to scale your e-commerce business. 
               
             </motion.p>
             <div className=" flex flex-col   gap-4 w-fit ">
 
-                <Link to="/quote" className=" border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
+                <Link to="/quote" className="text-white border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
                          <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
-              <span className=" text-black py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
+              <span className="  py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
 
               <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-[#292929] mr-4  group text-white flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
+            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-white mr-4  group text-red-700 flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
@@ -146,7 +145,7 @@ export default function Footer() {
           </div>
           
           {/* Quick Links */}
-          <motion.div variants={itemVariants} className="lg:col-span-1 bg-black/5 rounded-2xl py-8 flex flex-col items-center">
+          <motion.div variants={itemVariants} className="lg:col-span-1 bg-white rounded-2xl py-8 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
               className="text-sm font-medium mb-6 border-b text-center text-gray-900 relative pb-2"
@@ -179,7 +178,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Services */}
-          <motion.div variants={itemVariants} className="lg:col-span-1 bg-black/5 rounded-2xl py-8 flex flex-col items-center">
+          <motion.div variants={itemVariants} className="lg:col-span-1 bg-white rounded-2xl py-8 flex flex-col items-center">
             <motion.h3 
               variants={itemVariants}
               className="text-sm font-medium mb-6 border-b text-gray-900 relative pb-2"
@@ -224,7 +223,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-2 flex-between p-4 rounded-2xl  bg-black/5 ">
+          <motion.div variants={itemVariants} className="lg:col-span-2 flex-between p-4 rounded-2xl  bg-white">
                     <div className="w-2/3  rounded-xl  flex flex-col items-center">
 
             <motion.h3 
@@ -330,6 +329,6 @@ export default function Footer() {
           </motion.div>
         </div>
       </motion.div>
-</SectionLayout>
+</section>
   );
 }

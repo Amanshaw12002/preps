@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import SectionLayout from "@/layout/sectionLayout";
 
 interface FAQItem {
   question: string;
@@ -44,7 +43,7 @@ export default function FAQ() {
   };
 
   return (
-    <SectionLayout>
+    <section className="max-w-7xl mx-auto">
       <div className="max-w-5xl mx-auto flex flex-col sm:py-12 sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Title Section */}
         <div className="flex-between flex-col relative  overflow-hidden mb-6">
@@ -94,8 +93,8 @@ export default function FAQ() {
               onHoverStart={() => toggleFAQ(index)}
               onHoverEnd={() => toggleFAQ(index)}
               onClick={() => toggleFAQ(index)}
-              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-black/5 hover:shadow-md transition-all"
-              whileHover={{scale:1.02, backgroundColor: "rgba(0,0,0,0.0)" }}
+              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-white hover:shadow-md transition-all"
+              whileHover={{scale:1.02, backgroundColor: "white" }}
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
@@ -146,6 +145,6 @@ export default function FAQ() {
           ))}
         </motion.div>
       </div>
-    </SectionLayout>
+    </section>
   );
 }

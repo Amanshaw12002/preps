@@ -1,4 +1,3 @@
-import SectionLayout from "@/layout/sectionLayout";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -15,7 +14,7 @@ export default function CustomCalendar() {
   }, []);
 
   return (
-    <SectionLayout>
+    <section className="max-w-7xl mx-auto ">
       <div className="bg-white rounded-2xl flex flex-col sm:flex-row w-full  mx-auto  pt-8 sm: sm:pt-0 ">
         {/* Heading */}
         <div className="sm:pl-8 pt-8 sm:ml-8">
@@ -48,6 +47,6 @@ export default function CustomCalendar() {
           }}
         ></div>
       </div>
-    </SectionLayout>
+    </section>
   );
 }

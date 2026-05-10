@@ -3,7 +3,6 @@ import Head from "@/component/Head";
 import product1 from "../asset/IMG_6565 2.png";
 
 import {  Package, DollarSign, Truck } from "lucide-react";
-import Section2 from "@/component/section2";
 
 export default function FbmService() {
 
@@ -206,7 +205,6 @@ export default function FbmService() {
   </div>
 </section>
 
-      <Section2 topPadding="pt-10"/>
 
     </>
   );
