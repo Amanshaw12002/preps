@@ -164,7 +164,7 @@ export default function Home() {
                               <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-black py-2 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <span className=" text-black py-2 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Start Sending Inventory</span>
               <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
                 <Link 
@@ -177,7 +177,7 @@ export default function Home() {
                
               </div>
         <motion.h2 
-          className='font-sans text-sm text-red-600 mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
+          className='font-sans text-sm text-black mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

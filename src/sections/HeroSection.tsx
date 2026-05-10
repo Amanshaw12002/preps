@@ -64,10 +64,10 @@ export default function HeroSection() {
             
             className="flex-between  flex-col bg-transparent  sm:flex-row w-fit  gap-4  my-4">
 
-              <Link to="/quote" className=" text-white bg-black shadow-lg shadow-black  group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
+              <Link to="/quote" className=" text-white bg-black   group overflow-hidden flex-between   py-2 rounded-xl  w-fit text-sm font-semibold  transition">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className="  py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <span className="  py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Start Sending Inventory</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
             <Link to="https://dashboard.blackboxpreps.com/login" className="text-red-700   overflow-hidden self-start sm:self-center group bg-white flex-between gap-1     rounded-xl text-sm font-semibold px-4 py-3   transition-all duration-500">

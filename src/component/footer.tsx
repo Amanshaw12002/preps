@@ -127,11 +127,11 @@ export default function Footer() {
 
                 <Link to="/quote" className="text-white border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
                          <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
-              <span className="  py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Get Started</span>
+              <span className="  py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Start Sending Inventory</span>
 
               <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-white mr-4  group text-red-700 flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
+            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-white mr-auto  group text-red-700 flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>

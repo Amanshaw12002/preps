@@ -27,7 +27,7 @@ export default function SecondSection() {
               <Link to="/quote" className=" border-2 group overflow-hidden flex-between   py-2.5 px-3.5 rounded-xl  w-fit text-md font-semibold  transition">
                          <ChevronRight className=" -translate-x-8  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-black py-1 px-3 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Get Started</span>
+              <span className=" text-black py-1 px-3 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Start Sending Inventory</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-9 transition duration-700"/>
             </Link>
             <Link 
