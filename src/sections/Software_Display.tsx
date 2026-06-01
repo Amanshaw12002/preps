@@ -5,7 +5,6 @@ import inventory from "../asset/inventory.png"
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-
 export default function Software_Display() {
 
     
