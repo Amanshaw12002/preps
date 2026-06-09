@@ -23,7 +23,7 @@ export default function Navbar() {
   
   return (
     <nav className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}>
-      <div className=" w-full max-w-5xl    mx-4  sm:mx-10 lg:mx-14   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
+      <div className="  max-w-6xl    mx-4  sm:mx-10 lg:mx-auto   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
         <Link to="/" className="flex lg:ml-2 group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>

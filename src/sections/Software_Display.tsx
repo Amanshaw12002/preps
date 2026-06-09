@@ -1,7 +1,8 @@
-import dashboard from "../asset/dashboard.png"
+import inbound from '../asset/inbound.jpg';
+import inventory from '../asset/inventory.jpg';
+import outbound from '../asset/outbound.jpg';
 
 import { Truck,  Settings,House,Warehouse} from 'lucide-react';
-import inventory from "../asset/inventory.png"
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -11,45 +12,38 @@ export default function Software_Display() {
    const [itemSelected,setItemSelected] =useState(0);
 
 const Items = [
+  
   {
-    index:0,
-    label: "Dashboard",
-    icon: House,
+  index:0,
+  label: "Inbound",
+  icon: Settings,
   },
   {
-index:1,
-    label: "Shipments",
-    icon: Truck,
+    index:1,
+    label: "Inventory",
+    icon: Warehouse,
   },
   {
 index:2,
-    label: "FBA & FBM",
-    icon: Settings,
-  },
-  {
-index:3,
-    label: "Inventory",
-    icon: Warehouse,
+    label: "Outbound",
+    icon: Truck,
   },
 ];
 
 const itemsImage = [
   {
     index:0,
-    image:dashboard,
+    image:inbound,
   },
   {
-index:1,
+    index:1,
     image:inventory,
   },
   {
     index:2,
-    image:dashboard,
+    image:outbound,
   },
-  {
-    index:3,
-    image:dashboard,
-  }
+  
 ]
 
   return (
