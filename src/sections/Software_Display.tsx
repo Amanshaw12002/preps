@@ -2,7 +2,7 @@ import inbound from '../asset/inbound.jpg';
 import inventory from '../asset/inventory.jpg';
 import outbound from '../asset/outbound.jpg';
 
-import { Truck,  Settings,House,Warehouse} from 'lucide-react';
+import { Truck,  Settings,Warehouse} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
