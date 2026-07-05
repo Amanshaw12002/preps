@@ -80,7 +80,7 @@ export default function SecondSection() {
           >
             <Link
               to="/quote"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition-all duration-300 hover:bg-black"
+              className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-900/30 transition-all duration-300 hover:bg-red-500"
             >
               Start Sending Inventory
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

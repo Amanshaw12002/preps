@@ -106,10 +106,10 @@ export default function Navbar() {
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-6 transition duration-700"/>
             </Link>
-              <Link to="/quote" className=" border-2 group bg-black text-white  overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-sm font-semibold  transition">
+              <Link to="/quote" className="group overflow-hidden flex-between mx-auto rounded-xl w-fit bg-red-600 py-1 text-sm font-semibold text-white shadow-md shadow-red-900/40 transition-colors duration-300 hover:bg-red-500">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
-              <span className=" text-white shadow-sm shadow-black  py-1 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
+              <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
           </div>
@@ -201,9 +201,9 @@ export default function Navbar() {
               <Link 
                 to="/quote" 
                 onClick={() => setOpen(false)}
-                className="bg-gradient-to-r from-black to-red-700   text-transparent bg-clip-text border-2 border-red-800 rounded-lg text-center font-semibold px-4 py-3 transition hover:opacity-90 text-sm"
+                className="rounded-lg bg-red-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-red-900/30 transition hover:bg-red-500"
               >
-                Get a Quote
+                Send Inventory
               </Link>
             </div>
           </ul>

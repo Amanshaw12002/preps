@@ -74,7 +74,7 @@ export default function Pricing() {
       <Head title="BlackBoxPreps | Transparent Pricing" />
 
       {/* ——— Hero band ——— */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] pb-40 pt-32 sm:pb-48 sm:pt-40">
+      <section className="relative overflow-hidden bg-[#0a0a0a] pb-40 pt-32 sm:pb-74 sm:pt-40">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 left-1/2 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[130px]" />
           <div
@@ -110,7 +110,7 @@ export default function Pricing() {
             className="font-inter text-4xl font-semibold tracking-tight text-white sm:text-6xl"
           >
             Simple, Transparent
-            <span className="block bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r py-4 from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
               Competitive Pricing
             </span>
           </motion.h1>
@@ -126,7 +126,7 @@ export default function Pricing() {
       </section>
 
       {/* ——— Plans (overlapping the hero band) ——— */}
-      <section className="relative z-10 -mt-28 pb-6 sm:-mt-32">
+      <section className="relative z-10 -mt-28 pb-6 sm:-mt-52">
         <motion.div
           className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3"
           variants={stagger}
@@ -137,7 +137,7 @@ export default function Pricing() {
           {/* Online Arbitrage */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
+            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:mt-8 sm:p-7"
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700">
@@ -208,17 +208,20 @@ export default function Pricing() {
           {/* Wholesale & Private Label — featured */}
           <motion.div
             variants={fadeUp}
-            className="relative flex flex-col rounded-2xl border border-red-900/50 bg-[#111111] p-6 shadow-2xl shadow-red-950/40 transition-all duration-500 hover:-translate-y-1.5 sm:p-7"
+            className="relative flex flex-col rounded-2xl border border-red-900/50 bg-[#111111] p-6 shadow-[0_20px_60px_-10px_rgba(220,38,38,0.45),0_8px_24px_-8px_rgba(220,38,38,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_80px_-10px_rgba(220,38,38,0.55),0_10px_30px_-8px_rgba(220,38,38,0.45)] sm:p-7"
           >
+            {/* dark red wash across the top, behind the POPULAR badge */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-28 rounded-t-2xl bg-gradient-to-b from-red-950/80 via-red-950/35 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-16 rounded-t-2xl bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(220,38,38,0.35),transparent)]" />
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-4 py-1 text-[11px] font-bold tracking-wide text-white shadow-lg shadow-red-900/50">
               MOST POPULAR
             </span>
 
             <div className="mb-5 flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-600/15 text-red-500">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-600/15 text-red-600">
                 <Package className="h-5 w-5" />
               </span>
-              <h2 className="text-lg font-semibold text-white">
+              <h2 className="text-lg font-semibold text-red-500">
                 Wholesale &amp; Private Label
               </h2>
             </div>
@@ -284,7 +287,7 @@ export default function Pricing() {
           {/* Custom Plan */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
+            className="flex flex-col mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100 text-gray-900">

@@ -107,30 +107,63 @@ const rotatingWords = [
   { word: "Shipping", icon: <Truck className="h-4 w-4 sm:h-5 sm:w-5" /> },
 ];
 
-/* Custom illustrated headers for the workflow cards — no stock photos */
+/* Custom illustrated headers for the workflow cards — no stock photos.
+   Each visual runs a continuous loop animation. */
+
+/* pulsing rings shared by the icon badges */
+function PulseRings() {
+  return (
+    <>
+      {[0, 1].map((i) => (
+        <motion.span
+          key={i}
+          className="absolute inset-0 rounded-2xl border border-red-500/40"
+          animate={{ scale: [1, 1.7], opacity: [0.7, 0] }}
+          transition={{ duration: 2.2, delay: i * 1.1, repeat: Infinity, ease: "easeOut" }}
+        />
+      ))}
+    </>
+  );
+}
+
 function ReceivingVisual() {
   return (
     <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[#0d0d0d]">
-      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
-      {/* incoming boxes on a dock line */}
-      <div className="relative z-10 flex items-end gap-2">
-        {[10, 16, 12].map((h, i) => (
+      <div className="absolute -top-10 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-red-600/20 blur-[70px]" />
+
+      {/* icon with pulsing rings */}
+      <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+        <PulseRings />
+        <PackageOpen className="h-8 w-8" />
+      </span>
+
+      {/* conveyor with boxes drifting in */}
+      <div className="relative z-10 mt-10 h-14 w-3/4">
+        <div className="absolute bottom-0 h-px w-full bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+        {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
-            className="rounded-md border border-red-500/30 bg-red-600/10"
-            style={{ width: 26 + i * 4, height: h * 2.4 }}
+            className="absolute bottom-1 rounded-md border border-red-500/40 bg-red-600/15"
+            style={{ width: 28 + i * 6, height: 24 + i * 5 }}
+            animate={{ left: ["-15%", "105%"], opacity: [0, 1, 1, 0] }}
+            transition={{
+              duration: 4.2,
+              delay: i * 1.4,
+              repeat: Infinity,
+              ease: "linear",
+              times: [0, 0.15, 0.85, 1],
+            }}
           />
         ))}
-        <span className="mb-1 ml-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
-          <PackageOpen className="h-7 w-7" />
-        </span>
+        {/* scanner beam the boxes pass under */}
+        <motion.span
+          className="absolute bottom-0 left-1/2 h-12 w-px -translate-x-1/2 bg-gradient-to-b from-red-500 to-transparent"
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
-      <div className="z-10 mt-4 h-px w-2/3 bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
-      <span className="z-10 mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium text-gray-300">
+
+      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[10px] font-medium text-gray-300">
         <SearchCheck className="h-3 w-3 text-red-500" /> Inspected on arrival
       </span>
     </div>
@@ -139,24 +172,62 @@ function ReceivingVisual() {
 
 function PrepPackVisual() {
   const tasks = ["FNSKU label applied", "Bubble wrap & poly bag", "Quality check passed"];
+  const cycle = tasks.length * 1.3;
   return (
-    <div className="relative flex h-full flex-col items-center justify-center gap-2 overflow-hidden bg-[#0d0d0d] px-8">
-      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
+    <div className="relative flex h-full flex-col items-center justify-center gap-3 overflow-hidden bg-[#0d0d0d] px-8">
+      <div className="absolute -top-10 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-red-600/20 blur-[70px]" />
+
+      <span className="relative z-10 mb-2 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+        <PulseRings />
+        <Boxes className="h-8 w-8" />
+      </span>
+
+      {/* checklist rows highlight one after another, forever */}
       {tasks.map((task, i) => (
         <motion.div
           key={task}
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
           className="z-10 flex w-full max-w-60 items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5"
+          animate={{
+            borderColor: [
+              "rgba(255,255,255,0.1)",
+              "rgba(239,68,68,0.6)",
+              "rgba(255,255,255,0.1)",
+            ],
+            scale: [1, 1.04, 1],
+          }}
+          transition={{
+            duration: 1.3,
+            delay: i * 1.3,
+            repeat: Infinity,
+            repeatDelay: cycle - 1.3,
+            ease: "easeInOut",
+          }}
         >
-          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
+          <motion.span
+            className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600 text-white"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{
+              duration: 1.3,
+              delay: i * 1.3,
+              repeat: Infinity,
+              repeatDelay: cycle - 1.3,
+              ease: "easeInOut",
+            }}
+          >
             <PackageCheck className="h-3 w-3" />
-          </span>
+          </motion.span>
           <span className="text-[11px] font-medium text-gray-200">{task}</span>
         </motion.div>
       ))}
+
+      {/* looping progress bar */}
+      <div className="z-10 mt-1 h-1 w-full max-w-60 overflow-hidden rounded-full bg-white/10">
+        <motion.div
+          className="h-full rounded-full bg-gradient-to-r from-red-600 to-red-400"
+          animate={{ width: ["0%", "100%"] }}
+          transition={{ duration: cycle, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
     </div>
   );
 }
@@ -164,29 +235,42 @@ function PrepPackVisual() {
 function ShipmentVisual() {
   return (
     <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[#0d0d0d]">
-      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
-      <span className="z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
-        <Truck className="h-7 w-7" />
-      </span>
-      {/* route */}
-      <div className="z-10 mt-5 flex w-3/4 items-center">
+      <div className="absolute -top-10 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-red-600/20 blur-[70px]" />
+
+      {/* truck gently bobbing, as if driving */}
+      <motion.span
+        className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50"
+        animate={{ y: [0, -4, 0], rotate: [0, -1.5, 0, 1.5, 0] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <PulseRings />
+        <Truck className="h-8 w-8" />
+      </motion.span>
+
+      {/* route with a dot travelling forever */}
+      <div className="z-10 mt-10 flex w-3/4 items-center">
         <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-gray-300">
           Delaware
         </span>
         <span className="relative mx-2 h-px flex-1 overflow-visible border-t border-dashed border-red-500/50">
           <motion.span
-            initial={{ left: "0%" }}
-            whileInView={{ left: "88%" }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 1.6, ease: "easeInOut" }}
             className="absolute -top-1 h-2 w-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)]"
+            animate={{ left: ["0%", "92%"], opacity: [0, 1, 1, 0] }}
+            transition={{
+              duration: 2.6,
+              repeat: Infinity,
+              repeatDelay: 0.5,
+              ease: "easeInOut",
+              times: [0, 0.12, 0.88, 1],
+            }}
           />
         </span>
         <span className="rounded-full border border-red-600/40 bg-red-600/15 px-2.5 py-1 text-[10px] font-semibold text-red-400">
           Amazon FC
         </span>
       </div>
-      <span className="z-10 mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium text-gray-300">
+
+      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[10px] font-medium text-gray-300">
         Live tracking & instant notifications
       </span>
     </div>
@@ -291,7 +375,7 @@ export default function Home() {
           >
             <Link
               to="/quote"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition-all duration-300 hover:bg-black"
+              className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-900/30 transition-all duration-300 hover:bg-red-500"
             >
               Start Sending Inventory
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -392,18 +476,18 @@ export default function Home() {
                 variants={fadeUp}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60"
               >
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-[360px] overflow-hidden sm:h-[400px]">
                   {step.visual}
                   <span className="absolute left-4 top-4 z-20 rounded-lg bg-white/90 px-2.5 py-1 font-mono text-xs font-bold text-red-700 shadow backdrop-blur-sm">
                     {step.step}
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="mb-2 text-base font-semibold text-gray-900">
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="mb-1.5 text-base font-semibold text-gray-900">
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
+                  <p className="text-[13px] leading-relaxed text-gray-600">
                     {step.description}
                   </p>
                 </div>

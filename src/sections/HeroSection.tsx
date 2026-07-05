@@ -1,4 +1,10 @@
-import { motion, type Variants } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import inside from "../asset/inside.jpg";
 import {
   ArrowRight,
@@ -26,13 +32,39 @@ const liveStats = [
   { label: "On the way to FC", value: "386" },
 ];
 
+/* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
+const beams = [
+  { left: "6%", height: 140, duration: 5.5, delay: 0.0, red: true },
+  { left: "16%", height: 90, duration: 7.0, delay: 2.1, red: false },
+  { left: "27%", height: 170, duration: 4.6, delay: 1.2, red: true },
+  { left: "41%", height: 110, duration: 6.4, delay: 3.4, red: false },
+  { left: "58%", height: 150, duration: 5.0, delay: 0.8, red: true },
+  { left: "71%", height: 100, duration: 6.8, delay: 2.7, red: false },
+  { left: "84%", height: 160, duration: 4.9, delay: 1.7, red: true },
+  { left: "94%", height: 120, duration: 6.1, delay: 3.9, red: false },
+];
+
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  // 0 → hero pinned at top, 1 → hero scrolled out of view
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  // scrolling pushes the beams further down and fades them — light "pours" with the scroll
+  const beamShift = useTransform(scrollYProgress, [0, 1], [0, 320]);
+  const beamOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const glowShift = useTransform(scrollYProgress, [0, 1], [0, 140]);
+
   return (
-    <section className="relative overflow-hidden bg-[#0a0a0a]">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#0a0a0a]">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
-        {/* red glow */}
-        <div className="absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[140px]" />
+        {/* red glow — drifts down slightly with scroll */}
+        <motion.div
+          style={{ y: glowShift }}
+          className="absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[140px]"
+        />
         <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-red-900/20 blur-[120px]" />
         {/* subtle grid */}
         <div
@@ -45,6 +77,37 @@ export default function HeroSection() {
             WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
           }}
         />
+
+        {/* falling light streaks, parallaxed by scroll */}
+        <motion.div
+          style={{ y: beamShift, opacity: beamOpacity }}
+          className="absolute inset-0"
+        >
+          {beams.map((beam, i) => (
+            <motion.span
+              key={i}
+              className="absolute w-px"
+              style={{
+                left: beam.left,
+                top: -beam.height,
+                height: beam.height,
+                background: beam.red
+                  ? "linear-gradient(to bottom, transparent, rgba(239,68,68,0.9), rgba(239,68,68,0.15))"
+                  : "linear-gradient(to bottom, transparent, rgba(255,255,255,0.6), rgba(255,255,255,0.1))",
+                boxShadow: beam.red
+                  ? "0 0 12px rgba(239,68,68,0.5)"
+                  : "0 0 8px rgba(255,255,255,0.25)",
+              }}
+              animate={{ y: ["0vh", "120vh"] }}
+              transition={{
+                duration: beam.duration,
+                delay: beam.delay,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
+        </motion.div>
       </div>
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 pt-28 pb-16 text-center sm:pt-36 sm:pb-24">
@@ -132,17 +195,29 @@ export default function HeroSection() {
 
         {/* Facility photo — inside the BlackBoxPreps prep center */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 60 ,scale:1}}
           animate={{ opacity: 1, y: 0 }}
+          whileHover={{scale:1.05}}
           transition={{ delay: 0.7, duration: 0.9, ease: [0.22, 1, 0.36, 1] as const }}
           className="relative mt-14 w-full max-w-5xl"
         >
           <div className="absolute -inset-x-8 top-8 -z-10 h-full rounded-[40px] bg-red-600/20 blur-3xl" />
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/60">
+          {/* animated border: a red light beam orbits the frame */}
+          <div className="relative overflow-hidden rounded-2xl bg-white/10 p-[1.5px] shadow-2xl shadow-black/60">
+            <motion.div
+              className="pointer-events-none absolute -inset-[150%]"
+              style={{
+                background:
+                  "conic-gradient(from 0deg, transparent 0deg, transparent 290deg, rgba(239,68,68,0.5) 320deg, rgba(239,68,68,1) 342deg, rgba(255,220,220,1) 350deg, transparent 360deg)",
+              }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+            />
+          <div className="relative overflow-hidden rounded-[15px] bg-[#0a0a0a]">
             <img
               src={inside}
               alt="Inside the BlackBoxPreps prep center — inventory prepped and ready to ship"
-              className="h-[340px] w-full object-cover object-center sm:h-[480px]"
+              className="h-[340px] w-full object-cover object-center sm:h-[420px]"
             />
             {/* cinematic fade so the photo melts into the section */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-transparent to-black/40" />
@@ -225,6 +300,7 @@ export default function HeroSection() {
                 </span>
               ))}
             </motion.div>
+          </div>
           </div>
         </motion.div>
       </div>
