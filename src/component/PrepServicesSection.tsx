@@ -1,175 +1,201 @@
 import React from "react";
-import { Warehouse, Truck, Package } from "lucide-react";
-import { motion } from "framer-motion";
+import { Warehouse, Truck, Package, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { TrendingUp, Workflow, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const rotating = [
+  { word: "Scale", icon: <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Streamline", icon: <Workflow className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Succeed", icon: <Trophy className="h-4 w-4 sm:h-5 sm:w-5" /> },
+];
+
+const services = [
+  {
+    id: 1,
+    title: "FBA & WFS Prep",
+    icon: <Warehouse className="h-5 w-5" />,
+    featured: true,
+    description:
+      "At BlackBox, our experienced warehouse team handles everything packing, prepping, labeling, repacking, and shipping, all in full compliance with Amazon's FBA standards. We help you save time, cut costs, and focus on scaling your business.",
+    link: "/service/fba",
+  },
+  {
+    id: 2,
+    title: "FBM & DTC Prep",
+    icon: <Truck className="h-5 w-5" />,
+    description:
+      "From same-day order prep to custom packaging, we help you deliver on time and exceed buyer expectations.",
+    link: "/service/fbm",
+  },
+  {
+    id: 3,
+    title: "Wholesale Prep",
+    icon: <Package className="h-5 w-5" />,
+    description:
+      "Built for wholesale sellers, our Delaware tax-free warehouse handles your storage, prep, and shipments, helping you scale efficiently and reach new markets faster.",
+    link: "/service/fba",
+  },
+];
 
 export default function PrepServicesSection() {
-  const icons = [<TrendingUp className="h-4 w-4 sm:h-6 sm:w-6"/>, <Workflow className="h-4 w-4 sm:h-6 sm:w-6"/>, <Trophy className="h-4 w-4 sm:h-6 sm:w-6"/>];
-  const words = ["Scale", "Streamline", "Succeed"];
   const [index, setIndex] = React.useState(0);
-``
-  // Rotate words every 2.5 seconds
+
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 4000);
+      setIndex((prev) => (prev + 1) % rotating.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [words.length]);
-
-  const services = [
-    {
-      id: 2,
-      title: "FBM & DTC Prep",
-      icon: <Truck className="w-12 h-12 z-20  text-red-600 border rounded-xl p-2 mx-auto" />,
-      description:
-      "From same-day order prep to custom packaging, we help you deliver on time and exceed buyer expectations.",
-    },
-    {
-      id: 1,
-      title: "FBA & WFS Prep",
-      icon: <Warehouse className="w-12 h-12 z-20  text-red-600 border rounded-2xl p-2 mx-auto " />,
-      description:
-        "At BlackBox, our experienced warehouse team handles everything packing, prepping, labeling, repacking, and shipping, all in full compliance with Amazon’s FBA standards. We help you save time, cut costs, and focus on scaling your business.",
-
-    },
-    {
-      id: 3,
-      title: "Wholesale Prep",
-      icon: <Package className="w-12 h-12 z-20  text-red-600 border rounded-xl p-2 mx-auto" />,
-      description:
-        "Built for wholesale sellers, our Delaware tax-free warehouse handles your storage, prep, and shipments, helping you scale efficiently and reach new markets faster.",
-    },
-  ];
+  }, []);
 
   return (
-    <section className="bg-gradient-to-b from-black  to-red-700
-         mx-auto'  " >
+    <section className="relative overflow-hidden bg-[#0a0a0a]">
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/2 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-red-700/20 blur-[130px]" />
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%)",
+          }}
+        />
+      </div>
 
+      <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          <motion.div variants={fadeUp} className="mb-6 flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-white/20 sm:w-16" />
+            <span className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1 text-[11px] font-semibold tracking-[0.2em] text-red-400">
+              SERVICES
+            </span>
+            <span className="h-px w-10 bg-white/20 sm:w-16" />
+          </motion.div>
 
-
-      <div className="max-w-5xl mx-auto relative py-12  text-center ">
-        <h2 className="mx-auto relative z-10  w-fit text-white bg-black  font-medium  border px-2 py-1 rounded-lg mb-8">
-          SERVICES</h2>
-
-       <div className="bg-white h-px absolute top-15 left-1/4 w-1/2 z-0">
-   <div className="flex-between -mt-1.5">
-
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
-   </div>
-  </div>
-        {/* Section Header */}
-        <div className="flex-center  text-2xl sm:text-3xl  ">
           <motion.h2
-            initial={{ y: 200}}
-            whileInView={{  y: 0}}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className=" flex items-center flex-col sm:flex-row font-semibold text-white mb-6 text-center"
+            variants={fadeUp}
+            className="font-inter mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-3 gap-y-2 text-3xl font-semibold tracking-tight text-white sm:text-5xl"
           >
-             
-BlackBoxPreps Help You{" "}
-
-<div className=" px-2  transition-transform duration-500">
-            <motion.span
-              key={words[index]}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="flex items-center  w-fit  sm:mx-2 text-white  p-1  sm:rounded-xl sm:py-2"
-              > 
-              <span className="  sm:text-xl sm:p-1 p-0.5 text-white bg-red-600 mr-2 rounded-md">{icons[index]}</span>
-              <span className="text-red-700">{words[index]}</span>
-            </motion.span>
-              </div>{" "}
+            BlackBoxPreps Help You
+            <span className="relative inline-flex h-11 min-w-40 items-center justify-center overflow-hidden sm:h-22 sm:min-w-56">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={rotating[index].word}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.45, ease: "easeInOut" }}
+                  className="inline-flex items-center gap-2 rounded-xl border border-red-600/40 bg-red-600/15 px-4 py-1.5 text-red-400 sm:px-5 sm:py-2"
+                >
+                  {rotating[index].icon}
+                  {rotating[index].word}
+                </motion.span>
+              </AnimatePresence>
+            </span>
             Your Business.
           </motion.h2>
-        </div>
 
-        <motion.p 
-          className="text-[10px] sm:text-xs text-white max-w-3xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          
-          Whether you sell through <span className="font-medium">FBA & WFS</span>, manage orders via <span className="font-medium"> FBM</span>, or ship to <span className="font-medium">  Wholesale partners</span>, our end-to-end prep solutions ensure every unit leaves your inventory compliant, protected, and ready to sell.
-        </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-400"
+          >
+            Whether you sell through{" "}
+            <span className="font-medium text-white">FBA &amp; WFS</span>,
+            manage orders via{" "}
+            <span className="font-medium text-white">FBM</span>, or ship to{" "}
+            <span className="font-medium text-white">Wholesale partners</span>,
+            our end-to-end prep solutions ensure every unit leaves your
+            inventory compliant, protected, and ready to sell.
+          </motion.p>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-2 sm:gap-4">
-          {services.map((service, serviceIndex) => (
+        <motion.div
+          className="mt-14 grid gap-5 md:grid-cols-3"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          {services.map((service) => (
             <motion.div
               key={service.id}
-              className="group  bg-black border border-black  rounded-3xl shadow-md shadow-black hover:shadow-xl transition-all duration-300 hover:-translate-y-2 p-4 text-left"
-              initial={{ opacity: 0.6, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + serviceIndex * 0.3, duration: 1.5 }}
+              variants={fadeUp}
+              className={`group relative flex flex-col rounded-2xl border p-6 text-left transition-all duration-500 hover:-translate-y-1.5 sm:p-7 ${
+                service.featured
+                  ? "border-red-900/60 bg-gradient-to-b from-red-950/40 to-white/[0.03] shadow-xl shadow-red-950/30"
+                  : "border-white/10 bg-white/[0.03] hover:border-white/20"
+              }`}
             >
-              {/* Header */}
-              <motion.div 
-                className="flex border-b border-white pb-4 items-center   flex-col mb-2"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + serviceIndex * 0.1, duration: 0.5 }}
+              <span
+                className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-300 ${
+                  service.featured
+                    ? "bg-red-600 text-white shadow-lg shadow-red-900/50"
+                    : "bg-red-600/15 text-red-500 group-hover:bg-red-600 group-hover:text-white"
+                }`}
               >
-                <div className=" relative text-white  h-14 w-full rounded-xl my-4   p-0.5 sm:p-2">
-                                  
-                  {service.icon}
+                {service.icon}
+              </span>
 
-                </div>
-                <h3 className="ml-3 text-xs sm:text-lg  font-semibold text-red-600">
-                  {service.title}
-                </h3>
-              </motion.div>
-
-              {/* Description */}
-              <motion.p 
-                className="text-white text-xs sm:text-sm mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 + serviceIndex * 0.1, duration: 0.5 }}
-              >
+              <h3 className="mb-3 text-lg font-semibold text-white">
+                {service.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-400">
                 {service.description}
-              </motion.p>
+              </p>
 
+              <Link
+                to={service.link}
+                className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-red-500 transition-colors duration-300 hover:text-red-400"
+              >
+                Learn more
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <motion.div 
-          className="pb-8 sm:p-0 mt-8 sm:mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 0.6 }}
+        <motion.div
+          className="mx-auto mt-16 max-w-md border-t border-white/10 pt-8"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
         >
-          <motion.h3 
-            className="text-xl text-white sm:text-3xl font-inter font-semibold w-fit mx-auto border-t pt-4 border-gray-100  mb-3"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+          <motion.h3
+            variants={fadeUp}
+            className="font-inter text-xl font-semibold text-white sm:text-2xl"
           >
             Streamline, Scale, Succeed.
           </motion.h3>
-          <motion.p 
-            className="text-gray-200 text-[10px] sm:text-xs sm:mb-6 mb-2 "
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.0, duration: 0.5 }}
-          >
+          <motion.p variants={fadeUp} className="mt-2 text-xs text-gray-500">
             Let's take the prep work off your plate.
           </motion.p>
-                    
-
         </motion.div>
       </div>
     </section>

@@ -9,9 +9,11 @@ import FbmService from './page/ServicesForFbm';
 import FAQ from './page/FAQ';
 import GetQuoteForm from './component/GetQuote';
 import ScrollToTop from './component/ScrollToTop';
+import { useLenis } from './component/lenis';
 
 
 function App() {
+ useLenis();
  return (
   <>
   <main className=' relative space-b-6 bg-white '>

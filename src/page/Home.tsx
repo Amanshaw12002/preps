@@ -1,29 +1,40 @@
-
-import truck from "../asset/truck.png"
-import rec from "../asset/rec.png"
-import CustomCalendar from '@/component/Meeting';
-import MotionCrousel from '@/component/slider';
-import PrepServicesSection from '@/component/PrepServicesSection';
-import WhatSetsUsApart from '@/component/Apart';
-import FAQ from './FAQ';
-import OptimizedSection from '@/sections/HeroSection';
-import { easeOut, motion } from 'framer-motion';
-import blackbox from '../asset/blackbox.png';
-import { useLenis } from '@/component/lenis';
-import Head from '@/component/Head';
+import React from "react";
+import CustomCalendar from "@/component/Meeting";
+import PrepServicesSection from "@/component/PrepServicesSection";
+import WhatSetsUsApart from "@/component/Apart";
+import FAQ from "./FAQ";
+import HeroSection from "@/sections/HeroSection";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
+import Head from "@/component/Head";
 import Software_Display from "@/sections/Software_Display";
 import { Link } from "react-router-dom";
-import { ChevronRight, HandHeart, MoveRight, SearchCheck,PackageOpen, Boxes, PackageCheck, Truck } from "lucide-react";
+import {
+  ArrowRight,
+  HandHeart,
+  SearchCheck,
+  PackageOpen,
+  Boxes,
+  PackageCheck,
+  Truck,
+  Warehouse,
+  Mail,
+} from "lucide-react";
 import SecondSection from "@/sections/SecondSection";
-import { FaEnvelope } from "react-icons/fa";
-import React from "react";
+
+export interface ProcessStep {
+  id: number;
+  title: string;
+  icon: "FaSearch" | "FaBoxOpen" | "FaBarcode" | "FaTags";
+  image: "one" | "two" | "three" | "four";
+  description: string;
+}
 
 export const processSteps: ProcessStep[] = [
   {
     id: 1,
     title: "Inspection",
     icon: "FaSearch",
-    image: "one", // your image import
+    image: "one",
     description:
       "Every item is carefully inspected for damage, accuracy, and quality before processing.",
   },
@@ -53,448 +64,362 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-
-interface ProcessStep {
-  id: number;
-  title: string;
-  icon: "FaSearch" | "FaBoxOpen" | "FaBarcode" | "FaTags";
-  image: "one" | "two" | "three" | "four";
-  description: string;
+/* Shared section header: eyebrow chip + heading, used to keep every section consistent */
+export function SectionEyebrow({ label, dark = false }: { label: string; dark?: boolean }) {
+  return (
+    <div className="mb-6 flex items-center justify-center gap-3">
+      <span className={`h-px w-10 sm:w-16 ${dark ? "bg-white/20" : "bg-gray-300"}`} />
+      <span
+        className={`rounded-full border px-3.5 py-1 text-[11px] font-semibold tracking-[0.2em] ${
+          dark
+            ? "border-white/20 bg-white/5 text-red-400"
+            : "border-gray-200 bg-white text-red-700"
+        }`}
+      >
+        {label}
+      </span>
+      <span className={`h-px w-10 sm:w-16 ${dark ? "bg-white/20" : "bg-gray-300"}`} />
+    </div>
+  );
 }
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const rotatingWords = [
+  { word: "Receiving", icon: <PackageOpen className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Inspection", icon: <SearchCheck className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Shelving", icon: <Warehouse className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Picking", icon: <HandHeart className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Prepping", icon: <Boxes className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Packaging", icon: <PackageCheck className="h-4 w-4 sm:h-5 sm:w-5" /> },
+  { word: "Shipping", icon: <Truck className="h-4 w-4 sm:h-5 sm:w-5" /> },
+];
+
+/* Custom illustrated headers for the workflow cards — no stock photos */
+function ReceivingVisual() {
+  return (
+    <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[#0d0d0d]">
+      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
+      {/* incoming boxes on a dock line */}
+      <div className="relative z-10 flex items-end gap-2">
+        {[10, 16, 12].map((h, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+            className="rounded-md border border-red-500/30 bg-red-600/10"
+            style={{ width: 26 + i * 4, height: h * 2.4 }}
+          />
+        ))}
+        <span className="mb-1 ml-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+          <PackageOpen className="h-7 w-7" />
+        </span>
+      </div>
+      <div className="z-10 mt-4 h-px w-2/3 bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+      <span className="z-10 mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium text-gray-300">
+        <SearchCheck className="h-3 w-3 text-red-500" /> Inspected on arrival
+      </span>
+    </div>
+  );
+}
+
+function PrepPackVisual() {
+  const tasks = ["FNSKU label applied", "Bubble wrap & poly bag", "Quality check passed"];
+  return (
+    <div className="relative flex h-full flex-col items-center justify-center gap-2 overflow-hidden bg-[#0d0d0d] px-8">
+      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
+      {tasks.map((task, i) => (
+        <motion.div
+          key={task}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+          className="z-10 flex w-full max-w-60 items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5"
+        >
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
+            <PackageCheck className="h-3 w-3" />
+          </span>
+          <span className="text-[11px] font-medium text-gray-200">{task}</span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function ShipmentVisual() {
+  return (
+    <div className="relative flex h-full flex-col items-center justify-center overflow-hidden bg-[#0d0d0d]">
+      <div className="absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-red-600/20 blur-[60px]" />
+      <span className="z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+        <Truck className="h-7 w-7" />
+      </span>
+      {/* route */}
+      <div className="z-10 mt-5 flex w-3/4 items-center">
+        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-gray-300">
+          Delaware
+        </span>
+        <span className="relative mx-2 h-px flex-1 overflow-visible border-t border-dashed border-red-500/50">
+          <motion.span
+            initial={{ left: "0%" }}
+            whileInView={{ left: "88%" }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 1.6, ease: "easeInOut" }}
+            className="absolute -top-1 h-2 w-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)]"
+          />
+        </span>
+        <span className="rounded-full border border-red-600/40 bg-red-600/15 px-2.5 py-1 text-[10px] font-semibold text-red-400">
+          Amazon FC
+        </span>
+      </div>
+      <span className="z-10 mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium text-gray-300">
+        Live tracking & instant notifications
+      </span>
+    </div>
+  );
+}
+
+const workflowSteps = [
+  {
+    step: "01",
+    title: "Receiving Packages",
+    description:
+      "You send your inventory to our prep center. We conduct thorough inspection, ensuring everything matches your specifications and requirements.",
+    visual: <ReceivingVisual />,
+  },
+  {
+    step: "02",
+    title: "Prep & Pack",
+    description:
+      "Your packages go through our optimized workflow with quality checks at every stage, ensuring perfect preparation and packaging.",
+    visual: <PrepPackVisual />,
+  },
+  {
+    step: "03",
+    title: "Final Shipment",
+    description:
+      "We ship your packages to the requested destination and provide comprehensive tracking with instant notifications at every milestone.",
+    visual: <ShipmentVisual />,
+  },
+];
+
 export default function Home() {
-
-    const icons = [<HandHeart  className="h-4 w-4 sm:h-6 sm:w-6"/>, <SearchCheck className="h-4 w-4 sm:h-6 sm:w-6"/>,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 12V9a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/><path d="M16 20v-3a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 22V2"/><path d="M4 12h16"/><path d="M4 20h16"/><path d="M4 2v20"/><path d="M4 4h16"/></svg>,<PackageOpen />,<Boxes />,<PackageCheck />,<Truck />];
-
-  const words = ['Receiving', 'Inspection', 'Shelving','Picking', 'Prepping', 'Packaging', 'Shipping '];
   const [index, setIndex] = React.useState(0);
-
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 4000);
+      setIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [words.length]);
-
-
- useLenis();
-
+  }, []);
 
   return (
     <>
-      <Head title="BlackBoxPreps | Amazon Prep Center"   />
-    <OptimizedSection/>
-    
+      <Head title="BlackBoxPreps | Amazon Prep Center" />
 
+      <HeroSection />
 
-    <section className="bg-white">
-      
-<div className="flex-center flex-col mt-8 max-w-5xl mx-auto text-red-700 relative">
-  <div className="bg-red-900 h-0.5 absolute top-5 left-1/4 w-1/2 z-0">
-   <div className="flex-between -mt-1.5">
+      {/* ——— Intro: what we handle ——— */}
+      <section className="relative overflow-hidden bg-white">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-red-100/60 blur-[100px]" />
+        </div>
 
-   <div className="bg-red-800  rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-red-800  rounded-sm h-3.5 w-3"></div>
-   </div>
-  </div>
-      <img src={blackbox} className="w-10 h-10 border-2  rounded-2xl mb-2 z-10" />
-      <motion.h2 
-        className="font-sans text-xs text-white font-semibold sm:text-sm mb-2"
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-      >
-        Let's grow your business together.
-      </motion.h2>
-
-      <motion.h2 
-        className=" text-md sm:text-5xl  flex-center flex-col font-medium "
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.6 }}      >
-        <motion.span 
-          className="text-black pb-2 font-semibold block"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
+        <motion.div
+          className="relative mx-auto max-w-4xl px-4 py-12 text-center "
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
         >
-          New to Amazon or Already Selling!
-        </motion.span> 
+          <motion.div variants={fadeUp}>
+            <SectionEyebrow label="WHY BLACKBOXPREPS" />
+          </motion.div>
 
-        <motion.span 
-          className="text-gray-200 text-xl sm:text-5xl font-semibold text-center sm:mb-4"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.6 }}
+          <motion.p variants={fadeUp} className="mb-3 text-sm font-medium text-red-700">
+            Let's grow your business together.
+          </motion.p>
+
+          <motion.h2
+            variants={fadeUp}
+            className="font-inter text-3xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-5xl"
           >
-          <span className=" pb-2  text-black flex items-center font-semibold  sm:mb-2">We Handle 
-          <div className=" px-2  transition-transform duration-500">
-                      <motion.span
-                        key={words[index]}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 1, ease: "easeInOut" }}
-                        className="flex items-center  w-fit  sm:mx-2 border border-red-700 px-4 text-red-700  p-1  sm:rounded-xl sm:py-2"
-                        > 
-                        <span className="  sm:text-xl scale-130  p-0.5 text-red-600 mr-4 ">{icons[index]}</span>
-                        <span>{words[index]}</span>
-                      </motion.span>
-                        </div></span>
-           <span className=" text-xl sm:text-5xl  text-black">You Focus on Growth.</span>
-        </motion.span>
-      </motion.h2>
-          <p className="text-xs mx-8 sm:mx-0 text-center sm:text-sm mb-2 text-gray-600 font-medium"><span className="font-semibold text-red-700">BlackBoxPreps</span> handles preps,while you build.</p>
+            New to Amazon or Already Selling!
+            <span className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              We Handle
+              <span className="relative inline-flex h-12 min-w-44 items-center justify-center overflow-hidden sm:h-22 sm:min-w-64">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={rotatingWords[index].word}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -24 }}
+                    transition={{ duration: 0.45, ease: "easeInOut" }}
+                    className="inline-flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-1.5 text-red-700 sm:gap-3 sm:px-6 sm:py-2.5"
+                  >
+                    {rotatingWords[index].icon}
+                    {rotatingWords[index].word}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
+            <span className="mt-3 block">You Focus on Growth.</span>
+          </motion.h2>
 
- <motion.div 
-        className=''
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-      >
-       <div 
-                className="flex  items-center flex-col sm:flex-row w-fit   mt-2 mb-6  mx-auto  gap-4 justify-center"
-              >
-                              <Link to="/quote" className=" border-2 group  border-black overflow-hidden flex-between mx-auto  py-1 rounded-xl  w-fit text-md font-semibold  transition">
-                         <ChevronRight className="text-black -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+          <motion.p variants={fadeUp} className="mx-auto mt-5 max-w-md text-sm text-gray-500">
+            <span className="font-semibold text-red-700">BlackBoxPreps</span>{" "}
+            handles preps, while you build.
+          </motion.p>
 
-              <span className=" text-black py-2 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Start Sending Inventory</span>
-              <MoveRight className="p-0.5 text-black -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+          <motion.div
+            variants={fadeUp}
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <Link
+              to="/quote"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition-all duration-300 hover:bg-black"
+            >
+              Start Sending Inventory
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-                <Link 
-                to="/pricing"  
-                
-                className="w-fit hover:border-red-700 bg-gradient-to-r from-black to-red-600   border-2 border-black bg-clip-text text-transparent text-md rounded-lg text-center font-semibold px-6 py-3 transition hover:opacity-90 "
-                >
-               Check Pricing
-              </Link>
-               
-              </div>
-        <motion.h2 
-          className='font-sans text-sm text-black mx-auto max-w-xl text-center py-4  rounded-2xl  px-8   font-normal leading-relaxed'
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.6, duration: 0.8 }}
-        >
-          Launching your first shipment or scaling to daily pallets, we help you move faster and stay compliant. Our team handles receiving, inspection, labeling, and shipment prep directly from Delaware's tax-free zone, cutting costs and turnaround time.
-         
-        </motion.h2>
-      </motion.div>
-<div className="flex-between flex-col  gap-2 border-t border-gray-400 p-2 ">
-  <p className="text-xs text-gray-600">We are available 24/7. </p>
-  <a href="mailto:blackboxprepcenter.com" 
-     className="bg-black/80 group text-white flex-between gap-2 rounded-lg text-sm font-semibold p-3 transition-all duration-500 overflow-hidden">
-              <FaEnvelope className="w-4 h-4 group-hover:-translate-x-8 transition duration-700"/>
-              <span className="duration-700 group-hover:-translate-x-3 transition">Contact Us</span>
+            <Link
+              to="/pricing"
+              className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-3.5 text-sm font-semibold text-gray-900 transition-all duration-300 hover:border-red-600 hover:text-red-700"
+            >
+              Check Pricing
+            </Link>
+          </motion.div>
+
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-10 max-w-xl text-sm leading-relaxed text-gray-600"
+          >
+            Launching your first shipment or scaling to daily pallets, we help
+            you move faster and stay compliant. Our team handles receiving,
+            inspection, labeling, and shipment prep directly from Delaware's
+            tax-free zone, cutting costs and turnaround time.
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+            className="mx-auto mt-10 flex w-fit flex-col items-center gap-3 border-t border-gray-200 pt-6"
+          >
+            <p className="text-xs text-gray-500">We are available 24/7.</p>
+            <a
+              href="mailto:contact@blackboxprepcenter.com"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-700"
+            >
+              <Mail className="h-4 w-4" />
+              Contact Us
             </a>
-            
-  </div>         
-      
-     
-  </div>
-</section>
-    <SecondSection/>
+          </motion.div>
+        </motion.div>
+      </section>
 
-<PrepServicesSection/>
+      <SecondSection />
 
-<WhatSetsUsApart/>
+      <PrepServicesSection />
 
+      <WhatSetsUsApart />
 
-<section className="max-w-7xl mx-auto  py-12" >
-  
-
-  {/* Animated Grid Lines */}
-  <div className=' relative max-w-5xl  mx-auto mb-12 '>
-
-<h2 className="mx-auto relative z-10  w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
-          WORKFLOW</h2>
-
-       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
-   <div className="flex-between -mt-1.5">
-
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
-   </div>
-  </div>
-
-
-    {[
-      'h-full w-0.5 absolute top-20 left-20 bg-gradient-to-b from-white via-slate-200 to-white -z-1',
-      'h-px w-full absolute top-20 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
-      'h-px w-full absolute top-40 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
-      'h-px w-full absolute top-60 left-20 bg-gradient-to-r from-white via-red-200 to-white -z-1',
-      'h-px w-full absolute top-80 left-20 bg-gradient-to-r from-red-200 via-slate-200 to-white -z-1',
-      'h-px w-full absolute top-100 left-20 bg-gradient-to-r from-white via-slate-200 to-white -z-1',
-      'h-full w-px absolute top-0 left-40 bg-gradient-to-b from-red-200 via-red-200 to-white -z-1',
-      'h-full w-px absolute top-0 right-40 bg-gradient-to-b from-red-200 via-red-200 to-white -z-1',
-      'h-full w-px absolute top-0 right-20 bg-gradient-to-b from-red-200 via-slate-200 to-red-200 -z-1',
-      'h-full w-px absolute top-0 right-80 bg-gradient-to-b from-red-200 via-red-200 to-white -z-1',
-      'h-full w-px absolute top-0 right-100 bg-gradient-to-b from-white via-red-200 to-white -z-1',
-      'h-full w-px absolute top-20 right-60 bg-gradient-to-b from-white via-red-200 to-white -z-1',
-      'h-full w-px absolute top-20 left-60 bg-gradient-to-b from-white via-slate-300 to-white -z-1',
-      'h-full w-px absolute top-20 left-80 bg-gradient-to-b from-white via-slate-400 to-white -z-1',
-      'h-full w-px absolute top-20 left-100 bg-gradient-to-b from-white via-red-200 to-white -z-1'
-    ].map((lineClass, index) => (
-      <motion.div
-        key={index}
-        className={lineClass}
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5 + index * 0.05, duration: 0.6 }}
-      />
-    ))}
-               
-    <motion.h2 
-      className=' text-xl  sm:text-4xl font-semibold leading-12 text-center text-gray-900 my-4 sm:mb-8'
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={{
-        visible: {
-          transition: {
-            staggerChildren: 0.1
-          }
-        }
-      }}
-    >
-      {"From Receiving to Shipment,".split(" ").map((word, index) => (
-        <motion.span
-          key={index}
-          variants={{
-            hidden: { opacity: 0, y: 300 },
-            visible: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="inline-block mr-2"
-        >
-          {word}
-        </motion.span>
-      ))}
-      <motion.span
-        initial={{ opacity: 0, y: 200 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2,ease:easeOut, duration: 0.9 }}
-        className="block"
-      >
-        All in One Flow
-      </motion.span>
-    </motion.h2>
-
-    <motion.h2 
-      className=' text-[12px] sm:text-xs text-center z-10 font-bold w-1/2 mx-auto    text-gray-900'
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.8, duration: 0.9 }}
-    >
-      <motion.span 
-        className=' z-10 mt-6 text-red-600 border overflow-hidden rounded-2xl p-2 '
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.0, duration: 0.9 }}
-      >HOW IT WORKS</motion.span>
-    </motion.h2>
-    
-  </div>
-
-  {/* Steps Container */}
-  <motion.div 
-    className='flex flex-col lg:flex-row justify-center items-stretch gap-4 pb-8 sm:pb-0 px-8 mt-16'
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={{
-      visible: {
-        transition: {
-          staggerChildren: 0.2
-        }
-      }
-    }}
-  >
-    
-    {/* Step 1: Receive Packages */}
-    <motion.div 
-      className='group relative flex-1 w-full  sm:max-w-md'
-      variants={{
-        hidden: { opacity: 0, y: 200 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      transition={{ duration: 1, ease: "easeOut" }}
-    >
-      <motion.div 
-        className='bg-white rounded-xl border border-gray-400 shadow-lg hover:shadow-2xl transition-all duration-500 h-full overflow-hidden group-hover:-translate-y-2'
-        whileHover={{ scale: 1.02 }}
-      >
-        <motion.div 
-          className='relative overflow-hidden h-48'
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          <img 
-            src={rec} 
-            alt="Package receiving process" 
-            className="w-full h-full object-cover"
+      {/* ——— Workflow ——— */}
+      <section className="relative overflow-hidden bg-gray-50">
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute inset-0 opacity-[0.4]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+              maskImage: "radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%)",
+            }}
           />
-          <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent'></div>
-        </motion.div>
-        
-        {/* Content */}
-        <div className='p-2 sm:p-4'>
-          <motion.div 
-            className='flex items-center gap-3 mb-4'
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-          >
-           
-            <h3 className= ' text-xs sm:text-sm font-semibold text-gray-900'>Receiving Packages</h3>
-          </motion.div>
-          <motion.p 
-            className='text-gray-800 text-[12px] sm:text-sm leading-relaxed'
-            initial={{ opacity: 0 , x:-40}}
-            whileInView={{ opacity: 1 ,x:0}}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 1 }}
-          >
-            You send your inventory to our prep center. We conduct thorough inspection, 
-            ensuring everything matches your specifications and requirements.
-          </motion.p>
-          
-          {/* Features List */}
-        
         </div>
-      </motion.div>
-    </motion.div>
 
-    {/* Step 2: Prep & Pack */}
-    <motion.div 
-      className='group relative flex-1 max-w-md'
-      variants={{
-        hidden: { opacity: 0, y: 200 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
-    >
-      <motion.div 
-        className='bg-white rounded-xl border border-gray-400 shadow-lg hover:shadow-2xl transition-all duration-500 h-full overflow-hidden group-hover:-translate-y-2'
-        whileHover={{ scale: 1.02 }}
-      >
-        <motion.div 
-          className='overflow-hidden h-48 bg-gradient-to-br from-gray-900 to-gray-700 relative'
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          <MotionCrousel />
-        </motion.div>
-        
-        {/* Content */}
-        <div className='p-2 sm:p-4'>
-          <motion.div 
-            className='flex items-center gap-3 mb-4'
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
           >
-            
-            <h3 className='text-xs sm:text-sm font-semibold text-gray-900'>Prep & Pack</h3>
+            <motion.div variants={fadeUp}>
+              <SectionEyebrow label="WORKFLOW" />
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              className="font-inter text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
+            >
+              From Receiving to Shipment,
+              <span className="block bg-gradient-to-r from-red-700 to-red-500 bg-clip-text text-transparent">
+                All in One Flow
+              </span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-4 text-sm text-gray-500">
+              How it works — three simple steps from your supplier to Amazon's
+              warehouse.
+            </motion.p>
           </motion.div>
-          <motion.p 
-            className='text-gray-800 text-[10px] sm:text-sm leading-relaxed'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-          >
-            Your packages go through our optimized workflow with quality checks at every stage, 
-            ensuring perfect preparation and packaging.
-          </motion.p>
-          
-         
-        </div>
-      </motion.div>
-    </motion.div>
 
-    {/* Step 3: Shipment */}
-    <motion.div 
-      className='group relative flex-1 max-w-md'
-      variants={{
-        hidden: { opacity: 0, y: 200 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-    >
-      <motion.div 
-        className='bg-white rounded-xl border border-gray-400 shadow-lg hover:shadow-2xl transition-all duration-500 h-full overflow-hidden group-hover:-translate-y-2'
-        whileHover={{ scale: 1.02 }}
-      >
-        <motion.div 
-          className='relative overflow-hidden h-48'
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          <img 
-            src={truck} 
-            alt="Shipping and delivery process" 
-            className="w-full h-full object-cover"
-          />
-          <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent'></div>
-         
-        </motion.div>
-        
-        {/* Content */}
-        <div className='p-2 sm:p-4'>
-          <motion.div 
-            className='flex items-center gap-3 mb-4'
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.5 }}
+          {/* Steps */}
+          <motion.div
+            className="mt-14 grid gap-6 md:grid-cols-3"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
           >
-            
-            <h3 className='text-xs sm:text-sm font-semibold text-gray-900'>Final Shipment</h3>
+            {workflowSteps.map((step) => (
+              <motion.div
+                key={step.step}
+                variants={fadeUp}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60"
+              >
+                <div className="relative h-52 overflow-hidden">
+                  {step.visual}
+                  <span className="absolute left-4 top-4 z-20 rounded-lg bg-white/90 px-2.5 py-1 font-mono text-xs font-bold text-red-700 shadow backdrop-blur-sm">
+                    {step.step}
+                  </span>
+                </div>
+
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="mb-2 text-base font-semibold text-gray-900">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {step.description}
+                  </p>
+                </div>
+
+                <div className="h-1 w-0 bg-gradient-to-r from-red-600 to-red-400 transition-all duration-500 group-hover:w-full" />
+              </motion.div>
+            ))}
           </motion.div>
-          <motion.p 
-            className='text-gray-800 text-[10px] sm:text-sm leading-relaxed'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-          >
-            We ship your packages to the requested destination and provide comprehensive 
-            tracking with instant notifications at every milestone.
-          </motion.p>
-          
-         
         </div>
-      </motion.div>
-    </motion.div>
-  </motion.div>
-</section>
+      </section>
 
+      <Software_Display />
 
+      <CustomCalendar />
 
-<Software_Display/>
-
-  <CustomCalendar/>
-  <FAQ/>
-
-
-
-
-
-
-</>
-  )
+      <FAQ />
+    </>
+  );
 }

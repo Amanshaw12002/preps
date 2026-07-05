@@ -1,643 +1,541 @@
 import Head from "@/component/Head";
-import { useLenis } from "@/component/lenis";
 import { motion, type Variants } from "framer-motion";
-import { Package, ShoppingBag, DollarSign, Truck, Warehouse, Crown, Check } from "lucide-react";
-import { Settings } from "lucide-react";
+import {
+  Package,
+  ShoppingBag,
+  Truck,
+  Warehouse,
+  Check,
+  ArrowRight,
+  Settings,
+  Sparkles,
+  Undo2,
+  Layers,
+  Scissors,
+  Scaling,
+  ShieldAlert,
+} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const additionalFees = [
+  {
+    icon: <ShieldAlert className="h-5 w-5" />,
+    title: "Fragile (bubble wrap)",
+    price: "+$0.10",
+    unit: "/ foot",
+  },
+  {
+    icon: <Scaling className="h-5 w-5" />,
+    title: "Oversized / Overweight",
+    note: "Every 5lb & 5 inches",
+    price: "+$0.50",
+    unit: "/ unit",
+  },
+  {
+    icon: <Layers className="h-5 w-5" />,
+    title: "Multi-pack / Bundle",
+    price: "+$0.25",
+    unit: "each",
+  },
+  {
+    icon: <Scissors className="h-5 w-5" />,
+    title: "Sticker Removal",
+    price: "+$0.25",
+    unit: "/ unit",
+  },
+  {
+    icon: <Package className="h-5 w-5" />,
+    title: "Debundling",
+    price: "+$0.50",
+    unit: "/ unit",
+  },
+];
+
 export default function Pricing() {
+  const [afterFourteen, setAfterFourteen] = useState<boolean>(true);
 
-  const [activeStorage,setActiveStorage] = useState<boolean>(true);
-   
-
-  const containerVariants:Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants:Variants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  };
-
-  const cardVariants:Variants = {
-    hidden: { scale: 0.9, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 15
-      }
-    },
-    hover: {
-      scale: 1.05,
-      y: -10,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
-
-  const checkIconVariants:Variants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: {
-      scale: 1,
-      rotate: 0,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15
-      }
-    }
-  };
-
-
-  useLenis();
   return (
     <>
-  <Head title="BlackBoxPreps | Transparent Pricing" />
-          
+      <Head title="BlackBoxPreps | Transparent Pricing" />
 
+      {/* ——— Hero band ——— */}
+      <section className="relative overflow-hidden bg-[#0a0a0a] pb-40 pt-32 sm:pb-48 sm:pt-40">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-1/2 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[130px]" />
+          <div
+            className="absolute inset-0 opacity-[0.1]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+              backgroundSize: "64px 64px",
+              maskImage:
+                "radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%)",
+            }}
+          />
+        </div>
 
+        <motion.div
+          className="relative mx-auto max-w-3xl px-4 text-center"
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-red-400 backdrop-blur-sm"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            OUR PRICING
+          </motion.span>
 
-        <section className="relative  z-10 ">
-        {/* Background Gradient */}
-        <motion.div 
-          className="absolute top-0 h-124 bg-gradient-to-b from-black via-red-950 to-red-600 w-full -z-1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
+          <motion.h1
+            variants={fadeUp}
+            className="font-inter text-4xl font-semibold tracking-tight text-white sm:text-6xl"
+          >
+            Simple, Transparent
+            <span className="block bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
+              Competitive Pricing
+            </span>
+          </motion.h1>
 
-        <motion.div 
-          className="mx-auto max-w-6xl pt-48 z-10"
-          variants={containerVariants}
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-gray-400 sm:text-base"
+          >
+            Simple, transparent and competitive within market standard — only
+            pay for what you use.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* ——— Plans (overlapping the hero band) ——— */}
+      <section className="relative z-10 -mt-28 pb-6 sm:-mt-32">
+        <motion.div
+          className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3"
+          variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Section Heading */}
-          <motion.div 
-            className="max-w-5xl mx-auto text-center mb-16"
-            variants={itemVariants}
+          {/* Online Arbitrage */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
           >
-            <motion.h1 
-              className="text-2xl sm:text-7xl font-mon mb-4 text-white"
-              initial={{ y: 50, opacity: 0,scale:0.6 }}
-              animate={{ y: 0, opacity: 1 ,scale:1}}
-              transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-            >
-              Our Pricing
-            </motion.h1>
-            <motion.h2 
-              className="text-xs px-4 sm:px-0 sm:text-md text-white max-w-lg mx-auto mb-12"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              Simple,Transparent and Competitive within market standard
-               — only pay
-               for what you use.
-            </motion.h2>
-            
-            <motion.div 
-              className="mx-auto w-1/3 flex items-center relative"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              <div className="h-2 w-4 bg-black"></div>
-              <div className="h-px w-72 bg-black"></div>
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.8, type: "spring", stiffness: 150 }}
-              >
-                <Crown className="h-6 w-6 mx-2 text-black"/>
-              </motion.div>
-              <div className="h-px w-72 bg-black"></div>
-              <div className="h-2 w-4 bg-black"></div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex-between flex-col w-fit mx-auto"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <h2 className="text-center font-semibold pb-4 text-4xl sm:text-6xl">Choose Your Plan</h2>
-            </motion.div>
-          </motion.div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700">
+                <ShoppingBag className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Online Arbitrage
+              </h2>
+            </div>
 
-          {/* Pricing Cards */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl xl:max-w-6xl p-4 sm:mx-auto  mt-4"
-            variants={containerVariants}
-          >
+            <p className="mb-6 border-b border-gray-100 pb-6 text-sm leading-relaxed text-gray-600">
+              Ideal for sellers sourcing products online and shipping directly
+              to prep centers. Fast turnaround, sticker removal, labeling, and
+              FBA shipment creation included.
+            </p>
 
-                        {/* Wholesale & Private Label */}
-            <motion.div 
-              className="bg-[#292929] rounded-xl shadow-md shadow-black border-gray-400 border p-6 flex flex-col transition"
-              variants={cardVariants}
-              whileHover="hover"
-            >
-              
-              <motion.div 
-                className="flex items-center  gap-2  text-white"
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
-                <Package className="w-8 h-8 p-1 border-2 text-white rounded-lg" />
-                <h2 className="text-lg font-semibold">Wholesale & Private Label</h2>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <h2 className=" text-xs sm:text-sm border-b border-gray-400 py-6 mb-6 font-medium text-gray-300">
-                  Designed for bulk shipments and brand products. Includes labeling, bundling, custom packaging, and quality inspection for professional presentation.
-                </h2>
-              </motion.div>
-
-              <motion.ul 
-                className="space-y-2 flex gap-4 h-38 sm:h-42 text-gray-700 text-xs sm:text-sm mb-6"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <motion.li 
-                  className="p-4 w-1/2 h-full flex-between flex-col border border-gray-400 text-center text-white rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-xl sm:text-3xl text-white">
-                    $0.70 <span className="text-sm font-medium">/ unit</span>
-                  </span>
-                  <span className="font-medium text-white">0–999 units/month</span>
-                </motion.li>
-                <motion.li 
-                  className="p-4 w-1/2 flex-between flex-col border border-gray-400 text-center text-white rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="font-bold  text-xl sm:text-3xl border-b border-gray-400 p-2 mb-2 text-white">
-                    $0.50 <span className="text-sm font-medium">/ unit</span>
-                  </span>
-                  <span className="font-medium text-white">1,000+ units/month</span>
-                </motion.li>
-              </motion.ul>
-
-              <motion.div 
-                className="flex flex-col pt-4 mt-2 border-gray-400 border-t"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7 }}
-              >
-                <ul className="flex flex-col space-y-3 text-sm text-white font-normal">
-                  {[
-                    "Supports bulk shipments & branded packaging",
-                    "Amazon-compliant labeling & prep",
-                    "Optional storage & inventory management",
-                    "Ideal for growing brands and established sellers"
-                  ].map((feature, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex h-10 gap-2 text-gray-200 font-normal"
-                      initial={{ x: -30, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.8 + index * 0.1 }}
-                    >
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.9 + index * 0.1, type: "spring" }}
-                      >
-                        <Check className="h-5 w-5 shrink-0 text-red-100 bg-red-600 shadow-[0_0_15px_rgba(239,68,68,0.6),0_0_30px_rgba(239,68,68,0.4)] rounded-full p-0.5" />
-                      </motion.div>
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.p 
-                className="text-xs text-gray-50 mt-4 italic"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.2 }}
-              >
-                *Box price not included
-              </motion.p>
-            </motion.div>
-
-            {/* Online Arbitrage */}
-            <motion.div 
-              className="bg-gray-200  rounded-xl shadow-md shadow-black border-gray-400 border p-4 sm:p-6 flex-none flex flex-col transition"
-              variants={cardVariants}
-              whileHover="hover"
-            >
-              <motion.div 
-                className="flex items-center gap-2 mb-6"
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <ShoppingBag className="w-8 h-8 p-1 text-black border-2 rounded-lg" />
-                <h2 className="text-lg font-semibold text-gray-900">Online Arbitrage</h2>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
-                <h2 className="text-xs sm:text-sm border-b border-gray-400 pb-4 mb-4 font-medium text-gray-700">
-                  Ideal for sellers sourcing products online and shipping directly to prep centers. Fast turnaround, sticker removal, labeling, and FBA shipment creation included.
-                </h2>
-              </motion.div>
-              
-              <motion.ul 
-                className="space-y-2 flex  gap-4  sm:h-42 text-gray-700 text-xs sm:text-sm mb-6"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <motion.li 
-                  className="p-4 w-1/2 h-full flex-between flex-col border border-gray-400 text-center text-white rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="font-bold border-b border-gray-400 p-2 mb-2 text-xl sm:text-3xl text-black">
-                    $1.20 <span className="text-sm font-medium">/ unit</span>
-                  </span>
-                  <span className="font-medium text-black">0–999 units/month</span>
-                </motion.li>
-                <motion.li 
-                  className="p-4 w-1/2 flex-between flex-col border border-gray-400 text-center text-black rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="font-bold text-xl sm:text-3xl border-b border-gray-400 p-2 mb-2 text-black">
-                    $1.00 <span className="text-sm font-medium">/ unit</span>
-                  </span>
-                  <span className="font-medium text-black">1,000+ units/month</span>
-                </motion.li>
-              </motion.ul>
-
-              <motion.div 
-                className="flex flex-col pt-4 mt-2 border-t border-gray-400"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <ul className="flex flex-col space-y-3 text-sm font-normal">
-                  {[
-                    "Great for new & part-time sellers",
-                    "Low minimum quantity",
-                    "Handles multi-store deliveries",
-                    "Fast turnaround & Amazon compliance"
-                  ].map((feature, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex h-8 gap-2 text-gray-700"
-                      initial={{ x: -30, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.7 + index * 0.1 }}
-                    >
-                      <motion.div
-                        variants={checkIconVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      >
-                        <Check className="h-5 w-5 shrink-0 bg-white shadow-[0_6px_25px_rgba(0,0,0,0.25)] rounded-full p-0.5 text-black" />
-                      </motion.div>
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.p 
-                className="text-xs text-gray-900 mt-12 italic"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1 }}
-              >
-                *Box price not included
-              </motion.p>
-            </motion.div>
-
-
-            {/* Custom Plan */}
-            <motion.div 
-              className="bg-white rounded-xl shadow-md shadow-black border-gray-400 p-6 border-1 flex flex-col transition"
-              variants={cardVariants}
-              whileHover="hover"
-            >
-              <motion.div 
-                className="flex items-center gap-2 mb-6"
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <Settings className="w-8 h-8 p-1 text-black border-2 rounded-lg" />
-                <h2 className="text-lg font-semibold text-gray-800">Custom Plan</h2>
-              </motion.div>
-
-              <motion.p 
-                className="text-gray-700 text-sm mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                Tailored for businesses with unique requirements. Combine prep, fulfillment,
-                and storage options to fit your specific needs.
-              </motion.p>
-
-              <motion.ul 
-                className="space-y-2 text-gray-700 text-sm mb-6"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7 }}
-              >
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 }}>Flexible unit rates</motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.9 }}>Bulk discounts available</motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.0 }}>Custom service combinations</motion.li>
-              </motion.ul>
-
-              <motion.h3 
-                className="text-md font-semibold text-gray-800 mb-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.1 }}
-              >
-                Includes:
-              </motion.h3>
-              
-              <motion.ul 
-                className="space-y-2 text-gray-700 text-sm mb-12 sm:mb-0" 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.2 }}
-              >
-                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }}  whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.3 }}>
-                  <DollarSign className="inline w-4 h-4 mr-1" /> Additional Fees
-                </motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.4 }}>
-                  <Truck className="inline w-4 h-4 mr-1" /> Additional Services
-                </motion.li>
-                <motion.li initial={{ x: -20, opacity: 0 }} viewport={{ once: true }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 1.5 }}>
-                  <Warehouse className="inline w-4 h-4 mr-1" /> Storage Options
-                </motion.li>
-              </motion.ul>
-              
-              <div className="mt-auto ">
-                <Link to="/quote" className=" rounded-lg  px-4 sm:px-14 hover:border-gray-400 hover:border border py-3 transition">
-              Get a Custom Quote
-            </Link>
-
-                <motion.p 
-                  className="text-xs text-gray-500 mt-4 italic"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 1.7 }}
-                >
-                  Contact us for a personalized quote.
-                </motion.p>
+            <div className="mb-6 grid grid-cols-2 gap-3">
+              <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-center">
+                <p className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                  $1.20
+                </p>
+                <p className="text-xs font-medium text-gray-500">/ unit</p>
+                <p className="mt-2 border-t border-gray-200 pt-2 text-xs font-medium text-gray-600">
+                  0–999 units/month
+                </p>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+              <div className="rounded-xl border border-red-200 bg-red-50/60 p-4 text-center">
+                <p className="text-2xl font-bold text-red-700 sm:text-3xl">
+                  $1.00
+                </p>
+                <p className="text-xs font-medium text-red-600/70">/ unit</p>
+                <p className="mt-2 border-t border-red-200 pt-2 text-xs font-medium text-red-700">
+                  1,000+ units/month
+                </p>
+              </div>
+            </div>
 
-        {/* Additional Sections */}
-        <motion.div 
-          className="my-8 flex flex-col border rounded-2xl shadow-2xl shadow-black/40 mx-auto sm:max-w-5xl xl:max-w-6xl border-gray-400 bg-white"
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 80 }}
-        >
-          <motion.h3 
-            className="text-3xl font-semibold mx-auto text-black mt-6 mb-2"
-            initial={{ y: -30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Additional Fees
-          </motion.h3>
-          <motion.p 
-            className="text-center text-gray-600 text-sm mb-4 px-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            Extra charges for special packaging or oversized items that need extra care during prep.
-          </motion.p>
-          
-          <motion.ul 
-            className="space-y-2 flex-between flex-col sm:flex-row w-10/12 mx-auto text-sm mb-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {[
-              { title: "Fragile(bubble wrap)", price: "+$0.10", unit: "/ foot" },
-              { title: "Oversized/Overweight (Every 5lb & 5 inches)", price: "+$0.50", unit: "/ unit" },
-              { title: "Multi-pack / bundle", price: "+$0.25", unit: "each" },
-              { title: "Sticker Removal", price: "+$0.25", unit: "/ unit" },
-              { title: "Debundling", price: "+$0.5", unit: "/ unit" }
-            ].map((item, index) => (
-              <motion.li 
-                key={index}
-                className="m-2 p-4 w-74 h-54 flex-between flex-col border border-gray-400 rounded-lg"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="font-medium border-b border-gray-400 pb-2 text-gray-800">{item.title}</span>
-                <span className="font-semibold bg-white text-3xl border-gray-400 p-2 rounded-r-lg text-black">{item.price}</span>
-                <span className="font-semibold bg-white text-lg border-gray-400 p-2 rounded-r-lg text-black">{item.unit}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
-        <motion.div 
-          className="my-8  gap-8 flex-between flex-col sm:flex-row rounded-2xl mx-auto max-w-5xl xl:max-w-6xl"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          {/* Additional Services */}
-          <motion.div 
-            className="my-8 h-86 p-4 flex flex-col border shadow-2xl shadow-black/40 rounded-2xl w-full border-gray-400 bg-white"
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 80 }}
-          >
-            <motion.h3 
-              className="text-lg font-semibold mx-auto text-black mb-2"
-              initial={{ y: -20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Additional Services
-            </motion.h3>
-            <motion.p 
-              className="text-center text-gray-600 text-sm mb-4 px-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              Enhance your prep process with our optional add-on services designed to handle special packaging and labeling needs efficiently.
-            </motion.p>
-            
-            <motion.ul 
-              className="space-y-2 flex gap-4 text-gray-700 text-sm mb-6"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+            <ul className="mb-6 flex flex-col gap-3 border-t border-gray-100 pt-5">
               {[
-                { title: "Merchant Fulfillment", price: "+$1.00", unit: "/ unit + fees +  box price" },
-                { title: "Return to supplier", price: "+$2.00", unit: "/ return" }
-              ].map((item, index) => (
-                <motion.li 
-                  key={index}
-                  className="sm:p-4 p-2 h-42 w-1/2 flex-between flex-col border border-gray-400 rounded-lg"
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
+                "Great for new & part-time sellers",
+                "Low minimum quantity",
+                "Handles multi-store deliveries",
+                "Fast turnaround & Amazon compliance",
+              ].map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2.5 text-sm text-gray-700"
                 >
-                  <span className="font-medium flex border-b border-gray-400 p-2 text-gray-800">{item.title}</span>
-                  <span className="font-semibold p-2 text-xl sm:text-3xl text-black">{item.price}</span>
-                  <span className="font-semibold text-xs sm:text-md border-gray-400 p-2 rounded-r-lg text-black">{item.unit}</span>
-                </motion.li>
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 rounded-full bg-red-600 p-0.5 text-white" />
+                  {feature}
+                </li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </ul>
 
-          <motion.div 
-            className="m-8 flex flex-col border shadow-2xl shadow-black/40 max-w-md p-4 rounded-2xl border-gray-400 bg-white"
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 80 }}
-          >
-            <motion.h3 
-              className="text-lg font-semibold mx-auto text-black mb-2"
-              initial={{ y: -20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Storage
-            </motion.h3>
-            <motion.p 
-              className="text-center text-gray-600 text-sm mb-4 px-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              Secure and organized storage solutions for your inventory before it's shipped to Amazon or directly to your customers.
-            </motion.p>
-            
-            <motion.ul 
-              className="space-y-2 flex-between mx-auto gap-8 text-gray-700 text-xs sm:text-sm"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-            >
-              <motion.li 
-                className="p-4 h-42 border flex-between flex-col border-gray-400 rounded-lg"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+            <div className="mt-auto">
+              <Link
+                to="/quote"
+                className="block w-full rounded-xl border border-gray-300 py-3 text-center text-sm font-semibold text-gray-900 transition-all duration-300 hover:border-red-600 hover:text-red-700"
               >
-                <div 
-                onClick={() => setActiveStorage(!activeStorage)}
-                className="flex-between border p-1 border-gray-400 cursor-pointer rounded-lg">
-                  <motion.div 
-                    className={` ${activeStorage ? '' : 'bg-red-600 text-white'} flex-between px-4 py-2 gap-1 mx-2 text-black border-gray-400 rounded-lg`}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <span className="font-medium text-[10px] sm:text-xs flex border-gray-400 ">First 14 days</span>
-                  </motion.div>
-                  <motion.div 
-                    className={`${activeStorage ? 'bg-red-600 text-white' : ''}  flex-between px-4 py-2 gap-1 mx-2 text-black border-gray-400   rounded-lg`}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <span className="font-medium text-[10px] sm:text-xs flex border-gray-400">After 14 days</span>
-                  </motion.div>
-                </div>
-                {activeStorage ?   (
-
-                  <>
-                  <span className="font-semibold text-xl sm:text-3xl border-gray-400 p-2 rounded-r-lg text-black">$0.01</span>
-                  <span className="font-semibold text-md border-gray-400 p-2 rounded-r-lg text-black"> / day per unit</span>
-                  </>
-                ):(
-                  
-                  <>
-                  <span className="font-semibold text-xl sm:text-3xl border-gray-400 p-2 pb-6 rounded-r-lg text-black">Free</span>
-                  </>
-                )
-              
-                }
-              </motion.li>
-            </motion.ul>
+                Get Started
+              </Link>
+              <p className="mt-3 text-center text-[11px] italic text-gray-400">
+                *Box price not included
+              </p>
+            </div>
           </motion.div>
-        
+
+          {/* Wholesale & Private Label — featured */}
+          <motion.div
+            variants={fadeUp}
+            className="relative flex flex-col rounded-2xl border border-red-900/50 bg-[#111111] p-6 shadow-2xl shadow-red-950/40 transition-all duration-500 hover:-translate-y-1.5 sm:p-7"
+          >
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-4 py-1 text-[11px] font-bold tracking-wide text-white shadow-lg shadow-red-900/50">
+              MOST POPULAR
+            </span>
+
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-600/15 text-red-500">
+                <Package className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-white">
+                Wholesale &amp; Private Label
+              </h2>
+            </div>
+
+            <p className="mb-6 border-b border-white/10 pb-6 text-sm leading-relaxed text-gray-400">
+              Designed for bulk shipments and brand products. Includes labeling,
+              bundling, custom packaging, and quality inspection for
+              professional presentation.
+            </p>
+
+            <div className="mb-6 grid grid-cols-2 gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <p className="text-2xl font-bold text-white sm:text-3xl">
+                  $0.70
+                </p>
+                <p className="text-xs font-medium text-gray-500">/ unit</p>
+                <p className="mt-2 border-t border-white/10 pt-2 text-xs font-medium text-gray-400">
+                  0–999 units/month
+                </p>
+              </div>
+              <div className="rounded-xl border border-red-600/40 bg-red-600/10 p-4 text-center">
+                <p className="text-2xl font-bold text-red-500 sm:text-3xl">
+                  $0.50
+                </p>
+                <p className="text-xs font-medium text-red-400/70">/ unit</p>
+                <p className="mt-2 border-t border-red-600/30 pt-2 text-xs font-medium text-red-400">
+                  1,000+ units/month
+                </p>
+              </div>
+            </div>
+
+            <ul className="mb-6 flex flex-col gap-3 border-t border-white/10 pt-5">
+              {[
+                "Supports bulk shipments & branded packaging",
+                "Amazon-compliant labeling & prep",
+                "Optional storage & inventory management",
+                "Ideal for growing brands and established sellers",
+              ].map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2.5 text-sm text-gray-300"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 rounded-full bg-red-600 p-0.5 text-white shadow-[0_0_12px_rgba(239,68,68,0.5)]" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto">
+              <Link
+                to="/quote"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-red-900/40 transition-all duration-300 hover:bg-red-500"
+              >
+                Get Started
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <p className="mt-3 text-center text-[11px] italic text-gray-500">
+                *Box price not included
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Custom Plan */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
+          >
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100 text-gray-900">
+                <Settings className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Custom Plan
+              </h2>
+            </div>
+
+            <p className="mb-6 border-b border-gray-100 pb-6 text-sm leading-relaxed text-gray-600">
+              Tailored for businesses with unique requirements. Combine prep,
+              fulfillment, and storage options to fit your specific needs.
+            </p>
+
+            <div className="mb-6 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-5 text-center">
+              <p className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                Let's Talk
+              </p>
+              <p className="mt-1 text-xs font-medium text-gray-500">
+                Flexible rates built around your volume
+              </p>
+            </div>
+
+            <ul className="mb-6 flex flex-col gap-3 border-t border-gray-100 pt-5">
+              {[
+                "Flexible unit rates",
+                "Bulk discounts available",
+                "Custom service combinations",
+              ].map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2.5 text-sm text-gray-700"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 rounded-full bg-gray-900 p-0.5 text-white" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mb-6">
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Includes
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { icon: <ShieldAlert className="h-3.5 w-3.5" />, label: "Additional Fees" },
+                  { icon: <Truck className="h-3.5 w-3.5" />, label: "Additional Services" },
+                  { icon: <Warehouse className="h-3.5 w-3.5" />, label: "Storage Options" },
+                ].map((item) => (
+                  <span
+                    key={item.label}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-700"
+                  >
+                    {item.icon}
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-auto">
+              <Link
+                to="/quote"
+                className="block w-full rounded-xl bg-gray-900 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-black"
+              >
+                Get a Custom Quote
+              </Link>
+              <p className="mt-3 text-center text-[11px] italic text-gray-400">
+                Contact us for a personalized quote.
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
+
+      {/* ——— Additional Fees ——— */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="font-inter text-2xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Additional Fees
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-3 text-sm text-gray-500">
+              Extra charges for special packaging or oversized items that need
+              extra care during prep.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            {additionalFees.map((fee) => (
+              <motion.div
+                key={fee.title}
+                variants={fadeUp}
+                className="group flex flex-col rounded-2xl border border-gray-200 bg-gray-50/60 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:bg-white hover:shadow-lg hover:shadow-red-100/50"
+              >
+                <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-red-700 shadow-sm transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white">
+                  {fee.icon}
+                </span>
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {fee.title}
+                </h3>
+                {fee.note && (
+                  <p className="mt-0.5 text-[11px] text-gray-500">{fee.note}</p>
+                )}
+                <p className="mt-auto pt-4">
+                  <span className="text-2xl font-bold text-gray-900">
+                    {fee.price}
+                  </span>
+                  <span className="ml-1 text-xs font-medium text-gray-500">
+                    {fee.unit}
+                  </span>
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ——— Additional Services + Storage ——— */}
+      <section className="bg-gray-50 py-16 sm:py-20">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 lg:grid-cols-5">
+          {/* Additional Services */}
+          <motion.div
+            className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 lg:col-span-3"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h3 className="font-inter text-xl font-semibold text-gray-900 sm:text-2xl">
+              Additional Services
+            </h3>
+            <p className="mt-2 max-w-lg text-sm text-gray-500">
+              Enhance your prep process with our optional add-on services
+              designed to handle special packaging and labeling needs
+              efficiently.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="flex flex-col rounded-xl border border-gray-200 bg-gray-50/60 p-5">
+                <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-red-700 shadow-sm">
+                  <Truck className="h-5 w-5" />
+                </span>
+                <h4 className="text-sm font-semibold text-gray-900">
+                  Merchant Fulfillment
+                </h4>
+                <p className="mt-auto pt-4">
+                  <span className="text-2xl font-bold text-gray-900">
+                    +$1.00
+                  </span>
+                  <span className="ml-1 block text-xs font-medium text-gray-500">
+                    / unit + fees + box price
+                  </span>
+                </p>
+              </div>
+              <div className="flex flex-col rounded-xl border border-gray-200 bg-gray-50/60 p-5">
+                <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-red-700 shadow-sm">
+                  <Undo2 className="h-5 w-5" />
+                </span>
+                <h4 className="text-sm font-semibold text-gray-900">
+                  Return to Supplier
+                </h4>
+                <p className="mt-auto pt-4">
+                  <span className="text-2xl font-bold text-gray-900">
+                    +$2.00
+                  </span>
+                  <span className="ml-1 block text-xs font-medium text-gray-500">
+                    / return
+                  </span>
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Storage */}
+          <motion.div
+            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 lg:col-span-2"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <h3 className="font-inter text-xl font-semibold text-gray-900 sm:text-2xl">
+              Storage
+            </h3>
+            <p className="mt-2 text-sm text-gray-500">
+              Secure and organized storage solutions for your inventory before
+              it's shipped to Amazon or directly to your customers.
+            </p>
+
+            <div className="mt-6 flex flex-1 flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50/60 p-6">
+              {/* Toggle */}
+              <div className="mb-6 flex rounded-xl border border-gray-200 bg-white p-1 shadow-sm">
+                <button
+                  onClick={() => setAfterFourteen(false)}
+                  className={`rounded-lg px-4 py-2 text-xs font-semibold transition-all duration-300 ${
+                    !afterFourteen
+                      ? "bg-red-600 text-white shadow"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  First 14 days
+                </button>
+                <button
+                  onClick={() => setAfterFourteen(true)}
+                  className={`rounded-lg px-4 py-2 text-xs font-semibold transition-all duration-300 ${
+                    afterFourteen
+                      ? "bg-red-600 text-white shadow"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  After 14 days
+                </button>
+              </div>
+
+              {afterFourteen ? (
+                <div className="text-center">
+                  <p className="text-4xl font-bold text-gray-900">$0.01</p>
+                  <p className="mt-1 text-sm font-medium text-gray-500">
+                    / day per unit
+                  </p>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <p className="text-4xl font-bold text-red-600">Free</p>
+                  <p className="mt-1 text-sm font-medium text-gray-500">
+                    storage for your first 14 days
+                  </p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
     </>
   );
 }

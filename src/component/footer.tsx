@@ -1,334 +1,231 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { motion, type Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import logo from "../asset/blackbox.png";
-import { ChevronRight, MoveRight } from "lucide-react";
-// Animation variants
-const containerVariants:Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      duration: 0.6
-    }
-  }
-};
+import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 
-const itemVariants:Variants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-const socialIconVariants:Variants = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
-  hover: {
-    scale: 1.1,
-    y: -2,
-    transition: {
-      duration: 0.2
-    }
-  }
 };
 
-const linkItemVariants:Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
-// Animated Section Component
-const AnimatedSection: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className = "" }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: "-50px"
-  });
+const quickLinks = [
+  { name: "Home", to: "/" },
+  { name: "About Us", to: "/aboutUs" },
+  { name: "Get a Quote", to: "/quote" },
+];
 
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={containerVariants}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+const serviceLinks = [
+  { name: "Amazon FBA Prep", to: "/service/fba" },
+  { name: "FBM Prep", to: "/service/fbm" },
+  { name: "Pricing", to: "/pricing" },
+];
+
+const socials = [
+  { icon: FaFacebook, label: "Facebook", to: "" },
+  { icon: FaTwitter, label: "Twitter", to: "https://x.com/BlackboxPreps" },
+  {
+    icon: FaInstagram,
+    label: "Instagram",
+    to: "https://www.instagram.com/blackboxprepco/",
+  },
+];
 
 export default function Footer() {
-  const [bottomRef, bottomInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
   return (
-    <section className="max-w-7xl mx-auto ">
-      <AnimatedSection className="max-w-5xl  sm:rounded-2xl mx-auto ">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 bg-black/10 border border-gray-200 rounded-2xl lg:grid-cols-4  gap-6 p-4 ">
-          {/* Brand Section */}
-          <div className="col-span-1 lg:col-span-4  bg-red-800 border-gray-600 flex-between flex-col sm:flex-row  rounded-2xl p-4">
-        <div className="flex flex-col ml-8">
-            <motion.div variants={itemVariants} className="flex items-center   my-6">
-              <div>
-                <motion.h2 
-                  className="text-3xl sm:text-4xl font-medium text-white"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  BlackBoxPreps
-                </motion.h2>
-                <motion.div 
-                  className="w-12 h-0.5 bg-red-800 "
-                  initial={{ width: 0 }}
-                  animate={{ width: 48 }}
-                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                />
-              </div>
-            </motion.div>
-            
-            <motion.p 
-              variants={itemVariants}
-              className="text-slate-100 font-light text-xs sm:text-sm leading-relaxed mb-6 max-w-md"
+    <footer className="relative overflow-hidden bg-[#0a0a0a]">
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-red-700/15 blur-[120px]" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-4">
+        {/* CTA band */}
+        <motion.div
+          className="flex flex-col items-center justify-between gap-6 border-b border-white/10 py-14 text-center sm:flex-row sm:text-left"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          <motion.div variants={fadeUp}>
+            <h2 className="font-inter text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              Ready to hand off your prep work?
+            </h2>
+            <p className="mt-2 text-sm text-gray-400">
+              Professional fulfillment solutions tailored to scale your
+              e-commerce business.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col items-center gap-3 sm:flex-row"
+          >
+            <Link
+              to="/quote"
+              className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-900/40 transition-all duration-300 hover:bg-red-500"
             >
-              Professional fulfillment solutions tailored to scale your e-commerce business. 
-              
-            </motion.p>
-            <div className=" flex flex-col   gap-4 w-fit ">
-
-                <Link to="/quote" className="text-white border-2 group overflow-hidden flex-between   rounded-xl  w-fit font-semibold  transition">
-                         <ChevronRight className=" -translate-x-4  group-hover:translate-x-4 transition duration-700"/>
-              <span className="  py-3 px-4 rounded-lg -translate-x-6 group-hover:translate-x-6 transition duration-700">Start Sending Inventory</span>
-
-              <MoveRight className=" -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+              Start Sending Inventory
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-            <Link to="https://dashboard.blackboxpreps.com/login"  className="bg-white mr-auto  group text-red-700 flex-between gap-1    rounded-lg text-sm font-semibold px-4 py-3 transition-all duration-500">
-              <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-8 transition duration-700"/>
-            </Link>
-
-            </div>
-          </div>
-              <img src={logo} className=" rounded-xl mt-2 sm:mt-0 sm:w-1/4"/>
-
-          
-
-          </div>
-          
-          {/* Quick Links */}
-          <motion.div variants={itemVariants} className="lg:col-span-1 bg-white rounded-2xl py-8 flex flex-col items-center">
-            <motion.h3 
-              variants={itemVariants}
-              className="text-sm font-medium mb-6 border-b text-center text-gray-900 relative pb-2"
+            <Link
+              to="https://dashboard.blackboxpreps.com/login"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
             >
-               LINKS
-              <motion.div 
-                className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
-                initial={{ width: 0 }}
-                animate={{ width: 32 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
+              Dashboard
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Link columns */}
+        <motion.div
+          className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          {/* Brand */}
+          <motion.div variants={fadeUp}>
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src={logo}
+                alt="BlackBoxPreps logo"
+                className="h-10 w-10 rounded-lg object-cover"
               />
-            </motion.h3>
-            <ul className="space-y-4">
-              {[{name:'Home',to:"/"},{name: 'About Us',to:"aboutUs"},{name: 'Get a Quote',to:"quote"}].map((item, index) => (
-                <motion.li 
-                  key={item.name}
-                  variants={linkItemVariants}
-                  custom={index}
-                  className=""
+              <span className="font-inter text-xl font-semibold text-white">
+                BlackBox<span className="text-red-500">Preps</span>
+              </span>
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
+              Your Amazon prep center in Delaware's tax-free zone — receiving,
+              inspection, labeling, and shipment prep handled for you.
+            </p>
+            <div className="mt-5 flex gap-2.5">
+              {socials.map((social) => (
+                <Link
+                  key={social.label}
+                  to={social.to}
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400 transition-all duration-300 hover:border-red-600/50 hover:bg-red-600 hover:text-white"
                 >
-                  <Link 
-                    to={item.to} 
-                    className="text-black font-light  text-sm hover:text-red-800 transition duration-300 flex items-center group"
+                  <social.icon className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Quick links */}
+          <motion.div variants={fadeUp}>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+              Links
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {quickLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-1.5 text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                   >
+                    <span className="h-px w-0 bg-red-500 transition-all duration-300 group-hover:w-3" />
                     {item.name}
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </motion.div>
 
           {/* Services */}
-          <motion.div variants={itemVariants} className="lg:col-span-1 bg-white rounded-2xl py-8 flex flex-col items-center">
-            <motion.h3 
-              variants={itemVariants}
-              className="text-sm font-medium mb-6 border-b text-gray-900 relative pb-2"
-            >
-              SERVICES
-              <motion.div 
-                className="absolute bottom-0 left-0 w-8 h-0.5 bg-royal-red"
-                initial={{ width: 0 }}
-                animate={{ width: 32 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              />
-            </motion.h3>
-            <ul className="space-y-4">
-              {[{
-                name:'Amazon FBA Prep',
-                to:'service/fba'
-               },
-               {
-                name:'FBM Prep',
-                to:'service/fbm'
-               },
-               { 
-               name:'Pricing',
-               to:'pricing'
-              }
-              ].map((service, index) => (
-                <motion.li 
-                  key={service.name}
-                  variants={linkItemVariants}
-                  custom={index}
-                >
-                  <Link 
-                    to={service.to} 
-                    className="text text-sm font-light hover:text-red-800 transition duration-300 flex items-center group"
+          <motion.div variants={fadeUp}>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+              Services
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {serviceLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-1.5 text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                   >
-                   
-                    {service.name}
+                    <span className="h-px w-0 bg-red-500 transition-all duration-300 group-hover:w-3" />
+                    {item.name}
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-2 flex-between p-4 rounded-2xl  bg-white">
-                    <div className="w-2/3  rounded-xl  flex flex-col items-center">
-
-            <motion.h3 
-              variants={itemVariants}
-              className="text-sm font-medium border-b text-gray-900 mb-6  relative pb-2"
-            >
-              GET IN TOUCH
-              <motion.div 
-                className="absolute bottom-0 left-0 w-8 h-0.5 "
-                initial={{ width: 0 }}
-                animate={{ width: 32 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              />
-            </motion.h3>
-            <ul className="space-y-4                  rounded-2xl ">
-              <motion.li variants={itemVariants} className="flex items-start ">
-                <FaMapMarkerAlt className="h-5 w-5  mr-3 mt-1 flex-shrink-0" />
-                <span className="text-slate-800 text-sm font-light">
-                  9 Brookside Drive,<br className="sm:hidden block"/> Unit B,<br/>
-                   Wilmington DE 19804
-
+          {/* Contact */}
+          <motion.div variants={fadeUp}>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+              Get in Touch
+            </h3>
+            <ul className="mt-5 space-y-4">
+              <li className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-600/15 text-red-500">
+                  <MapPin className="h-4 w-4" />
                 </span>
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center ">
-                <FaPhone className="h-5 w-5 text-slate-800 text-xs mr-3 flex-shrink-0" />
-                <a 
-                  href="tel:+15017772993" 
-                  className="text-slate-800 text-sm font-light hover:text-royal-red transition duration-300"
+                <span className="text-sm leading-relaxed text-gray-400">
+                  9 Brookside Drive, Unit B,
+                  <br />
+                  Wilmington DE 19804
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-600/15 text-red-500">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <a
+                  href="tel:+12016286391"
+                  className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                 >
                   201-628-6391
-
                 </a>
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center ">
-                <FaEnvelope className="h-5 w-5 text-slate-800   text-xs mr-3 flex-shrink-0" />
-                <a 
-                  href="mailto:blackboxprepcenter.com" 
-                  className="text-slate-800 text-sm font-light hover:text-royal-red transition duration-300"
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-600/15 text-red-500">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <a
+                  href="mailto:contact@blackboxprepcenter.com"
+                  className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                 >
                   blackboxprepcenter.com
-
                 </a>
-              </motion.li>
+              </li>
             </ul>
-          </div>
-            
-<motion.div variants={itemVariants} className="flex  bg-black/80 flex-col my-2 border p-2 sm:p-4 rounded-2xl gap-2">
-              {[
-                { icon: FaFacebook, label: "Facebook",to: ""},
-                { icon: FaTwitter, label: "Twitter",to:"https://x.com/BlackboxPreps" },
-                { icon: FaInstagram, label: "Instagram",to:"https://www.instagram.com/blackboxprepco/" }
-              ].map((social, index) => (
-                <Link
-                to={social.to}
-                >
-                <motion.div
-                  key={social.label}
-                  variants={socialIconVariants}
-                  whileHover="hover"
-                  className="p-2 sm:p-3 bg-white border rounded-xl hover:bg-royal-red transition duration-300"
-                  aria-label={social.label}
-                  style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                  <social.icon className="h-5 w-5 text-black" />
-                </motion.div>
-                  </Link>
-              ))}
-            </motion.div>
           </motion.div>
-        </div>
-      </AnimatedSection>
+        </motion.div>
 
-      {/* Bottom Bar */}
-      <motion.div 
-        ref={bottomRef}
-        initial="hidden"
-        animate={bottomInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        className=" pt-8"
-      >
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.p 
-            variants={itemVariants}
-            className="text-slate-400 font-light text-sm mb-4 md:mb-0"
-          >
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 md:flex-row">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} BlackBoxPreps. All rights reserved.
-          </motion.p>
-          <motion.div 
-            variants={itemVariants}
-            className="flex space-x-6 text-sm"
-          >
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item, index) => (
-              <motion.a 
-                key={item}
-                href="#" 
-                variants={linkItemVariants}
-                custom={index}
-                className="text-slate-400 font-light hover:text-royal-red transition duration-300"
-              >
-                {item}
-              </motion.a>
-            ))}
-          </motion.div>
+          </p>
+          <div className="flex gap-6">
+            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-xs text-gray-500 transition-colors duration-300 hover:text-white"
+                >
+                  {item}
+                </a>
+              )
+            )}
+          </div>
         </div>
-      </motion.div>
-</section>
+      </div>
+    </footer>
   );
 }
