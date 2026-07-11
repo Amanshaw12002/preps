@@ -18,6 +18,18 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
+/* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
+const beams = [
+  { left: "6%", height: 140, duration: 5.5, delay: 0.0, red: true },
+  { left: "16%", height: 90, duration: 7.0, delay: 2.1, red: false },
+  { left: "27%", height: 170, duration: 4.6, delay: 1.2, red: true },
+  { left: "41%", height: 110, duration: 6.4, delay: 3.4, red: false },
+  { left: "58%", height: 150, duration: 5.0, delay: 0.8, red: true },
+  { left: "71%", height: 100, duration: 6.8, delay: 2.7, red: false },
+  { left: "84%", height: 160, duration: 4.9, delay: 1.7, red: true },
+  { left: "94%", height: 120, duration: 6.1, delay: 3.9, red: false },
+];
+
 const rotating = [
   { word: "Scale", icon: <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" /> },
   { word: "Streamline", icon: <Workflow className="h-4 w-4 sm:h-5 sm:w-5" /> },
@@ -79,6 +91,33 @@ export default function PrepServicesSection() {
               "radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%)",
           }}
         />
+
+        {/* light pouring — falling light streaks */}
+        {beams.map((beam, i) => (
+          <motion.span
+            key={i}
+            className="absolute w-px"
+            style={{
+              left: beam.left,
+              top: -beam.height,
+              height: beam.height,
+              background: beam.red
+                ? "linear-gradient(to bottom, transparent, rgba(239,68,68,0.9), rgba(239,68,68,0.15))"
+                : "linear-gradient(to bottom, transparent, rgba(255,255,255,0.6), rgba(255,255,255,0.1))",
+              boxShadow: beam.red
+                ? "0 0 12px rgba(239,68,68,0.5)"
+                : "0 0 8px rgba(255,255,255,0.25)",
+              willChange: "transform",
+            }}
+            animate={{ y: ["0vh", "120vh"] }}
+            transition={{
+              duration: beam.duration,
+              delay: beam.delay,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">

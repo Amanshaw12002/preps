@@ -6,6 +6,7 @@ import {
   type Variants,
 } from "framer-motion";
 import inside from "../asset/inside.jpg";
+import darklogo from "../asset/darklogo.png";
 import {
   ArrowRight,
   ShieldCheck,
@@ -80,7 +81,7 @@ export default function HeroSection() {
 
         {/* falling light streaks, parallaxed by scroll */}
         <motion.div
-          style={{ y: beamShift, opacity: beamOpacity }}
+          style={{ y: beamShift, opacity: beamOpacity, willChange: "transform, opacity" }}
           className="absolute inset-0"
         >
           {beams.map((beam, i) => (
@@ -97,6 +98,7 @@ export default function HeroSection() {
                 boxShadow: beam.red
                   ? "0 0 12px rgba(239,68,68,0.5)"
                   : "0 0 8px rgba(255,255,255,0.25)",
+                willChange: "transform",
               }}
               animate={{ y: ["0vh", "120vh"] }}
               transition={{
@@ -111,13 +113,14 @@ export default function HeroSection() {
       </div>
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 pt-28 pb-16 text-center sm:pt-36 sm:pb-24">
+
         {/* Badge */}
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mb-6 flex flex-wrap items-center justify-center gap-2"
+          className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2"
         >
           <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-gray-300 backdrop-blur-sm sm:text-xs">
             <MapPin className="h-3.5 w-3.5 text-red-500" />
@@ -135,7 +138,7 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="font-inter max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl"
+          className="font-inter relative z-10 max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
           Optimized Prep Work
           <span className="block bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
@@ -202,8 +205,9 @@ export default function HeroSection() {
           className="relative mt-14 w-full max-w-5xl"
         >
           <div className="absolute -inset-x-8 top-8 -z-10 h-full rounded-[40px] bg-red-600/20 blur-3xl" />
-          {/* animated border: a red light beam orbits the frame */}
+          {/* animated border: two light beams orbit the frame in opposite directions */}
           <div className="relative overflow-hidden rounded-2xl bg-white/10 p-[1.5px] shadow-2xl shadow-black/60">
+            {/* clockwise beam */}
             <motion.div
               className="pointer-events-none absolute -inset-[150%]"
               style={{
@@ -211,6 +215,16 @@ export default function HeroSection() {
                   "conic-gradient(from 0deg, transparent 0deg, transparent 290deg, rgba(239,68,68,0.5) 320deg, rgba(239,68,68,1) 342deg, rgba(255,220,220,1) 350deg, transparent 360deg)",
               }}
               animate={{ rotate: 360 }}
+              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+            />
+            {/* anti-clockwise beam — starts on the opposite side of the frame */}
+            <motion.div
+              className="pointer-events-none absolute -inset-[150%]"
+              style={{
+                background:
+                  "conic-gradient(from 180deg, transparent 0deg, transparent 290deg, rgba(59,130,246,0.5) 320deg, rgba(59,130,246,1) 342deg, rgba(220,235,255,1) 350deg, transparent 360deg)",
+              }}
+              animate={{ rotate: -360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
           <div className="relative overflow-hidden rounded-[15px] bg-[#0a0a0a]">

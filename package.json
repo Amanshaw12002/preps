@@ -27,6 +27,7 @@
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.18",
     "emailjs-com": "^3.2.0",
+    "fdir": "^6.5.0",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",

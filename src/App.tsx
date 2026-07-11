@@ -10,12 +10,15 @@ import FAQ from './page/FAQ';
 import GetQuoteForm from './component/GetQuote';
 import ScrollToTop from './component/ScrollToTop';
 import { useLenis } from './component/lenis';
+import IsometricHero from './component/logoHook';
+import IntroSplash from './component/IntroSplash';
 
 
 function App() {
  useLenis();
  return (
   <>
+  <IntroSplash/>
   <main className=' relative space-b-6 bg-white '>
        <Navbar/>
          <ScrollToTop />
@@ -29,6 +32,7 @@ function App() {
        <Route path='/service/fba' element={<FbaService/>}/>
        <Route path='/service/fbm' element={<FbmService/>}/>
         </Routes>
+        <IsometricHero/>
         <Footer/>
         
   </main>

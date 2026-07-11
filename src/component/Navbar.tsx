@@ -23,7 +23,7 @@ export default function Navbar() {
   
   return (
     <nav className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}>
-      <div className="  max-w-6xl    mx-4  sm:mx-10 lg:mx-auto   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
+      <div className="  w-md  sm:min-w-xl  mx-4 md:max-w-5xl  md:min-w-3xl lg:min-w-5xl  lg:mx-auto   shadow-2xl shadow-black bg-white rounded-lg px-3 h-12 lg:h-14 flex-between transition-all duration-500">
         
         {/* Logo */}
         <Link to="/" className="flex lg:ml-2 group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
@@ -60,13 +60,12 @@ export default function Navbar() {
           </motion.h2>
         </Link>
 
-        {/* Desktop Menu - Unchanged */}
-        <ul className="hidden   md:flex font-inter text-xs text-gray-800 gap-2 pl-6 items-center">
+        <ul className=" hidden   lg:flex font-inter text-xs text-gray-800 gap-2 pl-6 items-center">
           <li className="transition  duration-300">
-            <Link to="/" className="border-1 border-transparent hover:bg-white hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Home</Link>
+            <Link to="/" className="border border-transparent hover:bg-white hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Home</Link>
           </li>
           <li className="transition">
-            <Link to="/Pricing" className="hover:bg-white border-1 border-transparent hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Pricing</Link>
+            <Link to="/Pricing" className="hover:bg-white border border-transparent hover:border-red-400 px-3 py-2 rounded-md hover:text-red-700">Pricing</Link>
           </li>
           <li className="group relative ml-1">
             <span className="cursor-pointer inline-block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-red-800 transition-all duration-300 font-medium">
@@ -101,11 +100,11 @@ export default function Navbar() {
             <Link to="/aboutUs" className="hover:bg-white px-2 py-2 mx-1 rounded-md border-1 border-transparent hover:border-red-400 hover:text-red-700">About Us</Link>
           </li>
           <div className="flex-between gap-4  ">
-            
+{/*             
 <Link to="https://dashboard.blackboxpreps.com/login" className="overflow-hidden text-red-600 group bg-white border-2 flex-between gap-1    rounded-lg text-xs font-semibold p-2.5 transition-all duration-500">
               <span className="duration-700 group-hover:translate-x-2 transition">Dashboard</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-6 transition duration-700"/>
-            </Link>
+            </Link> */}
               <Link to="/quote" className="group overflow-hidden flex-between mx-auto rounded-xl w-fit bg-red-600 py-1 text-sm font-semibold text-white shadow-md shadow-red-900/40 transition-colors duration-300 hover:bg-red-500">
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
@@ -116,7 +115,7 @@ export default function Navbar() {
         </ul>
 {/* bg-[#292929] */}
         {/* Mobile Hamburger */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <button
             className="text-red-900 focus:outline-none p-1"
             onClick={() => setOpen(!open)}
@@ -201,9 +200,9 @@ export default function Navbar() {
               <Link 
                 to="/quote" 
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-red-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-red-900/30 transition hover:bg-red-500"
+                className="bg-gradient-to-r from-black to-red-700   text-transparent bg-clip-text border-2 border-red-800 rounded-lg text-center font-semibold px-4 py-3 transition hover:opacity-90 text-sm"
               >
-                Send Inventory
+                Get a Quote
               </Link>
             </div>
           </ul>

@@ -45,46 +45,19 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-[#0a0a0a]">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-red-700/15 blur-[120px]" />
+        <div className="absolute -top-24 left-1/2 h-72 w-175 -translate-x-1/2 rounded-full bg-red-700/15 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4">
         {/* CTA band */}
         <motion.div
-          className="flex flex-col items-center justify-between gap-6 border-b border-white/10 py-14 text-center sm:flex-row sm:text-left"
+          className="flex flex-col items-center justify-between  border-b border-white/10  text-center sm:flex-row sm:text-left"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <motion.div variants={fadeUp}>
-            <h2 className="font-inter text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Ready to hand off your prep work?
-            </h2>
-            <p className="mt-2 text-sm text-gray-400">
-              Professional fulfillment solutions tailored to scale your
-              e-commerce business.
-            </p>
           </motion.div>
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col items-center gap-3 sm:flex-row"
-          >
-            <Link
-              to="/quote"
-              className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-900/40 transition-all duration-300 hover:bg-red-500"
-            >
-              Start Sending Inventory
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="https://dashboard.blackboxpreps.com/login"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
-            >
-              Dashboard
-            </Link>
-          </motion.div>
-        </motion.div>
 
         {/* Link columns */}
         <motion.div

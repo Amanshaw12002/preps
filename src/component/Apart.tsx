@@ -4,139 +4,111 @@ import { motion } from "framer-motion";
 export default function WhatSetsUsApart() {
   const features = [
     {
-      icon: <MessageCircleQuestion  className="w-6 h-6 text-red-800" />,
+      icon: MessageCircleQuestion,
       title: "Communication",
       desc: "Automated updates and direct communication with the prep team to ensure every order is handled correctly.",
     },
     {
-      icon: <Eye className="w-6 h-6 text-red-800" />,
+      icon: Eye,
       title: "Transparent Operations",
       desc: "Full visibility on inventory from check in to shipment, with clear and detailed billing breakdowns.",
     },
     {
-      icon: <Layers className="w-6 h-6 text-red-800" />,
+      icon: Layers,
       title: "Scalable Infrastructure",
       desc: "Our systems and workforce scale effortlessly with your seasonal demand — ensuring consistent turnaround even during peak season.",
     },
   ];
 
+  const words = ["What", "Sets", "Us", "Apart"];
+
   return (
-    <section className="max-w-7xl py-8 mx-auto">
-      
+    <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
+      {/* soft ambient accents */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-red-500/10 blur-3xl" />
+      </div>
 
-      <div className="max-w-5xl relative mx-auto sm:px-6 text-center rounded-2xl">
-
-<h2 className="mx-auto relative z-10  w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
-          COMPETITIVE</h2>
-
-       <div className="bg-black h-px absolute top-4 left-1/4 w-1/2 z-0">
-   <div className="flex-between -mt-1.5">
-
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-white border-black border-2 rounded-sm h-3.5 w-3"></div>
-   </div>
-  </div>
-        {/* Header Section */}
-        <motion.div 
-          className="w-full flex items-center justify-center p-2 sm:px-8"
-          initial={{ opacity: 0, y: 30 }}
+      <div className="mx-auto max-w-6xl text-center">
+        {/* Eyebrow badge */}
+        <motion.span
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-red-700"
         >
-          <motion.h2 
-  className="text-xl sm:text-3xl font-semibold font-inter w-fit text-gray-800 text-left sm:m-4"
->
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-red-800">
-    <motion.span
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2, duration: 1 }}
-      className="inline-block mr-2"
-    >
-      What
-    </motion.span>
-    <motion.span
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.4, duration: 1 }}
-      className="inline-block mr-2"
-    >
-      Sets
-    </motion.span>
-    <motion.span
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.6, duration: 1 }}
-      className="inline-block mr-2"
-    >
-      Us
-    </motion.span>
-    <motion.span
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.5, duration: 1 }}
-      className="inline-block"
-    >
-      Apart
-    </motion.span>
-  </span>
-</motion.h2>
-        </motion.div>
+          <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
+          Competitive Edge
+        </motion.span>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3  pt-2 pb-8 sm:p-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              className="border border-red-800 group  hover:border-red-800 shadow-sm hover:shadow-md p-6 text-left transition-all duration-300 hover:-translate-y-1"
-              initial={{ opacity: 0, y: 30 }}
+        {/* Heading */}
+        <h2 className="mx-auto mt-6 max-w-2xl font-inter text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+          {words.map((word, i) => (
+            <motion.span
+              key={word}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-             
+              transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className={`inline-block ${i === words.length - 1 ? "" : "mr-2 sm:mr-3"} ${
+                word === "Apart"
+                  ? "bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent"
+                  : ""
+              }`}
             >
-              <motion.div 
-                className="mb-3 flex items-center justify-start"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-              >
-                <motion.div 
-                  className="p-3 rounded-xl group-hover:rotate-6 group-hover:scale-105 border-red-800 border"
-                 
-                  transition={{ duration: 0.3 }}
-                >
-                  {feature.icon}
-                </motion.div>
-              </motion.div>
-              
-              <motion.h3 
-                className="text-md font-semibold text-red-800 mb-2"
-                initial={{ opacity: 0, y: 10 }}
+              {word}
+            </motion.span>
+          ))}
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-500 sm:text-base"
+        >
+          The operational advantages that keep your inventory moving — precisely,
+          transparently, and at any scale.
+        </motion.p>
+
+        {/* Features Grid */}
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
+                transition={{ delay: 0.3 + index * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 text-left shadow-sm transition-all duration-300 hover:border-red-300 hover:shadow-xl hover:shadow-red-900/5"
               >
-                {feature.title}
-              </motion.h3>
-              
-              <motion.p 
-                className=" text-gray-800 text-sm leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
-              >
-                {feature.desc}
-              </motion.p>
-            </motion.div>
-          ))}
+                {/* accent wash on hover */}
+                <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-red-50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                {/* Icon chip */}
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-red-600 to-red-800 text-white shadow-lg shadow-red-900/20 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+                  <Icon className="h-6 w-6" />
+                </div>
+
+                <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  {feature.desc}
+                </p>
+
+                {/* number watermark */}
+                <span className="absolute right-5 top-5 text-4xl font-bold text-gray-100 transition-colors duration-300 group-hover:text-red-100">
+                  0{index + 1}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
