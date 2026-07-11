@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import IsometricCube from "./IsometricCube";
 
-const LINE1 = "Welcome to BlackBoxPreps";
+const LINE1 = "BlackBoxPreps";
 const LINE2 = "Build for prep work.";
 
 /**
