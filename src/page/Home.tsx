@@ -20,7 +20,6 @@ import {
   Mail,
 } from "lucide-react";
 import SecondSection from "@/sections/SecondSection";
-import IsometricHero from "@/component/logoHook";
 
 export interface ProcessStep {
   id: number;

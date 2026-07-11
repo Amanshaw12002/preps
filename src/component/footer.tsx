@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../asset/blackbox.png";
-import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import {  MapPin, Phone, Mail } from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },

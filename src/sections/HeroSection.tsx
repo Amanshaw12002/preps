@@ -6,7 +6,6 @@ import {
   type Variants,
 } from "framer-motion";
 import inside from "../asset/inside.jpg";
-import darklogo from "../asset/darklogo.png";
 import {
   ArrowRight,
   ShieldCheck,

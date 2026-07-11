@@ -1,8 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import React, { useState, useEffect, useMemo, type ReactElement } from 'react';
+import { useState, useEffect, useMemo, type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import ElectricBorder from './ElectricBorder';
 
 interface Point {
   x: number;
