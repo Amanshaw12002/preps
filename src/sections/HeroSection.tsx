@@ -56,7 +56,7 @@ const slashShards = [
 
 /* red ramp for the middle headline row, applied per word */
 const GRADIENT_WORD =
-  "bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent";
+  "bg-gradient-to-r from-red-400  to-red-500 bg-clip-text text-transparent";
 
 /* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
 const beams = [
