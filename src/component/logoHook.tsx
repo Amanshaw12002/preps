@@ -274,6 +274,8 @@ export default function IsometricHero(): ReactElement {
       `}</style>
 
       <div
+            
+
         className="hero-wrapper"
         style={{
           position: 'relative',

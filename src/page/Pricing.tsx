@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SlashBeam from "@/component/SlashBeam";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -34,7 +35,7 @@ const stagger: Variants = {
 
 /* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
 const beams = [
-  { left: "6%", height: 140, duration: 5.5, delay: 0.0, red: true },
+  { left: "12%", height: 140, duration: 5.5, delay: 0.0, red: true },
   { left: "16%", height: 90, duration: 7.0, delay: 2.1, red: false },
   { left: "27%", height: 170, duration: 4.6, delay: 1.2, red: true },
   { left: "41%", height: 110, duration: 6.4, delay: 3.4, red: false },
@@ -166,6 +167,15 @@ export default function Pricing() {
 
       {/* ——— Plans (overlapping the hero band) ——— */}
       <section className="relative z-10 -mt-28 pb-6 sm:-mt-52">
+        {/* the cut sweeps down across the heading and lands on the popular card.
+            it lives here, not in the hero band above — that section clips its overflow */}
+        <SlashBeam
+          left="39%"
+          top="-620px"
+          height="620px"
+          rotate={-10}
+          className="hidden sm:block"
+        />
         <motion.div
           className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3"
           variants={stagger}

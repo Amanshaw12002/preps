@@ -55,14 +55,8 @@ const itemsImage = [
     <h2 className="mx-auto relative z-10   w-fit text-black bg-white font-medium  border px-2 py-1 rounded-lg mb-8">
           SOFTWARE</h2>
 
-       <div className="bg-black h-px absolute top-18 left-1/4 w-1/2 z-0">
-   <div className="flex-between -mt-1.5">
-
-   <div className="bg-black border-black border-2 rounded-sm h-3.5 w-3 "></div>
-   <div className="bg-black border-black border-2 rounded-sm h-3.5 w-3"></div>
-   </div>
-  </div>
-    {/* Header */}
+     
+    
     <motion.div 
       className='flex flex-col items-center text-2xl sm:text-4xl font-inter font-medium text-gray-900'
       initial={{ opacity: 0, y: 30 }}

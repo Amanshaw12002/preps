@@ -150,7 +150,11 @@ export default function PrepServicesSection() {
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                   className="inline-flex items-center gap-2 rounded-xl border border-red-600/40 bg-red-600/15 px-4 py-1.5 text-red-400 sm:px-5 sm:py-2"
                 >
-                  {rotating[index].icon}
+                  {/* matching badge tile for the dark surface — a lit red plate
+                      instead of a bare glyph leaning on the word */}
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-red-500/40 bg-red-500/15 text-red-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] sm:h-10 sm:w-10 sm:rounded-xl">
+                    {rotating[index].icon}
+                  </span>
                   {rotating[index].word}
                 </motion.span>
               </AnimatePresence>

@@ -355,7 +355,11 @@ export default function Home() {
                     transition={{ duration: 0.45, ease: "easeInOut" }}
                     className="inline-flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-1.5 text-red-700 sm:gap-3 sm:px-6 sm:py-2.5"
                   >
-                    {rotatingWords[index].icon}
+                    {/* the icon gets its own tile so it reads as a badge on the
+                        chip instead of a stray glyph floating beside the word */}
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-red-200 bg-white text-red-600 shadow-sm ring-1 ring-inset ring-white sm:h-10 sm:w-10 sm:rounded-xl">
+                      {rotatingWords[index].icon}
+                    </span>
                     {rotatingWords[index].word}
                   </motion.span>
                 </AnimatePresence>

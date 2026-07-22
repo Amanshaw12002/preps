@@ -7,15 +7,17 @@ import {
 } from "framer-motion";
 import inside from "../asset/inside.jpg";
 import {
-  ArrowRight,
   ShieldCheck,
-  Clock,
   MapPin,
   PackageCheck,
   Truck,
   Warehouse,
+  ChevronRight,
+  MoveRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import BeamCube from "../component/BeamCube";
+import CaptureWord from "../component/CaptureWord";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -31,6 +33,30 @@ const liveStats = [
   { label: "Prepped today", value: "1,204" },
   { label: "On the way to FC", value: "386" },
 ];
+
+/* Headline slash — the red cut that sweeps from "Wo|rk" down past "Need|s." */
+const SLASH_START = 0.95;
+const SLASH_DURATION = 1.15;
+/* how far above the headline the cut begins — enough to clear the top of the screen */
+const SLASH_RISE = 460;
+/* the blade runs a quarter longer than that, all of it added below the headline */
+const SLASH_TAIL = Math.round((SLASH_RISE + 280) * 0.25);
+/* when the tip reaches each cut letter, as a fraction of the sweep (eased, so not linear in distance) */
+const HIT_ROW1 = 0.51;
+const HIT_ROW3 = 0.62;
+/* extra red streaks fanned around the main cut — px offset from the blade, own tilt, own timing */
+const slashShards = [
+  { offset: -26, width: 5, tilt: -4, delay: 0.06, opacity: 0.5, blur: 1 },
+  { offset: -14, width: 2, tilt: -2, delay: 0.02, opacity: 0.85, blur: 0 },
+  { offset: -6, width: 1, tilt: 1, delay: 0.12, opacity: 0.6, blur: 0 },
+  { offset: 7, width: 2, tilt: 2, delay: 0.0, opacity: 0.9, blur: 0 },
+  { offset: 15, width: 1, tilt: 3, delay: 0.09, opacity: 0.55, blur: 1 },
+  { offset: 30, width: 1, tilt: 6, delay: 0.16, opacity: 0.4, blur: 2 },
+];
+
+/* red ramp for the middle headline row, applied per word */
+const GRADIENT_WORD =
+  "bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent";
 
 /* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
 const beams = [
@@ -63,7 +89,7 @@ export default function HeroSection() {
         {/* red glow — drifts down slightly with scroll */}
         <motion.div
           style={{ y: glowShift }}
-          className="absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[140px]"
+          className="absolute -top-20 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-red-700/25 blur-[140px]"
         />
         <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-red-900/20 blur-[120px]" />
         {/* subtle grid */}
@@ -111,7 +137,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 pt-28 pb-16 text-center sm:pt-36 sm:pb-24">
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 pt-12 pb-16 text-center sm:pt-42 sm:pb-24">
 
         {/* Badge */}
         <motion.div
@@ -121,14 +147,21 @@ export default function HeroSection() {
           animate="visible"
           className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-gray-300 backdrop-blur-sm sm:text-xs">
-            <MapPin className="h-3.5 w-3.5 text-red-500" />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-red-400 backdrop-blur-sm sm:text-xs">
+            <MapPin className="h-3.5 w-3.5 text-red-400" />
             Delaware — Tax-Free Zone
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-gray-300 backdrop-blur-sm sm:text-xs">
-            <Clock className="h-3.5 w-3.5 text-red-500" />
-            24–72h Turnaround
-          </span>
+
+        </motion.div>
+
+        {/* wireframe beam cube — its own layer over the headline, independent of the slash */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 0.9, scale: 1 }}
+          transition={{ delay: 0.6, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="pointer-events-none absolute left-1/2 top-[190px] z-[11] -translate-x-1/2 mix-blend-screen sm:top-[215px]"
+        >
+          <BeamCube size={300} thickness={4} />
         </motion.div>
 
         {/* Heading */}
@@ -139,11 +172,171 @@ export default function HeroSection() {
           animate="visible"
           className="font-inter relative z-10 max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
-          Optimized Prep Work
-          <span className="block bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
-            For All Your
+          {/* the slash — a red beam that cuts down through "Wo|rk" ... "Need|s." */}
+          <span className="pointer-events-none absolute inset-0 z-20 overflow-visible">
+            {/* everything below lives on the tilted axis of the cut */}
+            {/* pivots at the old headline-top point, so the letter cuts stay put while the
+                blade extends up past the top of the screen */}
+            <span
+              className="absolute left-[82%] block w-[220px]"
+              style={{
+                top: `calc(-10% - ${SLASH_RISE}px)`,
+                height: `calc(120% + ${SLASH_RISE + SLASH_TAIL}px)`,
+                transform: "translateX(-50%) rotate(13deg)",
+                transformOrigin: `center ${SLASH_RISE}px`,
+                // the tail dissolves once it is past the last cut letter
+                maskImage:
+                  "linear-gradient(to bottom, #000 0%, #000 80%, rgba(0,0,0,0.35) 90%, transparent 97%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, #000 0%, #000 80%, rgba(0,0,0,0.35) 90%, transparent 97%)",
+              }}
+            >
+              {/* wide haze — the radiance bleeding off the cut */}
+              <motion.span
+                className="absolute top-0 h-full w-[54px] rounded-full bg-red-600/30 blur-[26px]"
+                style={{ left: "50%", x: "-50%", originY: 0 }}
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: [0, 0.9, 0.5] }}
+                transition={{ delay: SLASH_START, duration: SLASH_DURATION, ease: [0.65, 0, 0.35, 1] }}
+              />
+              {/* tighter bloom hugging the blade */}
+              <motion.span
+                className="absolute top-0 h-full w-[22px] rounded-full bg-red-500/60 blur-[14px]"
+                style={{ left: "50%", x: "-50%", originY: 0 }}
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: [0, 1, 0.7] }}
+                transition={{ delay: SLASH_START, duration: SLASH_DURATION, ease: [0.65, 0, 0.35, 1] }}
+              />
+              {/* fanned streaks flanking the cut */}
+              {slashShards.map((shard, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute top-0 h-full rounded-full"
+                  style={{
+                    left: "50%",
+                    width: shard.width,
+                    x: `calc(-50% + ${shard.offset}px)`,
+                    rotate: shard.tilt,
+                    originY: 0,
+                    filter: shard.blur ? `blur(${shard.blur}px)` : undefined,
+                    background:
+                      "linear-gradient(to bottom, rgba(239,68,68,0), rgba(239,68,68,1) 15%, rgba(255,160,160,1) 50%, rgba(239,68,68,1) 85%, rgba(239,68,68,0))",
+                    boxShadow: "0 0 6px rgba(239,68,68,0.9)",
+                  }}
+                  initial={{ scaleY: 0, opacity: 0 }}
+                  animate={{
+                    scaleY: 1,
+                    opacity: [0, shard.opacity, shard.opacity * 0.55, shard.opacity],
+                  }}
+                  transition={{
+                    scaleY: {
+                      delay: SLASH_START + shard.delay,
+                      duration: SLASH_DURATION,
+                      ease: [0.65, 0, 0.35, 1],
+                    },
+                    opacity: {
+                      delay: SLASH_START + shard.delay,
+                      duration: 2.6 + i * 0.3,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    },
+                  }}
+                />
+              ))}
+              {/* the cut itself — white-hot core */}
+              <motion.span
+                className="absolute top-0 h-full w-[3px] rounded-full"
+                style={{
+                  left: "50%",
+                  x: "-50%",
+                  originY: 0,
+                  background:
+                    "linear-gradient(to bottom, rgba(239,68,68,0), rgba(255,120,120,1) 8%, rgba(255,255,255,1) 45%, rgba(255,120,120,1) 92%, rgba(239,68,68,0))",
+                  boxShadow:
+                    "0 0 4px rgba(255,255,255,1), 0 0 12px rgba(255,120,120,1), 0 0 30px rgba(239,68,68,0.85)",
+                }}
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: [0, 1, 1, 0.95] }}
+                transition={{ delay: SLASH_START, duration: SLASH_DURATION, ease: [0.65, 0, 0.35, 1] }}
+              />
+              {/* spark head riding the tip of the cut as it travels down */}
+              <motion.span
+                className="absolute left-1/2 h-[46px] w-[46px] rounded-full blur-[6px]"
+                style={{
+                  x: "-50%",
+                  y: "-50%",
+                  background:
+                    "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,180,180,0.9) 25%, rgba(239,68,68,0.55) 50%, rgba(239,68,68,0) 72%)",
+                }}
+                initial={{ top: "0%", opacity: 0, scale: 0.4 }}
+                animate={{ top: "100%", opacity: [0, 1, 1, 0], scale: [0.4, 1.25, 1, 0.6] }}
+                transition={{ delay: SLASH_START, duration: SLASH_DURATION, ease: [0.65, 0, 0.35, 1] }}
+              />
+              {/* residual flicker — the cut keeps breathing once it has landed */}
+              <motion.span
+                className="absolute top-0 h-full w-[10px] rounded-full bg-red-400/70 blur-[9px]"
+                style={{ left: "50%", x: "-50%" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.25, 0.85, 0.4, 0.75, 0.25], scaleX: [1, 1.8, 1.1, 1.5, 1] }}
+                transition={{
+                  delay: SLASH_START + SLASH_DURATION,
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </span>
           </span>
-          Fulfillment Needs.
+
+          <span className="relative">
+            <CaptureWord>Optimized</CaptureWord> <CaptureWord>Prep</CaptureWord>{" "}
+            <CaptureWord>
+              Wo
+              <motion.span
+                initial={{ color: "#ffffff" }}
+                animate={{ color: "#ef4444" }}
+                transition={{ delay: SLASH_START + SLASH_DURATION * HIT_ROW1, duration: 0.35 }}
+              >
+                rk
+              </motion.span>
+            </CaptureWord>
+          </span>
+          {/* gradient sits on each word, not the row — an inline-block child breaks the
+              parent's bg-clip-text and the whole line renders invisible */}
+          <span className="inline-block">
+            <CaptureWord>
+              <span className={GRADIENT_WORD}>For</span>
+            </CaptureWord>{" "}
+            <CaptureWord>
+              <span className={GRADIENT_WORD}>All</span>
+            </CaptureWord>{" "}
+            <CaptureWord>
+              <span className={GRADIENT_WORD}>
+              Fulfillment
+
+              </span>
+              </CaptureWord>{" "}
+            <CaptureWord>
+              <span className={GRADIENT_WORD}>
+               Need
+
+              </span>
+              </CaptureWord>{" "}
+            
+          </span>
+          <span className="relative">
+            <CaptureWord>
+
+              <motion.span
+                initial={{ color: "#ffffff" }}
+                animate={{ color: "#ef4444" }}
+                transition={{ delay: SLASH_START + SLASH_DURATION * HIT_ROW3, duration: 0.35 }}
+              >
+                s.
+              </motion.span>
+            </CaptureWord>
+          </span>
         </motion.h1>
 
         {/* Subtext */}
@@ -152,12 +345,11 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-6 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base"
+          className="mt-6 max-w-xl text-sm leading-relaxed text-gray-100 sm:text-gray-400"
         >
-          While you sell, we handle the rest. Safe storage, professional packing
+          Safe storage, professional packing
           &amp; fast shipping — your products are always ready to reach customers
-          quickly and securely with{" "}
-          <span className="font-semibold text-white">BlackBoxPreps</span>.
+          quickly and securely.
         </motion.p>
 
         {/* CTAs */}
@@ -168,13 +360,12 @@ export default function HeroSection() {
           animate="visible"
           className="mt-8 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <Link
-            to="/quote"
-            className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-900/40 transition-all duration-300 hover:bg-red-500 hover:shadow-red-800/50"
-          >
-            Start Sending Inventory
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+             <Link to="/quote" className={`group text-white overflow-hidden flex-between rounded-xl w-fit border border-white bg-transparent py-1 text-sm font-semibold  transition-all duration-300  `}>
+                         <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+
+              <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
+              <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
           <Link
             to="https://dashboard.blackboxpreps.com/login"
             className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10"
