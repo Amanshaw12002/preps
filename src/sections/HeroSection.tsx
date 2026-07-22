@@ -360,18 +360,18 @@ export default function HeroSection() {
           animate="visible"
           className="mt-8 flex flex-col items-center gap-3 sm:flex-row"
         >
-             <Link to="/quote" className={`group text-white overflow-hidden flex-between rounded-xl w-fit border border-white bg-transparent py-1 text-sm font-semibold  transition-all duration-300  `}>
+          <Link
+            to="https://dashboard.blackboxpreps.com/login"
+            className="btn-left-flash inline-flex items-center gap-2 rounded-xl border border-white/20 bg-transparent px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40"
+          >
+            Dashboard
+          </Link>
+             <Link to="/quote" className={`group text-white overflow-hidden flex-between rounded-xl w-fit  bg-transparent py-1 text-sm font-semibold  transition-all duration-300  `}>
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
               <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-          <Link
-            to="https://dashboard.blackboxpreps.com/login"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10"
-          >
-            Dashboard
-          </Link>
         </motion.div>
 
         {/* Trust line */}
