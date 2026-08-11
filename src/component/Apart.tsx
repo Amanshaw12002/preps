@@ -36,7 +36,7 @@ export default function WhatSetsUsApart() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-red-700"
+          className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-red-700"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
           Competitive Edge
@@ -85,7 +85,7 @@ export default function WhatSetsUsApart() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 text-left shadow-sm transition-all duration-300 hover:border-red-300 hover:shadow-xl hover:shadow-red-900/5"
+                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 text-left shadow-sm transition-[border-color,box-shadow,background-color,color] duration-300 hover:border-red-300 hover:shadow-xl hover:shadow-red-900/5"
               >
                 {/* accent wash on hover */}
                 <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-red-50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

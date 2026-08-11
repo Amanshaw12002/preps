@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FaSearch, FaBoxOpen, FaBarcode, FaTags } from "react-icons/fa";
-import one from "../asset/1.png";
-import two from "../asset/2.png";
-import three from "../asset/3.png";
-import four from "../asset/4.png";
+import one from "../asset/1.webp";
+import two from "../asset/2.webp";
+import three from "../asset/3.webp";
+import four from "../asset/4.webp";
 
 const processSteps = [
   {
@@ -75,7 +75,7 @@ export default function MotionCarousel() {
             </h2>
           </div>
 
-          <img
+          <img loading="lazy" decoding="async"
             src={step.image}
             alt={step.title}
             className=" w-full h-48 border border-gray-400 rounded-2xl object-cover "

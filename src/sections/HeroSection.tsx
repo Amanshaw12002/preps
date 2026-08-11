@@ -5,18 +5,18 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import inside from "../asset/inside.jpg";
+import inside from "../asset/inside.webp";
+import insideAvif from "../asset/inside.avif";
+import inside1024 from "../asset/inside-1024.webp";
+import insideAvif1024 from "../asset/inside-1024.avif";
 import {
-  ShieldCheck,
   MapPin,
   PackageCheck,
   Truck,
-  Warehouse,
   ChevronRight,
   MoveRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import BeamCube from "../component/BeamCube";
 import CaptureWord from "../component/CaptureWord";
 
 const fadeUp: Variants = {
@@ -27,12 +27,6 @@ const fadeUp: Variants = {
     transition: { delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
-const liveStats = [
-  { label: "Units received", value: "16,843" },
-  { label: "Prepped today", value: "1,204" },
-  { label: "On the way to FC", value: "386" },
-];
 
 /* Headline slash — the red cut that sweeps from "Wo|rk" down past "Need|s." */
 const SLASH_START = 0.95;
@@ -147,22 +141,20 @@ export default function HeroSection() {
           animate="visible"
           className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-red-400 backdrop-blur-sm sm:text-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium tracking-wide text-red-400 backdrop-blur-sm sm:text-xs">
             <MapPin className="h-3.5 w-3.5 text-red-400" />
             Delaware — Tax-Free Zone
           </span>
 
         </motion.div>
 
-        {/* wireframe beam cube — its own layer over the headline, independent of the slash */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 0.9, scale: 1 }}
-          transition={{ delay: 0.6, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-none absolute left-1/2 top-[190px] z-[11] -translate-x-1/2 mix-blend-screen sm:top-[215px]"
-        >
-          <BeamCube size={300} thickness={4} />
-        </motion.div>
+        {/* The wireframe beam cube that used to sit here is REMOVED. It was
+            absolutely positioned at a fixed `top-[190px]` with a fixed 300px
+            size, so it did not move or shrink with the headline — on a narrow
+            screen the headline grows taller and the cube landed on top of it,
+            drawn over the words at z-[11]. Its position could have been made
+            responsive, but a decorative object overlapping the one sentence
+            that says what the business does is not worth tuning. */}
 
         {/* Heading */}
         <motion.h1
@@ -312,30 +304,36 @@ export default function HeroSection() {
               <span className={GRADIENT_WORD}>All</span>
             </CaptureWord>{" "}
             <CaptureWord>
-              <span className={GRADIENT_WORD}>
-              Fulfillment
-
-              </span>
-              </CaptureWord>{" "}
-            <CaptureWord>
-              <span className={GRADIENT_WORD}>
-               Need
-
-              </span>
-              </CaptureWord>{" "}
-            
-          </span>
-          <span className="relative">
-            <CaptureWord>
-
-              <motion.span
-                initial={{ color: "#ffffff" }}
-                animate={{ color: "#ef4444" }}
-                transition={{ delay: SLASH_START + SLASH_DURATION * HIT_ROW3, duration: 0.35 }}
-              >
-                s.
-              </motion.span>
-            </CaptureWord>
+              <span className={GRADIENT_WORD}>Fulfillment</span>
+            </CaptureWord>{" "}
+            {/* "Needs." IS ONE WORD and has to be kept as one. It is split into
+                two elements so the slash can cut between the "d" and the "s",
+                and those two used to sit in different parents with a space
+                between them — so on a phone the line broke there and the
+                headline read "Need" / "s." on separate lines. The wrapping span
+                is `whitespace-nowrap` AND the two children are adjacent with no
+                whitespace between them; either alone is enough, both together
+                mean a future reformat cannot quietly reintroduce it. */}
+            <span className="relative whitespace-nowrap">
+              {/* ONE CaptureWord around the whole of "Needs.", not one each.
+                  The letters were already flush — measured, the gap between the
+                  two boxes is 0px — but the hover targeting box is per
+                  CaptureWord, so hovering drew a bracket around "Need" and left
+                  "s." outside it, which reads as the word being split in two.
+                  The two spans stay separate inside it because they are
+                  coloured differently: "Need" carries the gradient and "s."
+                  turns red as the slash passes through it. */}
+              <CaptureWord>
+                <span className={GRADIENT_WORD}>Need</span>
+                <motion.span
+                  initial={{ color: "#ffffff" }}
+                  animate={{ color: "#ef4444" }}
+                  transition={{ delay: SLASH_START + SLASH_DURATION * HIT_ROW3, duration: 0.35 }}
+                >
+                  s.
+                </motion.span>
+              </CaptureWord>
+            </span>
           </span>
         </motion.h1>
 
@@ -345,7 +343,7 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-6 max-w-xl text-sm leading-relaxed text-gray-100 sm:text-gray-400"
+          className="mt-6 max-w-xl text-sm leading-relaxed text-gray-100 sm:text-gray-200"
         >
           Safe storage, professional packing
           &amp; fast shipping — your products are always ready to reach customers
@@ -374,23 +372,20 @@ export default function HeroSection() {
             </Link>
         </motion.div>
 
-        {/* Trust line */}
-        <motion.div
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-8 flex items-center gap-2 text-xs text-gray-500"
-        >
-          <ShieldCheck className="h-4 w-4 text-red-500" />
-          Trusted by 500+ Amazon sellers — fully FBA compliant
-        </motion.div>
+     
 
         {/* Facility photo — inside the BlackBoxPreps prep center */}
         <motion.div
-          initial={{ opacity: 0, y: 60 ,scale:1}}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          whileHover={{scale:1.05}}
+          /* `whileHover={{ scale: 1.05 }}` REMOVED. This block is `w-full` up to
+             max-w-5xl, so below about 1024px it is the full width of the page —
+             scaling it 5% pushed 2.5% off each edge and the photo bled past the
+             screen on hover. It could not be clipped either: the red glow behind
+             it is deliberately outside the box (`-inset-x-8`), so an
+             overflow-hidden wrapper would have cut the glow instead. A 5% jump
+             on a picture that is not a link or a button is not worth a layout
+             this fragile. */
           transition={{ delay: 0.7, duration: 0.9, ease: [0.22, 1, 0.36, 1] as const }}
           className="relative mt-14 w-full max-w-5xl"
         >
@@ -418,11 +413,38 @@ export default function HeroSection() {
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
           <div className="relative overflow-hidden rounded-[15px] bg-[#0a0a0a]">
-            <img
-              src={inside}
-              alt="Inside the BlackBoxPreps prep center — inventory prepped and ready to ship"
-              className="h-[340px] w-full object-cover object-center sm:h-[420px]"
-            />
+            {/* THE LCP ELEMENT. Four things here are load-bearing: AVIF first
+                (the browser takes the first source it understands), eager
+                loading and fetchPriority so it is not queued behind everything
+                else, and explicit width/height so the box is reserved before
+                the bytes arrive. It measured 28.9 s, 4.1 s of which was pure
+                discovery delay. */}
+            {/* Two widths, not one. The frame is capped at max-w-5xl, so a
+                phone was downloading a 2048px source for a ~380px box — 173 KiB
+                of it wasted. `sizes` tells the browser the slot BEFORE layout,
+                which is why it can pick correctly during preload. */}
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${insideAvif1024} 1024w, ${insideAvif} 2048w`}
+                sizes="(min-width: 1024px) 1024px, 100vw"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${inside1024} 1024w, ${inside} 2048w`}
+                sizes="(min-width: 1024px) 1024px, 100vw"
+              />
+              <img
+                src={inside}
+                alt="Inside the BlackBoxPreps prep center — inventory prepped and ready to ship"
+                width={2048}
+                height={2731}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="h-[340px] w-full object-cover object-center sm:h-[420px]"
+              />
+            </picture>
             {/* cinematic fade so the photo melts into the section */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-transparent to-black/40" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/45" />
@@ -438,26 +460,32 @@ export default function HeroSection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
               </span>
-              <span className="text-[11px] font-semibold text-white">
+              <span className="text-xs font-semibold text-white">
                 Inside our Delaware prep center
               </span>
             </motion.div>
 
-            {/* floating status chips */}
+            {/* Floating status chips.
+                They were BOTH pinned to the same row — one bottom-left, one
+                bottom-right. Each is about 180px wide, so on a 390px screen
+                they met in the middle and the second printed over the first:
+                "Shipment prep|Out for delivery". They stack on mobile
+                (full-width, one above the other) and return to opposite corners
+                from sm up, where there is room for both. */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.35, duration: 0.7 }}
-              className="absolute bottom-16 left-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:left-6"
+              className="absolute bottom-32 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:left-6 sm:right-auto"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600/20 text-red-500">
                 <PackageCheck className="h-4 w-4" />
               </span>
               <span className="text-left">
-                <span className="block text-[11px] font-semibold text-white">
+                <span className="block text-xs font-semibold text-white">
                   Shipment prepped
                 </span>
-                <span className="block text-[10px] text-gray-400">
+                <span className="block text-xs text-gray-400">
                   FNSKU labeled — FBA compliant
                 </span>
               </span>
@@ -467,43 +495,25 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.55, duration: 0.7 }}
-              className="absolute bottom-16 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:right-6"
+              className="absolute bottom-16 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:left-auto sm:right-6"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600/20 text-red-500">
                 <Truck className="h-4 w-4" />
               </span>
               <span className="text-left">
-                <span className="block text-[11px] font-semibold text-white">
+                <span className="block text-xs font-semibold text-white">
                   Out for delivery
                 </span>
-                <span className="block text-[10px] text-gray-400">
+                <span className="block text-xs text-gray-400">
                   Delaware → Amazon FC
                 </span>
               </span>
             </motion.div>
 
-            {/* live stats bar along the bottom of the photo */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.75, duration: 0.7 }}
-              className="absolute inset-x-0 bottom-0 flex items-center justify-around border-t border-white/10 bg-black/60 px-4 py-3 backdrop-blur-md"
-            >
-              <span className="hidden items-center gap-2 text-[11px] font-semibold text-white sm:flex">
-                <Warehouse className="h-4 w-4 text-red-500" />
-                Live operations
-              </span>
-              {liveStats.map((stat) => (
-                <span key={stat.label} className="text-center">
-                  <span className="block text-sm font-bold text-white sm:text-base">
-                    {stat.value}
-                  </span>
-                  <span className="block text-[9px] uppercase tracking-wider text-gray-400 sm:text-[10px]">
-                    {stat.label}
-                  </span>
-                </span>
-              ))}
-            </motion.div>
+            {/* The "Live operations" bar that sat along the bottom of the photo
+                is REMOVED. It presented 16,843 / 1,204 / 386 as a live feed, and
+                they were three hardcoded strings that never changed — a dashboard
+                that is only a picture of a dashboard. */}
           </div>
           </div>
         </motion.div>

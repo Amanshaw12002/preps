@@ -1,12 +1,22 @@
-import React from "react";
-import CustomCalendar from "@/component/Meeting";
-import PrepServicesSection from "@/component/PrepServicesSection";
-import WhatSetsUsApart from "@/component/Apart";
-import FAQ from "./FAQ";
+import React, { Suspense, lazy } from "react";
 import HeroSection from "@/sections/HeroSection";
+
+/* Below the fold, so out of the entry chunk. The hero stays eager: it carries
+   the LCP element, and making it a second round trip would trade bundle size
+   for a slower paint. */
+const SecondSection = lazy(() => import("@/sections/SecondSection"));
+const PrepServicesSection = lazy(() => import("@/component/PrepServicesSection"));
+const WhatSetsUsApart = lazy(() => import("@/component/Apart"));
+const Software_Display = lazy(() => import("@/sections/Software_Display"));
+const CustomCalendar = lazy(() => import("@/component/Meeting"));
+const FAQ = lazy(() => import("./FAQ"));
+
+/* Reserves height so a chunk arriving mid-scroll cannot shift the page. */
+const Below = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<div style={{ minHeight: "50vh" }} />}>{children}</Suspense>
+);
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Head from "@/component/Head";
-import Software_Display from "@/sections/Software_Display";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -19,7 +29,6 @@ import {
   Warehouse,
   Mail,
 } from "lucide-react";
-import SecondSection from "@/sections/SecondSection";
 
 export interface ProcessStep {
   id: number;
@@ -70,7 +79,7 @@ export function SectionEyebrow({ label, dark = false }: { label: string; dark?: 
     <div className="mb-6 flex items-center justify-center gap-3">
       <span className={`h-px w-10 sm:w-16 ${dark ? "bg-white/20" : "bg-gray-300"}`} />
       <span
-        className={`rounded-full border px-3.5 py-1 text-[11px] font-semibold tracking-[0.2em] ${
+        className={`rounded-full border px-3.5 py-1 text-xs font-semibold tracking-[0.2em] ${
           dark
             ? "border-white/20 bg-white/5 text-red-400"
             : "border-gray-200 bg-white text-red-700"
@@ -117,7 +126,7 @@ function PulseRings() {
       {[0, 1].map((i) => (
         <motion.span
           key={i}
-          className="absolute inset-0 rounded-2xl border border-red-500/40"
+          className="absolute inset-0 rounded-2xl border border-red-500/60"
           animate={{ scale: [1, 1.7], opacity: [0.7, 0] }}
           transition={{ duration: 2.2, delay: i * 1.1, repeat: Infinity, ease: "easeOut" }}
         />
@@ -132,14 +141,14 @@ function ReceivingVisual() {
       <div className="absolute -top-10 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-red-600/20 blur-[70px]" />
 
       {/* icon with pulsing rings */}
-      <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+      <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl  bg-white text-red-600 shadow-xl shadow-red-400">
         <PulseRings />
         <PackageOpen className="h-8 w-8" />
       </span>
 
       {/* conveyor with boxes drifting in */}
       <div className="relative z-10 mt-10 h-14 w-3/4">
-        <div className="absolute bottom-0 h-px w-full bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+        <div className="absolute bottom-0 h-px w-full bg-gradient-to-r from-transparent via-red-500 to-transparent" />
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
@@ -163,7 +172,7 @@ function ReceivingVisual() {
         />
       </div>
 
-      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[10px] font-medium text-gray-300">
+      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gray-300">
         <SearchCheck className="h-3 w-3 text-red-500" /> Inspected on arrival
       </span>
     </div>
@@ -177,7 +186,7 @@ function PrepPackVisual() {
     <div className="relative flex h-full flex-col items-center justify-center gap-3 overflow-hidden bg-[#0d0d0d] px-8">
       <div className="absolute -top-10 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-red-600/20 blur-[70px]" />
 
-      <span className="relative z-10 mb-2 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50">
+      <span className="relative z-10 mb-2 flex h-16 w-16 items-center justify-center rounded-2xl  bg-white text-red-600 shadow-xl shadow-red-400">
         <PulseRings />
         <Boxes className="h-8 w-8" />
       </span>
@@ -216,7 +225,7 @@ function PrepPackVisual() {
           >
             <PackageCheck className="h-3 w-3" />
           </motion.span>
-          <span className="text-[11px] font-medium text-gray-200">{task}</span>
+          <span className="text-xs font-medium text-gray-200">{task}</span>
         </motion.div>
       ))}
 
@@ -239,7 +248,7 @@ function ShipmentVisual() {
 
       {/* truck gently bobbing, as if driving */}
       <motion.span
-        className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-900/50"
+        className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl  bg-white text-red-600 shadow-xl shadow-red-400"
         animate={{ y: [0, -4, 0], rotate: [0, -1.5, 0, 1.5, 0] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -249,7 +258,7 @@ function ShipmentVisual() {
 
       {/* route with a dot travelling forever */}
       <div className="z-10 mt-10 flex w-3/4 items-center">
-        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-gray-300">
+        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300">
           Delaware
         </span>
         <span className="relative mx-2 h-px flex-1 overflow-visible border-t border-dashed border-red-500/50">
@@ -265,12 +274,12 @@ function ShipmentVisual() {
             }}
           />
         </span>
-        <span className="rounded-full border border-red-600/40 bg-red-600/15 px-2.5 py-1 text-[10px] font-semibold text-red-400">
+        <span className="rounded-full border border-red-600/40 bg-red-600/15 px-2.5 py-1 text-xs font-semibold text-red-400">
           Amazon FC
         </span>
       </div>
 
-      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[10px] font-medium text-gray-300">
+      <span className="z-10 mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gray-300">
         Live tracking & instant notifications
       </span>
     </div>
@@ -313,7 +322,11 @@ export default function Home() {
 
   return (
     <>
-      <Head title="BlackBoxPreps | Amazon Prep Center" />
+      <Head
+        title="BlackBoxPreps | Amazon FBA Prep Center in Delaware"
+        description="Amazon FBA prep from Delaware's tax-free zone. Receiving, inspection, FNSKU labeling, bundling and fast shipping to Amazon fulfillment centers."
+        canonical="/"
+      />
 
       <HeroSection />
 
@@ -334,9 +347,6 @@ export default function Home() {
             <SectionEyebrow label="WHY BLACKBOXPREPS" />
           </motion.div>
 
-          <motion.p variants={fadeUp} className="mb-3 text-sm font-medium text-red-700">
-            Let's grow your business together.
-          </motion.p>
 
           <motion.h2
             variants={fadeUp}
@@ -345,7 +355,7 @@ export default function Home() {
             New to Amazon or Already Selling!
             <span className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
               We Handle
-              <span className="relative inline-flex h-12 min-w-44 items-center justify-center overflow-hidden sm:h-22 sm:min-w-64">
+              <span className="relative inline-flex h-12 min-w-54 items-center justify-center overflow-hidden sm:h-22 sm:min-w-83">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={rotatingWords[index].word}
@@ -364,13 +374,15 @@ export default function Home() {
                   </motion.span>
                 </AnimatePresence>
               </span>
+
             </span>
-            <span className="mt-3 block">You Focus on Growth.</span>
+           <span className="">that you can spend your time, </span><br/>
+           <span>  where matters.</span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="mx-auto mt-5 max-w-md text-sm text-gray-500">
-            <span className="font-semibold text-red-700">BlackBoxPreps</span>{" "}
-            handles preps, while you build.
+         
+          <motion.p variants={fadeUp} className="my-3 text-sm font-medium text-grey-700">
+            Let's grow your business together.
           </motion.p>
 
           <motion.div
@@ -396,7 +408,7 @@ export default function Home() {
             variants={fadeUp}
             className="mx-auto mt-10 max-w-xl text-sm leading-relaxed text-gray-600"
           >
-            Launching your first shipment or scaling to daily pallets, we help
+            Launching your shipment for first time or scaling to daily pallets, we help
             you move faster and stay compliant. Our team handles receiving,
             inspection, labeling, and shipment prep directly from Delaware's
             tax-free zone, cutting costs and turnaround time.
@@ -407,9 +419,13 @@ export default function Home() {
             className="mx-auto mt-10 flex w-fit flex-col items-center gap-3 border-t border-gray-200 pt-6"
           >
             <p className="text-xs text-gray-500">We are available 24/7.</p>
+            {/* Was hover:bg-red-700 — a near-black button flipping to red is a
+                big colour move for a hover, and red reads as a warning on a
+                button whose job is to open a mail client. Lifting to a lighter
+                grey says "this is live" without changing what it is. */}
             <a
               href="mailto:contact@blackboxprepcenter.com"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-700"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700"
             >
               <Mail className="h-4 w-4" />
               Contact Us
@@ -418,11 +434,11 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <SecondSection />
+      <Below><SecondSection /></Below>
 
-      <PrepServicesSection />
+      <Below><PrepServicesSection /></Below>
 
-      <WhatSetsUsApart />
+      <Below><WhatSetsUsApart /></Below>
 
       {/* ——— Workflow ——— */}
       <section className="relative overflow-hidden bg-gray-50">
@@ -478,7 +494,8 @@ export default function Home() {
               <motion.div
                 key={step.step}
                 variants={fadeUp}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60"
+                whileHover={{ y: -6 }}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-[border-color,box-shadow,background-color,color] duration-500 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60"
               >
                 <div className="relative h-[360px] overflow-hidden sm:h-[400px]">
                   {step.visual}
@@ -491,7 +508,7 @@ export default function Home() {
                   <h3 className="mb-1.5 text-base font-semibold text-gray-900">
                     {step.title}
                   </h3>
-                  <p className="text-[13px] leading-relaxed text-gray-600">
+                  <p className="text-sm leading-relaxed text-gray-600">
                     {step.description}
                   </p>
                 </div>
@@ -503,11 +520,11 @@ export default function Home() {
         </div>
       </section>
 
-      <Software_Display />
+      <Below><Software_Display /></Below>
 
-      <CustomCalendar />
+      <Below><CustomCalendar /></Below>
 
-      <FAQ />
+      <Below><FAQ /></Below>
       
     </>
   );

@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, BadgeDollarSign, Boxes, Clock, Star } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, Boxes, Clock, Mail, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SectionEyebrow } from "@/page/Home";
 
@@ -17,6 +17,23 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
+/**
+ * These figures are the client's own and are treated as correct until the
+ * client says otherwise. They were briefly replaced with structural facts
+ * during a credibility pass; that was the wrong trade — swapping a number for a
+ * different kind of statement is its own way to mislead, and an unverified
+ * number is the client's call, not the site's.
+ *
+ * Two things to settle with the client rather than in code:
+ *
+ *  1. "24-72h Average Turnaround" and the FAQ's "2–5 business days" are two
+ *     answers to the same question on the same site. One of them should move.
+ *  2. The 5-star card. If the reviews are real, they belong ON the site as
+ *     reviews — and once they are, `aggregateRating` can go into the
+ *     LocalBusiness JSON-LD in index.html, which deliberately omits it today.
+ *     A rating in the copy that the structured data does not carry is the
+ *     mismatch worth closing, and it closes in the generous direction.
+ */
 const stats = [
   {
     number: "100%",
@@ -65,13 +82,13 @@ export default function SecondSection() {
             className="font-inter text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
           >
             Prep, Packed, &amp; Shipped
-            <span className="block bg-gradient-to-r from-red-700 to-red-500 bg-clip-text text-transparent">
+            <span className="block py-4 bg-gradient-to-r from-red-700 to-red-500 bg-clip-text text-transparent">
               Without Delays.
             </span>
           </motion.h2>
 
           <motion.p variants={fadeUp} className="mt-4 text-sm text-gray-500">
-            Leave the steps to BlackBoxPreps, while you focus on growth.
+            Leave the steps to BlackBoxPreps that you can get your time back.
           </motion.p>
 
           <motion.div
@@ -93,9 +110,7 @@ export default function SecondSection() {
             </Link>
           </motion.div>
 
-          <motion.p variants={fadeUp} className="mt-6 text-xs text-gray-500">
-            Trusted by 500+ Amazon Sellers.
-          </motion.p>
+        
         </motion.div>
 
         <motion.div
@@ -105,13 +120,26 @@ export default function SecondSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
+          {/* Hover is neutral, not red. Red is the brand's accent and it was
+              being spent on a state that means nothing — pointing at a card. A
+              tinted border plus a coloured shadow on every card the cursor
+              crosses reads as an alert; a lift and a plain shadow reads as
+              "this is a card". The red stays where it carries meaning: the
+              icons, the stars, the CTA.
+
+              The lift is framer's now, not `hover:-translate-y-1.5`. That class
+              could never have worked here: framer-motion writes an inline
+              `transform` on this element, and an inline style beats a class, so
+              the CSS lift was silently dead the whole time. */}
           {stats.map((stat) => (
             <motion.div
               key={stat.title}
               variants={fadeUp}
-              className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-xl hover:shadow-red-100/60"
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-[border-color,box-shadow,background-color,color] duration-500 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-900/10"
             >
-              <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700 transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white">
+              <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700 transition-colors duration-300 group-hover:bg-red-100 group-hover:text-red-800">
                 {stat.icon}
               </span>
               {stat.stars ? (
@@ -131,6 +159,28 @@ export default function SecondSection() {
               </p>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Same block as the one at the foot of the hero on the home page. It
+            is repeated rather than shared because the two sit in different
+            sections with different backgrounds, and the identical markup is
+            six lines — a shared component here would be indirection for its
+            own sake. If a third copy appears, extract it then. */}
+        <motion.div
+          className="mx-auto mt-14 flex w-fit flex-col items-center gap-3 border-t border-gray-200 pt-6"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          <p className="text-xs text-gray-500">We are available 24/7.</p>
+          <a
+            href="mailto:contact@blackboxprepcenter.com"
+            className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700"
+          >
+            <Mail className="h-4 w-4" />
+            Contact Us
+          </a>
         </motion.div>
       </div>
     </section>

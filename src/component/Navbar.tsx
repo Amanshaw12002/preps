@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../asset/blackbox.png";
+import Logo from "./Logo";
 import { Package, Truck, ChevronRight, MoveRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import useSurfaceTone from "../hooks/useSurfaceTone";
+import { useNavTransition } from "./NavTransition";
 
 /* hamburger bars: closed sits as three rules, open folds the outer two into an X
    while the middle one shrinks away */
@@ -62,17 +63,35 @@ const rowVariants: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] } },
 };
 
-/* pages whose hero is meant to run under a bare bar until the user scrolls */
-const BARE_AT_TOP = ["/", "/pricing"];
+/* Pages whose hero is meant to run under a bare bar until the user scrolls.
+   Every page with a hero of its own is on this list. It used to be Home and
+   Pricing only, and the result was that those two blended into their heroes
+   while About and the Service pages wore a hard-edged panel sitting on top of
+   theirs — the same bar looking like two different designs depending on which
+   page you were on. The panel still fades in the moment anything scrolls, which
+   is the point of it: it exists to keep the bar legible over CONTENT, and at
+   the top of a page there is no content under it yet. */
+const BARE_AT_TOP = ["/", "/pricing", "/aboutus", "/service/fba", "/service/fbm"];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
-  /* what is scrolling past underneath — drives whether the bar reads black or white */
-  const tone = useSurfaceTone(navRef);
-  const onLight = tone === "light";
 
   const { pathname } = useLocation();
+  /* true only while a DESKTOP route change is in flight, and only when motion
+     is welcome — both tests live in NavTransition, so this is already false on
+     mobile and under reduced motion, and nothing below re-checks for either */
+  const { squeeze } = useNavTransition();
+
+  /* what is scrolling past underneath — drives whether the bar reads black or
+     white. The watch key is why it also re-reads on a ROUTE change: without it
+     the hook only ever re-measured on scroll, so arriving on a page kept the
+     previous page's tone until you happened to scroll. `squeeze` is in the key
+     too, because the end of the transition is another moment the surface
+     settles without anything scrolling. */
+  const tone = useSurfaceTone(navRef, 76, `${pathname}|${squeeze}`);
+  const onLight = tone === "light";
+
   const canGoBare = BARE_AT_TOP.includes(pathname.toLowerCase());
   const [scrolled, setScrolled] = useState(() => window.scrollY > 8);
 
@@ -101,30 +120,100 @@ export default function Navbar() {
 
   /* resting at the top of home/pricing: the bar drops its glass entirely and lets the
      hero run through it — the moment the page moves, the normal panel fades back in */
-  const bare = canGoBare && !scrolled;
+  /* ...but never while squeezed: a collapsed bar with no panel behind it is a
+     logo floating on the hero, which reads as the chrome having disappeared
+     rather than as a transition */
+  const bare = canGoBare && !scrolled && !squeeze;
+
+  /* THE SQUEEZE IS BETWEEN TWO CONCRETE LENGTHS, which is the whole reason it
+     is written as a class swap rather than an override. `max-w-fit` would be
+     the obvious way to shrink to the wordmark and it does not animate — CSS
+     cannot interpolate to `fit-content`, so the bar would jump. 17rem is the
+     mark (38px) plus "BlackBoxPreps" at text-2xl plus the padding.
+
+     Swapped wholesale, never appended: `lg:min-w-5xl` and `lg:min-w-0` have
+     identical specificity, so adding one does not beat the other — the winner
+     is whichever Tailwind happens to emit later. Same trap as the pill borders
+     below. */
+  const barSize = squeeze
+    ? "w-full min-w-0 max-w-[17rem] mx-auto"
+    : "w-md sm:min-w-xl mx-4 md:max-w-5xl md:min-w-3xl lg:min-w-5xl lg:mx-auto";
 
   /* frosted panel: same glass on both, only the tint flips with the surface.
      shared by the bar and the services dropdown so they read as one material */
   const glass = "backdrop-blur-xl backdrop-saturate-150";
-  const panel = onLight
+  const surfacePanel = onLight
     ? "bg-white/45 border-black/10 shadow-black/10"
     : "bg-black/35 border-white/15 shadow-black/50";
-  /* links / buttons: fully transparent, outline only — no fill, no backdrop blur */
-  const pill = bare
-    ? /* nothing but the label at rest — the outline comes back with the panel */
-      "bg-transparent border-transparent hover:border-red-400/70"
+  /* WHILE SQUEEZED THE BAR STOPS TRACKING THE PAGE AND BECOMES AN OPAQUE CHIP.
+
+     The reason is the transition's timing, NOT its width — `useSurfaceTone`
+     probes across the <nav>, which is `w-full` and does not move when the inner
+     bar shrinks. What actually goes wrong is that the surface is mid-swap: the
+     incoming hero is still decoding and still running its entrance, so a tone
+     read during those frames can land on "dark" while a white band is showing.
+     The panel is then `bg-black/35` — a light grey once the white shows
+     through — carrying white ink, and the wordmark vanishes. A squeezed bar has
+     nothing else in it, so that reads as an empty pill rather than as a tint
+     being slightly off. Filmed at t+1788ms on pricing -> about.
+
+     `bg-neutral-900/90` is dark whatever is behind it, so the one thing that
+     must stay readable does, for the whole window in which the answer is not
+     yet knowable. The settle burst in the hook is the other half of this. */
+  const panel = squeeze
+    ? "bg-neutral-900/90 border-white/15 shadow-black/50"
+    : surfacePanel;
+  /* Links: label only at rest. The border is still DECLARED and simply
+     transparent, so turning it on for the current page costs no layout shift —
+     removing the `border` class instead would move every item by 1px the
+     moment it became active. */
+  /* Hover is a faint neutral, never red — red reads as a state change on a
+     link that has not been activated yet. */
+  /* The bare case now has to respect the tone too. It used to be white-only,
+     which was safe while the only bare pages were Home and Pricing — both dark
+     at the top. The Service pages are bare over WHITE, and a white hover border
+     on white is a control that silently does nothing. */
+  const pillHover = bare
+    ? onLight
+      ? "hover:border-black/15"
+      : "hover:border-white/20"
     : onLight
-    ? "bg-transparent border-black/15 hover:border-red-500/60"
-    : "bg-transparent border-white/20 hover:border-red-400/70";
+    ? "hover:border-black/10"
+    : "hover:border-white/15";
+
+  /* The one box on the bar: the page you are on. Same neutral outline the bar
+     always had, just now on one item instead of all four. */
+  const activeBorder = onLight ? "border-black/25" : "border-white/30";
+
+  /* ONE border-colour class, never two. `border-transparent` and
+     `border-red-400/70` have identical specificity, so appending the active
+     one does not override the idle one — the winner is whichever Tailwind
+     happens to emit later in the stylesheet, and it emitted transparent. The
+     state has to pick the class, not stack it. */
+  const pillFor = (active: boolean) =>
+    `bg-transparent ${active ? activeBorder : "border-transparent"} ${pillHover}`;
+
+  /* Idle-only, for the hamburger, which has no active state. */
+  const pill = pillFor(false);
+
+  const path = pathname.toLowerCase();
+  const isOn = (to: string) => path === to;
+  /* Services is a menu, not a link, so it lights up for either service page. */
+  const servicesOn = path.startsWith("/service");
   const inkStrong = onLight ? "text-gray-900" : "text-white";
   const ink = onLight ? "text-gray-800" : "text-gray-100";
+  /* the mark and the wordmark are the only things left in a squeezed bar, so
+     they follow the chip above rather than the surface underneath it */
+  const markLight = onLight && !squeeze;
 
   return (
     <nav
       ref={navRef}
       className={`bg-transparent w-full h-16 flex-center fixed px-2 top-2 z-50 transition-all duration-500`}
     >
-      <div className="relative w-md sm:min-w-xl mx-4 md:max-w-5xl md:min-w-3xl lg:min-w-5xl lg:mx-auto rounded-lg px-3 h-12 lg:h-14 flex-between">
+      <div
+        className={`relative rounded-lg px-3 h-12 lg:h-14 flex-between transition-[max-width,min-width,width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${barSize}`}
+      >
         {/* the bar's glass lives on its own layer, not on the element that wraps the
             dropdown — a backdrop-filtered ancestor becomes the backdrop root, which
             leaves any nested backdrop-filter (the dropdown) with nothing to sample */}
@@ -139,18 +228,25 @@ export default function Navbar() {
         {/* Logo */}
        
 
-<Link to="/" className="flex lg:ml-2 group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
-          <motion.img 
-            initial={{x:-45}} 
+{/* aria-label is required, not decorative polish: the mark is aria-hidden and
+    the wordmark beside it is `hidden md:block`, so on mobile this link would
+    otherwise have no accessible name at all. */}
+<Link to="/" aria-label="BlackBoxPreps — home" className="flex lg:ml-2 group items-center text-gray-900 overflow-hidden" onClick={() => setOpen(false)}>
+          {/* SVG mark. It paints with currentColor, so the surface-tone flip
+              below is the only thing that colours it — the PNG needed a second
+              file for the dark hero. */}
+          <motion.span
+            initial={{ x: -45 }}
             animate={{ x: 0 }}
             transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
-            src={logo} 
-            alt="Logo" 
-            className="h-10 w-10 object-cover  rounded-md" 
-          />
+            className="inline-flex transition-colors duration-500"
+            style={{ color: markLight ? "#0a0a0a" : "#ffffff" }}
+          >
+            <Logo size={38} decorative />
+          </motion.span>
           
           <motion.h2 
-            className="relative font-inter  font-semibold bg-gradient-to-r from-red-600 to-red-700 pl-1 hidden md:block text-2xl text-transparent bg-clip-text"
+            className="relative font-inter   bg-gradient-to-r from-red-600 to-red-700 pl-1 hidden md:block text-2xl text-transparent bg-clip-text"
           >
             <motion.div 
               className="absolute bottom-0 w-8 h-[2px] bg-black"
@@ -171,7 +267,7 @@ export default function Navbar() {
                 className={index < BRAND_SPLIT ? "transition-colors duration-500" : undefined}
                 style={
                   index < BRAND_SPLIT
-                    ? { color: onLight ? "#111827" : "#ffffff" }
+                    ? { color: markLight ? "#111827" : "#ffffff" }
                     : undefined
                 }
               >
@@ -183,28 +279,40 @@ export default function Navbar() {
 
 
 
+        {/* The links collapse to zero WIDTH, not to `hidden`. They are a flex
+            sibling of the logo, so leaving them in flow at their natural width
+            would hold the bar open and there would be nothing for the panel to
+            shrink into; `hidden` would take them out with no fade at all. The
+            width snap is invisible underneath the shorter opacity fade. */}
         <ul
-          className={`hidden lg:flex font-inter text-xs gap-2 pl-6 items-center transition-colors duration-500 ${ink}`}
+          className={`hidden lg:flex font-inter text-xs gap-2 pl-6 items-center transition-[color,opacity] duration-500 ${ink} ${
+            squeeze ? "pointer-events-none w-0 overflow-hidden opacity-0" : "opacity-100"
+          }`}
         >
           <li className="transition duration-300">
             <Link
               to="/"
-              className={`inline-block rounded-md border px-3 py-2 transition-all duration-300 ${pill}`}
+              aria-current={isOn("/") ? "page" : undefined}
+              className={`inline-block rounded-md border px-3 py-2 transition-all duration-300 ${pillFor(isOn("/"))}`}
             >
               Home
             </Link>
           </li>
           <li className="transition">
+            {/* lowercase to match the route in App.tsx. React Router matches
+                case-insensitively, so "/Pricing" worked — but it put a second
+                URL for the same page in front of crawlers. */}
             <Link
-              to="/Pricing"
-              className={`inline-block rounded-md border px-3 py-2 transition-all duration-300 ${pill}`}
+              to="/pricing"
+              aria-current={isOn("/pricing") ? "page" : undefined}
+              className={`inline-block rounded-md border px-3 py-2 transition-all duration-300 ${pillFor(isOn("/pricing"))}`}
             >
               Pricing
             </Link>
           </li>
           <li className="group relative ml-1">
             <span
-              className={`cursor-pointer inline-block rounded-md border px-3 py-2 font-medium transition-all duration-300 ${pill}`}
+              className={`cursor-pointer inline-block rounded-md border px-3 py-2 font-medium transition-all duration-300 ${pillFor(servicesOn)}`}
             >
               Services
             </span>
@@ -252,12 +360,17 @@ export default function Navbar() {
           <li className="transition">
             <Link
               to="/aboutUs"
-              className={`mx-1 inline-block rounded-md border px-2 py-2 transition-all duration-300 ${pill}`}
+              aria-current={isOn("/aboutus") ? "page" : undefined}
+              className={`mx-1 inline-block rounded-md border px-2 py-2 transition-all duration-300 ${pillFor(isOn("/aboutus"))}`}
             >
               About Us
             </Link>
           </li>
-          <div className="flex-between gap-4  ">
+          {/* An <li>, not a <div>. A <ul> may only contain <li> (plus <script>
+              and <template>), and a screen reader reading "list, 4 items" while
+              a fifth link sits inside it is the whole cost of getting it wrong.
+              The classes are unchanged, so the layout is identical. */}
+          <li className="flex-between gap-4  ">
 
 
               <Link to="/quote" className={`group overflow-hidden flex-between ml-42 rounded-xl w-fit  bg-transparent py-1 text-sm font-semibold  transition-all duration-300  ${inkStrong}`}>
@@ -266,7 +379,7 @@ export default function Navbar() {
               <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
               <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
             </Link>
-          </div>
+          </li>
         </ul>
          
 {/* bg-[#292929] */}
@@ -355,7 +468,7 @@ export default function Navbar() {
                 })}
 
                 <motion.li variants={rowVariants} className="flex flex-col gap-1 pt-2">
-                  <span className={`px-4 pb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60 ${ink}`}>
+                  <span className={`px-4 pb-1 text-xs font-semibold uppercase tracking-[0.18em] opacity-60 ${ink}`}>
                     Services
                   </span>
                   {MOBILE_SERVICES.map((svc) => (

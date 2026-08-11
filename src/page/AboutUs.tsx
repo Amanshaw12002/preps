@@ -1,6 +1,6 @@
-import man2 from "../asset/man2.jpg";
-import maninblack from "../asset/maninblack.png";
-import man3 from "../asset/man3.jpg";
+import man2 from "../asset/man2.webp";
+import maninblack from "../asset/maninblack.webp";
+import man3 from "../asset/man3.webp";
 import { Briefcase, Users, Globe, ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -31,8 +31,16 @@ const itemVariants:Variants = {
   }
 };
 
+/* WAS `scale: 1.1`. A full-width image starting 10% oversized hangs 5% off each
+   side of its column and widens the whole document — the same class of bug as an
+   `x: 50` entrance, arriving through scale instead of translation.
+   `overflow-hidden` on the wrapper does NOT fix it: the wrapper is the element
+   being scaled, so it overflows its own parent, and clipping there would only
+   have cut the image's drop shadow off.
+   Starting slightly UNDER size and growing to 1 is the same gesture — a push
+   into place — and can never be wider than the box it lives in. */
 const imageVariants:Variants = {
-  hidden: { opacity: 0, scale: 1.1 },
+  hidden: { opacity: 0, scale: 0.94 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -92,6 +100,11 @@ export default function AboutUs() {
     threshold: 0.3
   });
   
+  /* The client's own figures — kept as given, pending their confirmation.
+     Two to raise with them, both cheap to settle and both currently visible:
+     "99.8%" carries a decimal place with no stated denominator, which invites
+     the question "of what?"; and "24/7 Support" should agree with the FAQ,
+     which now names an email address and a phone number. */
   const stats = [
     { number: "500+", label: "Sellers Helped" },
     { number: "99.8%", label: "Success Rate" },
@@ -103,17 +116,44 @@ export default function AboutUs() {
 
   return (
     <>
-  <Head title=" BlackBoxPreps | AboutUs" />
-      <section className="relative h-132 mt-12 flex-center overflow-hidden pt-20">
+  <Head
+    title="About BlackBoxPreps | Delaware Amazon Prep Center"
+    description="Who we are: a Delaware-based Amazon prep center handling receiving, inspection, labeling and shipment prep for growing sellers."
+    canonical="/aboutUs"
+  />
+      {/* NO `mt-12`. That margin was the white strip above the photo: the hero
+          began 48px down the page, and the only thing above it was the white
+          body — which the fixed bar then sat on. A hero starts at the top of
+          the page and runs UNDER the bar, the way Home and Pricing already do. */}
+      <section className="relative h-132 flex-center overflow-hidden pt-20">
+        {/* THE WHITE FLASH WHEN ARRIVING FROM HOME OR PRICING WAS HERE.
+            This hero faded in from `opacity: 0` over 1.5 seconds, and its image
+            was `loading="lazy"` even though it is the first thing on the page.
+            So for the first frames after the route changed there was nothing to
+            paint: captured on a screencast, 123ms after the click the entire
+            viewport was white. Coming from a page that opens dark, that reads
+            as a flash — which is why it happened on this page and About but not
+            between Home and Pricing, both of which open dark and paint
+            immediately.
+
+            The scale-in is kept, because that is the effect. The opacity fade is
+            not: it is what made the first frames blank. `eager` +
+            `fetchPriority="high"` because this is the LCP element of the page,
+            and lazy-loading the LCP element delays the very paint being waited
+            for. */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
           className="absolute max-w-6xl mx-auto inset-0 z-0"
         >
-          <img
+          {/* `h-full` is what makes `object-cover` mean anything. Without a
+              height the image was its own intrinsic ratio at `w-full` and
+              `object-cover` had no box to cover, so it stopped short of the
+              section's 33rem and left the background showing. */}
+          <img loading="eager" fetchPriority="high" decoding="async"
             src={maninblack}
-            className="w-full   object-cover"
+            className="h-full w-full object-cover"
             alt="Our warehouse team"
           />
           <div className="absolute  inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
@@ -228,7 +268,7 @@ export default function AboutUs() {
               animate={missionInView ? "visible" : "hidden"}
               className="relative"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={man2}
                 className="w-full rounded-2xl shadow-2xl"
                 alt="Our fulfillment process"
@@ -270,7 +310,7 @@ export default function AboutUs() {
             </motion.div>
 
             <motion.div variants={imageVariants}>
-              <img
+              <img loading="lazy" decoding="async"
                 src={man3}
                 className="w-full rounded-2xl shadow-xl"
                 alt="Our experienced team"

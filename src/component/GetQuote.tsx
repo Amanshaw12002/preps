@@ -1,5 +1,17 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import Head from "@/component/Head";
+
+/* Shared by both branches below. The success state is still /quote, so it must
+   not silently inherit the home page's title — which is what happened before
+   this page had any metadata at all. */
+const QuoteHead = () => (
+  <Head
+    title="Get a Quote | BlackBoxPreps Amazon Prep Center"
+    description="Tell us about your shipment and we'll send back a tailored prep and fulfillment quote."
+    canonical="/quote"
+  />
+);
 
 
 
@@ -34,6 +46,7 @@ export default function GetQuoteForm() {
   if (submitted) {
     return (
       <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20 px-4 sm:px-6 lg:px-8">
+        <QuoteHead />
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden p-16 text-center">
             <h2 className="text-4xl font-semibold text-green-600 mb-4">Thank you!</h2>
@@ -53,6 +66,7 @@ export default function GetQuoteForm() {
   }
   return (
     <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20 px-4 sm:px-6 lg:px-8">
+      <QuoteHead />
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -99,6 +113,9 @@ export default function GetQuoteForm() {
                   ))}
                 </div>
                 <div className="mt-16 pt-8 border-t border-white/10">
+                  {/* Note for the client review: the hero says "500+ Amazon
+                      sellers" and this says "500+ businesses worldwide". Same
+                      number, wider claim. Worth making the two agree. */}
                   <p className="text-slate-300 font-light text-sm">Trusted by 500+ businesses worldwide</p>
                 </div>
               </div>

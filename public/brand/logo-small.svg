@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="BlackBoxPreps">
+  <title>BlackBoxPreps</title>
+  <!-- SMALL CUT — for 24px and below, and the source for every favicon PNG.
+
+       Same vertices, heavier stroke (3.1 against 1.9) and a slightly tighter
+       hexagon so the thicker line does not crowd the edge. This is not the
+       standard mark scaled down: at 16px a 1.9 stroke renders under one device
+       pixel and the cube turns grey and soft. A mark that needs two cuts is
+       normal for a wireframe; shipping only one is what makes a good logo look
+       muddy in a browser tab. -->
+  <g fill="none" stroke="#0a0a0a" stroke-width="3.1" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="8">
+    <polygon points="16,5.6 25.53,11.1 25.53,22.1 16,27.6 6.47,22.1 6.47,11.1"/>
+    <path d="M16,16.6 L6.47,11.1 M16,16.6 L25.53,11.1 M16,16.6 L16,27.6"/>
+  </g>
+</svg>

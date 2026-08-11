@@ -129,7 +129,7 @@ export default function PrepServicesSection() {
         >
           <motion.div variants={fadeUp} className="mb-6 flex items-center justify-center gap-3">
             <span className="h-px w-10 bg-white/20 sm:w-16" />
-            <span className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1 text-[11px] font-semibold tracking-[0.2em] text-red-400">
+            <span className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1 text-xs font-semibold tracking-[0.2em] text-red-400">
               SERVICES
             </span>
             <span className="h-px w-10 bg-white/20 sm:w-16" />
@@ -139,7 +139,7 @@ export default function PrepServicesSection() {
             variants={fadeUp}
             className="font-inter mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-3 gap-y-2 text-3xl font-semibold tracking-tight text-white sm:text-5xl"
           >
-            BlackBoxPreps Help You
+            BlackBoxPreps Helps You
             <span className="relative inline-flex h-11 min-w-40 items-center justify-center overflow-hidden sm:h-22 sm:min-w-56">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -164,13 +164,13 @@ export default function PrepServicesSection() {
 
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-400"
+            className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-200"
           >
             Whether you sell through{" "}
-            <span className="font-medium text-white">FBA &amp; WFS</span>,
+            <span className="font-medium ">FBA &amp; WFS</span>,
             manage orders via{" "}
-            <span className="font-medium text-white">FBM</span>, or ship to{" "}
-            <span className="font-medium text-white">Wholesale partners</span>,
+            <span className="font-medium ">FBM</span>, or ship to{" "}
+            <span className="font-medium ">Wholesale partners</span>,
             our end-to-end prep solutions ensure every unit leaves your
             inventory compliant, protected, and ready to sell.
           </motion.p>
@@ -188,17 +188,18 @@ export default function PrepServicesSection() {
             <motion.div
               key={service.id}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-2xl border p-6 text-left transition-all duration-500 hover:-translate-y-1.5 sm:p-7 ${
+              whileHover={{ y: -6 }}
+              className={`group relative flex flex-col rounded-2xl border p-6 text-left transition-[border-color,box-shadow,background-color,color] duration-500 sm:p-7 ${
                 service.featured
                   ? "border-red-900/60 bg-gradient-to-b from-red-950/40 to-white/[0.03] shadow-xl shadow-red-950/30"
                   : "border-white/10 bg-white/[0.03] hover:border-white/20"
               }`}
             >
               <span
-                className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-300 ${
+                className={`mb-5 flex h-11 w-11 border-2  items-center justify-center rounded-xl transition-colors duration-300 ${
                   service.featured
-                    ? "bg-red-600 text-white shadow-lg shadow-red-900/50"
-                    : "bg-red-600/15 text-red-500 group-hover:bg-red-600 group-hover:text-white"
+                    ? "bg-red-600 text-white shadow-lg border-red-500 shadow-red-900/50"
+                    : "bg-red-600/15 text-red-500 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white"
                 }`}
               >
                 {service.icon}
@@ -207,15 +208,20 @@ export default function PrepServicesSection() {
               <h3 className="mb-3 text-lg font-semibold text-white">
                 {service.title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-400">
+              <p className="text-sm leading-relaxed text-gray-200">
                 {service.description}
               </p>
 
+              {/* "Learn more" three times over told a crawler — and a screen
+                  reader listing links — nothing about where any of them go.
+                  The visible label still reads as before; the service name is
+                  appended for anything reading the link out of context. */}
               <Link
                 to={service.link}
                 className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-red-500 transition-colors duration-300 hover:text-red-400"
               >
                 Learn more
+                <span className="sr-only"> about {service.title}</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -236,7 +242,7 @@ export default function PrepServicesSection() {
           >
             Streamline, Scale, Succeed.
           </motion.h3>
-          <motion.p variants={fadeUp} className="mt-2 text-xs text-gray-500">
+          <motion.p variants={fadeUp} className="mt-2 text-xs text-gray-200">
             Let's take the prep work off your plate.
           </motion.p>
         </motion.div>

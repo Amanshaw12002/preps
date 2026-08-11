@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="256" height="256" role="img" aria-label="BlackBoxPreps">
+  <title>BlackBoxPreps</title>
+  <!-- Reversed cut, for the dark hero and anywhere the mark sits on black.
+       Identical geometry to logo.svg — only the ink changes. In React, prefer
+       the Logo component, which paints with currentColor and needs no second
+       file at all. -->
+  <g fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="8">
+    <polygon points="16,4.5 26.392,10.5 26.392,22.5 16,28.5 5.608,22.5 5.608,10.5"/>
+    <path d="M16,16.5 L5.608,10.5 M16,16.5 L26.392,10.5 M16,16.5 L16,28.5"/>
+  </g>
+</svg>

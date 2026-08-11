@@ -1,6 +1,6 @@
 
 import Head from "@/component/Head";
-import product1 from "../asset/IMG_6565 2.png";
+import product1 from "../asset/IMG_6565 2.webp";
 
 import {  Package, DollarSign, Truck } from "lucide-react";
 
@@ -9,7 +9,11 @@ export default function FbmService() {
 
   return (
     <>
-      <Head title=" BlackBoxPreps | FBM service"  />
+      <Head
+        title="FBM & Wholesale Fulfillment | BlackBoxPreps"
+        description="Merchant-fulfilled pick, pack and ship for Amazon FBM and wholesale orders, handled from our Delaware prep center."
+        canonical="/service/fbm"
+      />
     
       <section className="bg-gray-50 py-16 mt-16 px-6">
         {/* Heading */}
@@ -33,7 +37,7 @@ export default function FbmService() {
   <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
     {/* Image Section */}
     <div className="flex-shrink-0">
-      <img
+      <img loading="lazy" decoding="async"
         src={product1}
         alt="FBM Illustration"
         className="w-72 h-auto rounded-xl object-cover shadow-md"

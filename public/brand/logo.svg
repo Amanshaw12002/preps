@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="256" height="256" role="img" aria-label="BlackBoxPreps">
+  <title>BlackBoxPreps</title>
+  <!-- Wireframe cube, corner-on. A regular hexagon of radius 12 about (16,16.5)
+       plus the near corner's three edges running to the alternating vertices.
+       Mitred joins and butt caps: the corners come to a point and the interior
+       arms stop flat on the shell.
+
+       Standard cut, for use at 24px and above. Below that use logo-small.svg,
+       which carries a heavier stroke — at small sizes this weight closes up. -->
+  <g fill="none" stroke="#0a0a0a" stroke-width="1.9" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="8">
+    <polygon points="16,4.5 26.392,10.5 26.392,22.5 16,28.5 5.608,22.5 5.608,10.5"/>
+    <path d="M16,16.5 L5.608,10.5 M16,16.5 L26.392,10.5 M16,16.5 L16,28.5"/>
+  </g>
+</svg>

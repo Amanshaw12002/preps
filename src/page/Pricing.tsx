@@ -84,7 +84,11 @@ export default function Pricing() {
 
   return (
     <>
-      <Head title="BlackBoxPreps | Transparent Pricing" />
+      <Head
+        title="Pricing | BlackBoxPreps Amazon Prep Center"
+        description="Transparent per-unit pricing for Amazon FBA and FBM prep — receiving, labeling, bundling, polybagging and storage. No hidden fees."
+        canonical="/pricing"
+      />
 
       {/* ——— Hero band ——— */}
       <section className="relative overflow-hidden bg-[#0a0a0a] pb-40 pt-32 sm:pb-74 sm:pt-40">
@@ -139,7 +143,7 @@ export default function Pricing() {
         >
           <motion.span
             variants={fadeUp}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] text-red-400 backdrop-blur-sm"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-red-400 backdrop-blur-sm"
           >
             <Sparkles className="h-3.5 w-3.5" />
             OUR PRICING
@@ -186,7 +190,8 @@ export default function Pricing() {
           {/* Online Arbitrage */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:mt-8 sm:p-7"
+            whileHover={{ y: -6 }}
+            className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-[border-color,box-shadow,background-color,color] duration-500 hover:shadow-2xl sm:mt-8 sm:p-7"
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-700">
@@ -248,7 +253,7 @@ export default function Pricing() {
               >
                 Get Started
               </Link>
-              <p className="mt-3 text-center text-[11px] italic text-gray-400">
+              <p className="mt-3 text-center text-xs italic text-gray-400">
                 *Box price not included
               </p>
             </div>
@@ -257,12 +262,13 @@ export default function Pricing() {
           {/* Wholesale & Private Label — featured */}
           <motion.div
             variants={fadeUp}
-            className="relative flex flex-col rounded-2xl border border-red-900/50 bg-[#111111] p-6 shadow-[0_20px_60px_-10px_rgba(220,38,38,0.45),0_8px_24px_-8px_rgba(220,38,38,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_80px_-10px_rgba(220,38,38,0.55),0_10px_30px_-8px_rgba(220,38,38,0.45)] sm:p-7"
+            whileHover={{ y: -6 }}
+            className="relative flex flex-col rounded-2xl border border-red-900/50 bg-[#111111] p-6 shadow-[0_20px_60px_-10px_rgba(220,38,38,0.45),0_8px_24px_-8px_rgba(220,38,38,0.35)] transition-[border-color,box-shadow,background-color,color] duration-500 hover:shadow-[0_28px_80px_-10px_rgba(220,38,38,0.55),0_10px_30px_-8px_rgba(220,38,38,0.45)] sm:p-7"
           >
             {/* dark red wash across the top, behind the POPULAR badge */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-28 rounded-t-2xl bg-gradient-to-b from-red-950/80 via-red-950/35 to-transparent" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-16 rounded-t-2xl bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(220,38,38,0.35),transparent)]" />
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-4 py-1 text-[11px] font-bold tracking-wide text-white shadow-lg shadow-red-900/50">
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-4 py-1 text-xs font-bold tracking-wide text-white shadow-lg shadow-red-900/50">
               MOST POPULAR
             </span>
 
@@ -327,7 +333,7 @@ export default function Pricing() {
                 Get Started
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <p className="mt-3 text-center text-[11px] italic text-gray-500">
+              <p className="mt-3 text-center text-xs italic text-gray-500">
                 *Box price not included
               </p>
             </div>
@@ -336,7 +342,8 @@ export default function Pricing() {
           {/* Custom Plan */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl sm:p-7"
+            whileHover={{ y: -6 }}
+            className="flex flex-col mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-black/10 transition-[border-color,box-shadow,background-color,color] duration-500 hover:shadow-2xl sm:p-7"
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100 text-gray-900">
@@ -405,7 +412,7 @@ export default function Pricing() {
               >
                 Get a Custom Quote
               </Link>
-              <p className="mt-3 text-center text-[11px] italic text-gray-400">
+              <p className="mt-3 text-center text-xs italic text-gray-400">
                 Contact us for a personalized quote.
               </p>
             </div>
@@ -446,7 +453,8 @@ export default function Pricing() {
               <motion.div
                 key={fee.title}
                 variants={fadeUp}
-                className="group flex flex-col rounded-2xl border border-gray-200 bg-gray-50/60 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:bg-white hover:shadow-lg hover:shadow-red-100/50"
+                whileHover={{ y: -4 }}
+                className="group flex flex-col rounded-2xl border border-gray-200 bg-gray-50/60 p-5 transition-[border-color,box-shadow,background-color,color] duration-300 hover:border-red-200 hover:bg-white hover:shadow-lg hover:shadow-red-100/50"
               >
                 <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-red-700 shadow-sm transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white">
                   {fee.icon}
@@ -455,7 +463,7 @@ export default function Pricing() {
                   {fee.title}
                 </h3>
                 {fee.note && (
-                  <p className="mt-0.5 text-[11px] text-gray-500">{fee.note}</p>
+                  <p className="mt-0.5 text-xs text-gray-500">{fee.note}</p>
                 )}
                 <p className="mt-auto pt-4">
                   <span className="text-2xl font-bold text-gray-900">

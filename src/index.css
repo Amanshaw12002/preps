@@ -187,7 +187,63 @@
   font-style: normal;
 }
 
+/* THE TYPE SCALE, and the mobile floor.
+ *
+ * Measured at 390px across seven routes before this was written: 546 text
+ * elements at FOURTEEN distinct sizes, including 9px, 10px, 11px and 13px. The
+ * odd ones were not decisions — 9 vs 10 vs 11 for the same kind of micro-label
+ * is three people picking a number on three different days.
+ *
+ * The scale is Tailwind's own, and nothing outside it should be used:
+ *
+ *     text-xs    12px   micro-labels, chip subtitles, legal lines
+ *     text-sm    14px   secondary body, captions, form help   <- the workhorse
+ *     text-base  16px   body copy
+ *     text-lg    18px   lead paragraphs, card titles
+ *     text-xl    20px   small section headings
+ *     text-2xl   24px   section headings on mobile
+ *     text-3xl   30px   page headings on mobile
+ *     text-4xl   36px   hero on mobile
+ *
+ * 12px IS THE FLOOR, on every screen. Below it the text is not small, it is
+ * unread — and it was 32 elements' worth. `text-[9px]` and friends are gone;
+ * if a label does not fit at 12px the answer is fewer words or a wider box, not
+ * smaller type.
+ *
+ * Sizes should step through the scale at breakpoints (`text-sm sm:text-base`),
+ * never jump arbitrary values. There is deliberately no custom utility here —
+ * the scale is Tailwind's defaults, so the enforcement is this comment plus
+ * review, and an arbitrary `text-[Npx]` in a diff is the thing to question.
+ */
+
+/* HORIZONTAL OVERFLOW GUARD.
+ *
+ * `overflow-x: hidden` on `body` alone was not enough, and the way it failed is
+ * worth writing down because it is invisible in a desktop browser.
+ *
+ * Sections enter with framer-motion `initial={{ x: 50 }}`, so before one
+ * animates in it is parked 50px right of where it belongs — on a phone, past
+ * the edge of the screen. `body { overflow-x: hidden }` stops the body
+ * scrolling, but it does NOT stop mobile Chrome widening the layout viewport to
+ * contain that overflow: measured at 390px CSS width, the page reported
+ * `window.innerWidth` of 408. The fixed navbar is `w-full`, and a fixed element
+ * sizes against that viewport, so the bar rendered 408px wide and hung 18px off
+ * the right of the screen. It read as a broken navbar and was an off-screen
+ * animation start position two sections further down the page.
+ *
+ * `clip` is the fix rather than more `hidden`: it suppresses the scrollable
+ * overflow region instead of making it scrollable-but-hidden, and unlike
+ * `hidden` it does not turn the element into a scroll container — so
+ * `position: sticky` keeps working and Lenis is unaffected.
+ *
+ * On `html` as well as `body`, because the propagation rule means a value set
+ * only on `body` can be lifted to the viewport, which is how the original rule
+ * ended up doing less than it looked like it was doing.
+ *
+ * A SAFETY NET, not a licence to animate in from off-screen.
+ */
+html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 

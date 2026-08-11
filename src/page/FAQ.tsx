@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Head from "@/component/Head";
 
 interface FAQItem {
   question: string;
@@ -29,25 +30,64 @@ const faqs: FAQItem[] = [
       "Absolutely! You'll receive real-time updates and tracking information as soon as your order ships.",
   },
   {
+    // WAS: "You can reach us via our Contact page, email, or live chat."
+    // There is no /contact route and no chat widget anywhere in this app, so
+    // two of the three channels sent people nowhere — and they find that out by
+    // clicking, which is the worst way to learn it. The channels named here are
+    // the ones that exist. The 24/7 line is the client's and is kept, matching
+    // the About Us stat and the home page.
     question: "How can I contact support?",
     answer:
-      "You can reach us via our Contact page, email, or live chat. Our support team is available 24/7.",
+      "Email us at contact@blackboxprepcenter.com, call 201-628-6391, or send your shipment details through the quote form. Our support team is available 24/7.",
   },
 ];
 
-export default function FAQ() {
+interface FAQProps {
+  /**
+   * True only on the /faq ROUTE. This component is also embedded in the home
+   * page, and the two cases genuinely differ:
+   *
+   *  - Metadata. Setting <Head> unconditionally meant the home page rendered
+   *    the FAQ section and then retitled itself "FAQ | BlackBoxPreps" — caught
+   *    by the crawl, not by the typechecker, because it is perfectly valid code.
+   *  - Heading level. As its own page the title is the page's h1; embedded in
+   *    the home page it is one section among several and must be an h2, or the
+   *    home page has two h1s.
+   */
+  standalone?: boolean;
+}
+
+export default function FAQ({ standalone = false }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const Heading = standalone ? motion.h1 : motion.h2;
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
+    <>
+    {/* The /faq route carried the home page's title, because nothing set its
+        own. Only on the route — see the note on FAQProps. */}
+    {standalone && (
+      <Head
+        title="FAQ | BlackBoxPreps Amazon Prep Center"
+        description="Answers about our Amazon FBA and FBM prep services — what we handle, how long it takes, and how to reach us."
+        canonical="/faq"
+      />
+    )}
     <section className="max-w-7xl mx-auto">
-      <div className="max-w-5xl mx-auto flex flex-col sm:py-12 sm:pt-0 pt-8 px-4 sm:px-8 md:px-12 lg:px-16">
+      {/* pb-16 / sm:pb-20 added. There was NO bottom padding on mobile — only
+          `pt-8` — so the last question card sat flush against the dark block
+          that follows it and the two sections read as one, with a white card
+          apparently floating on a black background. */}
+      <div className="max-w-5xl mx-auto flex flex-col pt-8 pb-16 sm:py-12 sm:pt-0 sm:pb-20 px-4 sm:px-8 md:px-12 lg:px-16">
         {/* Title Section */}
         <div className="flex-between flex-col relative  overflow-hidden mb-6">
-          <motion.h2
+          {/* h1 on the route, h2 when embedded in the home page. As a page this
+              had no h1 at all, so search engines had no stated subject for it
+              and a screen reader's heading list started at level 2. */}
+          <Heading
             className="text-2xl sm:text-3xl md:text-4xl font-semibold p-2 text-center w-fit mx-auto text-black"
             initial="hidden"
             whileInView="visible"
@@ -71,8 +111,12 @@ export default function FAQ() {
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
-          </motion.h2>
-          <h2>Get a Quick Anwsers to Your Questions.</h2>
+          </Heading>
+          {/* Was an <h2> with "Anwsers" in it — a subtitle is not a heading,
+              and a spelling mistake in 32px type under the page title is the
+              kind of thing a visitor reads as carelessness about everything
+              else. */}
+          <p className="text-gray-600">Quick answers to the questions we get most.</p>
         </div>
 
         {/* FAQ List */}
@@ -93,7 +137,7 @@ export default function FAQ() {
               onHoverStart={() => toggleFAQ(index)}
               onHoverEnd={() => toggleFAQ(index)}
               onClick={() => toggleFAQ(index)}
-              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-white hover:shadow-md transition-all"
+              className="border p-4 sm:p-5 rounded-xl shadow-sm bg-white hover:shadow-md transition-[border-color,box-shadow,background-color,color] duration-300"
               whileHover={{scale:1.02, backgroundColor: "white" }}
               variants={{
                 hidden: { opacity: 0, y: 20 },
@@ -146,5 +190,6 @@ export default function FAQ() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

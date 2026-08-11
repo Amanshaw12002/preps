@@ -1,16 +1,9 @@
-import { motion, type Variants } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { useState, useEffect, useMemo, type ReactElement } from 'react';
-import { Link } from 'react-router-dom';
 
 interface Point {
   x: number;
   y: number;
-}
-
-interface TextState {
-  b1: string;
-  b2: string;
 }
 
 /* Falling light streaks — left position, streak height, fall duration, start delay, red vs white */
@@ -27,90 +20,145 @@ const beams = [
 
 const TAGLINE = 'Build for prep work';
 
-export default function IsometricHero(): ReactElement {
-  const [text, setText] = useState<TextState>({ b1: 'BLACKBOX', b2: 'PREPS' });
-  const [typed, setTyped] = useState<string>('');
+/* The rotating line under the tagline. Every one is lifted from the site's own
+   copy — `grep` over src for the service vocabulary — rather than invented,
+   because a wordmark listing a service the company does not offer is the same
+   credibility problem as an unverifiable statistic, just in motion.
 
-  // Typewriter effect for the tagline — types out, then loops
+   ALL CONTINUOUS VERBS, no nouns. The line reads as work happening right now,
+   and "inspection" next to "polybagging" reads as a price list instead. Where
+   the site's word is a noun the verb form is used: inspection -> inspecting,
+   storage -> storing, removals -> removing, shipment prep -> prepping.
+
+   CASE IS WRITTEN INTO THE STRINGS, and `text-transform` is off. `capitalize`
+   would have been the one-line way to get sentence case and it lowercases the
+   rest of every word — "FNSKU labeling" comes out as "Fnsku Labeling", which
+   is a real Amazon term rendered as a typo. The list is the only place the
+   casing is decided. */
+const PREP_WORDS = [
+  'Receiving',
+  'Inspecting',
+  'Labeling',
+  'FNSKU labeling',
+  'Polybagging',
+  'Bundling',
+  'Quality checking',
+  'Prepping shipments',
+  'Storing',
+  'Removing',
+];
+
+/* The cube, its tiles, the edge trace and the scan sweep all run on one 8s
+   loop. The word is HALF of that rather than a number picked by feel, so it
+   lands on the same beat as the hero above it instead of drifting against it.
+   It was a third, and against the eight-second cube that still read as hurried. */
+const CUBE_CYCLE_MS = 8000;
+const WORD_MS = CUBE_CYCLE_MS / 2;
+
+/* THE DOTS ARE A LOADING INDICATOR, not punctuation, so they cycle . / .. / ...
+   on their own clock instead of arriving with the word and sitting still. They
+   are deliberately NOT part of the staggered string any more: a character in
+   that list animates once on entry and is then finished, which is the opposite
+   of what a loading indicator is for. */
+const DOT_MS = 420;
+/* The word has to have finished arriving before it can look like it is working
+   on something — 0.045s per character plus the 0.5s each one takes. */
+const DOT_START_MS = 900;
+
+/* Same shape as the navbar wordmark (`textVariants` in Navbar.tsx): each
+   character rises from y:20 with `easeOut` over 0.5s, one after another. That
+   one is a mount-only animation so it needs no exit; this one rotates, so it
+   gains one — and the exit goes UP, continuing the direction the letters were
+   already travelling. Leaving downward is what made the previous version read
+   as falling.
+
+   The stagger is 0.045s rather than the navbar's 0.1s because these strings run
+   to 18 characters against "BlackBoxPreps"'s 13, and at 0.1s the last letter of
+   "Prepping shipments" would not have arrived before the word was due to
+   leave. */
+const wordVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.045 } },
+  exit: { opacity: 0, y: -12, transition: { duration: 0.3, ease: 'easeIn' } },
+};
+
+const charVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
+
+type HeroProps = {
+  /** fill the viewport — used when this runs as the intro splash rather than
+      as the sign-off band at the foot of a page */
+  fullHeight?: boolean;
+};
+
+export default function IsometricHero({ fullHeight = false }: HeroProps): ReactElement {
+  /* a constant now, not state — nothing rewrites the wordmark any more */
+  const text = { b1: 'BLACKBOX', b2: 'PREPS' };
+  const [typed, setTyped] = useState<string>('');
+  /* -1 = the rotation has not started; the tagline is still being typed */
+  const [word, setWord] = useState<number>(-1);
+
+  /* Typewriter for the tagline, ONCE, then it hands off to the rotating word
+     below. It used to retype itself every 6 seconds; with a word cycling
+     underneath, a line that also keeps rewriting itself is two things moving
+     for no reason, and the eye cannot settle on either. */
   useEffect(() => {
     let i = 0;
     let typingId: ReturnType<typeof setInterval>;
-    let loopId: ReturnType<typeof setTimeout>;
 
-    const startTyping = () => {
-      i = 0;
-      setTyped('');
+    const kickoff = setTimeout(() => {
       typingId = setInterval(() => {
         i += 1;
         setTyped(TAGLINE.slice(0, i));
         if (i >= TAGLINE.length) {
           clearInterval(typingId);
-          // hold, then retype
-          loopId = setTimeout(startTyping, 6000);
+          setWord(0);
         }
       }, 90);
-    };
-
-    const kickoff = setTimeout(startTyping, 900);
+    }, 900);
 
     return () => {
       clearTimeout(kickoff);
-      clearTimeout(loopId);
       clearInterval(typingId);
     };
   }, []);
 
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
-
-  // Text scramble animation logic
+  /* The rotation itself. Driven off an index rather than off the word, so the
+     AnimatePresence key advances even if the list ever repeats an entry —
+     keying on the string would make two identical neighbours one element that
+     never re-enters, and the animation would silently stop for that beat. */
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    let scrambleIntervalId: ReturnType<typeof setInterval>;
-    let loopIntervalId: ReturnType<typeof setInterval>;
+    if (word < 0) return;
+    const id = setInterval(() => setWord((n) => n + 1), WORD_MS);
+    return () => clearInterval(id);
+  }, [word < 0]);
 
-    const scramble = () => {
-      const T1 = 'BLACKBOX';
-      const T2 = 'PREPS';
-      const CH = '1234567890';
-      const total = 1400;
-      const step = 45;
-      let el = 0;
-
-      clearInterval(scrambleIntervalId);
-
-      scrambleIntervalId = setInterval(() => {
-        el += step;
-        const p = Math.min(1, el / total);
-        const mk = (t: string) =>
-          t.split('').map((c, i) => (i < p * t.length ? c : CH[Math.floor(Math.random() * CH.length)])).join('');
-
-        if (p >= 1) {
-          clearInterval(scrambleIntervalId);
-          setText({ b1: T1, b2: T2 });
-        } else {
-          setText({ b1: mk(T1), b2: mk(T2) });
-        }
-      }, step);
-    };
-
-    timeoutId = setTimeout(() => {
-      scramble();
-      loopIntervalId = setInterval(() => scramble(), 8000);
-    }, 5600);
-
+  /* The loading dots. Keyed on `word`, so every new term starts from none and
+     counts up again — a cycle left running across the swap would hand the
+     incoming word a half-finished ".." and the two would never line up. */
+  const [dots, setDots] = useState(0);
+  useEffect(() => {
+    if (word < 0) return;
+    setDots(0);
+    let cycle: ReturnType<typeof setInterval>;
+    const begin = setTimeout(() => {
+      setDots(1);
+      cycle = setInterval(() => setDots((d) => (d % 3) + 1), DOT_MS);
+    }, DOT_START_MS);
     return () => {
-      clearTimeout(timeoutId);
-      clearInterval(scrambleIntervalId);
-      clearInterval(loopIntervalId);
+      clearTimeout(begin);
+      clearInterval(cycle);
     };
-  }, []);
+  }, [word]);
+
+
+  /* The digit scramble on BLACKBOXPREPS is gone. It rewrote the wordmark into
+     random digits every 8 seconds, so the company's name spent part of every
+     cycle reading as "31745820 62479" — and the shine sweep, the cursor and now
+     the rotating word already give this block its motion. A logo is the one
+     thing on a page that should never be illegible. */
 
   // Geometry calculations mapped to useMemo so they only compute once
   const geometry = useMemo(() => {
@@ -279,7 +327,11 @@ export default function IsometricHero(): ReactElement {
         className="hero-wrapper"
         style={{
           position: 'relative',
-          minHeight: '50vh',
+          /* The gradient is sized to THIS box, and the splash paints the same
+             one behind it. At 50vh inside a full-screen overlay the two
+             ellipses are different sizes and meet in a visible band across the
+             middle, so the intro has to own the whole viewport. */
+          minHeight: fullHeight ? '100vh' : '50vh',
           width: '100%',
           overflow: 'hidden',
           background: 'radial-gradient(ellipse 90% 70% at 50% 42%, #180305 0%, #0a0203 45%, #030102 100%)',
@@ -420,16 +472,23 @@ export default function IsometricHero(): ReactElement {
           <div style={{ position: 'relative', zIndex: 1 }}>
             
             <div style={{ position: 'relative', overflow: 'hidden' }}>
-              <h1 style={{ 
-                margin: 0, 
-                fontSize: 'clamp(34px, 6.5vw, 78px)', 
-                fontWeight: 700, 
-                letterSpacing: '-0.01em', 
-                color: '#f6eaea', 
+              {/* A <p>, not an <h1>. This block sits OUTSIDE <Routes> in
+                  App.tsx, so it renders on every page — which gave every page
+                  on the site two h1s, one of them the same brand wordmark
+                  everywhere. Two h1s split the page's stated subject in half,
+                  and the duplicate one said nothing about the page it was on.
+                  Styling is unchanged; only the tag is, hence the explicit
+                  margin/font reset a <p> needs and an <h1> did not. */}
+              <p style={{
+                margin: 0,
+                fontSize: 'clamp(34px, 6.5vw, 78px)',
+                fontWeight: 700,
+                letterSpacing: '-0.01em',
+                color: '#f6eaea',
                 lineHeight: 1
               }}>
                 {text.b1}<span style={{ color: '#ff3b45' }}>{text.b2}</span>
-              </h1>
+              </p>
               <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
                 <div style={{ position: 'absolute', top: '-20%', left: 0, width: '32%', height: '140%', background: 'linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent)', mixBlendMode: 'screen', animation: 'shineSweep 5s ease-in-out infinite 2s' }}></div>
               </div>
@@ -439,36 +498,88 @@ export default function IsometricHero(): ReactElement {
           <p style={{ position: 'relative', zIndex: 1, margin: 0, fontFamily: '"JetBrains Mono", monospace', fontSize: 'clamp(12px, 1.6vw, 15px)', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#b98a8d' }}>
             {typed}<span style={{ display: 'inline-block', width: '0.55em', height: '1em', marginLeft: '6px', verticalAlign: 'text-bottom', background: '#ff3b45', animation: 'cursorBlink 1.1s steps(1) infinite' }}></span>
           </p>
+
+          {/* The rotating word. On its OWN line, not appended to the tagline:
+              the tagline is centred, so a word growing from "storage" to
+              "quality checks" beside it would shove the whole line sideways on
+              every change. Alone it only re-centres itself, which is what the
+              effect looks like everywhere it is done well.
+
+              The row keeps a fixed height so nothing below it moves as words
+              swap, and `mode="wait"` means one word is fully gone before the
+              next arrives — overlapping them cross-fades two strings on top of
+              each other and reads as a smear rather than a change. */}
+          <div
+            aria-hidden
+            style={{
+              position: 'relative', zIndex: 1, height: '1.4em', marginTop: '10px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <AnimatePresence mode="wait">
+              {word >= 0 && (
+                <motion.span
+                  key={word}
+                  variants={wordVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  style={{
+                    display: 'inline-flex',
+                    fontFamily: '"JetBrains Mono", monospace',
+                    fontSize: 'clamp(11px, 1.4vw, 13px)',
+                    /* 0.22em was set for all-caps; at sentence case that wide a
+                       track pulls the letters apart into separate marks */
+                    letterSpacing: '0.12em',
+                    color: '#ff6b73',
+                  }}
+                >
+                  {/* `Array.from`, not `split('')` — the latter breaks a
+                      surrogate pair into two lone halves that then animate
+                      apart. Nothing here needs it today; the next word added
+                      might. */}
+                  {Array.from(PREP_WORDS[word % PREP_WORDS.length]).map((ch, i) => (
+                    <motion.span
+                      key={i}
+                      variants={charVariants}
+                      /* inline-block so y actually moves it, `pre` so the space
+                         in "Quality checking" survives as its own unit */
+                      style={{ display: 'inline-block', whiteSpace: 'pre' }}
+                    >
+                      {ch}
+                    </motion.span>
+                  ))}
+                  {/* A PLAIN span, not a motion one: any motion child inside a
+                      variant parent inherits `hidden`/`visible` and would be
+                      swept into the entrance stagger, which is exactly what the
+                      dots must not do — they have to keep moving after the word
+                      has settled.
+
+                      Fixed width, left-aligned. Letting it size to its content
+                      would nudge the whole centred line sideways three times a
+                      second, which is far more distracting than the dots. */}
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: '1.5em',
+                      textAlign: 'left',
+                      whiteSpace: 'pre',
+                    }}
+                  >
+                    {'.'.repeat(dots)}
+                  </span>
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
-        <motion.div
-            variants={fadeUp}
-            className="flex flex-col items-center gap-3 sm:flex-row my-12 relative z-10"
-          >
-            <Link
-              to="/quote"
-              className="group inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_15px_rgba(155,17,30,0.5)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_0_25px_rgba(155,17,30,0.8)]"
-            >
-             <span className='text-white bg-transparent'> Start Sending Inventory</span>
-              <ArrowRight className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/pricing"
-              className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-transparent px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:text-red-500 hover:border-red-500 hover:shadow-[0_0_15px_rgba(155,17,30,0.3)]"
-            >
-             <span className='text-white bg-transparent'> Check Pricing</span>
-            </Link>
-          </motion.div>
-          
-          <motion.div variants={fadeUp} className='flex flex-col items-center relative z-10'>
-            <h2 className="font-inter text-sm font-semibold tracking-tight text-gray-300 sm:text-md">
-               Hand's off your prep work.
-            </h2>
-            <p className="mt-2 text-sm text-gray-400">
-              Start professional fulfillment solutions tailored to scale your
-              e-commerce business.
-            </p>
-          </motion.div>
+        {/* The two CTAs and the "Hand's off your prep work." pair used to sit
+            here. Removed: this block renders from App.tsx on EVERY page, so
+            "Start Sending Inventory" and "Check Pricing" appeared a second time
+            below the page's own CTAs, and on /quote and /pricing they pointed
+            at the page you were already on. The wordmark stays; it is the
+            sign-off, not a call to action. */}
       </div>
     </>
   );

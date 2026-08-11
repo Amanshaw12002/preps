@@ -1,5 +1,5 @@
 import { ShieldCheck, TrendingUp, Clock } from "lucide-react";
-import check from "../asset/check.jpg";
+import check from "../asset/check.webp";
 import { motion,type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Head from "@/component/Head";
@@ -206,14 +206,24 @@ export default function FbaService() {
 
   return (
     <>
-  <Head title=" BlackBoxPreps | FBA service"  />
+  <Head
+    title="FBA & WFS Prep Services | BlackBoxPreps"
+    description="Amazon FBA and Walmart WFS prep: receiving, inspection, FNSKU labeling, bundling, polybagging and shipment creation from Delaware."
+    canonical="/service/fba"
+  />
   
         <section className="py-16 px-6">
         <AnimatedSection className="max-w-4xl mx-auto flex items-center">
           <motion.div variants={itemVariants} className="flex text-5xl font-inter font-medium items-start flex-col mt-12">
-            <h2 className="text-gray-900">Simplified Workflow</h2>
-            <h2 className="text-gray-900">for Your Amazon</h2>
-            <h2 className="text-gray-900">FBA Journey</h2>
+            {/* One h1, three lines — was three h2s spelling out one sentence,
+                which left the page with no h1 at all and put three fragments
+                into the heading outline ("for Your Amazon" is not a heading).
+                The spans are block-level, so the three lines look identical. */}
+            <h1 className="text-gray-900">
+              <span className="block">Simplified Workflow</span>
+              <span className="block">for Your Amazon</span>
+              <span className="block">FBA Journey</span>
+            </h1>
             <motion.p 
               variants={itemVariants}
               className="mt-4 text-gray-700 text-sm font-open-sans max-w-xl"
@@ -233,7 +243,7 @@ export default function FbaService() {
               className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-6xl mx-auto px-6 py-12 bg-white rounded-2xl shadow-sm"
             >
               <motion.div variants={fadeInUp} className="flex-shrink-0">
-                <motion.img
+                <motion.img loading="lazy" decoding="async"
                   whileHover={{ scale: 1.05 }}
                   src={check}
                   alt="FBA Prep Illustration"

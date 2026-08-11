@@ -3,16 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/blackbox.png" />
-    
-    <!-- Page Title -->
-     <meta
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- STATIC TITLE. It was set only by Head.tsx at runtime, so every crawler
+         that does not execute JavaScript — LinkedIn, Slack, X, most link
+         previews — saw a page with no title at all. Head.tsx still overrides it
+         per route for the ones that do. -->
+    <title>BlackBoxPreps | Amazon FBA Prep Center in Delaware</title>
+    <meta
       name="description"
-      content="Professional Amazon FBA Prep Services – Streamline your workflow with labeling, bundling, and storage handled efficiently."
+      content="Amazon FBA prep services from Delaware's tax-free zone. Receiving, inspection, FNSKU labeling, bundling, storage and fast shipping to Amazon fulfillment centers."
     />
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
+    <link rel="canonical" href="https://blackboxpreps.com/" />
+
+    <!-- Social. og:image is an absolute URL because crawlers do not resolve
+         relative paths. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BlackBoxPreps" />
+    <meta property="og:title" content="BlackBoxPreps | Amazon FBA Prep Center in Delaware" />
+    <meta
+      property="og:description"
+      content="Receiving, inspection, FNSKU labeling and fast shipping to Amazon fulfillment centers — from Delaware's tax-free zone."
+    />
+    <meta property="og:url" content="https://blackboxpreps.com/" />
+    <meta property="og:image" content="https://blackboxpreps.com/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BlackBoxPreps | Amazon FBA Prep Center in Delaware" />
+    <meta
+      name="twitter:description"
+      content="Receiving, inspection, FNSKU labeling and fast shipping to Amazon fulfillment centers."
+    />
+    <meta name="twitter:image" content="https://blackboxpreps.com/brand/og-image.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+
+    <!-- FONTS. This was an @import inside a <style> block pulling SEVEN
+         families — Comfortaa, Epunda Sans, Inter, Montserrat, Open Sans,
+         Outfit, Raleway. Only Inter and Open Sans are used anywhere in the app.
+         An @import inside a stylesheet is also the worst way to load them: the
+         browser cannot discover it until the CSS has parsed, so it serialises
+         two round trips before a single glyph is requested.
+
+         Now: preconnect so the connection is warm, one <link> the preload
+         scanner can see immediately, and only the two families and weights
+         that are actually rendered. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Loaded ASYNCHRONOUSLY. As a plain stylesheet this blocked rendering for
+         a measured 950 ms on mobile: the browser will not paint until it has
+         fetched and parsed it, over a third-party connection. `as="style"`
+         plus swapping rel on load fetches it at high priority without holding
+         up the first paint, and `display=swap` means text shows in the
+         fallback face immediately rather than staying invisible. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      />
+    </noscript>
+
+    <!-- Structured data. A prep centre with an address and a service list is
+         exactly what LocalBusiness describes, and none of it was here before.
+         Address, phone and email are taken from the site footer — nothing here
+         is invented. No aggregateRating: that would be a claim about reviews
+         that do not exist, and Google penalises it. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "BlackBoxPreps",
+        "description": "Amazon FBA prep services from Delaware's tax-free zone — receiving, inspection, FNSKU labeling, bundling, storage and shipment prep.",
+        "url": "https://blackboxpreps.com/",
+        "logo": "https://blackboxpreps.com/brand/logo-512.png",
+        "image": "https://blackboxpreps.com/brand/og-image.png",
+        "telephone": "+1-201-628-6391",
+        "email": "contact@blackboxprepcenter.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "9 Brookside Drive, Unit B",
+          "addressLocality": "Wilmington",
+          "addressRegion": "DE",
+          "postalCode": "19804",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://x.com/BlackboxPreps",
+          "https://www.instagram.com/blackboxprepco/"
+        ],
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Prep services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "FBA & WFS prep",
+                "description": "Receiving, inspection, FNSKU labeling, bundling and shipment prep for Amazon fulfillment."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "FBM fulfillment",
+                "description": "Merchant-fulfilled pick, pack and ship."
+              }
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,7 +1,6 @@
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../asset/blackbox.png";
 import {  MapPin, Phone, Mail } from "lucide-react";
 
 const fadeUp: Variants = {
@@ -22,6 +21,17 @@ const quickLinks = [
   { name: "Home", to: "/" },
   { name: "About Us", to: "/aboutUs" },
   { name: "Get a Quote", to: "/quote" },
+  // /faq was in sitemap.xml and linked from nowhere on the site. A page only
+  // a crawler can find is a page nobody reads.
+  { name: "FAQ", to: "/faq" },
+];
+
+// These were three <a href="#"> — a dead Privacy Policy on a site that asks
+// people to ship it their inventory.
+const legalLinks = [
+  { name: "Privacy Policy", to: "/privacy" },
+  { name: "Terms of Service", to: "/terms" },
+  { name: "Cookie Policy", to: "/cookies" },
 ];
 
 const serviceLinks = [
@@ -30,8 +40,10 @@ const serviceLinks = [
   { name: "Pricing", to: "/pricing" },
 ];
 
+// Facebook was here with `to: ""`, which navigates to the current page. An icon
+// that looks like a profile link and goes nowhere reads as an abandoned
+// business. Add it back the moment there is a URL for it.
 const socials = [
-  { icon: FaFacebook, label: "Facebook", to: "" },
   { icon: FaTwitter, label: "Twitter", to: "https://x.com/BlackboxPreps" },
   {
     icon: FaInstagram,
@@ -59,47 +71,24 @@ export default function Footer() {
         >
           </motion.div>
 
-        {/* Link columns */}
+        {/* Link columns.
+            THREE, not four: the brand block — mark, wordmark and the one-line
+            description — used to sit in the first cell. It was the third copy
+            of the wordmark within one screen (the bar above, the giant
+            BLACKBOXPREPS sign-off directly above this, then here), and the
+            description repeated what that sign-off and the site's own meta
+            description already say. The socials it carried moved to the bottom
+            bar, beside the legal links. */}
         <motion.div
-          className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          {/* Brand */}
-          <motion.div variants={fadeUp}>
-            <Link to="/" className="flex items-center gap-2">
-              <img
-                src={logo}
-                alt="BlackBoxPreps logo"
-                className="h-10 w-10 rounded-lg object-cover"
-              />
-              <span className="font-inter text-xl font-semibold text-white">
-                BlackBox<span className="text-red-500">Preps</span>
-              </span>
-            </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
-              Your Amazon prep center in Delaware's tax-free zone — receiving,
-              inspection, labeling, and shipment prep handled for you.
-            </p>
-            <div className="mt-5 flex gap-2.5">
-              {socials.map((social) => (
-                <Link
-                  key={social.label}
-                  to={social.to}
-                  aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400 transition-all duration-300 hover:border-red-600/50 hover:bg-red-600 hover:text-white"
-                >
-                  <social.icon className="h-4 w-4" />
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Quick links */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
               Links
             </h3>
             <ul className="mt-5 space-y-3">
@@ -119,7 +108,7 @@ export default function Footer() {
 
           {/* Services */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
@@ -139,7 +128,7 @@ export default function Footer() {
 
           {/* Contact */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
               Get in Touch
             </h3>
             <ul className="mt-5 space-y-4">
@@ -172,7 +161,10 @@ export default function Footer() {
                   href="mailto:contact@blackboxprepcenter.com"
                   className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                 >
-                  blackboxprepcenter.com
+                  {/* Was "blackboxprepcenter.com" over a mailto: — a link that
+                      looks like a website and opens a mail client. Show the
+                      address it actually sends to. */}
+                  contact@blackboxprepcenter.com
                 </a>
               </li>
             </ul>
@@ -181,21 +173,38 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 md:flex-row">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             © {new Date().getFullYear()} BlackBoxPreps. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-xs text-gray-500 transition-colors duration-300 hover:text-white"
+          {/* Legal links and socials share the right-hand end of the bottom
+              bar. They stay in SEPARATE nav landmarks with their own labels —
+              one wrapper would announce "Privacy Policy, Terms of Service,
+              Cookie Policy, Twitter, Instagram" as one list, which is two
+              unrelated things read as one. */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+            <nav aria-label="Legal" className="flex gap-6">
+              {legalLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  className="text-xs text-gray-400 transition-colors duration-300 hover:text-white"
                 >
-                  {item}
-                </a>
-              )
-            )}
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+            <nav aria-label="Social" className="flex gap-2.5">
+              {socials.map((social) => (
+                <Link
+                  key={social.label}
+                  to={social.to}
+                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400 transition-all duration-300 hover:border-red-600/50 hover:bg-red-600 hover:text-white"
+                >
+                  <social.icon className="h-3.5 w-3.5" />
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </div>

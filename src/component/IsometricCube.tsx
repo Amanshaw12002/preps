@@ -21,7 +21,7 @@ interface IsometricCubeProps {
  * multiple instances can coexist on the same page.
  */
 export default function IsometricCube({
-  size = 560,
+  size = 420,
   maxWidth = "78vw",
   className,
   style,

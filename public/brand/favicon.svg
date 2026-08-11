@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Favicon. The mark sits on a white rounded tile rather than on
+       transparency, and that is deliberate: a black mark on a transparent
+       background disappears entirely in a dark-themed tab strip, which is
+       where most people will see it. The tile guarantees contrast in both. -->
+  <rect width="32" height="32" rx="7" fill="#ffffff"/>
+  <g transform="translate(16 16.5) scale(0.82) translate(-16 -16.5)"
+     fill="none" stroke="#0a0a0a" stroke-width="3.4" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="8">
+    <polygon points="16,5.6 25.53,11.1 25.53,22.1 16,27.6 6.47,22.1 6.47,11.1"/>
+    <path d="M16,16.6 L6.47,11.1 M16,16.6 L25.53,11.1 M16,16.6 L16,27.6"/>
+  </g>
+</svg>
