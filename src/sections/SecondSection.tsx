@@ -176,7 +176,7 @@ export default function SecondSection() {
           <p className="text-xs text-gray-500">We are available 24/7.</p>
           <a
             href="mailto:contact@blackboxprepcenter.com"
-            className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700"
+            className="group inline-flex items-center gap-2 rounded-xl border-2 border-gray-900  px-5 py-3 text-sm font-semibold text-gray-900 transition-all duration-300 hover:bg-gray-200"
           >
             <Mail className="h-4 w-4" />
             Contact Us

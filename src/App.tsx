@@ -1,10 +1,11 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from "@/component/Navbar";
 import Footer from './component/footer';
 import ScrollToTop from './component/ScrollToTop';
+import HashScroll from './component/HashScroll';
 import { useLenis } from './component/lenis';
-import IntroSplash from './component/IntroSplash';
+import IntroSplash, { introPending } from './component/IntroSplash';
 import NavTransition from './component/NavTransition';
 
 /**
@@ -22,11 +23,11 @@ import NavTransition from './component/NavTransition';
  */
 import Home from './page/Home'
 
-/* NOT lazy any more, and not by preference. `IntroSplash` imports this
-   statically — it is the first thing a visitor sees, so a separate chunk would
-   put a network round trip in front of the intro — and Rollup then folds the
-   module into the entry regardless, leaving `lazy()` here as a dynamic import
-   that splits nothing and a build warning saying so. */
+/* Static, as it is in git. It was briefly forced static because `IntroSplash`
+   imported it: a module both statically and dynamically imported is folded into
+   the entry chunk anyway, so `lazy()` split nothing and Rollup warned about it.
+   The splash uses `IsometricCube` again, so that constraint is gone — this is a
+   plain import now rather than a forced one. */
 import IsometricHero from './component/logoHook'
 
 const Pricing = lazy(() => import('./page/Pricing'))
@@ -47,14 +48,41 @@ const NotFound = lazy(() => import('./page/NotFound'))
    an empty block of roughly the right height does not. */
 const RouteFallback = () => <div style={{ minHeight: '60vh' }} aria-busy="true" />
 
+/**
+ * THE PAGE'S ENTRANCE ANIMATIONS ARE REPLAYED WHEN THE INTRO LIFTS, and the
+ * `key` below is the whole mechanism.
+ *
+ * `HeroSection` and most of the home page animate with `animate`, not
+ * `whileInView` — so they fire on MOUNT, which happens underneath an opaque
+ * full-screen overlay. Measured: at 458ms the page's `<h1>` is at opacity 0 and
+ * y 24, and by the time the overlay lifts at 9.2s it is already opacity 1 with
+ * no transform. Every entrance on the first screen was performed to nobody, and
+ * the site was revealed fully settled.
+ *
+ * Flipping the key remounts the subtree, so those animations run again from
+ * their initial state. It fires at the START of the overlay's 0.8s fade, while
+ * it is still fully opaque — so the remount itself is invisible and the motion
+ * is already under way as the page appears, rather than starting from a static
+ * frame after it.
+ *
+ * The content stays MOUNTED the whole time rather than being withheld until the
+ * intro ends. Images, fonts and route chunks all fetch during those 8 seconds;
+ * deferring the mount would move that work to the moment of the reveal and buy
+ * a hitch. Re-running the animations is cheap, re-fetching the page is not.
+ */
 function App() {
   useLenis();
+  /* Held for exactly as long as the splash will run, from the splash's own
+     decision — see `introPending`. A second reading of sessionStorage here
+     would eventually disagree with it. */
+  const [held, setHeld] = useState(introPending);
   return (
     <NavTransition>
-      <IntroSplash />
-      <main className=' relative space-b-6 bg-white '>
+      <IntroSplash onDone={() => setHeld(false)} />
+      <main key={held ? 'held' : 'live'} className=' relative space-b-6 bg-white '>
         <Navbar />
         <ScrollToTop />
+        <HashScroll />
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />

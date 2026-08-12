@@ -373,7 +373,7 @@ export default function Navbar() {
           <li className="flex-between gap-4  ">
 
 
-              <Link to="/quote" className={`group overflow-hidden flex-between ml-42 rounded-xl w-fit  bg-transparent py-1 text-sm font-semibold  transition-all duration-300  ${inkStrong}`}>
+              <Link to="/quote" className={`group overflow-hidden flex-between ml-42 rounded-lg w-fit  bg-transparent  py-1 text-sm font-semibold  transition-all duration-300   ${inkStrong}`}>
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
               <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
@@ -508,14 +508,13 @@ export default function Navbar() {
                     Dashboard
                     <ChevronRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
                   </Link>
-                  <Link
-                    to="/quote"
-                    onClick={() => setOpen(false)}
-                    className="group flex flex-1 items-center justify-center gap-1 rounded-xl bg-gradient-to-r from-red-600 to-red-800 px-3 py-3 text-sm font-semibold text-white shadow-lg shadow-red-900/30 transition-all duration-300 hover:from-red-500 hover:to-red-700"
-                  >
-                    Get a Quote
-                    <MoveRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </Link>
+                  
+              <Link to="/quote" className={`group overflow-hidden flex-between ml-2 rounded-lg w-fit  bg-white  py-1 text-sm font-semibold  transition-all duration-300   text-red-600`}>
+                         <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
+
+              <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>
+              <MoveRight className="p-0.5 -translate-x-4 group-hover:translate-x-8 transition duration-700"/>
+            </Link>
                 </motion.li>
               </motion.ul>
             </motion.div>

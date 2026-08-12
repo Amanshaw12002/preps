@@ -60,9 +60,16 @@ const itemsImage = [
         
 {/* px-4 was missing entirely, so the grey card ran edge to edge on a phone
     while every other section on the page kept a margin — the kind of
-    inconsistency that reads as a broken container rather than a choice. */}
-<section className="max-w-7xl mx-auto ">
-  <div className="max-w-5xl w-full flex flex-col items-center justify-center  mx-auto px-4 py-6 sm:px-6 rounded-xl">
+    inconsistency that reads as a broken container rather than a choice.
+
+    WIDTH NOW MATCHES THE SCHEDULER, and it was measured rather than eyeballed:
+    at a 1280 viewport this frame rendered 880px wide (`sm:max-w-[55rem]`)
+    inside a 1024px wrapper (`max-w-5xl`), while the scheduler directly below
+    ran to 1248px. Two cards of the same kind, stacked, 368px apart — which
+    reads as one of them being broken rather than as a rhythm. Both are now
+    `max-w-7xl` with `px-4`, so they share an edge down the page. */}
+<section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+  <div className="flex w-full flex-col items-center justify-center">
 
 
      
@@ -126,7 +133,7 @@ const itemsImage = [
         border, the rounding and the background belong to the frame and the rail
         is a sidebar within it — which is also what the product it is showing
         actually looks like. */}
-    <div className='flex w-full flex-col sm:mt-8 sm:max-w-[55rem] sm:mx-auto sm:flex-row sm:overflow-hidden sm:rounded-xl sm:border sm:border-gray-300 sm:bg-white'>
+    <div className='flex w-full flex-col sm:mt-10 sm:flex-row sm:overflow-hidden sm:rounded-2xl sm:border sm:border-gray-200 sm:bg-white sm:shadow-sm'>
       {/* Tabs. grid-cols-2 for THREE tabs left the third one alone on a second
           row, off to the left, looking like a mistake. Three columns fit at
           360px because the pills are no longer a fixed w-24.
@@ -256,7 +263,17 @@ const itemsImage = [
                box around the screenshot that made the sidebar look bolted on
                rather than part of the same window. Kept on mobile, where there
                is no frame. */
-            className={`${itemSelected === index ? "block" : "hidden"} w-full max-w-[46rem] overflow-hidden rounded-sm border border-gray-400 sm:rounded-none sm:border-0`}
+            /* THE 46rem CAP IS GONE, not loosened. It existed to replace a
+               fixed `sm:w-[46rem]` — a hard 736px applied from the 640px
+               breakpoint, so between 640 and 736 the viewer was wider than the
+               screen and the whole page scrolled sideways. `max-w` fixed that
+               by letting it shrink. Now that the frame matches the scheduler's
+               width the cap does the opposite job: it holds the screenshot at
+               736px inside a ~1050px column and leaves a third of the card
+               empty. `w-full` + the parent's `min-w-0` keeps the shrink
+               behaviour that mattered, and the source is 1200px wide so filling
+               the column never upscales it. */
+            className={`${itemSelected === index ? "block" : "hidden"} w-full overflow-hidden rounded-sm border border-gray-400 sm:rounded-none sm:border-0`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={itemSelected === index ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5, ease: "easeOut" }}

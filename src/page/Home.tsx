@@ -376,7 +376,7 @@ export default function Home() {
               </span>
 
             </span>
-           <span className="">that you can spend your time, </span><br/>
+           <span className="">that you can spend time, </span><br/>
            <span>  where matters.</span>
           </motion.h2>
 
@@ -425,7 +425,7 @@ export default function Home() {
                 grey says "this is live" without changing what it is. */}
             <a
               href="mailto:contact@blackboxprepcenter.com"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700"
+              className="group inline-flex items-center gap-2 rounded-xl border-2 border-gray-900 px-5 py-3 text-sm font-semibold text-gray-900 transition-all duration-300 hover:bg-gray-200"
             >
               <Mail className="h-4 w-4" />
               Contact Us
@@ -524,7 +524,17 @@ export default function Home() {
 
       <Below><CustomCalendar /></Below>
 
-      <Below><FAQ /></Below>
+      {/* The anchor sits OUTSIDE the Suspense boundary, not inside `FAQ`. The
+          chunk is lazy, so an id within it does not exist until the chunk has
+          arrived — and the one moment anyone uses this link is a cold load from
+          another route, which is exactly when it has not. Out here the target
+          exists from the first render, and it resolves to the same offset
+          either way because the fallback reserves the section's place.
+          `scroll-mt-24` clears the fixed navbar for the native fallback path;
+          Lenis is given the same offset in `scrollToId`. */}
+      <div id="faq" className="scroll-mt-24">
+        <Below><FAQ /></Below>
+      </div>
       
     </>
   );

@@ -364,7 +364,7 @@ export default function HeroSection() {
           >
             Dashboard
           </Link>
-             <Link to="/quote" className={`group text-white overflow-hidden flex-between rounded-xl w-fit  bg-transparent py-1 text-sm font-semibold  transition-all duration-300  `}>
+             <Link to="/quote" className={`group text-red-600 bg-white overflow-hidden flex-between rounded-xl w-fit py-2 text-sm font-semibold  transition-all duration-300  `}>
                          <ChevronRight className=" -translate-x-6  group-hover:translate-x-4 transition duration-700"/>
 
               <span className=" py-1.5 px-4 rounded-lg -translate-x-4 group-hover:translate-x-4 transition duration-700">Send Inventory</span>

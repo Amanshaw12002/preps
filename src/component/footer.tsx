@@ -1,6 +1,7 @@
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { motion, type Variants } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { settleScrollTo } from "./lenis";
 import {  MapPin, Phone, Mail } from "lucide-react";
 
 const fadeUp: Variants = {
@@ -21,9 +22,15 @@ const quickLinks = [
   { name: "Home", to: "/" },
   { name: "About Us", to: "/aboutUs" },
   { name: "Get a Quote", to: "/quote" },
-  // /faq was in sitemap.xml and linked from nowhere on the site. A page only
-  // a crawler can find is a page nobody reads.
-  { name: "FAQ", to: "/faq" },
+  /* Points at the SECTION on the home page, not at the `/faq` route. The
+     answers are the same component either way (`Home.tsx` renders `page/FAQ`),
+     and sending someone to a whole page for a block they can read in place is
+     a navigation nobody asked for.
+     Consequence to keep in mind: the standalone `/faq` route is now linked
+     from nothing but the 404 page while still being listed in
+     `public/sitemap.xml` — a URL crawlers are told to index and no visitor
+     reaches. Removing that sitemap entry is the tidy end of this. */
+  { name: "FAQ", to: "/#faq" },
 ];
 
 // These were three <a href="#"> — a dead Privacy Policy on a site that asks
@@ -53,6 +60,35 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { pathname, hash } = useLocation();
+
+  /**
+   * Handles the one case a `<Link to="/#faq">` cannot: being clicked while the
+   * URL is ALREADY `/#faq`. React Router pushes an identical location, nothing
+   * in `useLocation` changes, `HashScroll`'s effect never re-runs, and the link
+   * is dead on the second click — which is precisely when someone has scrolled
+   * away and wants to come back.
+   *
+   * Returns undefined for every other link, so nothing else pays for this.
+   */
+  const onQuickLink = (to: string) => {
+    const [path, id] = to.split("#");
+    if (!id) return undefined;
+    return (e: React.MouseEvent) => {
+      const samePage = (path || "/") === pathname;
+      if (!samePage) return; // let the router navigate; HashScroll takes it
+      e.preventDefault();
+      /* Deliberately not conditional on `hash` matching. Scrolling to a section
+         you are already looking at is harmless; a link that does nothing is
+         not. */
+      void hash;
+      /* Same settling loop the cross-route path uses. A one-shot scroll from
+         here overshot the FAQ by 137px, because the calendar above it resizes
+         after the scroll lands. */
+      settleScrollTo(id);
+    };
+  };
+
   return (
     <footer className="relative overflow-hidden bg-[#0a0a0a]">
       {/* Ambient background */}
@@ -96,6 +132,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     to={item.to}
+                    onClick={onQuickLink(item.to)}
                     className="group inline-flex items-center gap-1.5 text-sm text-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     <span className="h-px w-0 bg-red-500 transition-all duration-300 group-hover:w-3" />
