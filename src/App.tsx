@@ -4,6 +4,7 @@ import Navbar from "@/component/Navbar";
 import Footer from './component/footer';
 import ScrollToTop from './component/ScrollToTop';
 import HashScroll from './component/HashScroll';
+import DeferUntilNear from './component/DeferUntilNear';
 import { useLenis } from './component/lenis';
 import IntroSplash, { introPending } from './component/IntroSplash';
 import NavTransition from './component/NavTransition';
@@ -23,12 +24,14 @@ import NavTransition from './component/NavTransition';
  */
 import Home from './page/Home'
 
-/* Static, as it is in git. It was briefly forced static because `IntroSplash`
-   imported it: a module both statically and dynamically imported is folded into
-   the entry chunk anyway, so `lazy()` split nothing and Rollup warned about it.
-   The splash uses `IsometricCube` again, so that constraint is gone — this is a
-   plain import now rather than a forced one. */
-import IsometricHero from './component/logoHook'
+/* LAZY, AND GATED ON THE VIEWPORT — see `DeferUntilNear` for the numbers.
+   This band sits ~6000px below the fold and drew 147 animated SVG tiles during
+   first paint. Eager, it cost 13 Lighthouse points and ~170ms of blocking time
+   on mobile.
+
+   `lazy()` splits cleanly now: `IntroSplash` imports `IsometricCube` directly,
+   not this module, so nothing pulls it back into the entry chunk. */
+const IsometricHero = lazy(() => import('./component/logoHook'))
 
 const Pricing = lazy(() => import('./page/Pricing'))
 const AboutUs = lazy(() => import('./page/AboutUs'))
@@ -101,7 +104,13 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-        <IsometricHero />
+        {/* 50vh matches the band's own `minHeight`, so the footer does not
+            jump when it arrives. */}
+        <DeferUntilNear minHeight="50vh">
+          <Suspense fallback={null}>
+            <IsometricHero />
+          </Suspense>
+        </DeferUntilNear>
         <Footer />
       </main>
     </NavTransition>

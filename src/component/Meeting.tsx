@@ -6,6 +6,18 @@ const CALENDLY_URL = "https://calendly.com/amanshaw12002/new-meeting";
 const WIDGET_SCRIPT = "https://assets.calendly.com/assets/external/widget.js";
 const CONTACT_EMAIL = "contact@blackboxprepcenter.com";
 
+/* The one method we call on the global the script installs. Typed narrowly and
+   optionally: the script is third-party and loaded at runtime, so treating it
+   as guaranteed is how a missing script becomes a thrown error inside an effect
+   rather than a widget that quietly does not appear. */
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget?: (opts: { url: string; parentElement: HTMLElement }) => void;
+    };
+  }
+}
+
 /**
  * Onboarding scheduler.
  *
@@ -72,15 +84,51 @@ export default function CustomCalendar() {
   useEffect(() => {
     if (!load) return;
 
-    // The widget script is global and initialises every matching container on
-    // the page. Guard against a second copy if this section ever mounts twice
-    // — under StrictMode in development it does.
+    /**
+     * THE WIDGET VANISHED AFTER LEAVING THE PAGE AND COMING BACK, and this is
+     * the whole reason there is an `init` here rather than just a script tag.
+     *
+     * Calendly's script scans the document for `.calendly-inline-widget` ONCE,
+     * when it loads. Appending it twice is wrong, so the guard below refuses —
+     * but on a remount that left nothing to initialise the NEW holder element.
+     * Measured on a round trip to /pricing and back: the holder had the class,
+     * the script tag was present, `window.Calendly` was a live object, and the
+     * box contained 0 iframes and 0 children. A fresh load and a hard reload
+     * both worked, which is what makes this easy to miss — it only fails on
+     * client-side navigation, which is every visit after the first.
+     *
+     * So: if the script is already there, initialise the widget ourselves
+     * instead of waiting for a scan that has already happened.
+     */
+    const init = (): boolean => {
+      const node = holder.current;
+      if (!node) return false;
+      /* Already populated — the script's own scan got there first, which is
+         what happens on a fresh load. Initialising again would append a second
+         iframe into the same box. */
+      if (node.querySelector("iframe")) return true;
+      const api = window.Calendly;
+      if (!api?.initInlineWidget) return false;
+      api.initInlineWidget({ url: CALENDLY_URL, parentElement: node });
+      return true;
+    };
+
+    if (init()) return;
+
     const existing = document.querySelector<HTMLScriptElement>(`script[src="${WIDGET_SCRIPT}"]`);
-    if (existing) return;
+    if (existing) {
+      /* Script is in the DOM but has not finished executing — the previous
+         mount added it moments ago. Wait for it rather than adding a second. */
+      existing.addEventListener("load", init, { once: true });
+      return () => existing.removeEventListener("load", init);
+    }
 
     const script = document.createElement("script");
     script.src = WIDGET_SCRIPT;
     script.async = true;
+    /* Belt and braces: on a fresh load the scan populates the box and `init`
+       returns early, so this only does work when the scan missed us. */
+    script.addEventListener("load", init, { once: true });
     document.body.appendChild(script);
 
     // Deliberately NOT removed on unmount. The old cleanup pulled the script
