@@ -1,8 +1,21 @@
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+/* THESE TWO ICONS USED TO COST 40% OF THE ENTRY CHUNK.
+   They were `import { FaInstagram, FaTwitter } from "react-icons/fa"`, and that
+   path is a barrel over the entire Font Awesome set — attributing the bundle
+   through its sourcemap, react-icons was 1,337 KB of the 3,288 KB of source in
+   the entry chunk, for two 14px glyphs in the footer. Nothing was wrong with
+   the icons; the import specifier was the whole problem.
+
+   lucide-react was already a dependency and already used three lines below, and
+   it exports one module per icon, so it costs what it draws: 13 KB total for
+   every icon on the site.
+
+   The other react-icons import in the tree is `component/slider.tsx`, which
+   nothing imports — so it never reaches a bundle. Worth knowing before anyone
+   wires that file up again. */
 import { motion, type Variants } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { settleScrollTo } from "./lenis";
-import {  MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Twitter } from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -51,9 +64,9 @@ const serviceLinks = [
 // that looks like a profile link and goes nowhere reads as an abandoned
 // business. Add it back the moment there is a URL for it.
 const socials = [
-  { icon: FaTwitter, label: "Twitter", to: "https://x.com/BlackboxPreps" },
+  { icon: Twitter, label: "Twitter", to: "https://x.com/BlackboxPreps" },
   {
-    icon: FaInstagram,
+    icon: Instagram,
     label: "Instagram",
     to: "https://www.instagram.com/blackboxprepco/",
   },

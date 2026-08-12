@@ -386,7 +386,21 @@ export default function HeroSection() {
              overflow-hidden wrapper would have cut the glow instead. A 5% jump
              on a picture that is not a link or a button is not worth a layout
              this fragile. */
-          transition={{ delay: 0.7, duration: 0.9, ease: [0.22, 1, 0.36, 1] as const }}
+          /* DELAY CUT FROM 0.7s TO 0.25s. The duration is untouched — this is
+             the same animation, it just stops idling before it starts.
+
+             This is the LCP element. Its LCP measured 3763ms with 3309ms of
+             that classified as render delay, and the image is not the cause:
+             Lighthouse reports its load delay AND load time as 0ms, so there is
+             nothing left to preload. What the page was waiting on was this
+             wrapper leaving `opacity: 0` — Chrome does not count an element at
+             zero opacity, so LCP could not fire until the fade began, and the
+             fade did not begin until 0.7s after React mounted.
+
+             0.25s still lands the photo after the headline's first two lines
+             (they run at `0.15 + i * 0.12`), so the sequence still reads as
+             text, then picture, rather than everything arriving at once. */
+          transition={{ delay: 0.25, duration: 0.9, ease: [0.22, 1, 0.36, 1] as const }}
           className="relative mt-14 w-full max-w-5xl"
         >
           <div className="absolute -inset-x-8 top-8 -z-10 h-full rounded-[40px] bg-red-600/20 blur-3xl" />
