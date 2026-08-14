@@ -432,7 +432,30 @@ export default function Navbar() {
               animate="visible"
               exit="hidden"
               /* same glass as the bar so the sheet reads as the bar unfolding */
-              className={`lg:hidden absolute top-full left-0 right-0 mx-4 mt-2 origin-top overflow-hidden rounded-2xl border shadow-2xl ${glass} ${panel}`}
+              /* THE SHEET SCROLLS RATHER THAN RUNNING OFF THE SCREEN, and the
+                 combination of the two properties below is why it had to.
+                 It was `overflow-hidden` with no height limit while `open`
+                 sets `body { overflow: hidden }` — so on any viewport shorter
+                 than the sheet, the rows past the bottom edge were unreachable
+                 by every means at once: the page could not scroll, and neither
+                 could the sheet. Measured at 844x390, a phone held sideways:
+                 the sheet ran 109px past the fold with 2 of its 5 rows below
+                 it, which is both CTAs — Dashboard and Send Inventory.
+
+                 `100dvh` and not `100vh`: on mobile Safari and Chrome `vh` is
+                 the height with the browser chrome RETRACTED, so a `100vh`
+                 sheet is taller than the screen at rest and reintroduces the
+                 bug it was meant to fix. 6rem is the sheet's own 5rem offset
+                 below the bar plus 1rem of daylight at the bottom.
+
+                 `overflow-x-hidden` is stated rather than left to `visible`:
+                 CSS promotes the other axis to `auto` when one axis is not
+                 visible, so `overflow-y-auto` alone can produce a horizontal
+                 scrollbar on a sheet nothing overflows sideways.
+
+                 `overscroll-contain` stops a flick at the end of the list
+                 chaining through to the page behind it. */
+              className={`lg:hidden absolute top-full left-0 right-0 mx-4 mt-2 max-h-[calc(100dvh-6rem)] origin-top overflow-x-hidden overflow-y-auto overscroll-contain rounded-2xl border shadow-2xl ${glass} ${panel}`}
             >
               <motion.ul
                 variants={listVariants}

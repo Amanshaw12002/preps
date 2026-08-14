@@ -53,9 +53,99 @@ const EXPECTATIONS = [
   { icon: ListChecks, title: "Leave with a plan", body: "How your inventory gets prepped, start to finish." },
 ];
 
+/**
+ * Placeholder for the scheduler, shown until Calendly's iframe has loaded.
+ *
+ * WHAT IT REPLACES IS 760px OF WHITE. The holder reserves that height so the
+ * page never shifts when the widget arrives — but for the ~3s the third-party
+ * script takes, the reserved space read as an empty card, which is
+ * indistinguishable from a booking form that has failed to appear. This is the
+ * same box saying "something is coming" instead of nothing.
+ *
+ * It traces Calendly's own inline layout — event details on the left, month
+ * grid on the right — so the shapes are replaced rather than swapped out for a
+ * different arrangement.
+ *
+ * The pulse is on the ROOT, not per block: one compositor-driven opacity
+ * animation for the whole thing rather than forty. `motion-reduce` turns it off
+ * — Tailwind's `animate-pulse` does not honour the media query on its own, and
+ * a permanently breathing block is exactly what that preference is set to stop.
+ */
+function SchedulerSkeleton({ animate }: { animate: boolean }) {
+  return (
+    <div
+      role="status"
+      aria-label="Loading the booking calendar"
+      className={`pointer-events-none absolute inset-0 overflow-hidden bg-white p-6 sm:p-8 ${
+        animate ? "animate-pulse motion-reduce:animate-none" : ""
+      }`}
+    >
+      {/* A CENTRED COLUMN, because that is what arrives. The first version of
+          this put the event details in a left rail with the calendar beside
+          it — a reasonable guess, and wrong: Calendly renders a ~680px card
+          centred in the column, with the organiser, event name and duration
+          stacked at the top, a rule, then the month grid. A skeleton whose
+          shapes move when the real thing lands is a worse transition than no
+          skeleton, so this traces the screenshot. */}
+      <div aria-hidden="true" className="mx-auto flex h-full max-w-2xl flex-col px-2 pt-10 sm:pt-14">
+        {/* Organiser, event name, then duration and call type side by side. */}
+        <div className="flex flex-col items-center">
+          <div className="h-3 w-28 rounded bg-gray-200" />
+          <div className="mt-4 h-6 w-44 rounded bg-gray-200" />
+          <div className="mt-5 flex gap-6">
+            <div className="h-3 w-14 rounded bg-gray-200" />
+            <div className="h-3 w-20 rounded bg-gray-200" />
+          </div>
+        </div>
+
+        <div className="mt-8 border-t border-gray-100" />
+
+        {/* "Select a Date & Time" */}
+        {/* `flex flex-col flex-1` so the timezone block's `mt-auto` has a
+            column to push against — on a plain block it is inert. */}
+        <div className="mx-auto mt-8 flex w-full max-w-sm flex-1 flex-col">
+          <div className="h-4 w-40 rounded bg-gray-200" />
+
+          {/* Month header: back arrow, month and year, forward arrow. */}
+          <div className="mt-8 flex items-center justify-center gap-6">
+            <div className="h-5 w-5 rounded-full bg-gray-200" />
+            <div className="h-4 w-28 rounded bg-gray-200" />
+            <div className="h-5 w-5 rounded-full bg-gray-200" />
+          </div>
+
+          {/* CAPPED AT 24rem rather than filling the column. `aspect-square`
+              cells across the full 800px of a desktop card come out ~100px
+              wide — four times the size of a real date button, which reads as
+              a different component rather than as the one arriving. At this
+              width they measure 45px against Calendly's ~44px. */}
+          <div className="mt-6 grid grid-cols-7 gap-2 sm:gap-3">
+            {Array.from({ length: 7 }, (_, i) => (
+              <div key={`d${i}`} className="mx-auto h-2.5 w-6 rounded bg-gray-200" />
+            ))}
+            {/* 35 cells: five weeks, which is what a month grid shows. */}
+            {Array.from({ length: 35 }, (_, i) => (
+              <div key={`c${i}`} className="aspect-square rounded-full bg-gray-100" />
+            ))}
+          </div>
+
+          {/* Timezone block, pinned to the bottom by `mt-auto` on the wrapper.
+              It anchors the panel at both ends, so the leftover space lands in
+              the middle where Calendly's own is, instead of as a white band
+              under everything. */}
+          <div className="mt-auto pt-10 pb-8">
+            <div className="h-3 w-20 rounded bg-gray-200" />
+            <div className="mt-2.5 h-3 w-44 rounded bg-gray-200" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CustomCalendar() {
   const holder = useRef<HTMLDivElement>(null);
   const [load, setLoad] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const node = holder.current;
@@ -135,6 +225,46 @@ export default function CustomCalendar() {
     // out of the DOM, which does not unload the code it already ran, and left
     // the widget unable to re-initialise on the next visit to this section.
   }, [load]);
+
+  /**
+   * Takes the skeleton down when the booking page is ACTUALLY ON SCREEN.
+   *
+   * The obvious signals are both wrong, and measurably so. `init()` returning
+   * true means only that Calendly was asked to build an iframe. The iframe's
+   * own `load` event is closer and still early: measured on this page, `load`
+   * fired at 4354ms and Calendly's booking page did not appear until 7504ms —
+   * so hiding the skeleton there hands back three seconds of blank white, which
+   * is the exact thing it exists to prevent. The iframe is cross-origin, so
+   * there is nothing inside it we can read to tell the difference.
+   *
+   * Calendly posts a message to the parent when the event type is displayed,
+   * and that is the moment the box stops being empty. `calendly.page_height`
+   * arrives before it, repeatedly, while the page is still assembling — so the
+   * event name is matched exactly rather than by prefix.
+   */
+  useEffect(() => {
+    if (!load || ready) return;
+
+    const onMessage = (e: MessageEvent) => {
+      // Any page can postMessage to us; only Calendly's own frame is listened to.
+      if (!/^https:\/\/([a-z0-9-]+\.)*calendly\.com$/.test(e.origin)) return;
+      const name = (e.data as { event?: unknown } | null)?.event;
+      if (name === "calendly.event_type_viewed") setReady(true);
+    };
+    window.addEventListener("message", onMessage);
+
+    /* Backstop, for the day that message is renamed or never arrives. Without
+       it the skeleton would pulse forever, claiming work is in progress when
+       none is; after this long nothing is loading, and showing whatever the
+       widget managed is the more honest answer. Set well clear of the ~7.5s
+       the widget actually takes on a cold load. */
+    const timer = window.setTimeout(() => setReady(true), 20000);
+
+    return () => {
+      window.removeEventListener("message", onMessage);
+      window.clearTimeout(timer);
+    };
+  }, [load, ready]);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
@@ -226,20 +356,32 @@ export default function CustomCalendar() {
 
               `min-w-0` lets it shrink inside the flex row; the inline
               `minWidth` is Calendly's own floor and stays. */}
-          <div
-            ref={holder}
-            className={`${load ? "calendly-inline-widget" : ""} w-full min-w-0 flex-1 overflow-hidden`}
-            data-url={CALENDLY_URL}
-            style={{
-              minWidth: "320px",
-              height: "760px",
-            }}
-          >
-            {!load && (
-              <noscript>
-                <a href={CALENDLY_URL}>Book an onboarding call</a>
-              </noscript>
-            )}
+          {/* The wrapper is what positions the skeleton, and it exists rather
+              than `relative` on the holder itself because the widget script
+              sets `position: relative` on the holder — anything of ours there
+              is competing with a third-party write. It also carries the flex
+              sizing so the holder keeps only what Calendly cares about. */}
+          <div className="relative w-full min-w-0 flex-1">
+            <div
+              ref={holder}
+              className={`${load ? "calendly-inline-widget" : ""} h-full w-full overflow-hidden`}
+              data-url={CALENDLY_URL}
+              style={{
+                minWidth: "320px",
+                height: "760px",
+              }}
+            >
+              {!load && (
+                <noscript>
+                  <a href={CALENDLY_URL}>Book an onboarding call</a>
+                </noscript>
+              )}
+            </div>
+            {/* Shown from first paint, not from `load`: the empty box is
+                visible for the whole time the script is being fetched, which is
+                most of the wait. The pulse waits for `load`, so nothing
+                animates while the section is still 600px off screen. */}
+            {!ready && <SchedulerSkeleton animate={load} />}
           </div>
         </div>
       </div>
