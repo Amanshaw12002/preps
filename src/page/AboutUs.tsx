@@ -1,5 +1,4 @@
 import man2 from "../asset/man2.webp";
-import maninblack from "../asset/maninblack.webp";
 import man3 from "../asset/man3.webp";
 import { Briefcase, Users, Globe, ArrowRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
@@ -125,42 +124,46 @@ export default function AboutUs() {
           began 48px down the page, and the only thing above it was the white
           body — which the fixed bar then sat on. A hero starts at the top of
           the page and runs UNDER the bar, the way Home and Pricing already do. */}
-      <section className="relative h-132 flex-center overflow-hidden pt-20">
-        {/* THE WHITE FLASH WHEN ARRIVING FROM HOME OR PRICING WAS HERE.
-            This hero faded in from `opacity: 0` over 1.5 seconds, and its image
-            was `loading="lazy"` even though it is the first thing on the page.
-            So for the first frames after the route changed there was nothing to
-            paint: captured on a screencast, 123ms after the click the entire
-            viewport was white. Coming from a page that opens dark, that reads
-            as a flash — which is why it happened on this page and About but not
-            between Home and Pricing, both of which open dark and paint
-            immediately.
+      {/* THE PHOTOGRAPH IS GONE, AND IT WAS CAUSING A BUG BEYOND THIS PAGE.
+          It was an `<img>` inside `absolute max-w-6xl mx-auto inset-0` — capped
+          at 72rem and centred — so on a viewport wider than that, the hero's
+          own margins were the white page behind it. The navbar decides its ink
+          by hit-testing the surface under itself at nine points spread across
+          its full width, and past ~2000px CSS the outer six of those landed in
+          that white margin: six votes for "light", near-black nav text over a
+          dark photograph, on the one page in the site built this way. It needs
+          a very wide viewport, which is an ordinary laptop at 50% browser zoom
+          — and never reproduces at 100%, which is why it read as unreproducible
+          for so long.
 
-            The scale-in is kept, because that is the effect. The opacity fade is
-            not: it is what made the first frames blank. `eager` +
-            `fetchPriority="high"` because this is the LCP element of the page,
-            and lazy-loading the LCP element delays the very paint being waited
-            for. */}
-        <motion.div
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
-          className="absolute max-w-6xl mx-auto inset-0 z-0"
-        >
-          {/* `h-full` is what makes `object-cover` mean anything. Without a
-              height the image was its own intrinsic ratio at `w-full` and
-              `object-cover` had no box to cover, so it stopped short of the
-              section's 33rem and left the background showing. */}
-          <img loading="eager" fetchPriority="high" decoding="async"
-            src={maninblack}
-            className="h-full w-full object-cover"
-            alt="Our warehouse team"
-          />
-          <div className="absolute  inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        </motion.div>
+          A flat surface has no margins to fall off, so the probe cannot miss it
+          at any width. It also deletes the page's largest download, and the
+          white-flash-on-arrival problem this block used to document, since
+          there is no longer an image whose decode the first paint waits on. */}
+      <section className="relative overflow-hidden bg-[#0a0a0a] pt-28 pb-14 sm:pt-32 sm:pb-16 lg:min-h-132 lg:pt-40">
+        {/* Same ambient wash the footer uses, so the two dark surfaces on the
+            site are the same material rather than two different blacks. It is
+            `bg-red-700/15`, well under the 0.6 alpha the tone probe treats as
+            opaque, so it cannot affect what the bar reads. */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-1/2 h-96 w-[48rem] max-w-[140%] -translate-x-1/2 rounded-full bg-red-700/15 blur-[120px]" />
+        </div>
 
-        <AnimatedSection className="absolute bottom-12 z-10 max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* IN NORMAL FLOW, not `absolute bottom-12`. Anchoring the content to
+            the bottom of a fixed 33rem box meant that as soon as the stack was
+            taller than the box — which it is on every phone, once the grid
+            drops to one column — it grew UPWARDS and off the top of the page.
+            Measured before this change: the `<h1>` sat at y -129 at 320px, -79
+            at 375, -59 at 390 and 414. "About Us" was not clipped, it was
+            entirely above the viewport, on every phone.
+
+            So the height is now a `min-height` that only applies from `lg`,
+            where the two-column grid genuinely fits it, and padding does the
+            work everywhere else. `pt-28` clears the fixed bar, which is the
+            other thing `h-132 pt-20` was silently relying on the absolute
+            positioning to do. */}
+        <AnimatedSection className="relative z-10 mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
             <motion.div variants={itemVariants}>
               <motion.h1 
                 className="text-5xl lg:text-7xl  font-inter text-white mb-4"
