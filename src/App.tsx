@@ -104,14 +104,20 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-        {/* 50vh matches the band's own `minHeight`, so the footer does not
-            jump when it arrives. */}
-        <DeferUntilNear minHeight="50vh">
-          <Suspense fallback={null}>
-            <IsometricHero />
-          </Suspense>
-        </DeferUntilNear>
-        <Footer />
+        {/* The cube sign-off is a CHILD of Footer, not a sibling before it —
+            see `footer.tsx`'s `children` slot. Nesting it there is what lets
+            the two share one background instead of printing as two visibly
+            separate blocks; `ownBackground={false}` is the half of that which
+            lives on the hero's side. */}
+        <Footer>
+          {/* 50vh matches the band's own `minHeight`, so the footer does not
+              jump when it arrives. */}
+          <DeferUntilNear minHeight="50vh">
+            <Suspense fallback={null}>
+              <IsometricHero ownBackground={false} />
+            </Suspense>
+          </DeferUntilNear>
+        </Footer>
       </main>
     </NavTransition>
   )

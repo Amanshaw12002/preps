@@ -124,39 +124,18 @@ export default function IsometricCube({
       { x: 430, y: 365 },
     ];
 
-    /* THE LOGO MARK, DERIVED FROM THE CUBE RATHER THAN RETYPED.
-       `Logo.tsx` is a hexagon plus three arms meeting at the near corner, and
-       those arms are exactly the three edges where these faces meet — so they
-       are read out of the same point arrays the faces are built from. Writing
-       the six coordinates again would be a second source of truth for one
-       shape, and the symptom of drift is a white line that no longer sits in
-       the seam, which looks like a rendering fault rather than a stale number.
+    /* The logo mark drawn over the cube. `Logo.tsx` is this same hexagon plus
+       three arms meeting at centre; only the hexagon half is drawn here — the
+       cube's own red silhouette already traces it, so a white copy would just
+       double every outer edge. (The three arms used to be drawn too, radiating
+       from the near corner; removed for reading as stray lines cutting across
+       the faces rather than as a mark — see the JSX below for what that traded
+       away and why it's fine.)
 
-       The hexagon half of the mark is deliberately NOT drawn: the cube's outer
-       silhouette already is that hexagon, in red, so a white copy would just
-       double every outer edge. The arms are the part that is currently only a
-       dark seam, which is why they are the part worth lighting.
-
-       THE ARMS START AT THE EXACT CENTRE AND ARE PULLED IN ONLY AT THE TIPS.
-       They began 6% out at both ends, which left the middle of the cube dark
-       and empty and the three lines reading as separate strokes that happened
-       to point at each other rather than as one thing radiating. The reason for
-       the inset applies only to the OUTER end: the faces are `inset(pts, 11)`,
-       so the true vertices sit slightly outside the drawn red edges and a
-       full-length arm pokes past the silhouette at all three tips. At the
-       centre the same inset works the other way — no face covers the shared
-       corner, so it is a hole, and running the arms into it is what fills it. */
-    const nearCorner = topPts[2];
-    const arms = [topPts[3], topPts[1], leftPts[2]].map((tip) => {
-      const b = lerp(nearCorner, tip, 0.94);
-      return `M ${nearCorner.x.toFixed(1)} ${nearCorner.y.toFixed(1)} L ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
-    });
-
-    /* The outer silhouette — the hexagon half of the logo mark, and the track
-       for the border beam. Built from the cube's own vertices in perimeter
-       order and put through the SAME `inset(pts, 11)` the faces use, so the
-       beam rides exactly on the drawn red edge instead of floating outside it
-       where the true geometry is. */
+       Built from the cube's own vertices in perimeter order and put through
+       the SAME `inset(pts, 11)` the faces use, so this silhouette sits exactly
+       on the drawn red edge instead of floating outside it where the true
+       geometry is. */
     const border = poly(
       inset(
         [topPts[0], topPts[1], rightPts[3], leftPts[2], leftPts[3], topPts[3]],
@@ -168,7 +147,6 @@ export default function IsometricCube({
       topPath: face(topPts),
       leftPath: face(leftPts),
       rightPath: face(rightPts),
-      arms,
       border,
       topTiles: createTiles(topPts, `url(#${gTop})`, "t"),
       leftTiles: createTiles(leftPts, `url(#${gLeft})`, "l"),
@@ -242,52 +220,21 @@ export default function IsometricCube({
           0% { transform: translateX(-120%) skewX(-18deg); }
           18%, 100% { transform: translateX(320%) skewX(-18deg); }
         }
-        /* The beam. pathLength=100 on each arm normalises them to the same
-           length, so one keyframe set drives all three despite the vertical arm
-           being longer than the two diagonals — otherwise the beam would
-           visibly run at a different speed down the front edge.
-
-           dasharray 18 100 is a single 18-unit dash with a gap longer than
-           the path, so exactly one segment exists at a time. Offset 18 parks it
-           just before the start and -100 puts it just past the end, so the
-           animation is the whole travel with no second dash entering behind it.
-
-           It runs in the FIRST half of the 8s cycle on purpose: the tile pop,
-           the edge trace and the scan sweep all live between 61% and 96%, so
-           the front half is the quiet stretch and the beam has it to itself. */
-        @keyframes ic-beam {
-          0%, 8%    { stroke-dashoffset: 18; opacity: 0; }
-          12%       { opacity: 1; }
-          34%       { stroke-dashoffset: -100; opacity: 1; }
-          38%, 100% { stroke-dashoffset: -100; opacity: 0; }
-        }
         @keyframes ic-armGlow {
           0%, 100% { stroke-opacity: 0.18; }
           50%      { stroke-opacity: 0.32; }
         }
-        /* THE BORDER IS STATIC — it completes the logo mark rather than moving.
-           It laps the silhouette on a dash cycle at one point, which put two
-           things travelling at once and turned the cube into a racetrack: the
-           eye followed the outline and stopped reading the pulse from the near
-           corner, which is the part with meaning in it. Held still, the white
-           hexagon plus the three arms IS the mark, and the one moving thing on
-           it is the beam.
-
-           It shares the ic-arm class, so the whole mark breathes on one clock.
-           Two near-identical opacity animations on parts of one shape drift
-           against each other and read as a flicker. */
-        /* NO SOURCE DOT AT THE CENTRE. A flaring circle was tried there and cut:
-           the three arms already meet at a point, so a disc on top adds a second
-           shape to a mark that is made of lines, and it draws the eye to the
-           middle at exactly the moment the beams are supposed to be leaving it.
-           The empty centre was the real complaint and it was fixed by running
-           the arms into the corner, not by covering it.
+        /* THE BORDER IS STATIC — held rather than travelling, so it reads as
+           the logo mark's outline rather than as a second moving thing
+           competing with the tile pop / edge trace / scan sweep for attention.
+           It shares the ic-arm class name from when a three-armed star also
+           carried it; only the border uses it now, but the animation itself
+           (a slow breathing glow) still suits a held outline.
 
            NOTE for anyone editing this block: it lives inside a template
            literal, so a backtick in a comment here ends the string and produces
            twenty parse errors pointing at the JSX below. */
         .ic-arm { animation: ic-armGlow 4s ease-in-out infinite; }
-        .ic-beam { stroke-dasharray: 18 100; animation: ic-beam 8s linear infinite; }
         .ic-tile { transform-box: fill-box; transform-origin: center; animation: ic-tilePop 8s linear infinite, ic-tileSeam 8s linear infinite; }
         .ic-trace { stroke-dasharray: 1200; animation: ic-edgeTrace 8s linear infinite; }
         .ic-face { transform-origin: center; }
@@ -381,30 +328,25 @@ export default function IsometricCube({
           </g>
 
           {/* The logo mark, over the box. Outside the face group on purpose:
-              inside it, the three arms would inherit the assemble transforms
-              and each would ride away with a different face, tearing the mark
-              into three pieces during the first second. It appears with the
-              assembled cube instead, as one shape.
+              inside it, the silhouette would inherit the assemble transforms
+              and tear as each face rode in on its own animation instead of
+              appearing with the assembled cube as one shape.
 
-              `pointerEvents: none` because it sits over everything. */}
+              The three-armed star that used to radiate from the near corner
+              is gone — it read as three stray lines cutting across the faces
+              rather than as a mark. It doubled as a patch over a real gap
+              there too (the faces are each `inset(pts, 11)`, so their shared
+              corner goes uncovered), but checked against a running build the
+              gap doesn't actually show: each face's own `softGlow` blur (2.2
+              stdDeviation) already covers the ~2px of it. `pointerEvents:
+              none` because this sits over everything. */}
           <g
             filter={`url(#${beamGlow})`}
             fill="none"
             strokeLinecap="round"
             style={{ pointerEvents: "none", animation: "ic-assembleTop 1.1s cubic-bezier(0.22,1,0.36,1) 0.36s both" }}
           >
-            {geometry.arms.map((d, i) => (
-              <g key={i}>
-                {/* the resting mark — faint, so the cube still reads as red */}
-                <path className="ic-arm" d={d} stroke="#ffffff" strokeWidth="2" />
-                {/* the beam travelling out from the near corner */}
-                <path className="ic-beam" d={d} pathLength="100" stroke="#ffffff" strokeWidth="3.4" />
-              </g>
-            ))}
-            {/* the silhouette, held. Thinner than the arms (1.6 against 2)
-                because it is far longer: at the same width the outline carries
-                most of the white on screen and the mark stops reading as a
-                cube with a lit corner. */}
+            {/* the silhouette, held */}
             <path
               className="ic-arm"
               d={geometry.border}

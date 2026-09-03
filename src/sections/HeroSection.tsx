@@ -360,7 +360,7 @@ export default function HeroSection() {
         >
           <Link
             to="https://dashboard.blackboxpreps.com/login"
-            className="btn-left-flash inline-flex items-center gap-2 rounded-xl border border-white/20 bg-transparent px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-transparent px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40"
           >
             Dashboard
           </Link>
@@ -404,28 +404,10 @@ export default function HeroSection() {
           className="relative mt-14 w-full max-w-5xl"
         >
           <div className="absolute -inset-x-8 top-8 -z-10 h-full rounded-[40px] bg-red-600/20 blur-3xl" />
-          {/* animated border: two light beams orbit the frame in opposite directions */}
+          {/* The two beams that used to orbit this frame in opposite
+              directions are gone — just a plain 1.5px `bg-white/10` border
+              between this div and the rounded-[15px] one inside it now. */}
           <div className="relative overflow-hidden rounded-2xl bg-white/10 p-[1.5px] shadow-2xl shadow-black/60">
-            {/* clockwise beam */}
-            <motion.div
-              className="pointer-events-none absolute -inset-[150%]"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, transparent 0deg, transparent 290deg, rgba(239,68,68,0.5) 320deg, rgba(239,68,68,1) 342deg, rgba(255,220,220,1) 350deg, transparent 360deg)",
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            />
-            {/* anti-clockwise beam — starts on the opposite side of the frame */}
-            <motion.div
-              className="pointer-events-none absolute -inset-[150%]"
-              style={{
-                background:
-                  "conic-gradient(from 180deg, transparent 0deg, transparent 290deg, rgba(59,130,246,0.5) 320deg, rgba(59,130,246,1) 342deg, rgba(220,235,255,1) 350deg, transparent 360deg)",
-              }}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            />
           <div className="relative overflow-hidden rounded-[15px] bg-[#0a0a0a]">
             {/* THE LCP ELEMENT. Four things here are load-bearing: AVIF first
                 (the browser takes the first source it understands), eager
@@ -485,12 +467,16 @@ export default function HeroSection() {
                 they met in the middle and the second printed over the first:
                 "Shipment prep|Out for delivery". They stack on mobile
                 (full-width, one above the other) and return to opposite corners
-                from sm up, where there is room for both. */}
+                from sm up, where there is room for both.
+                Brought down closer to the image's bottom edge (was bottom-32/
+                sm:bottom-20, floating well up from the base) — the mobile gap
+                between the two (16 tailwind units, 64px) is unchanged, both
+                just shifted down together so the pair still doesn't collide. */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.35, duration: 0.7 }}
-              className="absolute bottom-32 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:left-6 sm:right-auto"
+              className="absolute bottom-20 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-6 sm:left-6 sm:right-auto"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600/20 text-red-500">
                 <PackageCheck className="h-4 w-4" />
@@ -509,7 +495,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.55, duration: 0.7 }}
-              className="absolute bottom-16 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-20 sm:left-auto sm:right-6"
+              className="absolute bottom-4 left-4 right-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-black/70 px-4 py-2.5 shadow-xl shadow-black/50 backdrop-blur-md sm:bottom-6 sm:left-auto sm:right-6"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600/20 text-red-500">
                 <Truck className="h-4 w-4" />

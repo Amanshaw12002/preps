@@ -83,8 +83,10 @@ const charVariants: Variants = {
 };
 
 type Props = {
-  /** Start cycling. Both callers type a tagline first and hand off to this, so
-      the row exists (holding its height) before the first word arrives. */
+  /** Start cycling. `IntroSplash` washes a tagline in first and hands off to
+      this, so the row exists (holding its height) before the first word
+      arrives; the page hero (`logoHook.tsx`) has no tagline of its own any
+      more and just passes `true` straight away. */
   active: boolean;
   /** Frames the whole rhythm — the dot lead-in is derived from it. */
   cycleMs?: number;
